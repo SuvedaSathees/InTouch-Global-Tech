@@ -161,15 +161,15 @@ export function TeamRoundTable() {
             className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-blue-600 mb-3"
           >
             <span className="w-4 h-[2px] bg-blue-600 rounded-full" />
-            <span>EXECUTIVE BOARDROOM ARCHITECTURE</span>
+            <span>MEET OUR TEAM</span>
           </motion.div>
 
           <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-slate-950 leading-[1.08]">
-            7 Engineers Seated Around Your Architecture.
+            7 Engineers Seated Around Your Project.
           </h1>
 
           <p className="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed font-normal max-w-2xl">
-            Every client system is governed around our executive boardroom table. Click any chair to inspect active sprint missions, domain expertise, and direct WhatsApp connect.
+            Meet the engineers building your software. Click on any chair to see their role, skills, and chat directly on WhatsApp.
           </p>
         </div>
 
@@ -177,7 +177,7 @@ export function TeamRoundTable() {
         <div className="flex items-center justify-between gap-4 border-b border-slate-200/80 pb-3">
           <div className="flex items-center gap-2 text-xs font-mono font-bold text-slate-600">
             <span className="h-2 w-2 rounded-full bg-emerald-500 animate-ping" />
-            <span>7-CHAIR CONFERENCE BOARDROOM TELEMETRY LIVE</span>
+            <span>7 CORE ENGINEERS ONLINE</span>
           </div>
 
           <button

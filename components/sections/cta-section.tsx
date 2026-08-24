@@ -38,7 +38,7 @@ export function CTASection({
             </p>
 
             {/* CTA Buttons */}
-            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3.5">
+            <div className="mt-8 flex items-center justify-center">
               <MagneticButton
                 href={buttonHref}
                 size="lg"
@@ -46,15 +46,6 @@ export function CTASection({
               >
                 {buttonText}
                 <ArrowRight className="ml-2 h-4 w-4" />
-              </MagneticButton>
-
-              <MagneticButton
-                href="/projects"
-                variant="outline"
-                size="lg"
-                className="w-full sm:w-auto border-blue-300/40 bg-blue-600/30 hover:bg-blue-600/50 text-white px-7 py-3.5 rounded-xl text-sm backdrop-blur-sm shadow-sm"
-              >
-                View Case Studies
               </MagneticButton>
             </div>
 

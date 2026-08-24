@@ -109,10 +109,10 @@ export function HomeFeaturedWork() {
           <div className="max-w-2xl text-left">
             <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-blue-600 mb-4">
               <span className="w-5 h-[2px] bg-blue-600 rounded-full" />
-              <span>SELECTED WORK</span>
+              <span>OUR PRODUCTS</span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-slate-950 leading-[1.12]">
-              Case Studies in Production Engineering.
+              Software Built for Growing Businesses.
             </h2>
           </div>
           <div className="max-w-md text-left">
@@ -271,11 +271,11 @@ export function HomeFeaturedWork() {
         <div className="text-center">
           <MagneticButton
             href="/projects"
-            size="md"
-            className="bg-blue-600 text-white hover:bg-blue-700 font-bold px-8 py-3 rounded-2xl shadow-md shadow-blue-500/20 text-xs sm:text-sm"
+            size="lg"
+            className="bg-slate-900 hover:bg-slate-800 text-white font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all inline-flex items-center gap-2.5 text-sm"
           >
-            Explore Complete Portfolio & Case Studies
-            <ArrowRight className="ml-2 h-4 w-4" />
+            <span>View All Products & Projects</span>
+            <ArrowRight className="h-4 w-4" />
           </MagneticButton>
         </div>
 

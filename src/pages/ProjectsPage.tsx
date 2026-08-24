@@ -108,7 +108,7 @@ export function ProjectsPage() {
             className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-blue-600 mb-4"
           >
             <span className="w-4 h-[2px] bg-blue-600 rounded-full" />
-            <span>FLAGSHIP CASE STUDIES</span>
+            <span>OUR PRODUCTS</span>
           </motion.div>
 
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-950 leading-[1.08]">
@@ -116,7 +116,7 @@ export function ProjectsPage() {
           </h1>
 
           <p className="mt-4 text-sm sm:text-base text-slate-600 leading-relaxed font-normal max-w-2xl">
-            Explore 7 flagship enterprise systems, custom ERPs, and high-performance web platforms delivered with 100% client source code ownership.
+            Our 7 enterprise systems, custom ERPs, and high-performance web platforms delivered with 100% client source code ownership.
           </p>
         </div>
 
@@ -175,20 +175,15 @@ export function ProjectsPage() {
 
                   <div className="p-7 sm:p-8 space-y-6 relative z-10">
                     
-                    {/* Browser / Telemetry Top Bar */}
+                    {/* Top Bar */}
                     <div className="flex items-center justify-between gap-3 pb-3 border-b border-slate-100">
-                      <div className="flex items-center gap-1.5">
-                        <span className="h-2.5 w-2.5 rounded-full bg-slate-200 group-hover:bg-rose-400 transition-colors" />
-                        <span className="h-2.5 w-2.5 rounded-full bg-slate-200 group-hover:bg-amber-400 transition-colors" />
-                        <span className="h-2.5 w-2.5 rounded-full bg-slate-200 group-hover:bg-emerald-400 transition-colors" />
-                        <span className="ml-2 text-[10px] font-mono text-slate-400 uppercase tracking-wider font-semibold">
-                          CASE 0{index + 1} • {project.industry}
-                        </span>
-                      </div>
+                      <span className="text-xs font-semibold text-slate-500">
+                        {project.industry}
+                      </span>
 
-                      <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-[10px] font-mono font-bold text-emerald-700">
+                      <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-[10px] font-bold text-emerald-700">
                         <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                        <span>PRODUCTION LIVE</span>
+                        <span>Live</span>
                       </div>
                     </div>
 
@@ -198,7 +193,7 @@ export function ProjectsPage() {
                         <h2 className="text-xl sm:text-2xl font-black text-slate-950 group-hover:text-blue-600 transition-colors leading-tight">
                           {project.name}
                         </h2>
-                        <span className="text-xs font-mono font-bold text-blue-600 uppercase tracking-wide">
+                        <span className="text-xs font-bold text-blue-600 uppercase tracking-wide">
                           {project.category}
                         </span>
                       </div>
@@ -213,32 +208,16 @@ export function ProjectsPage() {
                       {project.short}
                     </p>
 
-                    {/* Results / Performance Telemetry Deck */}
-                    {project.results && (
-                      <div className="grid grid-cols-3 gap-2.5 p-3.5 rounded-2xl bg-slate-50 border border-slate-100/90 shadow-2xs">
-                        {project.results.map((r, rIdx) => (
-                          <div key={rIdx} className="text-left">
-                            <div className="text-sm sm:text-base font-black text-slate-950">
-                              {r.value}
-                            </div>
-                            <div className="text-[9px] font-mono font-bold text-slate-400 uppercase truncate">
-                              {r.label}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-
                     {/* Tech Stack Chips with Real Official PNG Logos */}
                     <div className="space-y-2 pt-2 border-t border-slate-100">
-                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 block">
-                        Technologies Deployed:
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
+                        Technologies Used:
                       </span>
                       <div className="flex flex-wrap gap-1.5">
                         {project.technologies.map((tech) => (
                           <span
                             key={tech}
-                            className="inline-flex items-center gap-1.5 rounded-xl bg-slate-50 border border-slate-200/70 px-2.5 py-1 text-[11px] font-mono font-semibold text-slate-800 shadow-2xs hover:border-blue-300 transition-colors"
+                            className="inline-flex items-center gap-1.5 rounded-xl bg-slate-50 border border-slate-200/70 px-2.5 py-1 text-[11px] font-semibold text-slate-800 shadow-2xs hover:border-blue-300 transition-colors"
                           >
                             <TechBadgeIcon name={tech} size="sm" />
                             <span>{tech}</span>
@@ -257,25 +236,17 @@ export function ProjectsPage() {
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-emerald-700 hover:text-emerald-800 bg-emerald-100/80 hover:bg-emerald-200/80 px-3.5 py-1.5 rounded-xl border border-emerald-300/80 transition-all shadow-2xs"
+                        className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 hover:text-emerald-800 bg-emerald-100/80 hover:bg-emerald-200/80 px-3.5 py-1.5 rounded-xl border border-emerald-300/80 transition-all shadow-2xs"
                       >
                         <Globe className="h-3.5 w-3.5 text-emerald-600" />
                         <span>Visit Live Website</span>
                         <ArrowUpRight className="h-3.5 w-3.5" />
                       </a>
                     ) : (
-                      <div className="text-[11px] font-mono text-slate-400">
-                        100% Sovereign Client IP
+                      <div className="text-xs text-slate-400 font-medium">
+                        Delivered Enterprise System
                       </div>
                     )}
-
-                    <Link
-                      href={`/projects/${project.slug}`}
-                      className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 hover:text-blue-700 transition-colors ml-auto group/link"
-                    >
-                      <span>Explore Case Study</span>
-                      <ArrowRight className="h-3.5 w-3.5 group-hover/link:translate-x-1 transition-transform" />
-                    </Link>
                   </div>
 
                 </motion.div>

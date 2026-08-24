@@ -1,15 +1,15 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Plus_Jakarta_Sans } from 'next/font/google';
 import { Navbar } from '@/components/navbar';
 import { Footer, WhatsAppButton } from '@/components/footer';
 import { CustomCursor } from '@/components/custom-cursor';
 import { siteConfig } from '@/lib/site-config';
 
-const inter = Inter({
+const fontSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-inter',
+  variable: '--font-sans',
 });
 
 export const metadata: Metadata = {
@@ -43,8 +43,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.variable}>
-      <body className={`min-h-screen bg-background font-sans antialiased ${inter.className}`}>
+    <html lang="en" className={fontSans.variable}>
+      <body className={`min-h-screen bg-background font-sans antialiased ${fontSans.className}`}>
         <CustomCursor />
         <Navbar />
         <main>{children}</main>

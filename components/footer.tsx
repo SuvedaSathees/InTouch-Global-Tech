@@ -64,27 +64,27 @@ export function Footer() {
             </span>
             <ul className="space-y-2.5 text-xs sm:text-sm font-bold text-slate-700">
               <li>
-                <Link href="/" prefetch={true} className="hover:text-blue-600 transition-colors inline-block">
+                <Link href="/" className="hover:text-blue-600 transition-colors inline-block">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/about" prefetch={true} className="hover:text-blue-600 transition-colors inline-block">
+                <Link href="/about" className="hover:text-blue-600 transition-colors inline-block">
                   About
                 </Link>
               </li>
               <li>
-                <Link href="/services" prefetch={true} className="hover:text-blue-600 transition-colors inline-block">
+                <Link href="/services" className="hover:text-blue-600 transition-colors inline-block">
                   Services
                 </Link>
               </li>
               <li>
-                <Link href="/projects" prefetch={true} className="hover:text-blue-600 transition-colors inline-block">
+                <Link href="/projects" className="hover:text-blue-600 transition-colors inline-block">
                   Projects
                 </Link>
               </li>
               <li>
-                <Link href="/team" prefetch={true} className="hover:text-blue-600 transition-colors inline-block">
+                <Link href="/team" className="hover:text-blue-600 transition-colors inline-block">
                   Team
                 </Link>
               </li>

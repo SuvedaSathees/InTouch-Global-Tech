@@ -73,7 +73,6 @@ export function Navbar() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  prefetch={true}
                   className={cn(
                     'relative text-sm font-semibold transition-colors duration-200 py-1',
                     isActive

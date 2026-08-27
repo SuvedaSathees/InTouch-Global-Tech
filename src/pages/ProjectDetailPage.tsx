@@ -6,7 +6,7 @@ export function ProjectDetailPage({ params }: { params?: { slug?: string } }) {
   const project = projects.find((p) => p.slug === params?.slug) || projects[0];
 
   return (
-    <main className="min-h-screen bg-white text-slate-900 select-none">
+    <main className="min-h-screen bg-[#FAF7F2] text-slate-900 select-none">
       <PageHeader
         label={`Case Study • ${project.industry}`}
         title={project.name}

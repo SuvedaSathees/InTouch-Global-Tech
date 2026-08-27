@@ -20,6 +20,7 @@ import {
   Layers,
   Globe,
   Zap,
+  Code2,
 } from 'lucide-react';
 
 const projectVisualIcons: Record<string, React.ElementType> = {
@@ -89,7 +90,7 @@ export default function ProjectsPage() {
   });
 
   return (
-    <main className="min-h-screen bg-white text-slate-900 pt-32 pb-24 select-none relative overflow-hidden">
+    <main className="min-h-screen bg-[#FAF7F2] text-slate-900 pt-32 pb-24 select-none relative overflow-hidden">
       {/* Precision Blueprint Ambient Grid */}
       <div
         className="absolute inset-0 opacity-[0.025] pointer-events-none"
@@ -108,9 +109,9 @@ export default function ProjectsPage() {
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.3 }}
-            className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-blue-600 mb-4"
+            className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-amber-800 mb-4"
           >
-            <span className="w-4 h-[2px] bg-blue-600 rounded-full" />
+            <span className="w-4 h-[2px] bg-amber-700 rounded-full" />
             <span>OUR PRODUCTS</span>
           </motion.div>
 
@@ -124,7 +125,7 @@ export default function ProjectsPage() {
         </div>
 
         {/* Dynamic Category Filter Pills */}
-        <div className="flex flex-wrap items-center gap-2 border-b border-slate-100 pb-3">
+        <div className="flex flex-wrap items-center gap-2 border-b border-[#E8DFD1] pb-3">
           {filterCategories.map((cat) => {
             const isActive = activeFilter === cat;
 
@@ -135,13 +136,13 @@ export default function ProjectsPage() {
                 className={`relative px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                   isActive
                     ? 'text-white'
-                    : 'text-slate-600 hover:text-slate-950 hover:bg-slate-100/80'
+                    : 'text-slate-600 hover:text-slate-950 hover:bg-amber-50/50'
                 }`}
               >
                 {isActive && (
                   <motion.div
                     layoutId="activeProjectsFilterPill"
-                    className="absolute inset-0 bg-blue-600 rounded-xl shadow-md shadow-blue-500/20"
+                    className="absolute inset-0 bg-amber-700 rounded-xl shadow-md shadow-amber-700/20"
                     transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                   />
                 )}
@@ -157,9 +158,9 @@ export default function ProjectsPage() {
             {filteredProjects.map((project, index) => {
               const VisualIcon = projectVisualIcons[project.slug] || Code2;
               const styling = projectGradients[project.slug] || {
-                bg: 'from-blue-600/10 to-transparent',
-                border: 'group-hover:border-blue-500/60',
-                accent: 'bg-blue-600 text-white',
+                bg: 'from-amber-600/10 to-transparent',
+                border: 'hover:border-amber-500',
+                accent: 'bg-amber-700 text-white',
               };
 
               return (
@@ -171,7 +172,7 @@ export default function ProjectsPage() {
                   exit={{ opacity: 0, scale: 0.96, y: -15 }}
                   transition={{ duration: 0.35, delay: index * 0.05 }}
                   whileHover={{ y: -6 }}
-                  className={`group relative flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-white shadow-sm hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300 overflow-hidden ${styling.border}`}
+                  className={`group relative flex flex-col justify-between rounded-3xl border border-[#E8DFD1] bg-white shadow-sm hover:shadow-2xl hover:shadow-amber-700/10 transition-all duration-300 overflow-hidden ${styling.border}`}
                 >
                   {/* Subtle Top Gradient Aura */}
                   <div className={`absolute top-0 inset-x-0 h-44 bg-gradient-to-b ${styling.bg} pointer-events-none opacity-80`} />
@@ -193,15 +194,15 @@ export default function ProjectsPage() {
                     {/* Project Title & Visual Badge */}
                     <div className="flex items-start justify-between gap-4">
                       <div className="space-y-1.5">
-                        <h2 className="text-xl sm:text-2xl font-black text-slate-950 group-hover:text-blue-600 transition-colors leading-tight">
+                        <h2 className="text-xl sm:text-2xl font-black text-slate-950 group-hover:text-amber-800 transition-colors leading-tight">
                           {project.name}
                         </h2>
-                        <span className="text-xs font-bold text-blue-600 uppercase tracking-wide">
+                        <span className="text-xs font-bold text-amber-700 uppercase tracking-wide">
                           {project.category}
                         </span>
                       </div>
 
-                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-50 border border-slate-200/80 p-2.5 text-blue-600 shadow-2xs group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all shrink-0">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-50 border border-amber-200 p-2.5 text-amber-800 shadow-2xs group-hover:scale-110 group-hover:bg-amber-700 group-hover:text-white transition-all shrink-0">
                         <VisualIcon className="h-6 w-6" />
                       </div>
                     </div>

@@ -114,7 +114,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: npm run test:e2e
-      - run: docker build -t registry.nexora.io/core:latest .
+      - run: docker build -t registry.intouchglobaltech.com/core:latest .
       - run: terraform apply -auto-approve`,
   },
 ];

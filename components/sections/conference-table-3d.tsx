@@ -457,7 +457,7 @@ export function ConferenceTable3D() {
               <div className="absolute top-1/2 left-8 right-8 -translate-y-1/2 h-[2px] bg-gradient-to-r from-transparent via-[#ffd700]/70 to-transparent" />
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-14 rounded-full border border-[#ffd700]/50 bg-black/35 flex items-center justify-center backdrop-blur-xs shadow-inner">
                 <span className="text-[10px] tracking-widest text-[#ffd700] uppercase font-bold">
-                  NEXORA ARCHITECTURE
+                  INTOUCH GLOBAL TECH ARCHITECTURE
                 </span>
               </div>
 

@@ -16,14 +16,14 @@ export function CTASection({
   buttonHref?: string;
 }) {
   return (
-    <section className="relative py-20 sm:py-28 overflow-hidden bg-white">
+    <section className="relative py-20 sm:py-28 overflow-hidden bg-[#FAF7F2]">
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-50px' }}
           transition={{ duration: 0.5 }}
-          className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-900 p-8 text-center sm:p-14 shadow-2xl shadow-blue-900/15"
+          className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-amber-800 via-amber-700 to-amber-900 p-8 text-center sm:p-14 shadow-2xl shadow-amber-900/15"
         >
           {/* Subtle Glow */}
           <div className="absolute inset-0 bg-grid opacity-15 pointer-events-none" />
@@ -33,7 +33,7 @@ export function CTASection({
               {title}
             </h2>
 
-            <p className="mx-auto mt-4 text-balance text-sm sm:text-base text-blue-100 leading-relaxed font-normal">
+            <p className="mx-auto mt-4 text-balance text-sm sm:text-base text-amber-100 leading-relaxed font-normal">
               {subtitle}
             </p>
 
@@ -42,7 +42,7 @@ export function CTASection({
               <MagneticButton
                 href={buttonHref}
                 size="lg"
-                className="w-full sm:w-auto bg-white hover:bg-slate-100 text-blue-700 font-bold shadow-xl border border-white px-8 py-3.5 rounded-xl text-sm"
+                className="w-full sm:w-auto bg-white hover:bg-amber-50 text-amber-900 font-bold shadow-xl border border-white px-8 py-3.5 rounded-xl text-sm"
               >
                 {buttonText}
                 <ArrowRight className="ml-2 h-4 w-4" />
@@ -50,9 +50,9 @@ export function CTASection({
             </div>
 
             {/* Reassurance pills */}
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-5 text-xs text-blue-100 border-t border-blue-500/50 pt-6 font-medium">
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-5 text-xs text-amber-100 border-t border-amber-500/40 pt-6 font-medium">
               <span className="flex items-center gap-1.5">
-                <ShieldCheck className="h-4 w-4 text-cyan-200" />
+                <ShieldCheck className="h-4 w-4 text-amber-200" />
                 NDA Protected
               </span>
               <span className="flex items-center gap-1.5">

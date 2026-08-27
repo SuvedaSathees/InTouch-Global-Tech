@@ -14,7 +14,7 @@ export function PageHeader({
   description?: string;
 }) {
   return (
-    <section className="relative overflow-hidden bg-white pt-36 pb-20 sm:pt-44 sm:pb-28 border-b border-slate-200/80 select-none">
+    <section className="relative overflow-hidden bg-[#FAF7F2] pt-36 pb-20 sm:pt-44 sm:pb-28 border-b border-[#E8DFD1] select-none">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_20%,rgba(37,99,235,0.06),transparent_70%)] pointer-events-none" />
 
       <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8 z-10">
@@ -23,7 +23,7 @@ export function PageHeader({
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className="mb-5 inline-flex items-center justify-center rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-blue-600"
+            className="mb-5 inline-flex items-center justify-center rounded-full border border-amber-200 bg-amber-50 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-amber-800"
           >
             {label}
           </motion.div>
@@ -53,7 +53,7 @@ export function PageHeader({
           transition={{ duration: 0.4, delay: 0.2 }}
           className="mt-8 flex items-center justify-center gap-1.5 text-xs text-slate-500"
         >
-          <Link href="/" className="hover:text-blue-600 transition-colors font-medium">Home</Link>
+          <Link href="/" className="hover:text-amber-800 transition-colors font-medium">Home</Link>
           <ChevronRight className="h-3.5 w-3.5 text-slate-400" />
           <span className="text-slate-900 font-bold">{title}</span>
         </motion.nav>

@@ -45,7 +45,7 @@ const stats = [
 
 export function HomeStats() {
   return (
-    <section className="relative overflow-hidden bg-slate-50/70 text-slate-900 py-14 sm:py-16 select-none border-t border-slate-200">
+    <section className="relative overflow-hidden bg-[#F4EEE4]/90 text-slate-900 py-14 sm:py-16 select-none border-t border-[#E8DFD1]">
       {/* Precision Blueprint Grid */}
       <div
         className="absolute inset-0 opacity-[0.03] pointer-events-none"
@@ -61,8 +61,8 @@ export function HomeStats() {
         {/* Left-Aligned Compact Header */}
         <div className="flex flex-col items-start gap-4 mb-8">
           <div className="max-w-xl text-left">
-            <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-blue-600 mb-2">
-              <span className="w-4 h-[2px] bg-blue-600 rounded-full" />
+            <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-amber-800 mb-2">
+              <span className="w-4 h-[2px] bg-amber-700 rounded-full" />
               <span>KEY METRICS & SCALE</span>
             </div>
             <h2 className="text-2xl sm:text-4xl font-black tracking-tight text-slate-950 leading-tight">
@@ -80,7 +80,7 @@ export function HomeStats() {
               <motion.div
                 key={stat.label}
                 whileHover={{ y: -5 }}
-                className="group relative flex flex-col justify-between rounded-3xl border border-slate-200 bg-white p-7 shadow-xs hover:border-blue-500 hover:shadow-xl transition-all duration-300 text-left"
+                className="group relative flex flex-col justify-between rounded-3xl border border-[#E8DFD1] bg-white p-7 shadow-xs hover:border-amber-500 hover:shadow-xl transition-all duration-300 text-left"
               >
                 <div>
                   {/* Top Badge Row */}
@@ -91,8 +91,8 @@ export function HomeStats() {
                       <Icon className="h-5 w-5" />
                     </div>
 
-                    <span className="flex items-center gap-1.5 rounded-full bg-blue-50 border border-blue-200/80 px-2.5 py-0.5 text-[10px] font-bold text-blue-700 uppercase tracking-wider">
-                      <span className="h-1.5 w-1.5 rounded-full bg-blue-600 animate-pulse" />
+                    <span className="flex items-center gap-1.5 rounded-full bg-amber-50 border border-amber-200/80 px-2.5 py-0.5 text-[10px] font-bold text-amber-800 uppercase tracking-wider">
+                      <span className="h-1.5 w-1.5 rounded-full bg-amber-600 animate-pulse" />
                       {stat.badge}
                     </span>
                   </div>
@@ -104,7 +104,7 @@ export function HomeStats() {
                     </span>
                   </div>
 
-                  <h3 className="text-sm sm:text-base font-bold text-slate-950 group-hover:text-blue-600 transition-colors mt-2">
+                  <h3 className="text-sm sm:text-base font-bold text-slate-950 group-hover:text-amber-800 transition-colors mt-2">
                     {stat.label}
                   </h3>
 
@@ -116,7 +116,7 @@ export function HomeStats() {
                 {/* Bottom Divider Indicator */}
                 <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-[10px] font-bold text-slate-400">
                   <span>METRIC 0{idx + 1}</span>
-                  <span className="text-blue-600 uppercase font-semibold">VERIFIED</span>
+                  <span className="text-amber-700 uppercase font-semibold">VERIFIED</span>
                 </div>
               </motion.div>
             );

@@ -14,66 +14,69 @@ import {
   Building2,
   Lock,
   Cloud,
-  Cpu,
+  Activity,
+  Search,
+  MapPin,
 } from 'lucide-react';
 import { MagneticButton } from '@/components/magnetic-button';
+import { siteConfig } from '@/lib/site-config';
 
 const systemNodes = [
   {
-    id: 'ai',
-    label: 'AI Engine',
-    icon: Sparkles,
-    angle: 235,
-    gradient: 'from-emerald-500 to-teal-600',
-  },
-  {
-    id: 'cloud',
-    label: 'Cloud Infra',
-    icon: Server,
-    angle: 305,
-    gradient: 'from-purple-500 to-indigo-600',
-  },
-  {
-    id: 'website',
-    label: 'Web Platform',
+    id: 'web',
+    label: 'Web Dev & CMS',
     icon: Globe,
     angle: 0,
-    gradient: 'from-blue-500 to-cyan-600',
+    gradient: 'from-blue-600 to-cyan-600',
   },
   {
     id: 'erp',
-    label: 'ERP System',
+    label: 'ERP & HRMS',
     icon: Building2,
     angle: 55,
     gradient: 'from-indigo-600 to-blue-700',
   },
   {
     id: 'crm',
-    label: 'CRM Engine',
+    label: 'CRM & Billing',
     icon: Layers,
     angle: 125,
     gradient: 'from-cyan-500 to-blue-600',
   },
   {
-    id: 'mobile',
-    label: 'Mobile App',
-    icon: Smartphone,
+    id: 'hms',
+    label: 'Hospital / Pharma HMS',
+    icon: Activity,
     angle: 180,
-    gradient: 'from-blue-600 to-indigo-600',
+    gradient: 'from-emerald-600 to-teal-600',
+  },
+  {
+    id: 'seo',
+    label: 'SEO & Marketing',
+    icon: Search,
+    angle: 235,
+    gradient: 'from-purple-600 to-indigo-600',
+  },
+  {
+    id: 'cloud',
+    label: 'Cloud & Domain',
+    icon: Server,
+    angle: 305,
+    gradient: 'from-blue-500 to-indigo-600',
   },
 ];
 
 const bottomTrustItems = [
-  { icon: Zap, label: 'FULL-STACK ENGINEERING' },
-  { icon: Cloud, label: 'CLOUD READY' },
-  { icon: Cpu, label: 'AI ENABLED' },
-  { icon: Lock, label: '100% IP OWNERSHIP' },
-  { icon: ShieldCheck, label: 'PRODUCTION SUPPORT' },
+  { icon: Globe, label: 'STATIC & DYNAMIC WEBSITES' },
+  { icon: Building2, label: 'CUSTOM ERP & HRMS' },
+  { icon: Activity, label: 'HOSPITAL & PHARMA SYSTEMS' },
+  { icon: Search, label: 'HIGH-RANKING SEO & SEM' },
+  { icon: Lock, label: '100% IP & CODE OWNERSHIP' },
 ];
 
 export function HomeHero() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [activeNode, setActiveNode] = useState<string>('erp');
+  const [activeNode, setActiveNode] = useState<string>('web');
   const [hoveredNode, setHoveredNode] = useState<string | null>(null);
 
   // Auto cycle active node
@@ -133,12 +136,12 @@ export function HomeHero() {
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative min-h-[85vh] flex flex-col justify-between overflow-hidden bg-white text-slate-900 pt-20 sm:pt-24 select-none"
+      className="relative min-h-[85vh] flex flex-col justify-between overflow-hidden bg-[#FAF7F2] text-slate-900 pt-20 sm:pt-24 select-none"
     >
       {/* Dynamic Radiant Background Auras */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(37,99,235,0.06)_0%,transparent_70%)] pointer-events-none" />
-      <div className="absolute top-1/4 left-1/10 w-[500px] h-[500px] bg-blue-500/6 rounded-full blur-[130px] pointer-events-none" />
-      <div className="absolute top-1/3 right-1/10 w-[500px] h-[500px] bg-indigo-500/6 rounded-full blur-[130px] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(217,119,6,0.04)_0%,transparent_70%)] pointer-events-none" />
+      <div className="absolute top-1/4 left-1/10 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[130px] pointer-events-none" />
+      <div className="absolute top-1/3 right-1/10 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[130px] pointer-events-none" />
 
       {/* Precision Blueprint Grid */}
       <div
@@ -150,21 +153,21 @@ export function HomeHero() {
         }}
       />
 
-      {/* Main 2-Column Hero Content Grid (Shifted 15px down) */}
+      {/* Main 2-Column Hero Content Grid */}
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full my-auto py-4 lg:py-6 translate-y-[15px]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
-          {/* LEFT COLUMN: CLEAN & SIMPLE HERO CONTENT */}
+          {/* LEFT COLUMN: HERO CONTENT */}
           <div className="lg:col-span-5 text-left flex flex-col items-start justify-center">
-            {/* Clean Line Heading Accent (Shifted 5px down) */}
+            {/* Clean Line Heading Accent */}
             <motion.div
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.4 }}
-              className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-blue-600 mb-6 translate-y-[5px]"
+              className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-800 mb-6"
             >
-              <span className="w-5 h-[2px] bg-blue-600 rounded-full" />
-              <span>SOFTWARE ENGINEERING • AI</span>
+              <span className="w-5 h-[2px] bg-amber-700 rounded-full" />
+              <span>SOFTWARE DEVELOPERS</span>
             </motion.div>
 
             {/* Main Headline */}
@@ -174,21 +177,20 @@ export function HomeHero() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-950 leading-[1.08]"
             >
-              We Build{' '}
-              <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 bg-clip-text text-transparent">
-                Digital Products
-              </span>{' '}
-              That Move Businesses Forward.
+              Leading Web & IT Solutions That Move{' '}
+              <span className="bg-gradient-to-r from-amber-700 via-amber-600 to-amber-800 bg-clip-text text-transparent">
+                Businesses Forward.
+              </span>
             </motion.h1>
 
-            {/* Simple, Crisp Subtitle */}
+            {/* Subtitle */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="mt-6 text-base sm:text-lg text-slate-600 font-normal leading-relaxed max-w-lg"
+              className="mt-5 text-base sm:text-lg text-slate-600 font-normal leading-relaxed max-w-lg"
             >
-              We design and engineer bespoke software, scalable web platforms, custom ERP systems, and AI-driven automation built around your business.
+              {siteConfig.name} delivers complete web application services, static & dynamic website designing, custom ERP & HRMS software, Hospital/Pharmacy systems, and high-ROI SEO solutions.
             </motion.p>
 
             {/* Action CTA Buttons */}
@@ -202,7 +204,7 @@ export function HomeHero() {
                 <MagneticButton
                   href="/contact"
                   size="lg"
-                  className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-3.5 rounded-2xl shadow-xl shadow-blue-500/25 text-sm"
+                  className="w-full sm:w-auto bg-amber-700 hover:bg-amber-800 text-white font-bold px-8 py-3.5 rounded-2xl shadow-xl shadow-amber-700/25 text-sm"
                 >
                   Start Your Project
                   <ArrowRight className="ml-2 h-4 w-4" />
@@ -211,19 +213,19 @@ export function HomeHero() {
 
               <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }} className="w-full sm:w-auto">
                 <MagneticButton
-                  href="/projects"
+                  href="/services"
                   variant="outline"
                   size="lg"
                   className="w-full sm:w-auto border-slate-300 bg-white hover:bg-slate-50 text-slate-800 px-7 py-3.5 rounded-2xl text-sm shadow-xs"
                 >
-                  View Our Work
+                  Explore Services
                 </MagneticButton>
               </motion.div>
             </motion.div>
           </div>
 
-          {/* RIGHT COLUMN: CLEAN 3D CONNECTED ARCHITECTURE CANVAS (Shifted 20px right) */}
-          <div className="lg:col-span-7 flex items-center justify-center translate-x-0 lg:translate-x-[20px]">
+          {/* RIGHT COLUMN: 3D CONNECTED ARCHITECTURE CANVAS */}
+          <div className="lg:col-span-7 flex items-center justify-center translate-x-[30px] lg:translate-x-[50px]">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -274,8 +276,9 @@ export function HomeHero() {
                   {/* 6 Clean Symmetrical Connecting Lines */}
                   {systemNodes.map((node) => {
                     const rad = (node.angle * Math.PI) / 180;
+                    const nodeOffsetY = node.id === 'seo' || node.id === 'cloud' ? -20 : node.id === 'crm' || node.id === 'erp' ? 20 : 0;
                     const x = Math.round(Math.cos(rad) * radiusX);
-                    const y = Math.round(Math.sin(rad) * radiusY);
+                    const y = Math.round(Math.sin(rad) * radiusY) + nodeOffsetY;
                     const isActive = currentActive === node.id;
 
                     return (
@@ -285,7 +288,7 @@ export function HomeHero() {
                           y1="0"
                           x2={x}
                           y2={y}
-                          stroke={isActive ? '#2563eb' : '#cbd5e1'}
+                          stroke={isActive ? '#b45309' : '#cbd5e1'}
                           strokeWidth={isActive ? '2.5' : '1'}
                           strokeDasharray={isActive ? 'none' : '4 4'}
                           className="transition-colors duration-300"
@@ -297,7 +300,7 @@ export function HomeHero() {
                             y1="0"
                             x2={x}
                             y2={y}
-                            stroke="#3b82f6"
+                            stroke="#d97706"
                             strokeWidth="5"
                             strokeOpacity="0.25"
                             strokeLinecap="round"
@@ -306,7 +309,7 @@ export function HomeHero() {
 
                         <circle
                           r={isActive ? '3.5' : '2'}
-                          fill={isActive ? '#2563eb' : '#94a3b8'}
+                          fill={isActive ? '#b45309' : '#94a3b8'}
                         >
                           <animateMotion
                             path={`M 0 0 L ${x} ${y}`}
@@ -319,32 +322,33 @@ export function HomeHero() {
                   })}
                 </svg>
 
-                {/* Central Hub: YOUR BUSINESS */}
+                {/* Central Hub: Intouch Global Tech */}
                 <motion.div
                   whileHover={{ scale: 1.05 }}
-                  className="relative z-30 flex flex-col items-center justify-center h-36 w-36 sm:h-40 sm:w-40 rounded-full border-2 border-blue-500 bg-white shadow-[0_12px_36px_rgba(37,99,235,0.14)] text-center p-4 cursor-default"
+                  className="relative z-30 flex flex-col items-center justify-center h-36 w-36 sm:h-40 sm:w-40 rounded-full border-2 border-amber-600 bg-white shadow-[0_12px_36px_rgba(180,83,9,0.14)] text-center p-3 cursor-default"
                   style={{ transform: 'translateZ(35px)' }}
                 >
                   <div className="flex items-center gap-1 mb-0.5">
-                    <span className="h-2 w-2 rounded-full bg-blue-600 animate-pulse" />
-                    <span className="text-[9px] tracking-widest text-blue-600 uppercase font-bold">
-                      ENTERPRISE HUB
+                    <span className="h-2 w-2 rounded-full bg-amber-600 animate-pulse" />
+                    <span className="text-[8px] tracking-widest text-amber-700 uppercase font-extrabold">
+                      GLOBAL IT HUB
                     </span>
                   </div>
-                  <h3 className="text-base sm:text-lg font-black text-slate-950 leading-none mt-0.5 tracking-tight">
-                    YOUR
+                  <h3 className="text-sm sm:text-base font-black text-slate-950 leading-tight mt-0.5 tracking-tight">
+                    INTOUCH
                   </h3>
-                  <h3 className="text-base sm:text-lg font-black text-slate-950 leading-none tracking-tight">
-                    BUSINESS
+                  <h3 className="text-xs sm:text-sm font-extrabold text-amber-700 leading-tight tracking-tight">
+                    GLOBAL TECH
                   </h3>
                   <p className="text-[8px] text-slate-500 mt-1 font-medium">Core Operational Hub</p>
                 </motion.div>
 
-                {/* 6 Clean Orbiting System Capability Cards */}
+                {/* 6 Clean Orbiting Capability Cards */}
                 {systemNodes.map((node, index) => {
                   const rad = (node.angle * Math.PI) / 180;
+                  const nodeOffsetY = node.id === 'seo' || node.id === 'cloud' ? -20 : node.id === 'crm' || node.id === 'erp' ? 20 : 0;
                   const x = Math.round(Math.cos(rad) * radiusX);
-                  const y = Math.round(Math.sin(rad) * radiusY);
+                  const y = Math.round(Math.sin(rad) * radiusY) + nodeOffsetY;
                   const Icon = node.icon;
                   const isActive = currentActive === node.id;
 
@@ -375,8 +379,8 @@ export function HomeHero() {
                         }}
                         className={`relative flex items-center gap-2.5 rounded-xl sm:rounded-2xl px-3.5 py-2.5 text-left transition-all duration-300 ${
                           isActive
-                            ? 'border-2 border-blue-600 bg-white shadow-[0_10px_28px_rgba(37,99,235,0.18)] ring-4 ring-blue-500/15'
-                            : 'border border-slate-200/90 bg-white/95 shadow-xs hover:border-slate-300'
+                            ? 'border-2 border-amber-600 bg-white shadow-[0_10px_28px_rgba(180,83,9,0.18)] ring-4 ring-amber-500/15'
+                            : 'border border-[#E8DFD1] bg-white/95 shadow-xs hover:border-amber-400'
                         }`}
                       >
                         <div
@@ -398,13 +402,13 @@ export function HomeHero() {
         </div>
       </div>
 
-      {/* BOTTOM TRUST & CAPABILITIES RIBBON (Shifted 10px up) */}
-      <div className="relative z-10 w-full border-t border-slate-100 bg-slate-50/70 py-4 sm:py-5 mt-20 sm:mt-24">
+      {/* BOTTOM TRUST & CAPABILITIES RIBBON (Perfect Symmetrical Height & Padding) */}
+      <div className="relative z-10 w-full border-y border-[#E8DFD1] bg-[#F4EEE4]/95 py-6 sm:py-8 mt-[90px] sm:mt-[106px]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap items-center justify-around sm:justify-between gap-4 sm:gap-6 text-xs text-slate-600 font-semibold">
+          <div className="flex items-center justify-between gap-3 sm:gap-4 lg:gap-6 text-[10px] sm:text-xs lg:text-[12px] xl:text-[13px] text-slate-800 font-extrabold whitespace-nowrap overflow-x-auto no-scrollbar">
             {bottomTrustItems.map((item, idx) => (
-              <div key={idx} className="flex items-center gap-2 hover:text-slate-950 transition-colors">
-                <item.icon className="h-4 w-4 text-blue-600 shrink-0" />
+              <div key={idx} className="flex items-center gap-1.5 sm:gap-2 hover:text-amber-800 transition-colors shrink-0">
+                <item.icon className="h-4 w-4 sm:h-4.5 sm:w-4.5 text-amber-700 shrink-0" />
                 <span className="tracking-wider">{item.label}</span>
               </div>
             ))}

@@ -104,7 +104,7 @@ export function HomeWhyChooseUs() {
           <div className="max-w-2xl text-left">
             <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-blue-600 mb-4">
               <span className="w-5 h-[2px] bg-blue-600 rounded-full" />
-              <span>THE NEXORA DIFFERENCE</span>
+              <span>THE INTOUCH GLOBAL TECH ADVANTAGE</span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-slate-950 leading-[1.12]">
               Engineering With Business Thinking.

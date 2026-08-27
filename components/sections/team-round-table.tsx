@@ -2,142 +2,126 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import {
-  ShieldCheck,
-  Zap,
-  Code2,
-  Sparkles,
-  Layers,
-  Activity,
-  ArrowUpRight,
-  RefreshCw,
-  Cpu,
-  User,
-} from 'lucide-react';
-import { WhatsAppOfficialIcon } from '@/components/footer';
+import { RefreshCw, Code2, Layers, Database, Terminal, Shield, Cpu, Laptop, Activity } from 'lucide-react';
 
 export type TeamMember = {
   id: number;
   name: string;
   role: string;
-  domain: string;
-  focus: string;
-  bio: string;
   initials: string;
   seatNumber: string;
-  seatLabel: string;
-  color: string;
+  icon: typeof Code2;
+  // Position around the table in percentage coordinates
+  posX: number;
+  posY: number;
+  laserTargetX: number;
+  laserTargetY: number;
 };
 
 const members: TeamMember[] = [
   {
     id: 0,
     name: 'Srimun S S',
-    role: 'Principal Systems Architect & Lead Engineer',
-    domain: 'Enterprise ERP Architecture & Distributed Systems',
-    focus: 'Multi-tenant ERP cores, database partitioning, and high-concurrency transaction pipelines.',
-    bio: 'Leads end-to-end technical strategy, mission-critical system design, and sovereign code governance.',
+    role: 'Principal Systems Architect',
     initials: 'SS',
     seatNumber: '01',
-    seatLabel: 'Principal Architect',
-    color: 'from-blue-600 to-indigo-600',
+    icon: Database,
+    posX: 25,
+    posY: 9,
+    laserTargetX: -140,
+    laserTargetY: -100,
   },
   {
     id: 1,
     name: 'Suveda S',
-    role: 'Head of Product Engineering & Fullstack Lead',
-    domain: 'Next.js 15, TypeScript & Enterprise Web Apps',
-    focus: 'Server-side rendering, type-safe API contracts, and sub-second web performance.',
-    bio: 'Drives product delivery sprint cadence, developer experience, and bulletproof web application cores.',
+    role: 'Product Lead',
     initials: 'SS',
     seatNumber: '02',
-    seatLabel: 'Product Lead',
-    color: 'from-cyan-600 to-blue-600',
+    icon: Layers,
+    posX: 50,
+    posY: 7,
+    laserTargetX: 0,
+    laserTargetY: -120,
   },
   {
     id: 2,
     name: 'Vignesh K',
-    role: 'Lead Backend & Distributed Systems Architect',
-    domain: 'Node.js, PostgreSQL & Microservices',
-    focus: 'High-throughput REST/GraphQL APIs, Redis caching layers, and database optimization.',
-    bio: 'Engineers robust backend infrastructure capable of handling high concurrent user workloads seamlessly.',
+    role: 'Backend Architect',
     initials: 'VK',
     seatNumber: '03',
-    seatLabel: 'Backend Architect',
-    color: 'from-indigo-600 to-purple-600',
+    icon: Terminal,
+    posX: 75,
+    posY: 9,
+    laserTargetX: 140,
+    laserTargetY: -100,
   },
   {
     id: 3,
     name: 'Sivaraj A',
-    role: 'Cloud Infrastructure & DevOps Lead',
-    domain: 'Docker, Linux Clusters & CI/CD Pipelines',
-    focus: 'Containerization, automated deployment pipelines, and bank-grade infrastructure security.',
-    bio: 'Builds immutable deployment pipelines ensuring zero downtime and 100% environment parity.',
+    role: 'DevOps Lead',
     initials: 'SA',
     seatNumber: '04',
-    seatLabel: 'DevOps Lead',
-    color: 'from-blue-600 to-sky-600',
+    icon: Shield,
+    posX: 8,
+    posY: 50,
+    laserTargetX: -260,
+    laserTargetY: 0,
   },
   {
     id: 4,
     name: 'Sunmathi S',
-    role: 'Staff AI, ML & Data Pipelines Engineer',
-    domain: 'Python, Neural Automation & Data Scraping',
-    focus: 'Intelligent document processing, OCR automation, and business intelligence analytics.',
-    bio: 'Designs autonomous AI integration and machine learning pipelines that replace repetitive manual tasks.',
+    role: 'AI & Data Lead',
     initials: 'SS',
     seatNumber: '05',
-    seatLabel: 'AI & Data Lead',
-    color: 'from-emerald-600 to-teal-600',
+    icon: Cpu,
+    posX: 25,
+    posY: 91,
+    laserTargetX: -140,
+    laserTargetY: 100,
   },
   {
     id: 5,
     name: 'Sandhiya M',
-    role: 'Lead UI/UX Designer & Interface Architect',
-    domain: 'Figma Systems, Design Tokens & User Workflows',
-    focus: 'High-converting enterprise dashboards, ergonomic operator screens, and accessible UI components.',
-    bio: 'Crafts pixel-perfect, premium user experiences and design systems tailored for rapid business adoption.',
+    role: 'UI/UX Lead',
     initials: 'SM',
     seatNumber: '06',
-    seatLabel: 'UI/UX Lead',
-    color: 'from-amber-500 to-orange-600',
+    icon: Laptop,
+    posX: 50,
+    posY: 93,
+    laserTargetX: 0,
+    laserTargetY: 120,
   },
   {
     id: 6,
     name: 'Subhasri A',
-    role: 'Senior QA Automation & Quality Lead',
-    domain: 'Playwright, Vitest & Concurrency Stress Testing',
-    focus: 'Automated E2E regression suites, performance load benchmarks, and zero-defect deployments.',
-    bio: 'Guarantees rock-solid software quality, automated test coverage, and strict code integrity standards.',
+    role: 'QA & Automation Lead',
     initials: 'SA',
     seatNumber: '07',
-    seatLabel: 'QA & Automation',
-    color: 'from-rose-500 to-pink-600',
+    icon: Activity,
+    posX: 75,
+    posY: 91,
+    laserTargetX: 140,
+    laserTargetY: 100,
   },
 ];
 
 export function TeamRoundTable() {
-  const [activeId, setActiveId] = useState(0);
+  const [activeId, setActiveId] = useState(1); // Suveda S active by default
   const [autoRotate, setAutoRotate] = useState(true);
 
   useEffect(() => {
     if (!autoRotate) return;
     const interval = setInterval(() => {
       setActiveId((prev) => (prev + 1) % members.length);
-    }, 4500);
+    }, 4000);
     return () => clearInterval(interval);
   }, [autoRotate]);
 
   const activeMember = members[activeId];
 
-  // Top 3 Chairs (Seats 0, 1, 2)
-  const topChairs = [members[0], members[1], members[2]];
-  // Bottom 4 Chairs (Seats 3, 4, 5, 6)
-  const bottomChairs = [members[3], members[4], members[5], members[6]];
-
   return (
-    <div className="relative bg-white text-slate-900 select-none pt-32 pb-24 sm:pb-32 overflow-hidden">
-      {/* Precision Blueprint Grid */}
+    <div className="relative bg-[#FAF7F2] text-slate-900 select-none pt-28 pb-24 sm:pb-32 overflow-hidden">
+      {/* Precision Blueprint Ambient Grid */}
       <div
         className="absolute inset-0 opacity-[0.025] pointer-events-none"
         style={{
@@ -146,249 +130,211 @@ export function TeamRoundTable() {
           backgroundSize: '40px 40px',
         }}
       />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[550px] bg-amber-500/10 rounded-full blur-[140px] pointer-events-none" />
 
-      {/* Ambient Lighting Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] bg-gradient-to-tr from-blue-500/10 via-sky-400/10 to-indigo-500/10 rounded-full blur-[140px] pointer-events-none" />
-
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 z-10 space-y-10">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 z-10 space-y-8">
         
-        {/* SECTION HEADER (Left-Aligned with Line Accent) */}
-        <div className="max-w-4xl text-left">
-          <motion.div
-            initial={{ opacity: 0, x: -10 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.3 }}
-            className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-blue-600 mb-3"
-          >
-            <span className="w-4 h-[2px] bg-blue-600 rounded-full" />
-            <span>MEET OUR TEAM</span>
-          </motion.div>
-
-          <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-slate-950 leading-[1.08]">
-            7 Engineers Seated Around Your Project.
-          </h1>
-
-          <p className="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed font-normal max-w-2xl">
-            Meet the engineers building your software. Click on any chair to see their role, skills, and chat directly on WhatsApp.
-          </p>
-        </div>
-
-        {/* Orbit Controls Bar */}
-        <div className="flex items-center justify-between gap-4 border-b border-slate-200/80 pb-3">
-          <div className="flex items-center gap-2 text-xs font-mono font-bold text-slate-600">
-            <span className="h-2 w-2 rounded-full bg-emerald-500 animate-ping" />
-            <span>7 CORE ENGINEERS ONLINE</span>
+        {/* HEADER: Title & Auto-Cycle Controls */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 text-left">
+          <div>
+            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-800 mb-2">
+              <span className="w-5 h-[2px] bg-amber-700 rounded-full" />
+              <span>THE ENGINEERING CORE</span>
+            </div>
+            <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-slate-950 leading-tight">
+              The People Behind the System
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-600 mt-1 font-normal max-w-2xl">
+              Seven disciplines. One collaborative engineering table.
+            </p>
           </div>
 
-          <button
-            onClick={() => setAutoRotate(!autoRotate)}
-            className="inline-flex items-center gap-2 text-xs font-mono font-bold text-slate-700 hover:text-blue-600 bg-slate-100 px-3 py-1.5 rounded-xl border border-slate-200/80 transition-all cursor-pointer"
-          >
-            <RefreshCw className={`h-3.5 w-3.5 ${autoRotate ? 'animate-spin' : ''}`} />
-            <span>{autoRotate ? 'Auto-Cycle: ON' : 'Auto-Cycle: PAUSED'}</span>
-          </button>
+          <div className="flex items-center gap-3 shrink-0">
+            <button
+              onClick={() => setAutoRotate(!autoRotate)}
+              className="inline-flex items-center gap-2 text-xs font-mono font-bold text-slate-700 hover:text-amber-800 bg-white px-3.5 py-2 rounded-xl border border-[#E8DFD1] shadow-2xs transition-all cursor-pointer"
+            >
+              <RefreshCw className={`h-3.5 w-3.5 ${autoRotate ? 'animate-spin text-amber-700' : ''}`} />
+              <span>{autoRotate ? 'Auto-Cycle: ON' : 'Auto-Cycle: PAUSED'}</span>
+            </button>
+          </div>
         </div>
 
-        {/* 🏢 Perfectly Aligned Executive Rectangular Boardroom Stage */}
-        <div className="relative mx-auto max-w-5xl my-6">
+        {/* 🎬 100% PURE CODE & VECTOR COLLABORATIVE BOARDROOM TABLE */}
+        <div className="relative mx-auto w-full max-w-5xl rounded-3xl sm:rounded-[44px] border border-[#E8DFD1] bg-gradient-to-b from-[#F4EEE4] via-[#F4EEE4]/80 to-[#EAE0D1]/60 p-4 sm:p-8 shadow-2xl overflow-hidden min-h-[580px] sm:min-h-[640px] flex items-center justify-center">
           
-          {/* ⬆ TOP ROW OF CHAIRS (3 Centered Seats) */}
-          <div className="grid grid-cols-3 gap-3 sm:gap-6 max-w-3xl mx-auto mb-3 sm:mb-4 px-2">
-            {topChairs.map((member) => {
-              const isSelected = activeMember.id === member.id;
-
-              return (
-                <motion.button
-                  key={member.id}
-                  whileHover={{ y: -4, scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  onClick={() => {
-                    setActiveId(member.id);
-                    setAutoRotate(false);
-                  }}
-                  className={`group relative flex items-center gap-2.5 rounded-2xl p-2.5 sm:p-3 transition-all cursor-pointer text-left ${
-                    isSelected
-                      ? 'border-2 border-blue-600 bg-white shadow-xl ring-4 ring-blue-500/20 z-20'
-                      : 'border border-slate-200 bg-white/95 hover:bg-white shadow-xs hover:border-blue-400 z-10'
-                  }`}
-                >
-                  <div className={`flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-xl bg-gradient-to-tr ${member.color} text-white font-bold text-xs sm:text-sm shadow-xs shrink-0`}>
-                    {member.initials}
-                  </div>
-                  
-                  <div className="min-w-0 flex-1">
-                    <div className="flex items-center justify-between gap-1">
-                      <span className="text-[10px] font-mono font-bold text-slate-400">
-                        SEAT {member.seatNumber}
-                      </span>
-                      {isSelected && (
-                        <span className="h-1.5 w-1.5 rounded-full bg-blue-600" />
-                      )}
-                    </div>
-                    <p className="text-xs font-bold text-slate-900 leading-tight group-hover:text-blue-600 transition-colors truncate">
-                      {member.name}
-                    </p>
-                    <p className="text-[10px] text-slate-500 font-mono truncate">
-                      {member.seatLabel}
-                    </p>
-                  </div>
-
-                  {/* Visual Connection Pin to Table Top */}
-                  <span className={`absolute -bottom-2 left-1/2 -translate-x-1/2 flex h-3.5 w-3.5 items-center justify-center rounded-full border-2 border-white shadow-xs ${isSelected ? 'bg-blue-600' : 'bg-slate-300'}`}>
-                    <span className="h-1.5 w-1.5 rounded-full bg-white" />
-                  </span>
-                </motion.button>
-              );
-            })}
-          </div>
-
-          {/* 🪑 CENTRAL RECTANGULAR BOARDROOM CONFERENCE DESK */}
-          <div className="relative rounded-[32px] sm:rounded-[40px] border-2 border-blue-500/30 bg-gradient-to-b from-sky-50/70 via-white to-slate-50/90 shadow-2xl backdrop-blur-2xl p-6 sm:p-10 text-center min-h-[320px] flex items-center justify-center overflow-hidden z-10">
-            
-            {/* Table Surface Edge Accent Ribbon */}
-            <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-blue-600 via-sky-400 to-indigo-600" />
-            <div className="absolute bottom-0 inset-x-0 h-1.5 bg-gradient-to-r from-blue-600 via-sky-400 to-indigo-600 opacity-40" />
-
-            {/* Subtle Blueprint Grid Pattern inside Desk Glass */}
-            <div
-              className="absolute inset-0 opacity-[0.03] pointer-events-none"
-              style={{
-                backgroundImage:
-                  'linear-gradient(to right, #0284c7 1px, transparent 1px), linear-gradient(to bottom, #0284c7 1px, transparent 1px)',
-                backgroundSize: '24px 24px',
-              }}
+          {/* Animated Table SVG Laser Beams & Photons */}
+          <svg
+            viewBox="-400 -240 800 480"
+            className="absolute inset-0 w-full h-full pointer-events-none overflow-visible z-10"
+          >
+            {/* Concentric Telemetry Orbital Rings on Table Surface */}
+            <circle
+              cx="0"
+              cy="0"
+              r="220"
+              fill="none"
+              stroke="#b45309"
+              strokeOpacity="0.16"
+              strokeWidth="1"
+              strokeDasharray="4 4"
+            />
+            <ellipse
+              cx="0"
+              cy="0"
+              rx="340"
+              ry="180"
+              fill="none"
+              stroke="#b45309"
+              strokeOpacity="0.18"
+              strokeWidth="1.2"
+              strokeDasharray="6 6"
             />
 
-            {/* Central Holographic Inspection Display */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeMember.id}
-                initial={{ opacity: 0, scale: 0.96 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.96 }}
-                transition={{ duration: 0.22 }}
-                className="relative z-10 w-full space-y-4 text-left"
-              >
-                {/* Header Row: Avatar, Member Name, Seat Badge & WhatsApp Action */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 border-b border-slate-200/80 pb-4">
-                  <div className="flex items-center gap-3.5">
-                    <div className={`flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-tr ${activeMember.color} text-white font-bold text-base shadow-sm shrink-0`}>
-                      {activeMember.initials}
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <h3 className="text-lg sm:text-xl font-black text-slate-950 leading-tight">
-                          {activeMember.name}
-                        </h3>
-                        <span className="rounded-md bg-blue-100 border border-blue-200 px-2 py-0.5 text-[10px] font-mono font-bold text-blue-800">
-                          Seat {activeMember.seatNumber}
-                        </span>
-                      </div>
-                      <p className="text-xs sm:text-sm font-bold text-blue-600 leading-tight mt-0.5">
-                        {activeMember.role}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-2.5 shrink-0">
-                    <a
-                      href={`https://wa.me/918667709294?text=Hello%20Nexora,%20I%20would%20like%20to%20connect%20with%20${encodeURIComponent(activeMember.name)}%20regarding%20a%20project.`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white px-4 py-2 text-xs font-mono font-bold shadow-xs transition-all cursor-pointer"
-                    >
-                      <WhatsAppOfficialIcon className="h-4 w-4 text-white" />
-                      <span>Direct WhatsApp</span>
-                      <ArrowUpRight className="h-3.5 w-3.5" />
-                    </a>
-                  </div>
-                </div>
-
-                {/* Domain Expertise & Active Sprint Mission Deck */}
-                <div className="grid gap-3.5 sm:grid-cols-2 text-xs">
-                  <div className="p-3.5 rounded-2xl bg-white/90 border border-slate-200/80 shadow-2xs">
-                    <span className="text-[10px] font-mono font-bold uppercase text-slate-400 block mb-1">
-                      Domain Architecture:
-                    </span>
-                    <p className="text-slate-900 font-semibold leading-relaxed text-xs sm:text-[13px]">
-                      {activeMember.domain}
-                    </p>
-                  </div>
-
-                  <div className="p-3.5 rounded-2xl bg-white/90 border border-slate-200/80 shadow-2xs">
-                    <span className="text-[10px] font-mono font-bold uppercase text-slate-400 block mb-1">
-                      Active Sprint Mission:
-                    </span>
-                    <p className="text-slate-900 font-semibold leading-relaxed text-xs sm:text-[13px]">
-                      {activeMember.focus}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Bio Quote & Live Telemetry Badge */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-t border-slate-200/80 pt-3.5">
-                  <p className="text-xs text-slate-600 italic font-normal leading-relaxed">
-                    &ldquo;{activeMember.bio}&rdquo;
-                  </p>
-
-                  <div className="inline-flex items-center gap-1.5 text-[10px] font-mono font-bold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200 shrink-0">
-                    <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-                    <span>ACTIVE IN PRODUCTION SPRINT</span>
-                  </div>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
-          {/* ⬇ BOTTOM ROW OF CHAIRS (4 Centered Seats) */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto mt-3 sm:mt-4 px-2">
-            {bottomChairs.map((member) => {
+            {/* Connecting Lasers & Animated Data Photons */}
+            {members.map((member) => {
               const isSelected = activeMember.id === member.id;
+              const x2 = member.laserTargetX;
+              const y2 = member.laserTargetY;
 
               return (
+                <g key={member.id}>
+                  <line
+                    x1="0"
+                    y1="0"
+                    x2={x2}
+                    y2={y2}
+                    stroke={isSelected ? '#b45309' : '#cbd5e1'}
+                    strokeWidth={isSelected ? '2.5' : '1'}
+                    strokeDasharray={isSelected ? 'none' : '4 4'}
+                    className="transition-colors duration-300"
+                  />
+
+                  {isSelected && (
+                    <line
+                      x1="0"
+                      y1="0"
+                      x2={x2}
+                      y2={y2}
+                      stroke="#f59e0b"
+                      strokeWidth="6"
+                      strokeOpacity="0.35"
+                      strokeLinecap="round"
+                    />
+                  )}
+
+                  <circle
+                    r={isSelected ? '4' : '2'}
+                    fill={isSelected ? '#f59e0b' : '#94a3b8'}
+                  >
+                    <animateMotion
+                      path={`M ${x2} ${y2} L 0 0`}
+                      dur={isSelected ? '1s' : '2.5s'}
+                      repeatCount="indefinite"
+                    />
+                  </circle>
+                </g>
+              );
+            })}
+          </svg>
+
+          {/* 🪑 CENTRAL WALNUT BOARDROOM CONFERENCE TABLE (Pure Code & CSS) */}
+          <div
+            className="relative w-full max-w-3xl rounded-[32px] sm:rounded-[44px] border-[3px] border-[#d97706]/70 p-4 sm:p-8 shadow-[0_25px_60px_rgba(69,26,3,0.3),0_0_40px_rgba(217,119,6,0.15)] flex items-center justify-center z-20 my-16 sm:my-20 overflow-hidden min-h-[300px]"
+            style={{
+              background: 'radial-gradient(ellipse at 50% 30%, #92400e 0%, #78350f 50%, #451a03 100%)',
+            }}
+          >
+            {/* Table Inlay Brass Seam */}
+            <div className="absolute inset-2 sm:inset-3 rounded-[24px] sm:rounded-[36px] border border-[#fbbf24]/30 pointer-events-none animate-pulse" />
+            
+            {/* 🛰 CENTRAL ACTIVE FOCUSED ENGINEER CARD (Name and Work Alone) */}
+            <div className="relative z-10 w-full max-w-md rounded-2xl sm:rounded-3xl border border-[#E8DFD1] bg-white/95 backdrop-blur-md p-5 sm:p-6 shadow-2xl text-center">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeMember.id}
+                  initial={{ opacity: 0, scale: 0.95, y: 6 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95, y: -6 }}
+                  transition={{ duration: 0.2, ease: 'easeOut' }}
+                  className="space-y-2"
+                >
+                  <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-amber-700 text-white font-black text-lg shadow-sm">
+                    {activeMember.initials}
+                  </div>
+                  
+                  <div className="pt-1">
+                    <h3 className="text-xl sm:text-2xl font-black text-slate-950 leading-tight">
+                      {activeMember.name}
+                    </h3>
+                    <p className="text-sm font-bold text-amber-800 leading-tight mt-1">
+                      {activeMember.role}
+                    </p>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+
+          {/* 📍 7 ANIMATED SEATED ENGINEER WORKSTATION NODES AROUND TABLE */}
+          {members.map((member, index) => {
+            const isSelected = activeMember.id === member.id;
+            const Icon = member.icon;
+
+            return (
+              <div
+                key={member.id}
+                style={{
+                  position: 'absolute',
+                  left: `${member.posX}%`,
+                  top: `${member.posY}%`,
+                  transform: 'translate(-50%, -50%)',
+                  zIndex: isSelected ? 35 : 25,
+                }}
+              >
                 <motion.button
-                  key={member.id}
-                  whileHover={{ y: 4, scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                  animate={{
+                    y: isSelected ? [0, -5, 0] : [0, -2, 0],
+                  }}
+                  transition={{
+                    duration: 3 + (index % 3) * 0.5,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                  }}
+                  whileHover={{ scale: 1.08 }}
+                  whileTap={{ scale: 0.95 }}
                   onClick={() => {
                     setActiveId(member.id);
                     setAutoRotate(false);
                   }}
-                  className={`group relative flex items-center gap-2.5 rounded-2xl p-2.5 sm:p-3 transition-all cursor-pointer text-left ${
+                  className={`relative flex items-center gap-2 p-2 sm:p-2.5 rounded-2xl transition-all cursor-pointer text-left ${
                     isSelected
-                      ? 'border-2 border-blue-600 bg-white shadow-xl ring-4 ring-blue-500/20 z-20'
-                      : 'border border-slate-200 bg-white/95 hover:bg-white shadow-xs hover:border-blue-400 z-10'
+                      ? 'bg-white border-2 border-amber-600 shadow-xl shadow-amber-700/25 ring-4 ring-amber-500/25'
+                      : 'bg-white/95 hover:bg-white border border-[#E8DFD1] shadow-xs hover:border-amber-400'
                   }`}
                 >
-                  {/* Visual Connection Pin to Table Bottom */}
-                  <span className={`absolute -top-2 left-1/2 -translate-x-1/2 flex h-3.5 w-3.5 items-center justify-center rounded-full border-2 border-white shadow-xs ${isSelected ? 'bg-blue-600' : 'bg-slate-300'}`}>
-                    <span className="h-1.5 w-1.5 rounded-full bg-white" />
-                  </span>
-
-                  <div className={`flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-xl bg-gradient-to-tr ${member.color} text-white font-bold text-xs sm:text-sm shadow-xs shrink-0`}>
-                    {member.initials}
+                  <div
+                    className={`flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl transition-colors shrink-0 ${
+                      isSelected
+                        ? 'bg-amber-700 text-white shadow-xs'
+                        : 'bg-amber-50 text-amber-800'
+                    }`}
+                  >
+                    <Icon className="h-4 w-4 sm:h-4.5 sm:w-4.5" />
                   </div>
 
-                  <div className="min-w-0 flex-1">
-                    <div className="flex items-center justify-between gap-1">
-                      <span className="text-[10px] font-mono font-bold text-slate-400">
-                        SEAT {member.seatNumber}
-                      </span>
-                      {isSelected && (
-                        <span className="h-1.5 w-1.5 rounded-full bg-blue-600" />
-                      )}
-                    </div>
-                    <p className="text-xs font-bold text-slate-900 leading-tight group-hover:text-blue-600 transition-colors truncate">
+                  <div className="hidden sm:block min-w-0 pr-1">
+                    <p className="text-xs font-black text-slate-950 leading-tight truncate">
                       {member.name}
                     </p>
-                    <p className="text-[10px] text-slate-500 font-mono truncate">
-                      {member.seatLabel}
+                    <p className="text-[10px] font-bold text-amber-800 truncate">
+                      {member.role}
                     </p>
                   </div>
                 </motion.button>
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
 
         </div>
 

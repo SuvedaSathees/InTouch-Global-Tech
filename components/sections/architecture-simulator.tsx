@@ -160,7 +160,7 @@ export function ArchitectureSimulator() {
                   </div>
                   <span className="text-xs font-mono text-slate-400 ml-2 flex items-center gap-1.5 font-semibold">
                     <Terminal className="h-3.5 w-3.5 text-cyan-400" />
-                    nexora-cluster-simulator://live-mesh
+                    intouch-cluster-simulator://live-mesh
                   </span>
                 </div>
                 <span className="text-xs font-mono text-emerald-400 font-bold flex items-center gap-1.5">

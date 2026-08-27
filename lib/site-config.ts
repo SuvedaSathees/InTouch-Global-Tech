@@ -1,23 +1,50 @@
 export const siteConfig = {
-  name: "Nexora",
-  tagline: "We Build Digital Products That Move Businesses Forward",
+  name: "Intouch Global Tech",
+  shortName: "Intouch",
+  tagline: "Leading Web Development & IT Solutions",
   description:
-    "From ERP and CRM platforms to high-performance websites, mobile applications, and custom business software — we design and build technology around the way your business works.",
-  url: "https://nexora.example.com",
+    "Intouch Global Tech is a leading web development company offering complete web applications, custom software, ERP, HRMS, CRM, Hospital & Pharmacy management systems, SEO, and digital business solutions for global SMB enterprises.",
+  url: "https://intouchglobaltech.com",
   email: "suvedasathees24@gmail.com",
   phone: "+91 8667709294",
   whatsapp: "918667709294",
-  location: "Remote-first, serving clients worldwide",
-  businessHours: "Monday – Friday, 9:00 AM – 6:00 PM (CET)",
+  businessHours: "Monday – Saturday, 9:00 AM – 7:00 PM (IST)",
+  vision:
+    "A Leading IT Enterprise Committed to Enhance Global Small and Medium Business",
+  mission:
+    "To be an emerging US IT Corporation Serving to Global Small and Medium Business (SMB) Enterprises thru Innovative IT Business Solutions",
+  values:
+    "Intouch Global Tech is committed to achieve “Business Excellence” by consistently delivering cost effective and quality business solutions to exceed our customer’s expectations.",
+  seoKeywords: [
+    "web development company",
+    "website design company",
+    "web design company",
+    "web development services",
+    "Static & Dynamic Website",
+    "Best SEO Company",
+    "E-Commerce website designing",
+    "Logo Designing",
+    "ERP Development",
+    "HRMS Application",
+    "CRM Application",
+    "Billing Software",
+    "Hospital Management System",
+    "Pharmacy Management System",
+    "Wordpress Development",
+    "SMS Gateway",
+    "Email Marketing",
+    "Whatsapp Marketing",
+    "Domain and Hosting Services",
+  ],
   social: {
-    linkedin: "",
-    twitter: "",
-    github: "",
-    instagram: "",
+    linkedin: "https://linkedin.com",
+    twitter: "https://twitter.com",
+    github: "https://github.com",
+    instagram: "https://instagram.com",
   },
   nav: [
     { label: "Home", href: "/" },
-    { label: "About", href: "/about" },
+    { label: "About Us", href: "/about" },
     { label: "Services", href: "/services" },
     { label: "Projects", href: "/projects" },
     { label: "Team", href: "/team" },
@@ -29,195 +56,438 @@ export type Service = {
   title: string;
   short: string;
   icon: string;
+  category: "Web & E-Commerce" | "Enterprise Software" | "Marketing & SEO" | "Cloud & Strategy";
+  badge?: string;
   description: string;
   features: string[];
   hasPage: boolean;
 };
 
 export const services: Service[] = [
+  // --- WEB & E-COMMERCE ---
+  {
+    slug: "web-development",
+    title: "Web Development",
+    short: "Static & dynamic websites, responsive web apps, and high-performance custom portals.",
+    icon: "Globe",
+    category: "Web & E-Commerce",
+    badge: "Static & Dynamic",
+    description:
+      "As a premier web development company, we engineer responsive, ultra-fast static and dynamic websites and custom web applications tailored to your business goals.",
+    features: [
+      "Static & Dynamic Website Designing",
+      "Custom Web Applications Development",
+      "Responsive Website Design (Mobile-First)",
+      "Website Redesigning & UI Modernization",
+      "Blog Design and Development",
+      "Cross-Browser Compatibility & Speed Optimization",
+      "Full Source Code & Admin Control",
+      "SEO-Ready Architecture",
+    ],
+    hasPage: true,
+  },
+  {
+    slug: "ecommerce-development",
+    title: "E-Commerce Development",
+    short: "High-converting online stores, multi-vendor marketplaces, and secure checkout gateways.",
+    icon: "ShoppingBag",
+    category: "Web & E-Commerce",
+    badge: "E-Commerce Storefronts",
+    description:
+      "Complete e-commerce website design and development with product catalog management, payment gateway integration, order tracking, and inventory sync for retail and wholesale businesses.",
+    features: [
+      "E-Commerce Website Designing",
+      "Custom Shopping Cart & Checkout Funnels",
+      "Payment Gateway & UPI Integration",
+      "Inventory & Order Management",
+      "Discount & Coupon Management",
+      "Customer Account & Wishlist Portals",
+      "Multi-Currency & Tax Config (GST)",
+      "Mobile-Optimized Storefronts",
+    ],
+    hasPage: true,
+  },
+  {
+    slug: "wordpress-cms-development",
+    title: "CMS & WordPress Development",
+    short: "Dynamic content management systems, custom WordPress themes, and headless CMS builds.",
+    icon: "Layers",
+    category: "Web & E-Commerce",
+    badge: "Custom CMS",
+    description:
+      "Easily update your website without coding. We create bespoke WordPress themes, secure CMS architectures, and intuitive dashboards for effortless content updates.",
+    features: [
+      "Custom WordPress Theme Development",
+      "Headless CMS & Content Management",
+      "Plugin Development & Customization",
+      "Visual Page Builder Integration",
+      "WordPress Speed Optimization",
+      "Database & Security Hardening",
+      "Automated Daily Backups",
+      "Blog & News Publishing Portals",
+    ],
+    hasPage: true,
+  },
+  {
+    slug: "website-maintenance",
+    title: "Website Maintenance & Support",
+    short: "Continuous updates, security patches, speed optimization, and 24/7 uptime monitoring.",
+    icon: "Wrench",
+    category: "Web & E-Commerce",
+    badge: "24/7 Support",
+    description:
+      "Keep your website running smoothly, securely, and updated. We handle regular bug fixes, server patches, content updates, and performance tuning.",
+    features: [
+      "Regular Security Audits & Patching",
+      "Speed & Core Web Vitals Optimization",
+      "Content & Banner Updates",
+      "Automated Offsite Backups",
+      "SSL Certificate & Domain Renewal Care",
+      "Malware Removal & Firewall Protection",
+      "Dedicated Technical WhatsApp Support",
+      "Monthly Health & Performance Reports",
+    ],
+    hasPage: true,
+  },
+  {
+    slug: "web-designing-branding",
+    title: "Web Designing & Logo Branding",
+    short: "Creative UI/UX design, brand identity, and corporate logo designing.",
+    icon: "Palette",
+    category: "Web & E-Commerce",
+    badge: "Logo & Brand Design",
+    description:
+      "Crafting memorable visual identities that build trust. From corporate logo designing to complete digital branding guidelines and high-fidelity UI/UX design systems.",
+    features: [
+      "Corporate Logo Designing & Brand Identity",
+      "Color Palettes & Typography Guidelines",
+      "Figma UI/UX Prototypes & Wireframing",
+      "Marketing Collateral & Banner Graphics",
+      "Social Media Brand Kits",
+      "Iconography & Design Systems",
+      "Component Libraries for Web & Mobile",
+      "Print & Vector Ready Asset Delivery",
+    ],
+    hasPage: false,
+  },
+
+  // --- ENTERPRISE SOFTWARE ---
   {
     slug: "erp-development",
     title: "ERP Development",
-    short:
-      "Custom enterprise resource planning systems designed around business workflows.",
+    short: "Custom enterprise resource planning platforms unifying inventory, finance, and operations.",
     icon: "Building2",
+    category: "Enterprise Software",
+    badge: "Enterprise Grade",
     description:
-      "We build ERP systems that unify your operations — from finance and inventory to HR and reporting — into a single platform that mirrors how your business actually runs.",
+      "We design custom ERP systems that unify your entire business operations — finance, inventory, multi-warehouse logistics, purchase, sales, and analytics — into a single synchronized platform.",
     features: [
-      "HR & Payroll",
-      "Finance & Accounting",
-      "Inventory Management",
-      "Purchase Management",
-      "Sales Management",
-      "Production Planning",
-      "Role-Based Access",
-      "Reporting & Analytics",
+      "Multi-Warehouse Inventory Control",
+      "Finance, Ledger & GST Invoicing",
+      "Purchase & Vendor Order Management",
+      "Sales Pipeline & Dispatch Logistics",
+      "Production Planning & Bill of Materials",
+      "Role-Based Multi-Tier Permissions",
+      "Real-Time Executive Analytics Dashboards",
+      "Automated PDF & Excel Report Exports",
     ],
     hasPage: true,
   },
   {
-    slug: "crm-development",
-    title: "CRM Development",
-    short:
-      "Customer and sales management platforms that turn leads into long-term relationships.",
+    slug: "hrms-application",
+    title: "HRMS Application",
+    short: "Human Resource Management System with payroll, biometric attendance, and leave tracking.",
+    icon: "Users2",
+    category: "Enterprise Software",
+    badge: "Workforce Management",
+    description:
+      "Automate your entire workforce lifecycle. Our HRMS platform manages biometric attendance, automated salary calculations, tax deductions, leave approvals, and employee self-service portals.",
+    features: [
+      "Biometric & Attendance Sync",
+      "Automated Payroll & Salary Slip Generator",
+      "Leave & Shift Management Workflows",
+      "Employee Self-Service (ESS) Mobile & Web",
+      "PF, ESI, TDS & Statutory Compliance",
+      "Performance Appraisal & Goal Tracking",
+      "Employee Onboarding & Document Vault",
+      "HR Analytics & Department Telemetry",
+    ],
+    hasPage: true,
+  },
+  {
+    slug: "crm-application",
+    title: "CRM Application",
+    short: "Customer relationship management software with lead tracking, sales pipelines, and follow-ups.",
     icon: "Users",
+    category: "Enterprise Software",
+    badge: "Sales Velocity",
     description:
-      "We build CRM platforms that help your sales team track every lead, follow-up, and deal — so nothing falls through the cracks and every customer relationship is nurtured.",
+      "Convert more leads and retain clients. Our CRM application empowers sales teams with lead capture, multi-stage pipelines, automated WhatsApp/email reminders, and closed-deal analytics.",
     features: [
-      "Lead Management",
-      "Sales Pipeline",
-      "Customer Profiles",
-      "Follow-up Tracking",
-      "Task Management",
-      "Communication History",
-      "Sales Analytics",
-      "User Permissions",
+      "Omnichannel Lead Capture & Distribution",
+      "Interactive Visual Sales Pipeline Stages",
+      "Automated WhatsApp & Email Follow-up Triggers",
+      "Customer Call & Meeting History Logs",
+      "Quotation & Proposal Generator",
+      "Sales Representative Target Tracking",
+      "Customer Lifecycle & Renewal Alerts",
+      "Granular Branch & Role Access Control",
     ],
     hasPage: true,
   },
   {
-    slug: "website-development",
-    title: "Website Development",
-    short:
-      "High-performance websites designed for credibility and conversion.",
-    icon: "Globe",
-    description:
-      "We design and build websites that load fast, rank well, and convert visitors into customers — from corporate sites to full e-commerce platforms.",
-    features: [
-      "Corporate Websites",
-      "Business Websites",
-      "Landing Pages",
-      "Portfolio Websites",
-      "E-commerce Stores",
-      "Custom Web Applications",
-    ],
-    hasPage: true,
-  },
-  {
-    slug: "mobile-app-development",
-    title: "Mobile App Development",
-    short:
-      "Modern mobile applications for business and customer engagement.",
-    icon: "Smartphone",
-    description:
-      "We build native and cross-platform mobile applications that keep your customers engaged and your operations running — on Android, iOS, and everything in between.",
-    features: [
-      "Android Applications",
-      "iOS Applications",
-      "Cross-Platform Apps",
-      "Customer Apps",
-      "Business Apps",
-      "Admin Dashboards",
-    ],
-    hasPage: true,
-  },
-  {
-    slug: "custom-software",
-    title: "Custom Software",
-    short:
-      "Software designed specifically around unique business requirements.",
+    slug: "custom-software-development",
+    title: "Custom Software Development",
+    short: "Tailor-made software solutions engineered specifically around your unique business workflows.",
     icon: "Code2",
+    category: "Enterprise Software",
+    badge: "100% Bespoke",
     description:
-      "When off-the-shelf software doesn't fit, we build custom solutions that solve your exact business problem — designed, developed, and deployed around your workflow.",
+      "When off-the-shelf software fails to match your process, we engineer bespoke software solutions from scratch with 100% source code ownership and zero monthly license fees.",
     features: [
-      "Business Management Systems",
-      "Internal Portals",
-      "Workflow Systems",
-      "Employee Systems",
-      "Inventory Platforms",
-      "Booking Systems",
-      "Reporting Dashboards",
-      "Industry-Specific Platforms",
+      "Workflow Automation Engines",
+      "Internal Operations Portals",
+      "Custom Database Architecture",
+      "Legacy System Migration & Modernization",
+      "Real-Time IoT & Device Data Sync",
+      "API Integrations & Webhook Hubs",
+      "100% Sovereign Source Code Ownership",
+      "Zero Per-User Recurring License Fees",
     ],
     hasPage: true,
   },
   {
-    slug: "ui-ux-design",
-    title: "UI/UX Design",
-    short:
-      "Modern interfaces focused on usability, clarity, and conversion.",
-    icon: "Palette",
+    slug: "hospital-management-system",
+    title: "Hospital Management System (HMS)",
+    short: "Complete HMS software for patient registration, OPD/IPD, doctor scheduling, and lab reports.",
+    icon: "Activity",
+    category: "Enterprise Software",
+    badge: "Healthcare Tech",
     description:
-      "We design interfaces that are intuitive, accessible, and beautiful — so your users can accomplish their goals without friction.",
+      "Comprehensive Hospital Management System (HMS) designed for clinics, multi-specialty hospitals, and healthcare networks to manage patient care, billing, electronic health records, and wards.",
     features: [
-      "User Research",
-      "Wireframing",
-      "Prototyping",
-      "Interface Design",
-      "Design Systems",
-      "Usability Testing",
+      "OPD & IPD Patient Registration",
+      "Doctor Appointment Scheduling & Token Display",
+      "Electronic Medical Records (EMR / EHR)",
+      "Diagnostic Lab & Radiology Reporting",
+      "Bed & Operation Theatre (OT) Allocation",
+      "Integrated Hospital Billing & Insurance Claims",
+      "Discharge Summary & Prescription Generator",
+      "Multi-Department Doctor & Nurse Portals",
+    ],
+    hasPage: true,
+  },
+  {
+    slug: "pharmacy-management-system",
+    title: "Pharmacy Management System",
+    short: "Retail & wholesale pharmacy software with batch expiry tracking, barcode billing, and reorders.",
+    icon: "Pill",
+    category: "Enterprise Software",
+    badge: "Pharma POS",
+    description:
+      "Specialized pharmacy software designed to streamline medicine billing, batch-wise expiry alerts, Schedule H/H1 drug registers, distributor purchase orders, and stock reconciliation.",
+    features: [
+      "High-Speed Barcode Billing with GST",
+      "Batch Number & Expiry Date Alert Engine",
+      "Distributor Purchase & Margin Tracker",
+      "Generic & Substitute Drug Quick Search",
+      "Schedule Drug Audit Registers",
+      "Automated Low-Stock Reorder Triggers",
+      "Multi-Counter POS Billing Terminals",
+      "Daily Profit & Sales Reconciliation",
+    ],
+    hasPage: true,
+  },
+  {
+    slug: "billing-software",
+    title: "Billing Software & POS",
+    short: "Fast GST-compliant billing software with barcode scanning, receipt printing, and ledger.",
+    icon: "Receipt",
+    category: "Enterprise Software",
+    badge: "Fast GST Billing",
+    description:
+      "Ultra-fast billing software built for retail stores, wholesale traders, supermarkets, and service businesses. Generates GST invoices in seconds with thermal and laser printer support.",
+    features: [
+      "One-Click GST Invoice & E-Way Bill Output",
+      "Thermal Receipt & Laser Invoice Printing",
+      "Barcode & QR Code Scanner Integration",
+      "Customer Credit Ledger (Khata / Udhar)",
+      "Daily Cash Drawer & UPI Payment Sync",
+      "Multi-Rate Tax Support",
+      "Inventory Deduction on Every Sale",
+      "Offline Billing Mode with Cloud Auto-Sync",
+    ],
+    hasPage: true,
+  },
+  {
+    slug: "software-maintenance-support",
+    title: "Software Maintenance & Support",
+    short: "Enterprise SLA support, database optimization, feature upgrades, and bug fix contracts.",
+    icon: "ShieldCheck",
+    category: "Enterprise Software",
+    badge: "SLA Guarantee",
+    description:
+      "Ensure business continuity with our dedicated software maintenance contracts. We monitor server health, perform periodic database vacuuming, patch vulnerabilities, and roll out feature upgrades.",
+    features: [
+      "Dedicated L1, L2 & L3 Engineering Support",
+      "Performance Tuning & Database Indexing",
+      "Security Patching & Vulnerability Mitigation",
+      "Zero-Downtime Backup & Disaster Recovery",
+      "New Feature & Module Additions",
+      "Server Scaling & Load Balancing",
+      "Guaranteed SLA Response Timelines",
+      "Direct Senior Developer Escalation Line",
+    ],
+    hasPage: false,
+  },
+
+  // --- MARKETING & SEO ---
+  {
+    slug: "seo-search-engine-optimization",
+    title: "Search Engine Optimization (SEO)",
+    short: "Rank #1 on Google. Organic search optimization for continuous high-intent traffic and leads.",
+    icon: "Search",
+    category: "Marketing & SEO",
+    badge: "Top SEO Solutions",
+    description:
+      "We drive high-intent customer traffic to your website through on-page technical optimization, keyword research, local search optimization, and authority link building.",
+    features: [
+      "Complete On-Page & Technical SEO Auditing",
+      "High-Intent Keyword Research & Strategy",
+      "Core Web Vitals Speed & Layout Tuning",
+      "Google Business Profile Search Optimization",
+      "On-Page Content & Meta Tag Optimization",
+      "High-Authority Backlink Acquisition",
+      "Competitor Keyword Gap Analysis",
+      "Transparent Monthly Ranking & Traffic Reports",
+    ],
+    hasPage: true,
+  },
+  {
+    slug: "search-engine-marketing-sem",
+    title: "Search Engine Marketing (SEM / PPC)",
+    short: "Google Ads, search advertising, and high-ROI conversion-driven lead generation campaigns.",
+    icon: "Target",
+    category: "Marketing & SEO",
+    badge: "High ROI Ads",
+    description:
+      "Generate immediate qualified leads with targeted Google Search Ads, Display Network, Remarketing, and Meta advertising optimized for lowest cost-per-acquisition (CPA).",
+    features: [
+      "Google Ads Campaign Setup & Management",
+      "High-Conversion Landing Page Optimization",
+      "Negative Keyword Pruning & Quality Score Boost",
+      "Retargeting & Dynamic Remarketing",
+      "Targeted Ad Campaigns",
+      "Conversion Tracking & Google Tag Manager",
+      "Ad Copy A/B Testing & Creative Assets",
+      "Weekly Spend & Cost-Per-Lead Telemetry",
     ],
     hasPage: false,
   },
   {
-    slug: "business-automation",
-    title: "Business Automation",
-    short:
-      "Automate repetitive workflows and reduce manual processes.",
-    icon: "Workflow",
+    slug: "whatsapp-marketing",
+    title: "WhatsApp Marketing",
+    short: "Official WhatsApp Business API, automated chatbots, broadcast messaging, and click-to-chat funnels.",
+    icon: "MessageSquare",
+    category: "Marketing & SEO",
+    badge: "WhatsApp API",
     description:
-      "We identify repetitive tasks in your business and automate them — freeing your team to focus on work that actually requires human judgment.",
+      "Engage customers where they are with official WhatsApp Business API solutions. Send automated order confirmations, promotional broadcasts, payment links, and AI chatbots.",
     features: [
-      "Workflow Automation",
-      "Process Optimization",
-      "Integration Automation",
-      "Data Sync",
-      "Notification Systems",
-      "Scheduled Tasks",
+      "Official WhatsApp Business API Onboarding",
+      "Automated Interactive Chatbot Workflows",
+      "Bulk Promotional Broadcasts with Green Tick",
+      "Automated Order & Shipping Notifications",
+      "Click-to-WhatsApp Ad Lead Integrations",
+      "CRM & Payment Gateway Linking",
+      "Multi-Agent Support Inbox",
+      "Detailed Delivery & Read Rate Telemetry",
     ],
     hasPage: false,
   },
   {
-    slug: "api-backend-development",
-    title: "API & Backend Development",
-    short:
-      "Secure, scalable backend systems and integrations.",
+    slug: "sms-gateway",
+    title: "SMS Gateway Services",
+    short: "High-speed transactional OTP, promotional SMS broadcasts, and DLT registration assistance.",
+    icon: "Send",
+    category: "Marketing & SEO",
+    badge: "Fast OTP Delivery",
+    description:
+      "Reliable, high-throughput SMS gateway delivering transactional OTPs in under 3 seconds alongside high-volume promotional SMS campaigns with full compliance.",
+    features: [
+      "Sub-3-Second Transactional OTP Route",
+      "Promotional Bulk SMS Campaigns",
+      "DLT Registration & Header Approval Assistance",
+      "RESTful SMS API Integration for Any App",
+      "Automated Billing & Payment Reminder Alerts",
+      "High-Concurrency Cloud Telco Gateways",
+      "Real-Time Delivery Status Reports",
+      "2-Way Interactive SMS & Shortcodes",
+    ],
+    hasPage: false,
+  },
+  {
+    slug: "email-marketing",
+    title: "Email Marketing & Automation",
+    short: "High-deliverability email campaigns, automated drip sequences, and newsletter funnels.",
+    icon: "Mail",
+    category: "Marketing & SEO",
+    badge: "99% Inbox Rate",
+    description:
+      "Nurture leads and drive repeat revenue with custom-designed responsive HTML emails, automated lead nurturing drip sequences, and dedicated SMTP server setups.",
+    features: [
+      "Custom Responsive HTML Email Template Design",
+      "Automated Drip Sequences & Onboarding Workflows",
+      "List Segmentation & Lead Tagging",
+      "DKIM, SPF & DMARC Domain Authentication",
+      "High-Deliverability SMTP Server Configurations",
+      "Open Rate & Click-Through Optimization",
+      "E-Commerce Cart Abandonment Drips",
+      "A/B Subject Line & Content Testing",
+    ],
+    hasPage: false,
+  },
+
+  // --- CLOUD, HOSTING & STRATEGY ---
+  {
+    slug: "domain-hosting-services",
+    title: "Domain & Hosting Services",
+    short: "High-speed NVMe cloud hosting, domain registration, SSL certificates, and enterprise emails.",
     icon: "Server",
+    category: "Cloud & Strategy",
+    badge: "99.99% Uptime",
     description:
-      "We build the backend infrastructure that powers your applications — secure APIs, scalable databases, and reliable integrations with third-party services.",
+      "Reliable domain registration, blazing-fast NVMe cloud web hosting, business email setup (Google Workspace / Microsoft 365), and SSL security for websites and portals.",
     features: [
-      "REST & GraphQL APIs",
-      "Authentication Systems",
-      "Database Design",
-      "Third-Party Integrations",
-      "Microservices",
-      "Webhook Systems",
+      ".com, .in, .org Domain Registration & DNS Care",
+      "High-Speed NVMe SSD Cloud Web Hosting",
+      "Free Let's Encrypt / Wildcard SSL Certificates",
+      "Corporate Business Email Setup",
+      "Daily Automated Cloud Backups",
+      "Cloudflare CDN & DDoS Protection Setup",
+      "Server Uptime 99.99% Guaranteed SLA",
+      "Seamless Domain & Hosting Migration Support",
     ],
     hasPage: false,
   },
   {
-    slug: "cloud-deployment",
-    title: "Cloud & Deployment",
-    short:
-      "Deploy applications using modern cloud infrastructure.",
-    icon: "Cloud",
+    slug: "business-analysis-market-research",
+    title: "Business Analysis & Market Research",
+    short: "Strategic technology roadmaps, market feasibility studies, and digital transformation consulting.",
+    icon: "LineChart",
+    category: "Cloud & Strategy",
+    badge: "Strategic Advisory",
     description:
-      "We deploy and manage your applications on modern cloud infrastructure — ensuring reliability, scalability, and security from day one.",
+      "We help businesses identify bottlenecks, evaluate market opportunities, and architect the right digital solutions to maximize return on investment (ROI).",
     features: [
-      "Cloud Architecture",
-      "CI/CD Pipelines",
-      "Containerization",
-      "Load Balancing",
-      "Monitoring & Alerts",
-      "Backup & Recovery",
-    ],
-    hasPage: false,
-  },
-  {
-    slug: "ai-integration",
-    title: "AI Integration",
-    short:
-      "Integrate AI-powered functionality into suitable business applications.",
-    icon: "BrainCircuit",
-    description:
-      "We integrate AI where it genuinely adds value — from intelligent search and recommendation systems to automated document processing and predictive analytics.",
-    features: [
-      "AI-Powered Search",
-      "Document Processing",
-      "Predictive Analytics",
-      "Chatbot Integration",
-      "Recommendation Systems",
-      "Natural Language Processing",
+      "In-Depth Business Process & Workflow Analysis",
+      "Competitor Digital Landscape & Market Research",
+      "Technical Architecture & Feasibility Roadmaps",
+      "Software Requirement Specification (SRS) Docs",
+      "ROI & Cost-Benefit Projection Modeling",
+      "User Journey & Persona Mapping",
+      "Digital Transformation Consulting for SMBs",
+      "Post-Launch Growth Metric Tracking",
     ],
     hasPage: false,
   },
@@ -390,7 +660,7 @@ export const projects: Project[] = [
     approach:
       "We built a real-time IoT bridge connected to the OCPP 1.6/2.0 protocol on the charger hardware, feeding live port statuses into a responsive mobile map experience.",
     solution:
-      "Engineered an intuitive mobile app with interactive Mapbox station search, connector-type filtering (CCS2, Type 2, GB/T), RFID/QR code charger unlocking, live charging telemetry, and digital wallet integration.",
+      "Engineered an intuitive mobile app with interactive Mapbox station search, connector-type filtering, RFID/QR code charger unlocking, live charging telemetry, and digital wallet integration.",
     keyFeatures: [
       "Interactive Station Map with Live Port Availability & Navigation",
       "Connector-Type & Charging Speed (kW) Smart Filter Matrix",
@@ -425,15 +695,15 @@ export const projects: Project[] = [
     solution:
       "Built a Next.js web application with dynamic station locator maps, EV savings ROI calculator, franchise partner onboarding funnel, and enterprise fleet management inquiries.",
     keyFeatures: [
-      "Interactive Nationwide EV Charging Station Locator Map",
-      "Dynamic EV vs Petrol Fuel Savings & Tariff Calculator",
+      "Interactive Charging Station Locator Map",
+      "Dynamic Fuel Savings & Tariff Calculator",
       "Franchise & Property Host Partner Application Funnel",
       "Fleet Charging Infrastructure Portal with Invoicing Specs",
-      "SEO-Optimized Content Hub for EV Drivers & Station Hosts",
+      "SEO-Optimized Content Hub for Drivers & Station Hosts",
       "Direct API Sync with Live Network Charger Availability",
     ],
     outcome:
-      "Generated over 400+ qualified franchise host inquiries and established a premier brand presence in the regional EV ecosystem.",
+      "Generated over 400+ qualified franchise host inquiries and established a premier brand presence.",
     hasResults: true,
     results: [
       { label: "Host Partner Inquiries", value: "400+" },
@@ -452,7 +722,7 @@ export const projects: Project[] = [
     description:
       "A mission-critical enterprise resource planning system custom-architected for RPC operations, unifying human resource workflows, physical asset maintenance, financial budgeting, and regulatory compliance.",
     challenge:
-      "Managing complex enterprise assets and audit compliance across multiple regional branches was slowed down by fragmented legacy databases and unverified document trails.",
+      "Managing complex enterprise assets and audit compliance across multiple branches was slowed down by fragmented legacy databases and unverified document trails.",
     approach:
       "We built a microservices-based, auditable architecture with strict role-based access control (RBAC) and immutable transaction logs.",
     solution:
@@ -486,52 +756,45 @@ export type TeamMember = {
 
 export const team: TeamMember[] = [
   {
-    name: "[Founder Name]",
-    role: "Founder / Director",
-    expertise: "Strategy, Architecture, Client Relations",
-    bio: "Leads the company vision and oversees project architecture and client partnerships.",
+    name: "Engineering Leadership",
+    role: "Director & Principal Architect",
+    expertise: "Vision, System Architecture, Global Client Solutions",
+    bio: "Drives technical excellence, oversees enterprise architecture, and ensures every client solution exceeds performance standards.",
     social: {},
   },
   {
-    name: "[PM Name]",
-    role: "Project Manager",
-    expertise: "Agile Delivery, Requirements, Planning",
-    bio: "Keeps projects on schedule and ensures every deliverable matches the client's goals.",
+    name: "Project Management",
+    role: "Lead Project & Delivery Manager",
+    expertise: "Agile Sprints, Business Analysis, Timeline Delivery",
+    bio: "Translates business requirements into precise technical milestones with transparent 2-week sprint releases.",
     social: {},
   },
   {
-    name: "[Developer Name]",
-    role: "Full Stack Developer",
-    expertise: "Backend, APIs, Database Design",
-    bio: "Builds scalable backend systems and the APIs that power every application.",
+    name: "Full Stack Team",
+    role: "Senior Full Stack Engineers",
+    expertise: "React, Next.js, Node.js, PostgreSQL, Cloud Infrastructure",
+    bio: "Engineers high-throughput backends, APIs, and mission-critical ERP/HRMS databases.",
     social: {},
   },
   {
-    name: "[Developer Name]",
-    role: "Frontend Developer",
-    expertise: "React, Next.js, UI Implementation",
-    bio: "Turns designs into fast, accessible, and responsive user interfaces.",
+    name: "UI/UX & Frontend",
+    role: "Lead UI/UX & Web Designers",
+    expertise: "Figma, Tailwind CSS, Responsive Web, Logo Branding",
+    bio: "Creates world-class, responsive, and intuitive web interfaces that turn visitors into loyal customers.",
     social: {},
   },
   {
-    name: "[Developer Name]",
-    role: "Backend Developer",
-    expertise: "Node.js, Java, System Architecture",
-    bio: "Designs and develops the server-side architecture that supports complex business logic.",
+    name: "SEO & Digital Strategy",
+    role: "SEO & Growth Specialists",
+    expertise: "Technical SEO, SEM, Organic Rankings, WhatsApp API",
+    bio: "Drives top search rankings on Google, high organic traffic, and conversion-optimized messaging funnels.",
     social: {},
   },
   {
-    name: "[Designer Name]",
-    role: "UI/UX Designer",
-    expertise: "User Research, Prototyping, Design Systems",
-    bio: "Creates intuitive interfaces and ensures every product is a pleasure to use.",
-    social: {},
-  },
-  {
-    name: "[QA Name]",
-    role: "QA / Support",
-    expertise: "Testing, Quality Assurance, Client Support",
-    bio: "Ensures every release meets quality standards and supports clients after launch.",
+    name: "QA & Support Operations",
+    role: "Quality Assurance & SLA Support",
+    expertise: "Automated Testing, Security Hardening, 24/7 Monitoring",
+    bio: "Guarantees zero-defect releases and provides proactive ongoing maintenance for all production systems.",
     social: {},
   },
 ];
@@ -544,278 +807,174 @@ export type TechCategory = {
 
 export const techStack: TechCategory[] = [
   {
-    category: "Frontend",
+    category: "Web & Frontend",
     icon: "Monitor",
-    technologies: ["React", "Next.js", "HTML", "CSS", "JavaScript", "TypeScript"],
+    technologies: ["React", "Next.js", "TypeScript", "HTML5", "Tailwind CSS", "JavaScript", "WordPress", "Vue.js"],
   },
   {
-    category: "Backend",
+    category: "Backend & Systems",
     icon: "Server",
-    technologies: ["Node.js", "Express.js", "Java", "Python"],
+    technologies: ["Node.js", "Express.js", "NestJS", "Python", "Java", "REST APIs", "GraphQL"],
   },
   {
-    category: "Database",
+    category: "Database & Storage",
     icon: "Database",
-    technologies: ["MongoDB", "MySQL", "PostgreSQL"],
+    technologies: ["PostgreSQL", "MySQL", "MongoDB", "Redis", "Prisma", "Supabase"],
   },
   {
-    category: "Cloud",
+    category: "Cloud & Infrastructure",
     icon: "Cloud",
-    technologies: ["Google Cloud", "AWS", "Cloudflare"],
+    technologies: ["AWS", "Google Cloud", "DigitalOcean", "Cloudflare", "Docker", "Linux"],
   },
   {
-    category: "Tools",
-    icon: "Wrench",
-    technologies: ["Git", "GitHub", "Figma", "VS Code", "Docker"],
+    category: "Marketing & Gateways",
+    icon: "Target",
+    technologies: ["Google Ads", "Google Analytics", "WhatsApp Business API", "SMS Gateway (DLT)", "SendGrid", "Stripe / Razorpay"],
   },
 ];
 
 export const faqs = [
   {
-    question: "What type of software do you build?",
+    question: "What services does Intouch Global Tech provide?",
     answer:
-      "We build custom ERP systems, CRM platforms, websites, web applications, mobile apps, and custom business software. Every solution is designed around the specific needs of the business.",
+      "Intouch Global Tech offers complete web application and software services: Web Development (Static & Dynamic Websites), E-Commerce Development, WordPress Development, Website Maintenance, Custom Software, ERP, HRMS, CRM, Hospital Management (HMS), Pharmacy Management, Billing Software, SEO, SEM, WhatsApp Marketing, SMS Gateway, Email Marketing, Domain and Hosting, and Business Analysis.",
   },
   {
-    question: "Can you build custom ERP systems?",
+    question: "Who do you work with?",
     answer:
-      "Yes. We design ERP systems that unify your operations — from finance and inventory to HR and reporting — into a single platform built around your workflows.",
+      "We partner with growing startups, enterprise clients, and Small and Medium Business (SMB) enterprises globally across various industries to build and modernize their digital infrastructure.",
   },
   {
-    question: "Can you build CRM software?",
+    question: "Can you build custom ERP, HRMS, and CRM software?",
     answer:
-      "Yes. We build CRM platforms with lead management, sales pipelines, customer profiles, follow-up tracking, and analytics — tailored to how your sales team actually works.",
+      "Yes! We specialize in tailored ERP, HRMS, and CRM software built specifically around your organization's exact workflows with zero per-seat monthly license fees and 100% source code ownership.",
   },
   {
-    question: "Do you develop mobile applications?",
+    question: "Do you offer SEO and digital marketing services?",
     answer:
-      "Yes. We build native and cross-platform mobile applications for Android and iOS, including customer apps, business apps, and admin dashboards.",
+      "Yes. We provide end-to-end On-Page/Off-Page SEO, search visibility optimization, SEM/Google Ads, WhatsApp Marketing API, and SMS Gateway services.",
   },
   {
-    question: "Do you work with existing systems?",
+    question: "What is your project development and delivery process?",
     answer:
-      "Yes. We can integrate with existing systems, migrate data from legacy platforms, and build new modules that work alongside your current infrastructure.",
+      "We follow an agile, transparent methodology: 1. Discovery & Business Analysis, 2. Architecture & Wireframing, 3. Design & Prototyping, 4. Agile Development with 2-week live demos, 5. Comprehensive QA Testing, 6. Cloud Deployment, and 7. Continuous SLA Maintenance & Support.",
   },
   {
-    question: "Can you integrate APIs?",
+    question: "Do I get full ownership of the website and software source code?",
     answer:
-      "Yes. We build and integrate REST and GraphQL APIs, connect third-party services, and handle authentication, webhooks, and data synchronization.",
+      "Absolutely. From Day 1, you own 100% of your source code, database architecture, design assets, and intellectual property with zero lock-in or recurring proprietary license fees.",
   },
   {
-    question: "Do you provide maintenance after launch?",
+    question: "How do we get started with Intouch Global Tech?",
     answer:
-      "Yes. We offer ongoing maintenance, monitoring, and support to keep your product running smoothly and evolving with your business.",
-  },
-  {
-    question: "How long does development take?",
-    answer:
-      "Timelines depend on scope, complexity, and integrations. After an initial discovery conversation, we provide a detailed timeline broken down by phase.",
-  },
-  {
-    question: "How do you calculate project cost?",
-    answer:
-      "Cost depends on scope, features, design complexity, integrations, technology, timeline, and support requirements. We provide a detailed quote after understanding your needs.",
-  },
-  {
-    question: "How do we start a project?",
-    answer:
-      "Reach out through our contact form or email. We'll schedule a discovery call to understand your business, goals, and challenges — then provide a proposal with scope, timeline, and cost.",
+      "Reach out to us via our contact form, email us at suvedasathees24@gmail.com, or message us directly on WhatsApp at +91 86677 09294. Our engineering leads will review your requirements and respond within 24 hours.",
   },
 ];
 
 export const processSteps = [
   {
     number: "01",
-    title: "Discover",
+    title: "Discover & Analyze",
     description:
-      "We start by understanding your business, goals, users, and challenges. No code is written until we know what problem we're solving.",
+      "We conduct deep business analysis and market research to understand your goals, target audience, and system requirements before writing a single line of code.",
   },
   {
     number: "02",
-    title: "Plan",
+    title: "Plan & Architect",
     description:
-      "We define requirements, architecture, scope, and a roadmap so every stakeholder knows what's being built and when.",
+      "We map out technical architecture, database schemas, sprint milestones, and exact scopes with transparent fixed pricing and delivery timelines.",
   },
   {
     number: "03",
-    title: "Design",
+    title: "Design & Prototype",
     description:
-      "We create the user experience and interface — wireframes, prototypes, and a design system that guides development.",
+      "We create high-converting, modern UI/UX wireframes, branding elements, and interactive Figma prototypes designed for effortless user experience.",
   },
   {
     number: "04",
-    title: "Develop",
+    title: "Develop & Integrate",
     description:
-      "We build the product using modern technologies, with regular reviews and incremental delivery.",
+      "Our full-stack team builds your application using modern, scalable frameworks with continuous 2-week live sprint demonstrations.",
   },
   {
     number: "05",
-    title: "Test",
+    title: "Test & Quality Assurance",
     description:
-      "We test functionality, responsiveness, security, and performance to ensure the product works flawlessly.",
+      "Rigorous functional, security, responsiveness, and performance testing across all devices and browsers to guarantee 99.99% reliability.",
   },
   {
     number: "06",
-    title: "Deploy",
+    title: "Deploy & Launch",
     description:
-      "We launch the application on modern cloud infrastructure with monitoring and rollback plans in place.",
+      "Seamless cloud deployment, domain and hosting setup, SSL configuration, and search engine indexation.",
   },
   {
     number: "07",
-    title: "Support",
+    title: "Support & Growth",
     description:
-      "We maintain, monitor, improve, and scale the product long after launch.",
+      "Continuous SLA maintenance, SEO monitoring, security updates, and feature scaling as your business expands globally.",
   },
 ];
 
 export const whyChooseUs = [
   {
-    title: "Business-First Thinking",
+    title: "Committed to Business Excellence",
     description:
-      "We understand the business problem before choosing the technology. The solution serves the business — not the other way around.",
+      "We consistently deliver cost-effective and quality business solutions that exceed expectations, aligned with our core company values.",
     icon: "Target",
   },
   {
-    title: "Custom Solutions",
+    title: "100% Code & IP Ownership",
     description:
-      "We build around your requirements, not around a template. Every system is designed to fit how your business actually operates.",
-    icon: "Puzzle",
+      "You own every single line of code, database schema, and design asset. Zero recurring license lock-ins.",
+    icon: "Lock",
   },
   {
-    title: "Modern Technology",
+    title: "Global Delivery Standards",
     description:
-      "We use appropriate, proven modern technologies — chosen for reliability, scalability, and maintainability, not hype.",
-    icon: "Cpu",
+      "High-velocity delivery capabilities serving global Small & Medium Businesses with direct developer access.",
+    icon: "Globe",
   },
   {
-    title: "Transparent Development",
+    title: "Complete End-to-End Spectrum",
     description:
-      "We keep clients informed throughout the process with regular reviews, clear milestones, and honest communication.",
-    icon: "Eye",
+      "From static/dynamic websites and custom ERP/CRM to SMS gateways, WhatsApp marketing, and SEO under one unified roof.",
+    icon: "Layers",
   },
   {
-    title: "Scalable Architecture",
+    title: "Direct Senior Developer Access",
     description:
-      "We build systems that grow with your business — from your first hundred users to your first million.",
-    icon: "TrendingUp",
+      "No non-technical intermediaries. Communicate directly with lead engineers via WhatsApp, phone, and video calls.",
+    icon: "Users",
   },
   {
-    title: "Long-Term Support",
+    title: "Proven Production Uptime",
     description:
-      "We don't disappear after launch. We continue supporting, monitoring, and improving the product as your business evolves.",
-    icon: "LifeBuoy",
-  },
-];
-
-export const pricingCategories = [
-  {
-    type: "Websites",
-    description: "Corporate, portfolio, and business websites",
-    price: "Starting from [PRICE]",
-    features: [
-      "Custom design",
-      "Responsive development",
-      "SEO optimization",
-      "CMS integration",
-      "Contact forms",
-      "Analytics setup",
-    ],
-  },
-  {
-    type: "Web Applications",
-    description: "Custom web apps and dashboards",
-    price: "Custom quotation",
-    features: [
-      "Custom architecture",
-      "User authentication",
-      "Database design",
-      "API development",
-      "Admin dashboard",
-      "Ongoing support",
-    ],
-  },
-  {
-    type: "ERP Systems",
-    description: "Enterprise resource planning platforms",
-    price: "Custom quotation",
-    features: [
-      "Module-based design",
-      "Role-based access",
-      "Real-time reporting",
-      "Workflow automation",
-      "Third-party integration",
-      "Long-term support",
-    ],
-  },
-  {
-    type: "CRM Systems",
-    description: "Sales and customer management platforms",
-    price: "Custom quotation",
-    features: [
-      "Lead pipeline",
-      "Customer profiles",
-      "Follow-up automation",
-      "Sales analytics",
-      "Team permissions",
-      "Integration support",
-    ],
-  },
-  {
-    type: "Mobile Applications",
-    description: "Native and cross-platform apps",
-    price: "Custom quotation",
-    features: [
-      "iOS and Android",
-      "Offline support",
-      "Push notifications",
-      "API integration",
-      "Admin dashboard",
-      "App store deployment",
-    ],
-  },
-  {
-    type: "Custom Software",
-    description: "Bespoke solutions for unique problems",
-    price: "Custom quotation",
-    features: [
-      "Requirement analysis",
-      "Custom architecture",
-      "Workflow automation",
-      "Reporting dashboards",
-      "Integration support",
-      "Ongoing maintenance",
-    ],
+      "Enterprise-grade cloud architectures engineered for sub-second speeds, robust security, and 99.99% uptime.",
+    icon: "ShieldCheck",
   },
 ];
 
 export const projectTypes = [
-  "Website",
-  "Web Application",
-  "ERP",
-  "CRM",
-  "Mobile App",
-  "E-commerce",
-  "Custom Software",
-  "UI/UX",
-  "Automation",
-  "Other",
+  "Web & E-Commerce",
+  "Custom ERP & HRMS",
+  "Hospital / Pharmacy (HMS)",
+  "CRM & POS Billing",
+  "SEO & Digital Marketing",
+  "Custom Software / Other",
 ];
 
 export const budgetRanges = [
-  "₹5,000 – ₹15,000",
-  "₹15,000 – ₹20,000",
-  "₹35,000 – ₹50,000",
-  "₹50,000 – ₹70,000",
-  "₹70,000 – ₹90,000",
-  "₹90,000+",
-  "Not sure yet",
+  "₹15K – ₹35K",
+  "₹35K – ₹75K",
+  "₹75K – ₹1.5L",
+  "₹1.5L+ / Enterprise",
 ];
 
 export const timelineOptions = [
-  "Less than 1 month",
+  "Immediate (< 2 wks)",
+  "2 – 4 weeks",
   "1 – 3 months",
-  "3 – 6 months",
-  "More than 6 months",
   "Flexible",
 ];
 

@@ -88,7 +88,7 @@ export function LegacyVsModern() {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           label="The Transformation Impact"
-          title="Legacy Bottlenecks vs. Nexora Modern Core"
+          title="Legacy Bottlenecks vs. Intouch Global Tech Modern Core"
           description="See how replacing fragmented legacy systems with purpose-built software transforms your daily operational velocity."
         />
 
@@ -157,7 +157,7 @@ export function LegacyVsModern() {
                   </span>
                 </div>
 
-                <h4 className="text-lg font-bold text-slate-900 mb-4">The Nexora Platform</h4>
+                <h4 className="text-lg font-bold text-slate-900 mb-4">The Intouch Global Tech Platform</h4>
                 <div className="space-y-3">
                   {comparisons[activeTab].modern.points.map((pt) => (
                     <div key={pt} className="flex items-start gap-2.5 text-xs text-slate-800 leading-relaxed font-medium">

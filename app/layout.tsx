@@ -18,6 +18,7 @@ export const metadata: Metadata = {
     template: `%s — ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  keywords: siteConfig.seoKeywords,
   metadataBase: new URL(siteConfig.url),
   openGraph: {
     title: `${siteConfig.name} — ${siteConfig.tagline}`,
@@ -25,6 +26,7 @@ export const metadata: Metadata = {
     url: siteConfig.url,
     siteName: siteConfig.name,
     type: 'website',
+    locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',

@@ -32,7 +32,7 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
         description={project.description}
       />
 
-      <section className="py-20 sm:py-28 relative overflow-hidden bg-white">
+      <section className="py-20 sm:py-28 relative overflow-hidden bg-[#FAF7F2]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid gap-12 lg:grid-cols-12 items-start">
             {/* Left Column: Challenge, Approach, Solution */}

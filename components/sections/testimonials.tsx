@@ -7,7 +7,7 @@ import { SectionHeading } from '@/components/section-heading';
 const testimonials = [
   {
     quote:
-      'Nexora engineered our entire multi-facility manufacturing ERP in record time. They took the time to understand our complex inventory reconciliation workflows and eliminated 4 disconnected spreadsheets. System stability is rock solid.',
+      'Intouch Global Tech engineered our entire multi-facility manufacturing ERP in record time. They took the time to understand our complex inventory reconciliation workflows and eliminated 4 disconnected spreadsheets. System stability is rock solid.',
     name: 'Marcus Vance',
     role: 'Chief Operating Officer',
     company: 'Apex Industrial Systems',
@@ -17,7 +17,7 @@ const testimonials = [
   },
   {
     quote:
-      'The custom B2B CRM and pipeline automation that Nexora built transformed our sales velocity. Our sales team closed 38% more deals in the first quarter alone, and we have zero data drop-off. Outstanding technical partners.',
+      'The custom B2B CRM and pipeline automation that Intouch Global Tech built transformed our sales velocity. Our sales team closed 38% more deals in the first quarter alone, and we have zero data drop-off. Outstanding technical partners.',
     name: 'Elena Rostova',
     role: 'VP of Global Revenue',
     company: 'Synapse Tech Global',
@@ -44,7 +44,7 @@ export function TestimonialsSection() {
         <SectionHeading
           label="Client Endorsements"
           title="Trusted by Technical Leaders and Executives Worldwide"
-          description="Hear directly from founders, COOs, and engineering directors who partnered with Nexora to build their core digital infrastructure."
+          description="Hear directly from founders, COOs, and engineering directors who partnered with Intouch Global Tech to build their core digital infrastructure."
         />
 
         <div className="mt-16 grid gap-6 lg:grid-cols-3">

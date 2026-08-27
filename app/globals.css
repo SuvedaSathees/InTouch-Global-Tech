@@ -10,19 +10,19 @@
     --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 221.2 83.2% 53.3%;
-    --accent-foreground: 210 40% 98%;
+    --primary: 32 95% 44%;
+    --primary-foreground: 48 100% 96%;
+    --secondary: 40 20% 94%;
+    --secondary-foreground: 20 14.3% 4.1%;
+    --muted: 40 20% 94%;
+    --muted-foreground: 25 5.3% 44.7%;
+    --accent: 32 95% 44%;
+    --accent-foreground: 48 100% 96%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 221.2 83.2% 53.3%;
+    --border: 35 25% 88%;
+    --input: 35 25% 88%;
+    --ring: 32 95% 44%;
     --radius: 1.25rem;
   }
 }
@@ -33,8 +33,8 @@
     font-family: 'Plus Jakarta Sans', var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
   }
   body {
-    background-color: #ffffff;
-    color: #09090b;
+    background-color: #FAF7F2;
+    color: #1C1917;
     font-family: 'Plus Jakarta Sans', var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
   }
 }
@@ -46,14 +46,14 @@
 }
 
 ::selection {
-  background-color: rgba(37, 99, 235, 0.15);
-  color: #1d4ed8;
+  background-color: rgba(180, 83, 9, 0.2);
+  color: #78350f;
 }
 
 html {
   scroll-behavior: smooth;
   color-scheme: light;
-  background-color: #ffffff;
+  background-color: #FAF7F2;
   font-family: 'Plus Jakarta Sans', var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
 }
 
@@ -68,12 +68,12 @@ body {
   height: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #ffffff;
+  background: #FAF7F2;
 }
 ::-webkit-scrollbar-thumb {
-  background: #e2e8f0;
+  background: #E2D9CC;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #cbd5e1;
+  background: #C8BEAF;
 }

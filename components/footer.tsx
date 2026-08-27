@@ -2,6 +2,8 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { motion, AnimatePresence } from 'framer-motion';
 import { siteConfig } from '@/lib/site-config';
 import {
   Mail,
@@ -26,17 +28,17 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-gradient-to-b from-sky-50/60 via-sky-50/30 to-white text-slate-900 pt-16 pb-8 select-none border-t border-sky-200/80">
+    <footer className="relative bg-gradient-to-b from-[#F4EEE4]/90 via-[#FAF7F2] to-[#FAF7F2] text-slate-900 pt-16 pb-8 select-none border-t border-[#E8DFD1]">
       
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 z-10 space-y-12">
         
         {/* Main 3-Column Split */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-10 border-b border-slate-200/70 text-left">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-10 border-b border-[#E8DFD1] text-left">
           
           {/* Column 1: Brand & Bio (5 cols) */}
           <div className="md:col-span-5 space-y-4">
             <Link href="/" className="inline-flex items-center gap-2.5">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-700 text-white font-bold shadow-md shadow-amber-700/20">
                 <svg width="15" height="15" viewBox="0 0 16 16" fill="none" className="text-white">
                   <path d="M2 2L8 8L2 14" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
                   <path d="M8 2L14 8L8 14" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" opacity="0.6" />
@@ -52,7 +54,7 @@ export function Footer() {
             </p>
 
             <div className="flex items-center gap-2 text-xs font-mono text-slate-500 pt-2">
-              <ShieldCheck className="h-4 w-4 text-blue-600 shrink-0" />
+              <ShieldCheck className="h-4 w-4 text-amber-700 shrink-0" />
               <span>100% Client Sovereign IP Guarantee</span>
             </div>
           </div>
@@ -64,27 +66,27 @@ export function Footer() {
             </span>
             <ul className="space-y-2.5 text-xs sm:text-sm font-bold text-slate-700">
               <li>
-                <Link href="/" className="hover:text-blue-600 transition-colors inline-block">
+                <Link href="/" className="hover:text-amber-800 transition-colors inline-block">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-blue-600 transition-colors inline-block">
+                <Link href="/about" className="hover:text-amber-800 transition-colors inline-block">
                   About
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="hover:text-blue-600 transition-colors inline-block">
+                <Link href="/services" className="hover:text-amber-800 transition-colors inline-block">
                   Services
                 </Link>
               </li>
               <li>
-                <Link href="/projects" className="hover:text-blue-600 transition-colors inline-block">
+                <Link href="/projects" className="hover:text-amber-800 transition-colors inline-block">
                   Projects
                 </Link>
               </li>
               <li>
-                <Link href="/team" className="hover:text-blue-600 transition-colors inline-block">
+                <Link href="/team" className="hover:text-amber-800 transition-colors inline-block">
                   Team
                 </Link>
               </li>
@@ -104,7 +106,7 @@ export function Footer() {
                   Contact / WhatsApp
                 </span>
                 <a
-                  href="https://wa.me/918667709294?text=Hello%20Nexora,%20I%20would%20like%20to%20inquire%20about%20a%20project."
+                  href={`https://wa.me/918667709294?text=Hello%20${encodeURIComponent(siteConfig.name)},%20I%20would%20like%20to%20inquire%20about%20a%20project.`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-slate-900 hover:text-emerald-600 transition-colors mt-1"
@@ -121,24 +123,14 @@ export function Footer() {
                 </span>
                 <a
                   href={`mailto:${siteConfig.email}`}
-                  className="inline-flex items-center gap-2 text-slate-900 hover:text-blue-600 transition-colors mt-1"
+                  className="inline-flex items-center gap-2 text-slate-900 hover:text-amber-800 transition-colors mt-1"
                 >
-                  <Mail className="h-4 w-4 text-blue-600 shrink-0" />
+                  <Mail className="h-4 w-4 text-amber-700 shrink-0" />
                   <span>{siteConfig.email}</span>
                 </a>
               </div>
 
-              {/* Location Line */}
-              <div>
-                <span className="text-[10px] font-mono text-slate-400 block uppercase font-medium">
-                  Location
-                </span>
-                <div className="inline-flex items-center gap-2 text-slate-600 font-medium mt-1">
-                  <MapPin className="h-4 w-4 text-slate-400 shrink-0" />
-                  <span>Tamil Nadu, India</span>
-                </div>
               </div>
-            </div>
           </div>
 
         </div>
@@ -165,16 +157,47 @@ export function Footer() {
 }
 
 export function WhatsAppButton() {
+  const pathname = usePathname();
+  const [showButton, setShowButton] = React.useState<boolean>(pathname !== '/');
+
+  React.useEffect(() => {
+    if (pathname !== '/') {
+      setShowButton(true);
+      return;
+    }
+
+    // On home page: hide while in hero section, show when scrolled down to other sections
+    const handleScroll = () => {
+      if (window.scrollY > 360) {
+        setShowButton(true);
+      } else {
+        setShowButton(false);
+      }
+    };
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [pathname]);
+
   return (
-    <a
-      href="https://wa.me/918667709294?text=Hello%20Nexora,%20I%20would%20like%20to%20discuss%20a%20project."
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Direct WhatsApp Contact"
-      className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-xl shadow-[#25D366]/35 hover:bg-[#20bd5a] hover:scale-105 transition-all duration-300 group cursor-pointer"
-    >
-      <WhatsAppOfficialIcon className="h-7 w-7 text-white" />
-      <span className="sr-only">Chat on WhatsApp</span>
-    </a>
+    <AnimatePresence>
+      {showButton && (
+        <motion.a
+          initial={{ opacity: 0, scale: 0.6, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.6, y: 20 }}
+          transition={{ duration: 0.25, ease: 'easeOut' }}
+          href={`https://wa.me/918667709294?text=Hello%20${encodeURIComponent(siteConfig.name)},%20I%20would%20like%20to%20discuss%20a%20project.`}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Direct WhatsApp Contact"
+          className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-xl shadow-[#25D366]/35 hover:bg-[#20bd5a] hover:scale-105 transition-all duration-300 group cursor-pointer"
+        >
+          <WhatsAppOfficialIcon className="h-7 w-7 text-white" />
+          <span className="sr-only">Chat on WhatsApp</span>
+        </motion.a>
+      )}
+    </AnimatePresence>
   );
 }

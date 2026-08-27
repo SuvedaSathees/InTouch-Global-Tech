@@ -153,7 +153,7 @@ export function HomeClientJourney() {
   const ActiveIcon = activeData.icon;
 
   return (
-    <section className="relative overflow-hidden bg-white text-slate-900 pt-16 pb-14 sm:pt-20 sm:pb-16 select-none border-t border-slate-200">
+    <section className="relative overflow-hidden bg-[#FAF7F2] text-slate-900 pt-16 pb-14 sm:pt-20 sm:pb-16 select-none border-t border-[#E8DFD1]">
       {/* Precision Blueprint Grid */}
       <div
         className="absolute inset-0 opacity-[0.025] pointer-events-none"
@@ -169,8 +169,8 @@ export function HomeClientJourney() {
         {/* Left-Aligned Header (Shifted further down) */}
         <div className="flex flex-col items-start gap-4 mb-8 translate-y-[30px]">
           <div className="max-w-xl text-left">
-            <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-blue-600 mb-2">
-              <span className="w-4 h-[2px] bg-blue-600 rounded-full" />
+            <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-amber-800 mb-2">
+              <span className="w-4 h-[2px] bg-amber-700 rounded-full" />
               <span>END-TO-END PARTNERSHIP</span>
             </div>
             <h2 className="text-2xl sm:text-4xl font-black tracking-tight text-slate-950 leading-tight">
@@ -183,7 +183,7 @@ export function HomeClientJourney() {
         <div
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-          className="mt-14 rounded-3xl border border-slate-200/90 bg-gradient-to-b from-slate-50/90 to-white/90 p-6 sm:p-8 shadow-xs space-y-6"
+          className="mt-14 rounded-3xl border border-[#E8DFD1] bg-gradient-to-b from-[#F4EEE4]/90 to-white/90 p-6 sm:p-8 shadow-xs space-y-6"
         >
           {/* Top 7-Step Rail with Crisp, Clean Pills */}
           <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5">
@@ -197,10 +197,10 @@ export function HomeClientJourney() {
                     onClick={() => setActiveStep(idx)}
                     className={`group relative flex items-center gap-2 rounded-xl px-3.5 sm:px-4 py-2 text-xs font-bold tracking-tight transition-all duration-200 cursor-pointer ${
                       isActive
-                        ? 'bg-blue-600 text-white shadow-md shadow-blue-500/20'
+                        ? 'bg-amber-700 text-white shadow-md shadow-amber-700/20'
                         : isPast
-                        ? 'bg-blue-50 border border-blue-200/80 text-blue-700 hover:border-blue-300'
-                        : 'bg-white border border-slate-200 text-slate-700 hover:border-slate-300 hover:text-slate-950'
+                        ? 'bg-amber-50 border border-amber-200/80 text-amber-800 hover:border-amber-300'
+                        : 'bg-white border border-[#E8DFD1] text-slate-700 hover:border-amber-400 hover:text-slate-950'
                     }`}
                   >
                     <span
@@ -208,7 +208,7 @@ export function HomeClientJourney() {
                         isActive
                           ? 'bg-white/20 text-white'
                           : isPast
-                          ? 'bg-blue-100/80 text-blue-700'
+                          ? 'bg-amber-100/80 text-amber-800'
                           : 'bg-slate-100 text-slate-500'
                       }`}
                     >
@@ -221,7 +221,7 @@ export function HomeClientJourney() {
                   {idx < journeySteps.length - 1 && (
                     <span
                       className={`text-xs font-bold transition-colors duration-200 ${
-                        activeStep > idx ? 'text-blue-600' : 'text-slate-300'
+                        activeStep > idx ? 'text-amber-700' : 'text-slate-300'
                       }`}
                     >
                       →
@@ -240,7 +240,7 @@ export function HomeClientJourney() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -6 }}
               transition={{ duration: 0.2 }}
-              className="rounded-2xl border border-slate-200 bg-white p-5 sm:p-7 shadow-xs text-left"
+              className="rounded-2xl border border-[#E8DFD1] bg-white p-5 sm:p-7 shadow-xs text-left"
             >
               <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
                 
@@ -252,7 +252,7 @@ export function HomeClientJourney() {
                     >
                       <ActiveIcon className="h-4 w-4" />
                     </div>
-                    <span className="text-[11px] font-black uppercase tracking-wider text-blue-600">
+                    <span className="text-[11px] font-black uppercase tracking-wider text-amber-800">
                       PHASE {activeData.step} • {activeData.name} ({activeData.duration})
                     </span>
                     <span className="text-slate-300">•</span>
@@ -271,7 +271,7 @@ export function HomeClientJourney() {
                 </div>
 
                 {/* Right Deliverables Checklist */}
-                <div className="space-y-2 lg:min-w-[340px] bg-slate-50/80 border border-slate-100 rounded-2xl p-4">
+                <div className="space-y-2 lg:min-w-[340px] bg-amber-50/40 border border-amber-100 rounded-2xl p-4">
                   <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1">
                     Verified Phase Deliverables
                   </div>
@@ -280,7 +280,7 @@ export function HomeClientJourney() {
                       key={dIdx}
                       className="flex items-center gap-2.5 text-xs font-semibold text-slate-800"
                     >
-                      <CheckCircle2 className="h-4 w-4 text-blue-600 shrink-0" />
+                      <CheckCircle2 className="h-4 w-4 text-amber-700 shrink-0" />
                       <span>{del}</span>
                     </div>
                   ))}
@@ -300,7 +300,7 @@ export function HomeClientJourney() {
             </div>
 
             <div className="flex items-center gap-1.5 text-slate-700 font-semibold">
-              <Lock className="h-3.5 w-3.5 text-blue-600" />
+              <Lock className="h-3.5 w-3.5 text-amber-700" />
               <span>100% Sovereign IP Handover</span>
             </div>
           </div>

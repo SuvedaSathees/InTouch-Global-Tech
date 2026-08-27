@@ -39,7 +39,7 @@ export function WhyChooseUs() {
     <section className="relative py-20 sm:py-28 overflow-hidden bg-slate-50/70 border-t border-slate-200">
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
-          label="Why Nexora"
+          label="Why Intouch Global Tech"
           title="Engineered for Predictability & Longevity"
           description="We build scalable digital assets designed to increase enterprise value and streamline operations."
         />

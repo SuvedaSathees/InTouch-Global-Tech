@@ -46,26 +46,23 @@ export function Navbar() {
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
           scrolled
-            ? 'bg-white/85 backdrop-blur-2xl border-b border-slate-200/80 shadow-sm shadow-slate-900/5 py-3.5'
-            : 'bg-white/50 backdrop-blur-md py-5'
+            ? 'bg-[#FAF7F2]/95 backdrop-blur-2xl border-b border-[#E8DFD1] shadow-xs py-3.5'
+            : 'bg-[#FAF7F2]/80 backdrop-blur-md py-4 sm:py-5'
         )}
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* Brand Logo */}
           <Link href="/" className="flex items-center gap-3 group" aria-label={siteConfig.name}>
-            <div className="relative flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white font-bold shadow-md shadow-blue-500/20 transition-transform duration-300 group-hover:scale-105">
-              <svg width="18" height="18" viewBox="0 0 16 16" fill="none" className="text-white">
-                <path d="M2 2L8 8L2 14" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M8 2L14 8L8 14" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" opacity="0.6" />
-              </svg>
+            <div className="relative flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-tr from-amber-600 to-amber-800 text-white font-black shadow-md shadow-amber-700/20 transition-transform duration-300 group-hover:scale-105">
+              <span className="text-sm tracking-tight font-extrabold">IG</span>
             </div>
-            <span className="text-xl font-black tracking-tight text-slate-950 group-hover:text-blue-600 transition-colors">
+            <span className="text-xl font-black tracking-tight text-slate-950 group-hover:text-amber-700 transition-colors">
               {siteConfig.name}
             </span>
           </Link>
 
           {/* Center Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-7">
             {siteConfig.nav.map((item) => {
               const isActive = pathname === item.href;
 
@@ -76,15 +73,15 @@ export function Navbar() {
                   className={cn(
                     'relative text-sm font-semibold transition-colors duration-200 py-1',
                     isActive
-                      ? 'text-blue-600 font-bold'
-                      : 'text-slate-600 hover:text-slate-950'
+                      ? 'text-amber-800 font-bold'
+                      : 'text-slate-600 hover:text-amber-800'
                   )}
                 >
                   <span>{item.label}</span>
                   {isActive && (
                     <motion.div
                       layoutId="active-nav-dot"
-                      className="absolute -bottom-1 left-1/2 -translate-x-1/2 h-1 w-5 rounded-full bg-blue-600 shadow-sm"
+                      className="absolute -bottom-1 left-1/2 -translate-x-1/2 h-1 w-5 rounded-full bg-amber-700 shadow-sm"
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -101,9 +98,9 @@ export function Navbar() {
                   href="/contact"
                   variant="default"
                   size="default"
-                  className="bg-blue-600 hover:bg-blue-700 text-white font-bold shadow-md shadow-blue-500/20 text-xs px-5 py-2.5 rounded-xl border border-blue-500"
+                  className="bg-amber-700 hover:bg-amber-800 text-white font-bold shadow-md shadow-amber-700/20 text-xs px-5 py-2.5 rounded-xl border border-amber-700"
                 >
-                  <span>Start Project</span>
+                  <span>Get Quote / Contact</span>
                   <ArrowRight className="ml-1.5 h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
                 </MagneticButton>
               </motion.div>
@@ -148,11 +145,8 @@ export function Navbar() {
               {/* Header */}
               <div className="flex items-center justify-between border-b border-slate-100 pb-4">
                 <Link href="/" className="flex items-center gap-2.5" onClick={() => setMobileOpen(false)}>
-                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-600 text-white shadow-sm font-bold">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="text-white">
-                      <path d="M2 2L8 8L2 14" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
-                      <path d="M8 2L14 8L8 14" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" opacity="0.6" />
-                    </svg>
+                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-amber-700 text-white shadow-sm font-bold">
+                    <span className="text-xs font-black">IG</span>
                   </div>
                   <span className="text-lg font-black text-slate-950">{siteConfig.name}</span>
                 </Link>
@@ -182,8 +176,8 @@ export function Navbar() {
                         className={cn(
                           'flex items-center justify-between rounded-xl px-4 py-3 text-sm font-bold transition-all',
                           isActive
-                            ? 'bg-blue-50 text-blue-700 border border-blue-200'
-                            : 'text-slate-700 hover:bg-slate-50 hover:text-slate-950'
+                            ? 'bg-amber-50 text-amber-800 border border-amber-200'
+                            : 'text-slate-700 hover:bg-amber-50/50 hover:text-slate-950'
                         )}
                       >
                         <span>{item.label}</span>
@@ -195,10 +189,10 @@ export function Navbar() {
               </div>
 
               {/* Mobile CTA */}
-              <div className="border-t border-slate-100 pt-4">
+              <div className="border-t border-slate-100 pt-4 space-y-2">
                 <MagneticButton
                   href="/contact"
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm py-3.5 rounded-xl shadow-md"
+                  className="w-full bg-amber-700 hover:bg-amber-800 text-white font-bold text-sm py-3.5 rounded-xl shadow-md"
                   size="lg"
                   onClick={() => setMobileOpen(false)}
                 >

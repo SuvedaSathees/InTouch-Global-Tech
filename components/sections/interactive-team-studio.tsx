@@ -257,7 +257,7 @@ export function InteractiveTeamStudio() {
                   </div>
 
                   <a
-                    href={`https://wa.me/918667709294?text=Hello%20Nexora,%20I%20would%20like%20to%20discuss%20a%20project%20with%20your%20technical%20team.`}
+                    href={`https://wa.me/918667709294?text=Hello%20Intouch%20Global%20Tech,%20I%20would%20like%20to%20discuss%20a%20project%20with%20your%20technical%20team.`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1 text-[11px] font-mono font-bold text-slate-500 hover:text-emerald-600 transition-colors"

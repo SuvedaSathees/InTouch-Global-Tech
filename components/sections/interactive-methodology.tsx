@@ -233,7 +233,7 @@ export function InteractiveMethodology() {
                     <span className="h-2.5 w-2.5 rounded-full bg-red-400 inline-block" />
                     <span className="h-2.5 w-2.5 rounded-full bg-amber-400 inline-block" />
                     <span className="h-2.5 w-2.5 rounded-full bg-emerald-400 inline-block" />
-                    <span className="ml-2 text-slate-500 font-medium">nexora-engine :: phase_{current.number}.spec</span>
+                    <span className="ml-2 text-slate-500 font-medium">intouch-engine :: phase_{current.number}.spec</span>
                   </div>
                   <span className="text-blue-700 font-bold text-[11px] flex items-center gap-1.5">
                     <span className="h-2 w-2 rounded-full bg-blue-600 animate-pulse" />

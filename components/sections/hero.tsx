@@ -84,7 +84,7 @@ export function HeroSection() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600" />
             </span>
-            <span className="text-slate-800 font-bold">Nexora Engineering</span>
+            <span className="text-slate-800 font-bold">Intouch Global Tech</span>
             <span className="text-slate-300">•</span>
             <span className="text-blue-600 font-extrabold">Enterprise Software Systems</span>
           </motion.div>

@@ -7,85 +7,94 @@ import {
   Sparkles,
   Layers,
   Globe,
-  Smartphone,
-  Cpu,
-  ArrowUpRight,
+  Activity,
+  Search,
+  Users2,
+  ArrowRight,
   ShieldCheck,
   CheckCircle2,
+  Receipt,
+  MessageSquare,
 } from 'lucide-react';
 
 const softwareDomains = [
   {
-    id: 'erp',
-    step: '01',
-    name: 'Enterprise ERP & Operations Core',
-    badge: '100% ACID • MULTI-WAREHOUSE',
-    icon: Building2,
-    gradient: 'from-blue-600 to-indigo-600',
-    description:
-      'Centralized operations platform with multi-warehouse inventory sync, double-entry financial accounting, and automated workflow approvals.',
-    specs: ['PostgreSQL 16', 'Redis Queue', 'Docker', 'Prisma'],
-  },
-  {
-    id: 'ai',
-    step: '02',
-    name: 'Autonomous AI & Neural Workflows',
-    badge: 'PRIVATE RAG • 99.4% PRECISION',
-    icon: Sparkles,
-    gradient: 'from-purple-600 to-indigo-600',
-    description:
-      'Private enterprise RAG vector search across internal knowledge bases, autonomous task agents, and intelligent document parsing.',
-    specs: ['PyTorch', 'LangChain', 'OpenAI', 'pgvector'],
-  },
-  {
-    id: 'saas',
-    step: '03',
-    name: 'High-Throughput SaaS Platforms',
-    badge: '25K+ REQ/S • MULTI-TENANT',
-    icon: Layers,
-    gradient: 'from-cyan-500 to-blue-600',
-    description:
-      'Multi-tenant cloud platforms with row-level security isolation, automated recurring billing, usage metering, and webhook infrastructure.',
-    specs: ['Next.js 15', 'Supabase', 'Stripe', 'Kubernetes'],
-  },
-  {
     id: 'web',
-    step: '04',
-    name: 'High-Velocity Web Applications',
-    badge: '< 40MS TTFB • 100 LIGHTHOUSE',
+    step: '01',
+    name: 'Static & Dynamic Web Applications',
+    badge: 'STATIC & DYNAMIC • 100 LIGHTHOUSE',
     icon: Globe,
     gradient: 'from-blue-600 to-cyan-600',
     description:
-      'Sub-second edge rendered web applications and client portals with fluid 60 FPS micro-interactions and WCAG 2.1 AA accessibility.',
-    specs: ['React 19', 'Next.js 15', 'TypeScript', 'Tailwind'],
+      'Responsive, sub-second edge-rendered corporate websites, e-commerce stores, custom CMS, and web applications built for growing businesses worldwide.',
+    specs: ['Next.js', 'React', 'Tailwind CSS', 'WordPress CMS'],
+    href: '/services/web-development',
   },
   {
-    id: 'mobile',
+    id: 'erp',
+    step: '02',
+    name: 'Custom ERP & Operations Platforms',
+    badge: 'MULTI-WAREHOUSE • GST READY',
+    icon: Building2,
+    gradient: 'from-indigo-600 to-blue-700',
+    description:
+      'Centralized operations platform with multi-warehouse inventory, double-entry financial ledgers, vendor purchasing, and automated manufacturing workflows.',
+    specs: ['PostgreSQL', 'Node.js', 'Docker', 'Redis'],
+    href: '/services/erp-development',
+  },
+  {
+    id: 'hrms',
+    step: '03',
+    name: 'HRMS Application & Payroll Engine',
+    badge: 'BIOMETRIC SYNC • STATUTORY PF/ESI',
+    icon: Users2,
+    gradient: 'from-purple-600 to-indigo-600',
+    description:
+      'End-to-end workforce management with biometric attendance capture, automatic salary calculation, tax deductions, shift rostering, and employee portals.',
+    specs: ['React', 'NestJS', 'PostgreSQL', 'Mobile App'],
+    href: '/services/hrms-application',
+  },
+  {
+    id: 'crm-pos',
+    step: '04',
+    name: 'CRM & High-Speed GST Billing Software',
+    badge: 'LEAD PIPELINES • FAST POS',
+    icon: Receipt,
+    gradient: 'from-emerald-600 to-teal-600',
+    description:
+      'Omnichannel lead management, automated sales follow-up reminders, thermal receipt printing, barcode scanning, and instant GST invoices.',
+    specs: ['Node.js', 'SQLite / Cloud', 'Thermal Print API'],
+    href: '/services/crm-application',
+  },
+  {
+    id: 'hms',
     step: '05',
-    name: 'Native Mobile Applications',
-    badge: '60 FPS NATIVE • OFFLINE SYNC',
-    icon: Smartphone,
-    gradient: 'from-indigo-600 to-blue-600',
+    name: 'Hospital & Pharmacy Management (HMS)',
+    badge: 'OPD / IPD • BATCH EXPIRY ALERTS',
+    icon: Activity,
+    gradient: 'from-blue-600 to-indigo-600',
     description:
-      'Cross-platform iOS and Android mobile applications with offline SQLite sync, biometric authentication, and instant push notifications.',
-    specs: ['React Native', 'Swift', 'Kotlin', 'SQLite'],
+      'Full-featured clinic & hospital software for OPD/IPD patient registration, doctor appointments, EMR, lab reports, and pharmacy batch expiry registers.',
+    specs: ['PostgreSQL', 'Next.js', 'HL7/EMR Safe'],
+    href: '/services/hospital-management-system',
   },
   {
-    id: 'custom',
+    id: 'seo-gateway',
     step: '06',
-    name: 'Bespoke Proprietary Systems',
-    badge: '100% SOVEREIGN • ZERO LOCK-IN',
-    icon: Cpu,
-    gradient: 'from-emerald-500 to-teal-600',
+    name: 'SEO, SEM & WhatsApp / SMS Gateways',
+    badge: 'TOP RANKINGS • TRAI / DLT APPROVED',
+    icon: Search,
+    gradient: 'from-cyan-500 to-blue-600',
     description:
-      'Tailored computational engines, compliance monitors, and zero-downtime database modernizations with complete source code handover.',
-    specs: ['Golang', 'Node.js', 'AWS Cloud', 'PostgreSQL'],
+      'Performance-focused SEO driving organic Google search visibility, high-ROI Google Ads campaigns, official WhatsApp Business API, and high-speed OTP SMS.',
+    specs: ['Technical SEO', 'Google Ads', 'WhatsApp API', 'SMS Gateway'],
+    href: '/services/seo-search-engine-optimization',
   },
 ];
 
 export function HomeWhatWeBuild() {
   return (
-    <section className="relative overflow-hidden bg-white text-slate-900 py-14 sm:py-16 select-none border-t border-slate-100">
+    <section className="relative overflow-hidden bg-[#FAF7F2] text-slate-900 py-14 sm:py-16 select-none border-t border-[#E8DFD1]">
       {/* Precision Background Blueprint Grid */}
       <div
         className="absolute inset-0 opacity-[0.025] pointer-events-none"
@@ -101,17 +110,17 @@ export function HomeWhatWeBuild() {
         {/* Left-Aligned Header */}
         <div className="flex flex-col items-start gap-4 mb-8">
           <div className="max-w-xl text-left">
-            <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-blue-600 mb-2">
-              <span className="w-4 h-[2px] bg-blue-600 rounded-full" />
-              <span>WHAT WE BUILD</span>
+            <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-amber-800 mb-2">
+              <span className="w-4 h-[2px] bg-amber-700 rounded-full" />
+              <span>WHAT WE BUILD & DELIVER</span>
             </div>
             <h2 className="text-2xl sm:text-4xl font-black tracking-tight text-slate-950 leading-tight">
-              Production Software Systems.
+              Production Web & Software Systems.
             </h2>
           </div>
         </div>
 
-        {/* 6-Card High-Density Architecture Matrix (3 Columns x 2 Rows) */}
+        {/* 6-Card High-Density Architecture Matrix */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {softwareDomains.map((domain) => {
             const Icon = domain.icon;
@@ -119,7 +128,7 @@ export function HomeWhatWeBuild() {
             return (
               <div
                 key={domain.id}
-                className="group relative flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-slate-50/50 p-6 text-left hover:border-blue-400 hover:bg-white hover:shadow-lg hover:shadow-blue-500/10 hover:-translate-y-1 transition-all duration-300"
+                className="group relative flex flex-col justify-between rounded-3xl border border-[#E8DFD1] bg-white/80 p-6 text-left hover:border-amber-500 hover:bg-white hover:shadow-lg hover:shadow-amber-700/10 hover:-translate-y-1 transition-all duration-300"
               >
                 <div>
                   {/* Top Bar: Icon + Blueprint Badge */}
@@ -130,7 +139,7 @@ export function HomeWhatWeBuild() {
                       <Icon className="h-5 w-5" />
                     </div>
 
-                    <span className="rounded-md bg-blue-50/90 border border-blue-200/80 px-2.5 py-1 text-[9px] font-extrabold uppercase tracking-wider text-blue-700 shadow-2xs">
+                    <span className="rounded-md bg-amber-50/90 border border-amber-200/80 px-2.5 py-1 text-[9px] font-extrabold uppercase tracking-wider text-amber-800 shadow-2xs">
                       {domain.badge}
                     </span>
                   </div>
@@ -139,7 +148,7 @@ export function HomeWhatWeBuild() {
                   <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
                     SYSTEM {domain.step}
                   </div>
-                  <h3 className="text-base font-bold text-slate-950 group-hover:text-blue-600 transition-colors mt-0.5 leading-snug">
+                  <h3 className="text-base font-bold text-slate-950 group-hover:text-amber-800 transition-colors mt-0.5 leading-snug">
                     {domain.name}
                   </h3>
                   <p className="text-xs sm:text-sm text-slate-600 font-normal leading-relaxed mt-2.5">
@@ -152,7 +161,7 @@ export function HomeWhatWeBuild() {
                   {domain.specs.map((spec, sIdx) => (
                     <span
                       key={sIdx}
-                      className="rounded-md bg-white border border-slate-200/90 px-2 py-0.5 text-[10px] font-bold text-slate-700 shadow-2xs group-hover:border-slate-300"
+                      className="rounded-md bg-white border border-[#E8DFD1] px-2 py-0.5 text-[10px] font-bold text-slate-700 shadow-2xs"
                     >
                       {spec}
                     </span>

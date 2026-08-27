@@ -20,15 +20,15 @@ export function ServiceDetail({ service }: { service: Service }) {
         description={service.description}
       />
 
-      <section className="py-20 sm:py-28 relative overflow-hidden bg-white">
+      <section className="py-20 sm:py-28 relative overflow-hidden bg-[#FAF7F2]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid gap-12 lg:grid-cols-12 items-start">
             {/* Left Column: Detailed Features & Modules */}
             <div className="lg:col-span-8">
-              <div className="rounded-2xl border border-slate-200 bg-white p-8 sm:p-10 shadow-sm">
+              <div className="rounded-2xl border border-[#E8DFD1] bg-white p-8 sm:p-10 shadow-sm">
                 <div className="flex items-center gap-2 mb-4">
-                  <span className="h-2 w-2 rounded-full bg-blue-600" />
-                  <span className="text-xs font-semibold font-bold uppercase tracking-wider text-blue-700">
+                  <span className="w-4 h-[2px] bg-amber-700 rounded-full" />
+                  <span className="text-xs font-semibold font-bold uppercase tracking-wider text-amber-800">
                     Comprehensive Inclusions
                   </span>
                 </div>
@@ -43,20 +43,20 @@ export function ServiceDetail({ service }: { service: Service }) {
                   {service.features.map((feature) => (
                     <div
                       key={feature}
-                      className="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50/70 p-4 text-sm text-slate-800"
+                      className="flex items-center gap-3 rounded-xl border border-[#E8DFD1] bg-white p-4 text-sm text-slate-800"
                     >
-                      <CheckCircle2 className="h-4 w-4 text-blue-600 shrink-0" />
+                      <CheckCircle2 className="h-4 w-4 text-amber-700 shrink-0" />
                       <span className="font-semibold">{feature}</span>
                     </div>
                   ))}
                 </div>
 
-                <div className="mt-10 rounded-xl border border-blue-200 bg-blue-50/60 p-6">
-                  <h4 className="text-sm font-bold text-blue-900 flex items-center gap-2">
-                    <ShieldCheck className="h-4 w-4 text-blue-600" />
+                <div className="mt-10 rounded-xl border border-amber-200 bg-amber-50/60 p-6">
+                  <h4 className="text-sm font-bold text-amber-900 flex items-center gap-2">
+                    <ShieldCheck className="h-4 w-4 text-amber-700" />
                     Our Enterprise Code & Architecture Standard
                   </h4>
-                  <p className="mt-2 text-xs text-blue-800 leading-relaxed">
+                  <p className="mt-2 text-xs text-amber-800 leading-relaxed">
                     All source code is delivered in your private repository with CI/CD setup, Docker containers, database migration scripts, and comprehensive API documentation.
                   </p>
                 </div>
@@ -65,7 +65,7 @@ export function ServiceDetail({ service }: { service: Service }) {
 
             {/* Right Column: Key Metrics & Consultation Trigger */}
             <div className="lg:col-span-4 space-y-6">
-              <div className="rounded-2xl border border-slate-200 bg-white p-7 shadow-sm">
+              <div className="rounded-2xl border border-[#E8DFD1] bg-white p-7 shadow-sm">
                 <h3 className="text-base font-bold text-slate-900 mb-4">Why Choose Custom?</h3>
                 <div className="space-y-3.5 text-xs text-slate-600">
                   <div className="flex items-start gap-2.5">
@@ -73,7 +73,7 @@ export function ServiceDetail({ service }: { service: Service }) {
                     <span><strong className="text-slate-900">100% Fit:</strong> Zero compromises or workaround plugins.</span>
                   </div>
                   <div className="flex items-start gap-2.5">
-                    <Layers className="h-4 w-4 text-blue-600 shrink-0 mt-0.5" />
+                    <Layers className="h-4 w-4 text-amber-700 shrink-0 mt-0.5" />
                     <span><strong className="text-slate-900">Zero Per-Seat Fees:</strong> Scale to unlimited users without extra SaaS licenses.</span>
                   </div>
                   <div className="flex items-start gap-2.5">
@@ -83,16 +83,16 @@ export function ServiceDetail({ service }: { service: Service }) {
                 </div>
 
                 <div className="mt-8 pt-6 border-t border-slate-100">
-                  <MagneticButton href="/contact" size="lg" className="w-full bg-blue-600 text-white hover:bg-blue-700">
+                  <MagneticButton href="/contact" size="lg" className="w-full bg-amber-700 text-white hover:bg-amber-800">
                     Scope This Solution
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </MagneticButton>
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 text-center">
+              <div className="rounded-2xl border border-[#E8DFD1] bg-white p-6 text-center">
                 <p className="text-xs font-semibold text-slate-500 font-medium">Average Delivery Timeline</p>
-                <p className="text-2xl font-extrabold text-blue-600 font-semibold mt-1">4 – 8 Weeks</p>
+                <p className="text-2xl font-extrabold text-amber-800 font-semibold mt-1">4 – 8 Weeks</p>
                 <p className="text-[11px] text-slate-500 mt-1">From discovery to production launch</p>
               </div>
             </div>

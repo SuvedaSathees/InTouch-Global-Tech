@@ -7,7 +7,7 @@ import { HomeClientJourney } from '@/components/sections/home-client-journey';
 
 export default function HomePage() {
   return (
-    <main className="bg-white text-slate-900">
+    <main className="bg-[#FAF7F2] text-slate-900 min-h-screen">
       {/* 01 — HERO SECTION */}
       <HomeHero />
 

@@ -10,120 +10,120 @@ import {
   Lock,
   Eye,
   Target,
-  Sparkles,
   Award,
+  Sparkles,
+  ArrowRight,
   Globe2,
-  MapPin,
-  Laptop,
-  BarChart3,
-  Search,
-  MessageSquare,
-  Building2,
-  FileCode2,
+  TrendingUp,
 } from 'lucide-react';
 import { siteConfig } from '@/lib/site-config';
+
+const foundationalPillars = [
+  {
+    id: 'vision',
+    number: '01',
+    label: 'Strategic Vision',
+    tag: 'NORTH STAR',
+    icon: Eye,
+    quote: siteConfig.vision,
+    description:
+      'Empowering global small, medium, and enterprise businesses with modern cloud architecture, 100% sovereign code ownership, and high-velocity digital products that scale worldwide.',
+    highlights: [
+      'Global Small & Medium Business Growth',
+      '100% Client Code & IP Sovereignty',
+      'Modern, Scalable Cloud Infrastructure',
+      'Zero Proprietary Vendor Lock-in',
+    ],
+    metricValue: 'Global Reach',
+    metricLabel: 'Serving worldwide SMBs & growing enterprises',
+  },
+  {
+    id: 'mission',
+    number: '02',
+    label: 'Global Mission',
+    tag: 'CORE PURPOSE',
+    icon: Target,
+    quote: siteConfig.mission,
+    description:
+      'Delivering innovative, reliable, and high-performing digital business solutions that eliminate operational bottlenecks, streamline core workflows, and maximize client ROI.',
+    highlights: [
+      'Innovative IT & Custom Software Suites',
+      'Live 2-Week Working Sprint Demos',
+      'Direct Communication with Senior Engineers',
+      'Rapid Deployment & Continuous Integration',
+    ],
+    metricValue: '2-Week Sprints',
+    metricLabel: 'Predictable, transparent delivery cycles',
+  },
+  {
+    id: 'values',
+    number: '03',
+    label: 'Core Values',
+    tag: 'PRINCIPLES & TRUST',
+    icon: Award,
+    quote: siteConfig.values,
+    description:
+      'Committed to achieving business excellence through cost-effective, dependable engineering, precision QA testing, transparent milestone pricing, and enduring client partnership.',
+    highlights: [
+      'Commitment to Business Excellence',
+      'Transparent Fixed-Milestone Pricing',
+      'Rigorous Automated & Manual QA Testing',
+      '99.99% Production Uptime Standards',
+    ],
+    metricValue: '100% Excellence',
+    metricLabel: 'Zero compromise on quality & security',
+  },
+];
 
 const companyPillars = [
   {
     icon: Lock,
-    title: '100% Client Code & IP Ownership',
-    subtitle: 'Zero Hidden Fees or Vendor Lock-In',
+    title: '100% Code Sovereignty',
+    subtitle: 'Zero Hidden Fees or Lock-In',
     description:
-      'From Day 1, you own every single line of code, database schema, and design asset. We transfer the complete source code to you with zero monthly license fees.',
-    highlight: 'Full Source Code & GitHub Ownership',
+      'You own every line of code, database schema, and design asset from day one with full intellectual property rights.',
+    highlight: 'Full Source Code & IP Ownership',
   },
   {
     icon: Users,
-    title: 'Direct WhatsApp & Phone Access',
+    title: 'Direct Engineer Access',
     subtitle: 'No Middlemen or Delays',
     description:
-      'You talk directly with senior developers and solution architects building your system. Fast turnarounds and real-time sprint updates.',
-    highlight: 'Direct Senior Developer WhatsApp',
+      'Collaborate directly with lead engineers and architects via WhatsApp and calls for swift, clear execution.',
+    highlight: 'Direct WhatsApp & Call Access',
   },
   {
     icon: Zap,
-    title: 'Transparent Milestones & Fixed Pricing',
-    subtitle: 'No Surprise Costs',
+    title: 'Milestone-Based Delivery',
+    subtitle: 'Transparent Pricing',
     description:
-      'We set clear deliverables and fair pricing before starting any work. We deliver live working sprint demos every 2 weeks so you always see steady progress.',
+      'Clear timelines with working sprint demos every 2 weeks so you experience predictable, measurable progress.',
     highlight: 'Live 2-Week Working Demos',
   },
   {
     icon: ShieldCheck,
-    title: 'Enterprise Speed & Reliability',
-    subtitle: '99.99% Uptime Commitment',
+    title: 'Enterprise Reliability',
+    subtitle: '99.99% Uptime Standard',
     description:
-      'We test every website and application across devices before launch, ensuring your system runs fast, smoothly, and securely under high user traffic.',
-    highlight: 'Fully Tested & 24/7 Monitored',
+      'Rigorously tested, performant, and secure architectures engineered to scale smoothly with your user growth.',
+    highlight: 'Tested, Secure & Monitored',
   },
 ];
 
 const companyMetrics = [
-  { label: 'Engineering Excellence', value: 'Full-Stack & Cloud', sub: 'Production Ready' },
-  { label: 'Client Footprint', value: 'Global SMBs', sub: 'Worldwide Client Reach' },
-  { label: 'Code Ownership', value: '100%', sub: 'Everything Belongs to You' },
-  { label: 'Uptime & Speed', value: '99.99%', sub: 'Fast & Always Online' },
-];
-
-const whatWeOffer = [
-  {
-    title: 'Static & Dynamic Website Designing',
-    desc: 'Bespoke corporate, portfolio, and multi-page dynamic sites built for lightning speed.',
-    icon: Laptop,
-  },
-  {
-    title: 'E-Commerce Website Design & Development',
-    desc: 'High-converting online storefronts, payment gateways, and shopping cart architectures.',
-    icon: Building2,
-  },
-  {
-    title: 'Custom Web Applications Development',
-    desc: 'Scalable cloud web applications, client portals, and bespoke management systems.',
-    icon: FileCode2,
-  },
-  {
-    title: 'Blog Design & Content Publishing',
-    desc: 'SEO-optimized editorial layouts, author workflows, and content management systems.',
-    icon: Globe2,
-  },
-  {
-    title: 'Responsive Website Design & Development',
-    desc: 'Pixel-perfect, fluid experiences optimized across all smartphone, tablet, and desktop screens.',
-    icon: Sparkles,
-  },
-  {
-    title: 'Website Redesigning & Modernization',
-    desc: 'Transforming outdated legacy sites into high-performance, modern digital products.',
-    icon: Zap,
-  },
-];
-
-const whatWeProvide = [
-  {
-    title: 'Search Engine Optimization (SEO)',
-    desc: 'Comprehensive organic search optimization driving organic first-page Google rankings and high-intent leads.',
-    icon: Search,
-  },
-  {
-    title: 'Search Engine Marketing (SEM / PPC)',
-    desc: 'Targeted Google Ads and paid campaigns configured for high conversion rates and optimal ROI.',
-    icon: Target,
-  },
-  {
-    title: 'Email & WhatsApp Marketing',
-    desc: 'Automated transactional SMS, WhatsApp Business API chatbots, and high-deliverability email drips.',
-    icon: MessageSquare,
-  },
-  {
-    title: 'Business Analysis & Market Research',
-    desc: 'Deep process evaluation, competitor landscape research, and software specification planning.',
-    icon: BarChart3,
-  },
+  { label: 'Code Ownership', value: '100%', sub: 'Zero Vendor Lock-in' },
+  { label: 'Sprint Demos', value: '2-Week', sub: 'Live Working Builds' },
+  { label: 'Platform Uptime', value: '99.99%', sub: 'High Availability' },
+  { label: 'Support & Access', value: 'Direct', sub: 'Lead Engineer Line' },
 ];
 
 export function InteractiveAboutHub() {
+  const [activePillarIndex, setActivePillarIndex] = useState(0);
+  const currentPillar = foundationalPillars[activePillarIndex];
+  const CurrentIcon = currentPillar.icon;
+
   return (
-    <div className="relative bg-[#FAF7F2] text-slate-900 select-none pt-32 pb-24 sm:pb-32">
+    <div className="relative bg-[#FAF7F2] text-slate-900 select-none pt-32 pb-16 sm:pb-20">
       {/* Precision Blueprint Grid */}
       <div
         className="absolute inset-0 opacity-[0.025] pointer-events-none"
@@ -136,19 +136,19 @@ export function InteractiveAboutHub() {
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 z-10 space-y-16 sm:space-y-20">
         
-        {/* Hero Section: Identity */}
-        <div className="text-left max-w-4xl">
-          <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-amber-800 mb-4">
+        {/* Hero Section: Minimal Identity */}
+        <div className="text-left max-w-3xl">
+          <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-amber-800 mb-3">
             <span className="w-5 h-[2px] bg-amber-700 rounded-full" />
             <span>ABOUT {siteConfig.name.toUpperCase()}</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-950 leading-[1.08]">
-            Leading Web Development, Software & IT Solutions.
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-950 leading-[1.1]">
+            Leading Web Development & Digital Solutions.
           </h1>
 
-          <p className="mt-5 text-sm sm:text-base text-slate-600 leading-relaxed font-normal max-w-3xl">
-            {siteConfig.name} is a leading web development company offering complete web application services like website designing, website maintenance, website optimization, SEO, ERP/HRMS software, and custom business solutions for growing businesses and global enterprises.
+          <p className="mt-5 text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+            {siteConfig.name} is a modern technology studio engineering scalable web applications, bespoke business platforms, and high-performance digital systems for growing global businesses.
           </p>
         </div>
 
@@ -172,202 +172,120 @@ export function InteractiveAboutHub() {
           ))}
         </div>
 
-        {/* VISION, MISSION & VALUES 3-CARD LUXURY ARCHITECTURE GALLERY */}
+        {/* Vision, Mission & Values: Interactive Luxury Pillar Studio */}
         <div className="space-y-8 text-left">
-          <div>
-            <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-amber-800 mb-2">
-              <span className="w-4 h-[2px] bg-amber-700 rounded-full" />
-              <span>FOUNDATIONAL PILLARS</span>
-            </div>
-            <h2 className="text-2xl sm:text-4xl font-black text-slate-950 tracking-tight">
-              Vision, Mission & Core Values
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
-            
-            {/* Pillar 1: Strategic Vision */}
-            <div className="group relative flex flex-col justify-between rounded-3xl border border-[#E8DFD1] bg-white p-7 sm:p-8 shadow-xs hover:border-amber-400 hover:shadow-xl hover:shadow-amber-700/10 hover:-translate-y-1.5 transition-all duration-300 overflow-hidden">
-              <div className="absolute top-3 right-6 text-7xl font-serif font-black text-amber-700/5 select-none pointer-events-none group-hover:text-amber-700/10 transition-colors">
-                01
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+              <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-amber-800 mb-2">
+                <span className="w-4 h-[2px] bg-amber-700 rounded-full" />
+                <span>FOUNDATIONAL PILLARS</span>
               </div>
-
-              <div className="relative z-10 space-y-5">
-                <div className="flex items-center justify-between">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-amber-50 border border-amber-200 text-amber-800 group-hover:bg-amber-700 group-hover:text-white transition-all shadow-xs">
-                    <Eye className="h-5 w-5" />
-                  </div>
-                  <span className="rounded-full bg-amber-50 border border-amber-200/90 px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-amber-800">
-                    STRATEGIC VISION
-                  </span>
-                </div>
-
-                <blockquote className="text-lg sm:text-xl font-bold text-slate-950 leading-snug tracking-tight">
-                  “{siteConfig.vision}”
-                </blockquote>
-
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-                  Empowering enterprises with cutting-edge digital infrastructure, robust cloud architecture, and high-velocity web platforms that accelerate global growth.
-                </p>
-              </div>
-
-              <div className="relative z-10 mt-6 pt-4 border-t border-[#E8DFD1] flex flex-wrap items-center gap-2">
-                <span className="inline-flex items-center gap-1 text-[10px] font-bold text-amber-800 bg-[#FAF7F2] border border-[#E8DFD1] px-2.5 py-1 rounded-lg">
-                  <Sparkles className="h-3 w-3 text-amber-700" />
-                  Global SMB Growth
-                </span>
-                <span className="inline-flex items-center gap-1 text-[10px] font-bold text-slate-700 bg-[#FAF7F2] border border-[#E8DFD1] px-2.5 py-1 rounded-lg">
-                  100% Code Sovereignty
-                </span>
-              </div>
+              <h2 className="text-2xl sm:text-4xl font-black text-slate-950 tracking-tight">
+                Vision, Mission & Core Values
+              </h2>
             </div>
 
-            {/* Pillar 2: Global Mission */}
-            <div className="group relative flex flex-col justify-between rounded-3xl border border-[#E8DFD1] bg-white p-7 sm:p-8 shadow-xs hover:border-amber-400 hover:shadow-xl hover:shadow-amber-700/10 hover:-translate-y-1.5 transition-all duration-300 overflow-hidden">
-              <div className="absolute top-3 right-6 text-7xl font-serif font-black text-amber-700/5 select-none pointer-events-none group-hover:text-amber-700/10 transition-colors">
-                02
-              </div>
+            {/* Pillar Selector Tabs */}
+            <div className="inline-flex p-1.5 rounded-2xl bg-white border border-[#E8DFD1] shadow-xs">
+              {foundationalPillars.map((pillar, idx) => {
+                const isActive = activePillarIndex === idx;
+                const Icon = pillar.icon;
 
-              <div className="relative z-10 space-y-5">
-                <div className="flex items-center justify-between">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-amber-50 border border-amber-200 text-amber-800 group-hover:bg-amber-700 group-hover:text-white transition-all shadow-xs">
-                    <Target className="h-5 w-5" />
-                  </div>
-                  <span className="rounded-full bg-amber-50 border border-amber-200/90 px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-amber-800">
-                    GLOBAL MISSION
-                  </span>
-                </div>
-
-                <blockquote className="text-lg sm:text-xl font-bold text-slate-950 leading-snug tracking-tight">
-                  “{siteConfig.mission}”
-                </blockquote>
-
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-                  Delivering innovative, reliable, and high-performing digital business solutions that streamline operations, eliminate bottlenecks, and expand reach.
-                </p>
-              </div>
-
-              <div className="relative z-10 mt-6 pt-4 border-t border-[#E8DFD1] flex flex-wrap items-center gap-2">
-                <span className="inline-flex items-center gap-1 text-[10px] font-bold text-amber-800 bg-[#FAF7F2] border border-[#E8DFD1] px-2.5 py-1 rounded-lg">
-                  <Sparkles className="h-3 w-3 text-amber-700" />
-                  Innovative IT Solutions
-                </span>
-                <span className="inline-flex items-center gap-1 text-[10px] font-bold text-slate-700 bg-[#FAF7F2] border border-[#E8DFD1] px-2.5 py-1 rounded-lg">
-                  2-Week Working Sprints
-                </span>
-              </div>
-            </div>
-
-            {/* Pillar 3: Core Values */}
-            <div className="group relative flex flex-col justify-between rounded-3xl border border-[#E8DFD1] bg-white p-7 sm:p-8 shadow-xs hover:border-amber-400 hover:shadow-xl hover:shadow-amber-700/10 hover:-translate-y-1.5 transition-all duration-300 overflow-hidden">
-              <div className="absolute top-3 right-6 text-7xl font-serif font-black text-amber-700/5 select-none pointer-events-none group-hover:text-amber-700/10 transition-colors">
-                03
-              </div>
-
-              <div className="relative z-10 space-y-5">
-                <div className="flex items-center justify-between">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-amber-50 border border-amber-200 text-amber-800 group-hover:bg-amber-700 group-hover:text-white transition-all shadow-xs">
-                    <Award className="h-5 w-5" />
-                  </div>
-                  <span className="rounded-full bg-amber-50 border border-amber-200/90 px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-amber-800">
-                    CORE VALUES
-                  </span>
-                </div>
-
-                <blockquote className="text-lg sm:text-xl font-bold text-slate-950 leading-snug tracking-tight">
-                  “{siteConfig.values}”
-                </blockquote>
-
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-                  Committed to achieve business excellence through cost-effective, dependable solutions and rigorous quality engineering that exceeds expectations.
-                </p>
-              </div>
-
-              <div className="relative z-10 mt-6 pt-4 border-t border-[#E8DFD1] flex flex-wrap items-center gap-2">
-                <span className="inline-flex items-center gap-1 text-[10px] font-bold text-amber-800 bg-[#FAF7F2] border border-[#E8DFD1] px-2.5 py-1 rounded-lg">
-                  <Sparkles className="h-3 w-3 text-amber-700" />
-                  Business Excellence
-                </span>
-                <span className="inline-flex items-center gap-1 text-[10px] font-bold text-slate-700 bg-[#FAF7F2] border border-[#E8DFD1] px-2.5 py-1 rounded-lg">
-                  Fixed Milestone Pricing
-                </span>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        {/* WHAT WE DO SECTION */}
-        <div className="space-y-10 text-left">
-          <div>
-            <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-amber-800 mb-2">
-              <span className="w-4 h-[2px] bg-amber-700 rounded-full" />
-              <span>COMPREHENSIVE CAPABILITIES</span>
-            </div>
-            <h2 className="text-2xl sm:text-4xl font-black text-slate-950 tracking-tight">
-              What We Do & What We Provide
-            </h2>
-            <p className="text-sm text-slate-600 max-w-2xl mt-2">
-              From responsive static and dynamic website design to enterprise-grade SEO and custom software suites, we power modern digital businesses.
-            </p>
-          </div>
-
-          {/* Sub-block A: We Offer */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-bold text-slate-950 flex items-center gap-2">
-              <span className="w-4 h-[2px] bg-amber-700 rounded-full" />
-              <span>We Offer:</span>
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {whatWeOffer.map((item, idx) => {
-                const ItemIcon = item.icon;
                 return (
-                  <div
-                    key={idx}
-                    className="rounded-2xl border border-[#E8DFD1] bg-white p-6 hover:border-amber-400 hover:shadow-md transition-all space-y-2.5"
+                  <button
+                    key={pillar.id}
+                    onClick={() => setActivePillarIndex(idx)}
+                    className={`relative flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${
+                      isActive
+                        ? 'text-white'
+                        : 'text-slate-600 hover:text-slate-950 hover:bg-stone-50'
+                    }`}
                   >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-50 text-amber-800 border border-amber-200">
-                      <ItemIcon className="h-5 w-5" />
-                    </div>
-                    <h4 className="text-base font-bold text-slate-950 leading-snug">
-                      {item.title}
-                    </h4>
-                    <p className="text-xs text-slate-600 leading-relaxed font-normal">
-                      {item.desc}
-                    </p>
-                  </div>
+                    {isActive && (
+                      <motion.div
+                        layoutId="active-pillar-indicator"
+                        className="absolute inset-0 bg-amber-800 rounded-xl shadow-sm"
+                        transition={{ type: 'spring', stiffness: 450, damping: 35 }}
+                      />
+                    )}
+                    <span className="relative z-10 flex items-center gap-1.5">
+                      <Icon className="h-3.5 w-3.5" />
+                      <span>{pillar.label}</span>
+                    </span>
+                  </button>
                 );
               })}
             </div>
           </div>
 
-          {/* Sub-block B: We Provide */}
-          <div className="space-y-4 pt-4">
-            <h3 className="text-lg font-bold text-slate-950 flex items-center gap-2">
-              <span className="w-4 h-[2px] bg-amber-700 rounded-full" />
-              <span>We Provide The Following Services:</span>
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              {whatWeProvide.map((item, idx) => {
-                const ItemIcon = item.icon;
-                return (
-                  <div
-                    key={idx}
-                    className="rounded-2xl border border-[#E8DFD1] bg-white p-6 hover:border-amber-500 hover:shadow-md transition-all space-y-2.5"
-                  >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-50 text-amber-800 border border-amber-200">
-                      <ItemIcon className="h-5 w-5" />
+          {/* Interactive Feature Card */}
+          <div className="rounded-3xl border border-[#E8DFD1] bg-white p-6 sm:p-10 shadow-xs relative overflow-hidden transition-all">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentPillar.id}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.25, ease: 'easeOut' }}
+                className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
+              >
+                {/* Left: Quote & Narrative (7 cols) */}
+                <div className="lg:col-span-7 space-y-6">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-amber-50 border border-amber-200 text-amber-800">
+                      <CurrentIcon className="h-5 w-5" />
                     </div>
-                    <h4 className="text-base font-bold text-slate-950 leading-snug">
-                      {item.title}
-                    </h4>
-                    <p className="text-xs text-slate-600 leading-relaxed font-normal">
-                      {item.desc}
-                    </p>
+                    <div>
+                      <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-amber-800 block">
+                        PILLAR {currentPillar.number} • {currentPillar.tag}
+                      </span>
+                      <h3 className="text-lg font-black text-slate-950">
+                        {currentPillar.label}
+                      </h3>
+                    </div>
                   </div>
-                );
-              })}
-            </div>
+
+                  <blockquote className="text-xl sm:text-2xl lg:text-3xl font-black text-slate-950 leading-tight tracking-tight border-l-4 border-amber-700 pl-4 py-1">
+                    “{currentPillar.quote}”
+                  </blockquote>
+
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                    {currentPillar.description}
+                  </p>
+
+                  {/* Micro metric bar */}
+                  <div className="flex items-center gap-3 pt-2">
+                    <div className="h-2 w-2 rounded-full bg-amber-700 animate-pulse" />
+                    <span className="text-xs font-bold text-slate-800">
+                      {currentPillar.metricValue}
+                    </span>
+                    <span className="text-xs text-slate-400">•</span>
+                    <span className="text-xs text-slate-500 font-medium">
+                      {currentPillar.metricLabel}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Right: Key Principles List (5 cols) */}
+                <div className="lg:col-span-5 bg-[#FAF7F2] rounded-2xl border border-[#E8DFD1] p-6 space-y-4">
+                  <div className="flex items-center justify-between border-b border-[#E8DFD1] pb-3">
+                    <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-500">
+                      Key Engineering Pillars
+                    </span>
+                    <Sparkles className="h-4 w-4 text-amber-700" />
+                  </div>
+
+                  <ul className="space-y-3">
+                    {currentPillar.highlights.map((item, idx) => (
+                      <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm font-bold text-slate-800">
+                        <CheckCircle2 className="h-4 w-4 text-amber-700 shrink-0 mt-0.5" />
+                        <span className="leading-snug">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
 
@@ -376,10 +294,10 @@ export function InteractiveAboutHub() {
           <div>
             <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-amber-800 mb-2">
               <span className="w-4 h-[2px] bg-amber-700 rounded-full" />
-              <span>OUR COMMITMENT TO EXCELLENCE</span>
+              <span>OUR COMMITMENTS</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-slate-950 tracking-tight">
-              4 Guarantees We Give to Every Client.
+              4 Guarantees to Every Client
             </h2>
           </div>
 

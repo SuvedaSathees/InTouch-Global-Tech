@@ -1,341 +1,690 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { RefreshCw, Code2, Layers, Database, Terminal, Shield, Cpu, Laptop, Activity } from 'lucide-react';
+import React, { useRef, useState } from 'react';
+import Image, { StaticImageData } from 'next/image';
+import mathiAvatar from '@/app/terms/mathi.png';
+import sriAvatar from '@/app/terms/sri.png';
+import suvedaAvatar from '@/app/terms/suve.png';
+import vigneshAvatar from '@/app/terms/vicky.png';
+import sivaAvatar from '@/app/terms/siva.png';
+import sanAvatar from '@/app/terms/san.png';
+import naveenAvatar from '@/app/terms/naveen.png';
+import { motion, useScroll, useTransform, useSpring, useMotionValue } from 'framer-motion';
+import {
+  CheckCircle2,
+  Mail,
+  Linkedin,
+  ArrowUpRight,
+  Database,
+  Layers,
+  Terminal,
+  Shield,
+  Laptop,
+  Activity,
+  Briefcase,
+  Code2,
+  Sparkles,
+  Award,
+  Zap,
+  Globe,
+  Radio,
+  Cpu,
+  Fingerprint,
+  Quote,
+} from 'lucide-react';
 
 export type TeamMember = {
   id: number;
+  number: string;
   name: string;
   role: string;
-  initials: string;
-  seatNumber: string;
+  tagline: string;
+  avatar?: string | StaticImageData | null;
+  avatarClassName?: string;
+  avatarStyle?: React.CSSProperties;
+  department: string;
+  about: string;
+  philosophy: string;
+  experience: string;
+  stack: string[];
+  expertise: string[];
+  email: string;
+  linkedin: string;
+  color: string;
+  glowColor: string;
+  gradient: string;
   icon: typeof Code2;
-  // Position around the table in percentage coordinates
-  posX: number;
-  posY: number;
-  laserTargetX: number;
-  laserTargetY: number;
 };
 
-const members: TeamMember[] = [
+const teamMembers: TeamMember[] = [
   {
     id: 0,
+    number: '01',
     name: 'Srimun S S',
-    role: 'Principal Systems Architect',
-    initials: 'SS',
-    seatNumber: '01',
-    icon: Database,
-    posX: 25,
-    posY: 9,
-    laserTargetX: -140,
-    laserTargetY: -100,
+    role: 'Full Stack Lead',
+    tagline: 'Enterprise Full-Stack Architecture & Microservices',
+    department: 'Enterprise Engineering',
+    avatar: sriAvatar,
+    avatarClassName: 'scale-[1.14] -translate-x-[30px] -translate-y-[40px]',
+    about: 'Leads end-to-end full stack architecture, bridge systems, database integrations, and scalable client application delivery.',
+    philosophy: '"Seamless bridges between client interfaces and core servers."',
+    experience: '9+ Yrs Full Stack',
+    stack: ['Next.js 14', 'React 18', 'TypeScript', 'Prisma', 'Tailwind', 'Docker'],
+    expertise: [
+      'Full-Stack Architecture',
+      'Next.js & React 18',
+      'Enterprise System Design',
+      'Cross-Platform Engineering',
+    ],
+    email: 'srimun@example.com',
+    linkedin: 'https://linkedin.com',
+    color: '#b45309',
+    glowColor: 'rgba(180, 83, 9, 0.45)',
+    gradient: 'from-amber-700 to-yellow-900',
+    icon: Layers,
   },
   {
     id: 1,
+    number: '02',
     name: 'Suveda S',
-    role: 'Product Lead',
-    initials: 'SS',
-    seatNumber: '02',
-    icon: Layers,
-    posX: 50,
-    posY: 7,
-    laserTargetX: 0,
-    laserTargetY: -120,
+    role: 'Backend Lead',
+    tagline: 'High-Concurrency Systems & Scalable Core APIs',
+    department: 'Core Architecture & APIs',
+    avatar: suvedaAvatar,
+    avatarClassName: 'scale-[0.96] -translate-x-[30px] translate-y-[15px]',
+    about: 'Architects enterprise server backends, distributed SQL databases, secure REST/GraphQL endpoints, and high-concurrency cloud backend engines.',
+    philosophy: '"Resilient systems are engineered from the schema upwards."',
+    experience: '8+ Yrs Core Backend',
+    stack: ['Node.js', 'Python', 'PostgreSQL', 'Redis', 'GraphQL', 'AWS'],
+    expertise: [
+      'Core Node.js & Python',
+      'PostgreSQL & Cloud DB',
+      'High-Speed Microservices',
+      'Data Security & Auth',
+    ],
+    email: 'suveda@example.com',
+    linkedin: 'https://linkedin.com',
+    color: '#d97706',
+    glowColor: 'rgba(217, 119, 6, 0.45)',
+    gradient: 'from-amber-600 to-amber-800',
+    icon: Database,
   },
   {
     id: 2,
+    number: '03',
     name: 'Vignesh K',
-    role: 'Backend Architect',
-    initials: 'VK',
-    seatNumber: '03',
+    role: 'Frontend Lead',
+    tagline: 'Pixel-Perfect Web Experiences & Motion Systems',
+    department: 'Web Interfaces & Motion',
+    avatar: vigneshAvatar,
+    avatarClassName: 'scale-[1.06] -translate-y-[30px]',
+    about: 'Crafts pixel-perfect, lightning-fast user interfaces, design system components, micro-animations, and fluid responsive layouts.',
+    philosophy: '"Motion should feel natural, intentional, and instantaneous."',
+    experience: '7+ Yrs Frontend',
+    stack: ['React', 'Next.js', 'Framer Motion', 'WebGL', 'Tailwind CSS'],
+    expertise: [
+      'Next.js & TypeScript',
+      'Responsive Web Architecture',
+      'State Management & UX',
+      'Fluid Micro-Animations',
+    ],
+    email: 'vignesh@example.com',
+    linkedin: 'https://linkedin.com',
+    color: '#2563eb',
+    glowColor: 'rgba(37, 99, 235, 0.45)',
+    gradient: 'from-blue-600 to-indigo-800',
     icon: Terminal,
-    posX: 75,
-    posY: 9,
-    laserTargetX: 140,
-    laserTargetY: -100,
   },
   {
     id: 3,
-    name: 'Sivaraj A',
-    role: 'DevOps Lead',
-    initials: 'SA',
-    seatNumber: '04',
-    icon: Shield,
-    posX: 8,
-    posY: 50,
-    laserTargetX: -260,
-    laserTargetY: 0,
+    number: '04',
+    name: 'Sandhiya M',
+    role: 'Product & Solutions Lead',
+    tagline: 'Agile Delivery Strategy & Client Roadmap Acceleration',
+    department: 'Product Strategy & Agile',
+    avatar: sanAvatar,
+    avatarClassName: 'scale-[0.92] -translate-x-[20px] translate-y-[30px]',
+    about: 'Translates complex business challenges into clear agile roadmaps, scope definitions, client deliverables, and 2-week sprint releases.',
+    philosophy: '"Clarity in sprint scoping guarantees on-time delivery."',
+    experience: '6+ Yrs Product Strategy',
+    stack: ['Agile Sprints', 'Jira', 'Figma', 'System Architecture', 'Roadmaps'],
+    expertise: [
+      'Product Feature Scoping',
+      '2-Week Agile Delivery',
+      'Client Milestone Assurance',
+      'Roadmap Acceleration',
+    ],
+    email: 'sandhiya@example.com',
+    linkedin: 'https://linkedin.com',
+    color: '#ea580c',
+    glowColor: 'rgba(234, 88, 12, 0.45)',
+    gradient: 'from-orange-600 to-red-800',
+    icon: Briefcase,
   },
   {
     id: 4,
-    name: 'Sunmathi S',
-    role: 'AI & Data Lead',
-    initials: 'SS',
-    seatNumber: '05',
-    icon: Cpu,
-    posX: 25,
-    posY: 91,
-    laserTargetX: -140,
-    laserTargetY: 100,
+    number: '05',
+    name: 'Naveen J',
+    role: 'QA & Automation Lead',
+    tagline: 'Zero-Defect Software Stability & Continuous Testing',
+    department: 'Quality Assurance & Testing',
+    avatar: naveenAvatar,
+    avatarClassName: 'scale-[0.88] -translate-x-[20px] translate-y-[45px]',
+    about: 'Guarantees rock-solid software stability through comprehensive automated E2E test suites, load testing, and regression audits.',
+    philosophy: '"Automated testing is the bedrock of rapid production cycles."',
+    experience: '6+ Yrs QA Engineering',
+    stack: ['Playwright', 'Cypress', 'Jest', 'Postman', 'k6 Load Test'],
+    expertise: [
+      'End-to-End Test Automation',
+      'Playwright & Cypress E2E',
+      'Security Penetration Testing',
+      'Continuous Validation',
+    ],
+    email: 'naveen@example.com',
+    linkedin: 'https://linkedin.com',
+    color: '#dc2626',
+    glowColor: 'rgba(220, 38, 38, 0.45)',
+    gradient: 'from-red-600 to-rose-900',
+    icon: Activity,
   },
   {
     id: 5,
-    name: 'Sandhiya M',
+    number: '06',
+    name: 'Sunmathi S',
     role: 'UI/UX Lead',
-    initials: 'SM',
-    seatNumber: '06',
+    tagline: 'Conversion-Engineered Design Systems & Interfaces',
+    department: 'Design Systems & UX',
+    avatar: mathiAvatar,
+    avatarClassName: 'scale-[1.32] -translate-y-[90px]',
+    about: 'Creates high-converting web experiences, bespoke design tokens, user flow wireframes, and intuitive interaction design systems.',
+    philosophy: '"Design is how it works, how it feels, and how it converts."',
+    experience: '6+ Yrs UI/UX Design',
+    stack: ['Figma', 'Design Tokens', 'Prototyping', 'User Research', 'Design Systems'],
+    expertise: [
+      'Figma Design Systems',
+      'User Research & Wireframing',
+      'High-Converting UI/UX',
+      'Micro-Interactions & Motion',
+    ],
+    email: 'sunmathi@example.com',
+    linkedin: 'https://linkedin.com',
+    color: '#059669',
+    glowColor: 'rgba(5, 150, 105, 0.45)',
+    gradient: 'from-emerald-600 to-teal-900',
     icon: Laptop,
-    posX: 50,
-    posY: 93,
-    laserTargetX: 0,
-    laserTargetY: 120,
   },
   {
     id: 6,
-    name: 'Subhasri A',
-    role: 'QA & Automation Lead',
-    initials: 'SA',
-    seatNumber: '07',
-    icon: Activity,
-    posX: 75,
-    posY: 91,
-    laserTargetX: 140,
-    laserTargetY: 100,
+    number: '07',
+    name: 'Sivaraj A',
+    role: 'DevOps & Cloud Lead',
+    tagline: 'Cloud Infrastructure, Kubernetes & 99.99% SLA Uptime',
+    department: 'Infrastructure & Uptime',
+    avatar: sivaAvatar,
+    avatarClassName: 'scale-[1.12] -translate-x-[40px] -translate-y-[55px]',
+    about: 'Maintains 99.99% high availability, Kubernetes cloud clusters, zero-downtime CI/CD pipelines, and automated server scaling.',
+    philosophy: '"Zero downtime through redundant, multi-region cloud topology."',
+    experience: '8+ Yrs Cloud DevOps',
+    stack: ['AWS', 'Cloudflare', 'Docker', 'Kubernetes', 'Terraform', 'CI/CD'],
+    expertise: [
+      'Docker & Kubernetes',
+      'AWS & Cloudflare Infra',
+      'Automated CI/CD Pipelines',
+      '99.99% Server SLA Uptime',
+    ],
+    email: 'sivaraj@example.com',
+    linkedin: 'https://linkedin.com',
+    color: '#0284c7',
+    glowColor: 'rgba(2, 132, 199, 0.45)',
+    gradient: 'from-sky-600 to-cyan-900',
+    icon: Shield,
   },
 ];
 
 export function TeamRoundTable() {
-  const [activeId, setActiveId] = useState(1); // Suveda S active by default
-  const [autoRotate, setAutoRotate] = useState(true);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (!autoRotate) return;
-    const interval = setInterval(() => {
-      setActiveId((prev) => (prev + 1) % members.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, [autoRotate]);
+  // Mouse interaction for interactive 3D perspective tilt
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const tiltX = useSpring(useTransform(mouseY, [-0.5, 0.5], [7, -7]), { stiffness: 180, damping: 25 });
+  const tiltY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-7, 7]), { stiffness: 180, damping: 25 });
 
-  const activeMember = members[activeId];
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    mouseX.set(x);
+    mouseY.set(y);
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
+
+  // Track vertical scroll through the pinned theater section
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end end'],
+  });
+
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 280,
+    damping: 36,
+    mass: 0.75,
+  });
+
+  const totalMembers = teamMembers.length;
 
   return (
-    <div className="relative bg-[#FAF7F2] text-slate-900 select-none pt-28 pb-24 sm:pb-32 overflow-hidden">
-      {/* Precision Blueprint Ambient Grid */}
+    <div
+      ref={containerRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className="relative bg-[#FAF7F2] text-slate-900"
+      style={{
+        height: `${totalMembers * 115}vh`,
+      }}
+    >
+      {/* Precision Blueprint Grid */}
       <div
-        className="absolute inset-0 opacity-[0.025] pointer-events-none"
+        className="absolute inset-0 opacity-[0.035] pointer-events-none"
         style={{
           backgroundImage:
             'linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)',
-          backgroundSize: '40px 40px',
+          backgroundSize: '48px 48px',
         }}
       />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[550px] bg-amber-500/10 rounded-full blur-[140px] pointer-events-none" />
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 z-10 space-y-8">
+      {/* Floating Animated Geometric Particle Matrix in Background */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <motion.div
+          animate={{
+            rotate: [0, 360],
+            scale: [1, 1.05, 1],
+          }}
+          transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
+          className="absolute -top-32 -left-32 w-[600px] h-[600px] rounded-full border border-amber-800/[0.04] border-dashed pointer-events-none"
+        />
+        <motion.div
+          animate={{
+            rotate: [360, 0],
+            scale: [1, 1.08, 1],
+          }}
+          transition={{ duration: 48, repeat: Infinity, ease: 'linear' }}
+          className="absolute -bottom-40 -right-40 w-[700px] h-[700px] rounded-full border border-amber-800/[0.04] border-dashed pointer-events-none"
+        />
+      </div>
+
+      {/* ========================================================================= */}
+      {/* 🎬 100VH STICKY PINNED STORYTELLING THEATER */}
+      {/* ========================================================================= */}
+      <div className="sticky top-0 h-screen w-full flex flex-col justify-between overflow-hidden px-4 sm:px-8 lg:px-16 py-6 sm:py-8 z-10 select-none">
         
-        {/* HEADER: Title & Auto-Cycle Controls */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 text-left">
-          <div>
-            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-800 mb-2">
-              <span className="w-5 h-[2px] bg-amber-700 rounded-full" />
-              <span>THE ENGINEERING CORE</span>
-            </div>
-            <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-slate-950 leading-tight">
-              The People Behind the System
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-600 mt-1 font-normal max-w-2xl">
-              Seven disciplines. One collaborative engineering table.
-            </p>
+        {/* Top Header with Live Activity Beacon & Audio Waveform */}
+        <div className="max-w-7xl mx-auto w-full flex items-center justify-between z-30 pb-3 border-b border-[#E8DFD1]">
+          <div className="flex items-center gap-3">
+            <span className="w-6 h-[2px] bg-gradient-to-r from-amber-700 to-amber-500 rounded-full" />
+            <span className="text-xs font-bold uppercase tracking-wider text-amber-800">
+              EXECUTIVE ENGINEERING CORE
+            </span>
           </div>
 
-          <div className="flex items-center gap-3 shrink-0">
-            <button
-              onClick={() => setAutoRotate(!autoRotate)}
-              className="inline-flex items-center gap-2 text-xs font-mono font-bold text-slate-700 hover:text-amber-800 bg-white px-3.5 py-2 rounded-xl border border-[#E8DFD1] shadow-2xs transition-all cursor-pointer"
-            >
-              <RefreshCw className={`h-3.5 w-3.5 ${autoRotate ? 'animate-spin text-amber-700' : ''}`} />
-              <span>{autoRotate ? 'Auto-Cycle: ON' : 'Auto-Cycle: PAUSED'}</span>
-            </button>
+          <div className="flex items-center gap-3">
+            {/* Live Audio / Frequency Waveform Indicator */}
+            <div className="hidden sm:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white border border-[#E8DFD1] shadow-2xs text-[11px] font-mono font-bold text-amber-900">
+              <span className="flex items-end gap-[2px] h-3">
+                {[0.4, 0.9, 0.6, 1.0, 0.5, 0.8, 0.3].map((h, i) => (
+                  <motion.span
+                    key={i}
+                    animate={{ height: ['25%', '100%', '25%'] }}
+                    transition={{
+                      duration: 0.8 + i * 0.15,
+                      repeat: Infinity,
+                      ease: 'easeInOut',
+                    }}
+                    className="w-[2px] bg-amber-700 rounded-full"
+                    style={{ height: `${h * 100}%` }}
+                  />
+                ))}
+              </span>
+              <span className="pl-1">LIVE PRODUCTION SPRINT</span>
+            </div>
+
+            <div className="flex items-center gap-2 text-xs font-mono font-bold text-slate-400">
+              <span className="h-1.5 w-1.5 rounded-full bg-amber-600 animate-ping" />
+              <span>SCROLL TO CYCLE</span>
+            </div>
           </div>
         </div>
 
-        {/* 🎬 100% PURE CODE & VECTOR COLLABORATIVE BOARDROOM TABLE */}
-        <div className="relative mx-auto w-full max-w-5xl rounded-3xl sm:rounded-[44px] border border-[#E8DFD1] bg-gradient-to-b from-[#F4EEE4] via-[#F4EEE4]/80 to-[#EAE0D1]/60 p-4 sm:p-8 shadow-2xl overflow-hidden min-h-[580px] sm:min-h-[640px] flex items-center justify-center">
-          
-          {/* Animated Table SVG Laser Beams & Photons */}
-          <svg
-            viewBox="-400 -240 800 480"
-            className="absolute inset-0 w-full h-full pointer-events-none overflow-visible z-10"
-          >
-            {/* Concentric Telemetry Orbital Rings on Table Surface */}
-            <circle
-              cx="0"
-              cy="0"
-              r="220"
-              fill="none"
-              stroke="#b45309"
-              strokeOpacity="0.16"
-              strokeWidth="1"
-              strokeDasharray="4 4"
-            />
-            <ellipse
-              cx="0"
-              cy="0"
-              rx="340"
-              ry="180"
-              fill="none"
-              stroke="#b45309"
-              strokeOpacity="0.18"
-              strokeWidth="1.2"
-              strokeDasharray="6 6"
-            />
+        {/* ========================================================================= */}
+        {/* CENTER CINEMATIC STAGE */}
+        {/* ========================================================================= */}
+        <div className="relative flex-1 w-full max-w-7xl mx-auto flex items-center justify-center my-auto">
+          {teamMembers.map((member, index) => {
+            const isFirst = index === 0;
+            const isLast = index === totalMembers - 1;
+            const step = 1 / totalMembers;
+            const start = index * step;
+            const center = start + step * 0.5;
+            const end = (index + 1) * step;
 
-            {/* Connecting Lasers & Animated Data Photons */}
-            {members.map((member) => {
-              const isSelected = activeMember.id === member.id;
-              const x2 = member.laserTargetX;
-              const y2 = member.laserTargetY;
+            // Horizontal position: Member 01 is centered at scroll 0
+            const x = useTransform(
+              smoothProgress,
+              isFirst
+                ? [0, end - step * 0.35, end]
+                : isLast
+                ? [start, start + step * 0.35, 1]
+                : [start, start + step * 0.35, end - step * 0.35, end],
+              isFirst
+                ? ['0vw', '0vw', '-65vw']
+                : isLast
+                ? ['65vw', '0vw', '0vw']
+                : ['65vw', '0vw', '0vw', '-65vw']
+            );
 
-              return (
-                <g key={member.id}>
-                  <line
-                    x1="0"
-                    y1="0"
-                    x2={x2}
-                    y2={y2}
-                    stroke={isSelected ? '#b45309' : '#cbd5e1'}
-                    strokeWidth={isSelected ? '2.5' : '1'}
-                    strokeDasharray={isSelected ? 'none' : '4 4'}
-                    className="transition-colors duration-300"
-                  />
+            // Opacity: Member 01 starts at 1 at scroll 0
+            const opacity = useTransform(
+              smoothProgress,
+              isFirst
+                ? [0, end - step * 0.25, end]
+                : isLast
+                ? [start, start + step * 0.25, 1]
+                : [start, start + step * 0.25, end - step * 0.25, end],
+              isFirst
+                ? [1, 1, 0]
+                : isLast
+                ? [0, 1, 1]
+                : [0, 1, 1, 0]
+            );
 
-                  {isSelected && (
-                    <line
-                      x1="0"
-                      y1="0"
-                      x2={x2}
-                      y2={y2}
-                      stroke="#f59e0b"
-                      strokeWidth="6"
-                      strokeOpacity="0.35"
-                      strokeLinecap="round"
-                    />
-                  )}
+            // Scale: Member 01 starts at full scale 1 at scroll 0
+            const scale = useTransform(
+              smoothProgress,
+              isFirst
+                ? [0, end - step * 0.35, end]
+                : isLast
+                ? [start, start + step * 0.35, 1]
+                : [start, center, end],
+              isFirst
+                ? [1, 1, 0.84]
+                : isLast
+                ? [0.84, 1, 1]
+                : [0.84, 1, 0.84]
+            );
 
-                  <circle
-                    r={isSelected ? '4' : '2'}
-                    fill={isSelected ? '#f59e0b' : '#94a3b8'}
-                  >
-                    <animateMotion
-                      path={`M ${x2} ${y2} L 0 0`}
-                      dur={isSelected ? '1s' : '2.5s'}
-                      repeatCount="indefinite"
-                    />
-                  </circle>
-                </g>
-              );
-            })}
-          </svg>
+            // Subtle 3D Perspective Rotation Y as it travels horizontally
+            const rotateY = useTransform(
+              smoothProgress,
+              isFirst
+                ? [0, end - step * 0.35, end]
+                : isLast
+                ? [start, start + step * 0.35, 1]
+                : [start, center, end],
+              isFirst
+                ? [0, 0, -16]
+                : isLast
+                ? [16, 0, 0]
+                : [16, 0, -16]
+            );
 
-          {/* 🪑 CENTRAL WALNUT BOARDROOM CONFERENCE TABLE (Pure Code & CSS) */}
-          <div
-            className="relative w-full max-w-3xl rounded-[32px] sm:rounded-[44px] border-[3px] border-[#d97706]/70 p-4 sm:p-8 shadow-[0_25px_60px_rgba(69,26,3,0.3),0_0_40px_rgba(217,119,6,0.15)] flex items-center justify-center z-20 my-16 sm:my-20 overflow-hidden min-h-[300px]"
-            style={{
-              background: 'radial-gradient(ellipse at 50% 30%, #92400e 0%, #78350f 50%, #451a03 100%)',
-            }}
-          >
-            {/* Table Inlay Brass Seam */}
-            <div className="absolute inset-2 sm:inset-3 rounded-[24px] sm:rounded-[36px] border border-[#fbbf24]/30 pointer-events-none animate-pulse" />
-            
-            {/* 🛰 CENTRAL ACTIVE FOCUSED ENGINEER CARD (Name and Work Alone) */}
-            <div className="relative z-10 w-full max-w-md rounded-2xl sm:rounded-3xl border border-[#E8DFD1] bg-white/95 backdrop-blur-md p-5 sm:p-6 shadow-2xl text-center">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeMember.id}
-                  initial={{ opacity: 0, scale: 0.95, y: 6 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.95, y: -6 }}
-                  transition={{ duration: 0.2, ease: 'easeOut' }}
-                  className="space-y-2"
-                >
-                  <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-amber-700 text-white font-black text-lg shadow-sm">
-                    {activeMember.initials}
-                  </div>
-                  
-                  <div className="pt-1">
-                    <h3 className="text-xl sm:text-2xl font-black text-slate-950 leading-tight">
-                      {activeMember.name}
-                    </h3>
-                    <p className="text-sm font-bold text-amber-800 leading-tight mt-1">
-                      {activeMember.role}
-                    </p>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-          </div>
+            // Left text parallax slide
+            const leftTextX = useTransform(
+              smoothProgress,
+              isFirst
+                ? [0, end - step * 0.35, end]
+                : isLast
+                ? [start, start + step * 0.35, 1]
+                : [start, start + step * 0.35, end - step * 0.35, end],
+              isFirst
+                ? ['0px', '0px', '-55px']
+                : isLast
+                ? ['55px', '0px', '0px']
+                : ['55px', '0px', '0px', '-55px']
+            );
 
-          {/* 📍 7 ANIMATED SEATED ENGINEER WORKSTATION NODES AROUND TABLE */}
-          {members.map((member, index) => {
-            const isSelected = activeMember.id === member.id;
+            // Right text parallax slide
+            const rightTextX = useTransform(
+              smoothProgress,
+              isFirst
+                ? [0, end - step * 0.35, end]
+                : isLast
+                ? [start, start + step * 0.35, 1]
+                : [start, start + step * 0.35, end - step * 0.35, end],
+              isFirst
+                ? ['0px', '0px', '-55px']
+                : isLast
+                ? ['55px', '0px', '0px']
+                : ['55px', '0px', '0px', '-55px']
+            );
+
             const Icon = member.icon;
 
             return (
-              <div
+              <motion.div
                 key={member.id}
                 style={{
-                  position: 'absolute',
-                  left: `${member.posX}%`,
-                  top: `${member.posY}%`,
-                  transform: 'translate(-50%, -50%)',
-                  zIndex: isSelected ? 35 : 25,
+                  x,
+                  opacity,
+                  scale,
+                  rotateY,
+                  perspective: 1400,
+                  pointerEvents: opacity === 0 ? 'none' : 'auto',
                 }}
+                className="absolute inset-0 flex items-center justify-center"
               >
-                <motion.button
+                {/* Dynamic Ambient Spotlight Glow with breathing pulsing aura */}
+                <motion.div
                   animate={{
-                    y: isSelected ? [0, -5, 0] : [0, -2, 0],
+                    scale: [1, 1.08, 1],
+                    opacity: [0.4, 0.55, 0.4],
                   }}
-                  transition={{
-                    duration: 3 + (index % 3) * 0.5,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                  }}
-                  whileHover={{ scale: 1.08 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => {
-                    setActiveId(member.id);
-                    setAutoRotate(false);
-                  }}
-                  className={`relative flex items-center gap-2 p-2 sm:p-2.5 rounded-2xl transition-all cursor-pointer text-left ${
-                    isSelected
-                      ? 'bg-white border-2 border-amber-600 shadow-xl shadow-amber-700/25 ring-4 ring-amber-500/25'
-                      : 'bg-white/95 hover:bg-white border border-[#E8DFD1] shadow-xs hover:border-amber-400'
-                  }`}
-                >
-                  <div
-                    className={`flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl transition-colors shrink-0 ${
-                      isSelected
-                        ? 'bg-amber-700 text-white shadow-xs'
-                        : 'bg-amber-50 text-amber-800'
-                    }`}
+                  transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[780px] h-[550px] rounded-full blur-[160px] pointer-events-none"
+                  style={{ backgroundColor: member.glowColor }}
+                />
+
+                <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10 items-center relative z-10">
+                  
+                  {/* --------------------------------------------------------------- */}
+                  {/* LEFT SIDE: MEMBER IDENTITY & STYLED BADGES */}
+                  {/* --------------------------------------------------------------- */}
+                  <motion.div
+                    style={{ x: leftTextX }}
+                    className="lg:col-span-4 text-left space-y-4 order-2 lg:order-1 relative"
                   >
-                    <Icon className="h-4 w-4 sm:h-4.5 sm:w-4.5" />
+                    {/* Giant Translucent Watermark Number with Glow */}
+                    <span className="absolute -top-20 -left-6 text-[10rem] font-black text-slate-900/[0.04] select-none pointer-events-none font-mono">
+                      {member.number}
+                    </span>
+
+                    <div className="relative z-10 space-y-4">
+                      {/* Top Status Pill */}
+                      <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#E8DFD1] shadow-2xs text-xs font-mono font-bold">
+                        <span className="relative flex h-2 w-2">
+                          <span
+                            className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
+                            style={{ backgroundColor: member.color }}
+                          />
+                          <span
+                            className="relative inline-flex rounded-full h-2 w-2"
+                            style={{ backgroundColor: member.color }}
+                          />
+                        </span>
+                        <span className="text-amber-900 font-extrabold tracking-wider">ARCHITECT {member.number}</span>
+                        <span className="text-slate-400">/ 0{totalMembers}</span>
+                      </div>
+
+                      {/* Name with Luxury Typography */}
+                      <h3 className="text-4xl sm:text-6xl font-black tracking-tight leading-[1.04] bg-gradient-to-r from-slate-950 via-slate-900 to-amber-950 bg-clip-text text-transparent">
+                        {member.name}
+                      </h3>
+                    </div>
+                  </motion.div>
+
+                  {/* --------------------------------------------------------------- */}
+                  {/* CENTER HERO: 3D LIVING ANIMATED HERO CARD WITH LASER SCANNER */}
+                  {/* --------------------------------------------------------------- */}
+                  <div className="lg:col-span-4 flex justify-center order-1 lg:order-2">
+                    
+                    {/* Organic Idle Floating + Mouse 3D Tilt Wrapper */}
+                    <motion.div
+                      style={{
+                        rotateX: tiltX,
+                        rotateY: tiltY,
+                      }}
+                      animate={{
+                        y: [0, -10, 0],
+                      }}
+                      transition={{
+                        duration: 4.5,
+                        repeat: Infinity,
+                        ease: 'easeInOut',
+                      }}
+                      className="relative flex items-center justify-center cursor-grab active:cursor-grabbing"
+                    >
+                      {/* Dual Holographic Counter-Rotating Orbital Data Rings */}
+                      <motion.div
+                        animate={{ rotate: 360 }}
+                        transition={{ repeat: Infinity, duration: 26, ease: 'linear' }}
+                        className="absolute -inset-8 border border-dashed rounded-full pointer-events-none opacity-40"
+                        style={{ borderColor: member.color }}
+                      >
+                        <div
+                          className="absolute -top-1.5 left-1/2 w-3.5 h-3.5 rounded-full shadow-lg"
+                          style={{
+                            backgroundColor: member.color,
+                            boxShadow: `0 0 14px 3px ${member.glowColor}`,
+                          }}
+                        />
+                        <div
+                          className="absolute -bottom-1.5 right-1/4 w-2.5 h-2.5 rounded-full shadow-md"
+                          style={{
+                            backgroundColor: member.color,
+                            boxShadow: `0 0 10px 2px ${member.glowColor}`,
+                          }}
+                        />
+                      </motion.div>
+
+                      <motion.div
+                        animate={{ rotate: -360 }}
+                        transition={{ repeat: Infinity, duration: 34, ease: 'linear' }}
+                        className="absolute -inset-14 border border-dotted rounded-full pointer-events-none opacity-25"
+                        style={{ borderColor: member.color }}
+                      />
+
+                      {/* Main Portrait Display (Border-free & Enlarged) */}
+                      <div
+                        className="relative w-72 h-[450px] sm:w-96 sm:h-[560px] md:w-[420px] md:h-[640px] lg:w-[480px] lg:h-[700px] max-h-[80vh] transition-all duration-300"
+                        style={{
+                          filter: `drop-shadow(0 25px 45px ${member.glowColor})`,
+                        }}
+                      >
+                        {/* Photo Container */}
+                        <div className="relative w-full h-full flex items-center justify-center">
+                          {member.avatar ? (
+                            <Image
+                              src={member.avatar}
+                              alt={member.name}
+                              fill
+                              priority={index === 0}
+                              sizes="(max-width: 768px) 384px, (max-width: 1200px) 480px, 600px"
+                              unoptimized
+                              className={`object-contain object-bottom transition-transform duration-300 ${member.avatarClassName || ''}`}
+                              style={member.avatarStyle}
+                            />
+                          ) : (
+                            <div className="relative w-64 h-80 sm:w-72 sm:h-96 rounded-[36px] bg-gradient-to-b from-white/95 to-amber-50/90 border-2 border-dashed border-amber-300/60 p-8 flex flex-col items-center justify-center text-center shadow-2xl backdrop-blur-xl">
+                              <div
+                                className="w-24 h-24 rounded-3xl flex items-center justify-center text-white text-3xl font-black shadow-lg mb-5"
+                                style={{
+                                  background: `linear-gradient(135deg, ${member.color}, #78350f)`,
+                                  boxShadow: `0 10px 30px -5px ${member.glowColor}`,
+                                }}
+                              >
+                                <Icon className="w-12 h-12 text-white/95 stroke-[1.75]" />
+                              </div>
+                              <div className="text-xl font-bold text-slate-900 mb-1">{member.name}</div>
+                              <div className="text-xs font-mono font-bold text-amber-900 tracking-wider uppercase mb-3">{member.role}</div>
+                              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-[#E8DFD1] text-[10px] font-mono text-slate-600 shadow-2xs">
+                                <Sparkles className="w-3 h-3 text-amber-600 animate-spin" style={{ animationDuration: '6s' }} />
+                                <span>PROFILE ACTIVE</span>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </motion.div>
+
                   </div>
 
-                  <div className="hidden sm:block min-w-0 pr-1">
-                    <p className="text-xs font-black text-slate-950 leading-tight truncate">
-                      {member.name}
-                    </p>
-                    <p className="text-[10px] font-bold text-amber-800 truncate">
-                      {member.role}
-                    </p>
-                  </div>
-                </motion.button>
-              </div>
+                  {/* --------------------------------------------------------------- */}
+                  {/* RIGHT SIDE: CLEAN ROLE & SHORT PROFESSIONAL DESCRIPTION */}
+                  {/* --------------------------------------------------------------- */}
+                  <motion.div
+                    style={{ x: rightTextX }}
+                    className="lg:col-span-4 text-left space-y-6 order-3"
+                  >
+                    <div className="space-y-4">
+                      {/* Department / Category Monospace Tag */}
+                      <div className="flex items-center gap-2">
+                        <span className="h-1.5 w-6 rounded-full" style={{ backgroundColor: member.color }} />
+                        <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-amber-800">
+                          {member.department}
+                        </span>
+                      </div>
+
+                      {/* Member Role Title */}
+                      <h4 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-950 tracking-tight leading-[1.08]">
+                        {member.role}
+                      </h4>
+
+                      {/* Clean Professional Description */}
+                      <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+                        {member.about}
+                      </p>
+
+                      {/* Clean Minimalist Key Capabilities */}
+                      <div className="pt-2 space-y-2 border-t border-[#E8DFD1]/80">
+                        <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400">
+                          CORE FOCUS AREAS
+                        </span>
+                        <div className="grid grid-cols-2 gap-2">
+                          {member.expertise.map((tag, i) => (
+                            <div
+                              key={i}
+                              className="flex items-center gap-2 text-xs font-semibold text-slate-800"
+                            >
+                              <CheckCircle2
+                                className="h-4 w-4 shrink-0"
+                                style={{ color: member.color }}
+                              />
+                              <span className="truncate">{tag}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+
+                </div>
+              </motion.div>
             );
           })}
+        </div>
 
+        {/* Floating Quick Switcher Navigation Dock at Bottom */}
+        <div className="max-w-xl mx-auto w-full flex items-center justify-center gap-2 z-30 pt-2">
+          {teamMembers.map((m, idx) => (
+            <motion.div
+              key={m.id}
+              whileHover={{ scale: 1.3 }}
+              className="h-1.5 rounded-full transition-all duration-300 bg-slate-300 hover:bg-amber-600 w-8 cursor-pointer"
+            />
+          ))}
         </div>
 
       </div>

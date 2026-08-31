@@ -5,7 +5,7 @@ export const siteConfig = {
   description:
     "Intouch Global Tech is a leading web development company offering complete web applications, custom software, ERP, HRMS, CRM, Hospital & Pharmacy management systems, SEO, and digital business solutions for global SMB enterprises.",
   url: "https://intouchglobaltech.com",
-  email: "suvedasathees24@gmail.com",
+  email: "intouchglobaltech@gmail.com",
   phone: "+91 8667709294",
   whatsapp: "918667709294",
   businessHours: "Monday – Saturday, 9:00 AM – 7:00 PM (IST)",
@@ -47,7 +47,6 @@ export const siteConfig = {
     { label: "About Us", href: "/about" },
     { label: "Services", href: "/services" },
     { label: "Projects", href: "/projects" },
-    { label: "Team", href: "/team" },
   ],
 };
 
@@ -867,7 +866,7 @@ export const faqs = [
   {
     question: "How do we get started with Intouch Global Tech?",
     answer:
-      "Reach out to us via our contact form, email us at suvedasathees24@gmail.com, or message us directly on WhatsApp at +91 86677 09294. Our engineering leads will review your requirements and respond within 24 hours.",
+      "Reach out to us via our contact form, email us at intouchglobaltech@gmail.com, or message us directly on WhatsApp at +91 86677 09294. Our engineering leads will review your requirements and respond within 24 hours.",
   },
 ];
 

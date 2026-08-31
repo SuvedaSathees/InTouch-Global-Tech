@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X, ArrowRight, ChevronRight } from 'lucide-react';
+import { CompanyLogo } from '@/components/company-logo';
 import { siteConfig } from '@/lib/site-config';
 import { cn } from '@/lib/utils';
 import { MagneticButton } from '@/components/magnetic-button';
@@ -46,17 +47,15 @@ export function Navbar() {
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
           scrolled
-            ? 'bg-[#FAF7F2]/95 backdrop-blur-2xl border-b border-[#E8DFD1] shadow-xs py-3.5'
-            : 'bg-[#FAF7F2]/80 backdrop-blur-md py-4 sm:py-5'
+            ? 'bg-[#FAF7F2]/95 backdrop-blur-2xl border-b border-[#E8DFD1] shadow-xs py-2 sm:py-2.5'
+            : 'bg-[#FAF7F2]/80 backdrop-blur-md py-2.5 sm:py-3.5'
         )}
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* Brand Logo */}
-          <Link href="/" className="flex items-center gap-3 group" aria-label={siteConfig.name}>
-            <div className="relative flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-tr from-amber-600 to-amber-800 text-white font-black shadow-md shadow-amber-700/20 transition-transform duration-300 group-hover:scale-105">
-              <span className="text-sm tracking-tight font-extrabold">IG</span>
-            </div>
-            <span className="text-xl font-black tracking-tight text-slate-950 group-hover:text-amber-700 transition-colors">
+          <Link href="/" className="flex items-center gap-3.5 group" aria-label={siteConfig.name}>
+            <CompanyLogo size={68} className="transition-transform duration-300 group-hover:scale-105" />
+            <span className="text-xl sm:text-2xl font-black tracking-tight text-slate-950 group-hover:text-amber-700 transition-colors">
               {siteConfig.name}
             </span>
           </Link>
@@ -144,10 +143,8 @@ export function Navbar() {
             >
               {/* Header */}
               <div className="flex items-center justify-between border-b border-slate-100 pb-4">
-                <Link href="/" className="flex items-center gap-2.5" onClick={() => setMobileOpen(false)}>
-                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-amber-700 text-white shadow-sm font-bold">
-                    <span className="text-xs font-black">IG</span>
-                  </div>
+                <Link href="/" className="flex items-center gap-3" onClick={() => setMobileOpen(false)}>
+                  <CompanyLogo size={54} />
                   <span className="text-lg font-black text-slate-950">{siteConfig.name}</span>
                 </Link>
                 <button

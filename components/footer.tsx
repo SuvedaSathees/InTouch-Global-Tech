@@ -4,12 +4,12 @@ import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
+import { CompanyLogo } from '@/components/company-logo';
 import { siteConfig } from '@/lib/site-config';
 import {
   Mail,
-  ShieldCheck,
-  MapPin,
   Phone,
+  ShieldCheck,
 } from 'lucide-react';
 
 export function WhatsAppOfficialIcon({ className = "h-5 w-5" }: { className?: string }) {
@@ -29,22 +29,14 @@ export function Footer() {
 
   return (
     <footer className="relative bg-gradient-to-b from-[#F4EEE4]/90 via-[#FAF7F2] to-[#FAF7F2] text-slate-900 pt-16 pb-8 select-none border-t border-[#E8DFD1]">
-      
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 z-10 space-y-12">
-        
         {/* Main 3-Column Split */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-10 border-b border-[#E8DFD1] text-left">
-          
           {/* Column 1: Brand & Bio (5 cols) */}
           <div className="md:col-span-5 space-y-4">
-            <Link href="/" className="inline-flex items-center gap-2.5">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-700 text-white font-bold shadow-md shadow-amber-700/20">
-                <svg width="15" height="15" viewBox="0 0 16 16" fill="none" className="text-white">
-                  <path d="M2 2L8 8L2 14" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
-                  <path d="M8 2L14 8L8 14" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" opacity="0.6" />
-                </svg>
-              </div>
-              <span className="text-2xl font-black tracking-tight text-slate-950">
+            <Link href="/" className="inline-flex items-center gap-4">
+              <CompanyLogo size={80} />
+              <span className="text-2xl sm:text-3xl font-black tracking-tight text-slate-950">
                 {siteConfig.name}
               </span>
             </Link>
@@ -59,11 +51,8 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Column 2: Navigation - One After Next Line (3 cols) */}
+          {/* Column 2: Navigation (3 cols) */}
           <div className="md:col-span-3 space-y-3">
-            <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-400 block mb-2">
-              Navigation
-            </span>
             <ul className="space-y-2.5 text-xs sm:text-sm font-bold text-slate-700">
               <li>
                 <Link href="/" className="hover:text-amber-800 transition-colors inline-block">
@@ -85,72 +74,45 @@ export function Footer() {
                   Projects
                 </Link>
               </li>
-              <li>
-                <Link href="/team" className="hover:text-amber-800 transition-colors inline-block">
-                  Team
-                </Link>
-              </li>
             </ul>
           </div>
 
-          {/* Column 3: Contact & Mail - One After Next Line (4 cols) */}
+          {/* Column 3: Contact & Inquiries (4 cols) */}
           <div className="md:col-span-4 space-y-3">
             <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-400 block mb-2">
               Contact & Inquiries
             </span>
 
-            <div className="space-y-4 text-xs sm:text-sm font-bold text-slate-800">
-              {/* Phone / Contact Line */}
+            <div className="space-y-3 text-xs sm:text-sm font-bold text-slate-800">
+              {/* Phone / Call Line */}
               <div>
-                <span className="text-[10px] font-mono text-slate-400 block uppercase font-medium">
-                  Contact / WhatsApp
-                </span>
                 <a
-                  href={`https://wa.me/918667709294?text=Hello%20${encodeURIComponent(siteConfig.name)},%20I%20would%20like%20to%20inquire%20about%20a%20project.`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-slate-900 hover:text-emerald-600 transition-colors mt-1"
+                  href={`tel:${siteConfig.phone.replace(/\s+/g, '')}`}
+                  className="inline-flex items-center gap-2 text-slate-900 hover:text-amber-800 transition-colors"
                 >
-                  <WhatsAppOfficialIcon className="h-4 w-4 text-emerald-600 shrink-0" />
-                  <span>+91 86677 09294</span>
+                  <Phone className="h-4 w-4 text-amber-700 shrink-0" />
+                  <span>{siteConfig.phone}</span>
                 </a>
               </div>
 
               {/* Email Line */}
               <div>
-                <span className="text-[10px] font-mono text-slate-400 block uppercase font-medium">
-                  Email
-                </span>
                 <a
-                  href={`mailto:${siteConfig.email}`}
-                  className="inline-flex items-center gap-2 text-slate-900 hover:text-amber-800 transition-colors mt-1"
+                  href={`mailto:${siteConfig.email}?subject=Project%20Inquiry%20-%20Intouch%20Global%20Tech`}
+                  className="inline-flex items-center gap-2 text-slate-900 hover:text-amber-800 transition-colors"
                 >
                   <Mail className="h-4 w-4 text-amber-700 shrink-0" />
                   <span>{siteConfig.email}</span>
                 </a>
               </div>
-
-              </div>
-          </div>
-
-        </div>
-
-        {/* Bottom Bar: Copyright & Subtle Trust Badges */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-500">
-          <div>
-            <span>© {currentYear} {siteConfig.name} Studio • All rights reserved</span>
-          </div>
-
-          <div className="flex items-center gap-6">
-            <Link href="/privacy" className="hover:text-slate-900 transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="/terms" className="hover:text-slate-900 transition-colors">
-              Terms of Service
-            </Link>
+            </div>
           </div>
         </div>
 
+        {/* Bottom Bar: Copyright */}
+        <div className="flex items-center justify-center text-center text-xs font-mono text-slate-500">
+          <span>© {currentYear} {siteConfig.name} Studio • All rights reserved</span>
+        </div>
       </div>
     </footer>
   );
@@ -166,7 +128,6 @@ export function WhatsAppButton() {
       return;
     }
 
-    // On home page: hide while in hero section, show when scrolled down to other sections
     const handleScroll = () => {
       if (window.scrollY > 360) {
         setShowButton(true);

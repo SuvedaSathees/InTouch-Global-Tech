@@ -1,16 +1,17 @@
 import type { Metadata } from 'next';
-import { InteractiveServicesStudio } from '@/components/sections/interactive-services-studio';
+import { ServicesPageContent } from '@/components/sections/services-page-content';
 
 export const metadata: Metadata = {
-  title: 'Services & Capabilities',
+  title: 'Services — Everything Your Business Needs. Under One Roof.',
   description:
-    'ERP, CRM, web, mobile, custom software, UI/UX, automation, API development, cloud, and AI integration — everything you need to build, modernize, and scale.',
+    'From your first logo to your latest software upgrade, we help businesses build, automate, create, transform, and grow with technology.',
 };
 
 export default function ServicesPage() {
   return (
     <main>
-      <InteractiveServicesStudio />
+      <ServicesPageContent />
     </main>
   );
 }
+

@@ -1,6 +1,8 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
+import companyLogo from '@/app/terms/logo intouch.png';
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import {
   ArrowRight,
@@ -322,25 +324,22 @@ export function HomeHero() {
                   })}
                 </svg>
 
-                {/* Central Hub: Intouch Global Tech */}
+                {/* Central Hub: Intouch Global Tech Logo Only */}
                 <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  className="relative z-30 flex flex-col items-center justify-center h-36 w-36 sm:h-40 sm:w-40 rounded-full border-2 border-amber-600 bg-white shadow-[0_12px_36px_rgba(180,83,9,0.14)] text-center p-3 cursor-default"
+                  whileHover={{ scale: 1.06 }}
+                  className="relative z-30 flex items-center justify-center h-36 w-36 sm:h-40 sm:w-40 rounded-full border-2 border-amber-600 bg-white shadow-[0_12px_36px_rgba(180,83,9,0.16)] p-3 cursor-default overflow-hidden"
                   style={{ transform: 'translateZ(35px)' }}
                 >
-                  <div className="flex items-center gap-1 mb-0.5">
-                    <span className="h-2 w-2 rounded-full bg-amber-600 animate-pulse" />
-                    <span className="text-[8px] tracking-widest text-amber-700 uppercase font-extrabold">
-                      GLOBAL IT HUB
-                    </span>
+                  <div className="relative w-full h-full flex items-center justify-center">
+                    <Image
+                      src={companyLogo}
+                      alt={siteConfig.name}
+                      width={120}
+                      height={120}
+                      className="object-contain w-full h-full scale-105"
+                      priority
+                    />
                   </div>
-                  <h3 className="text-sm sm:text-base font-black text-slate-950 leading-tight mt-0.5 tracking-tight">
-                    INTOUCH
-                  </h3>
-                  <h3 className="text-xs sm:text-sm font-extrabold text-amber-700 leading-tight tracking-tight">
-                    GLOBAL TECH
-                  </h3>
-                  <p className="text-[8px] text-slate-500 mt-1 font-medium">Core Operational Hub</p>
                 </motion.div>
 
                 {/* 6 Clean Orbiting Capability Cards */}

@@ -23,6 +23,13 @@ import { type Project, projects } from '@/lib/site-config';
 import { TechBadgeIcon } from '@/components/tech-logos';
 import { JuniorJunctionDetailExperience } from '@/components/sections/junior-junction-experience';
 import { VchemicsDetailExperience } from '@/components/sections/vchemics-experience';
+import { MyJobCampusDetailExperience } from '@/components/sections/my-job-campus-experience';
+import { RoyalSuvaiDetailExperience } from '@/components/sections/royal-suvai-experience';
+import { RpcErpDetailExperience } from '@/components/sections/rpc-erp-experience';
+import { MagnertiaErpDetailExperience } from '@/components/sections/magnertia-erp-experience';
+import { EvMobileDetailExperience } from '@/components/sections/ev-mobile-experience';
+import { EvStationDetailExperience } from '@/components/sections/ev-station-experience';
+import { PortfolioWebsiteDetailExperience } from '@/components/sections/portfolio-website-experience';
 
 // Curated gallery frames for all 7 projects
 const projectGalleryData: Record<string, { title: string; subtitle: string; tag: string }[]> = {
@@ -138,6 +145,34 @@ export function ProjectDetailExperience({ project }: { project: Project }) {
 
   if (project.slug === 'vchemics-website' || project.slug === 'vchemics') {
     return <VchemicsDetailExperience project={project} />;
+  }
+
+  if (project.slug === 'my-job-campus-website' || project.slug === 'job-campus') {
+    return <MyJobCampusDetailExperience project={project} />;
+  }
+
+  if (project.slug === 'royal-suvai-restaurant-website' || project.slug === 'royal-suvai') {
+    return <RoyalSuvaiDetailExperience project={project} />;
+  }
+
+  if (project.slug === 'rpc-erp-system' || project.slug === 'rtc-company-erp-system') {
+    return <RpcErpDetailExperience project={project} />;
+  }
+
+  if (project.slug === 'magnertia-erp-system' || project.slug === 'erp-system') {
+    return <MagnertiaErpDetailExperience project={project} />;
+  }
+
+  if (project.slug === 'ev-mobile-application' || project.slug === 'ev-mobile-app') {
+    return <EvMobileDetailExperience project={project} />;
+  }
+
+  if (project.slug === 'ev-station-website' || project.slug === 'ev-station') {
+    return <EvStationDetailExperience project={project} />;
+  }
+
+  if (project.slug === 'portfolio-website') {
+    return <PortfolioWebsiteDetailExperience project={project} />;
   }
 
   const currentIndex = projects.findIndex((p) => p.slug === project.slug);

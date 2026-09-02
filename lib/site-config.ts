@@ -3,7 +3,7 @@ export const siteConfig = {
   shortName: "Intouch",
   tagline: "Leading Web Development & IT Solutions",
   description:
-    "Intouch Global Tech is a leading web development company offering complete web applications, custom software, ERP, HRMS, CRM, Hospital & Pharmacy management systems, SEO, and digital business solutions for global SMB enterprises.",
+    "Intouch Global Tech is a leading web development company offering digital solutions.",
   url: "https://intouchglobaltech.com",
   email: "intouchglobaltech@gmail.com",
   phone: "+91 8667709294",
@@ -519,8 +519,7 @@ export const projects: Project[] = [
     technologies: ["Next.js", "React", "Tailwind CSS", "SEO Optimization", "Mobile Responsive"],
     short:
       "Where Little Minds Learn, Play & Grow — modern digital presence for Junior Junction preschool in Erode, Tamil Nadu.",
-    description:
-      "Junior Junction is a joyful preschool focused on nurturing creativity, confidence and happy learning. We created a modern digital presence that reflects the school's environment while helping parents discover its programs, activities and learning experience.",
+    description: "Junior Junction is a joyful preschool focused on nurturing creativity and confidence.",
     challenge:
       "Mr. Raghupathi Arumugam approached us with the need for a professional website for Junior Junction that could effectively represent the preschool online and help parents easily discover the school.",
     approach:
@@ -554,7 +553,7 @@ export const projects: Project[] = [
     short:
       "Ultra-modern, 3D interactive portfolio platform with micro-interactions, dark/light aesthetics, and fluid layout physics.",
     description:
-      "A flagship creative engineering portfolio built to showcase high-tier digital craftsmanship with interactive WebGL shaders, smooth inertial scrolling, dynamic case study viewers, and modular component design.",
+      "A flagship creative portfolio built to showcase high-tier digital craftsmanship.",
     challenge:
       "Standard static portfolios failed to convey deep technical capabilities, interactive architecture design, and modern front-end execution excellence.",
     approach:
@@ -587,7 +586,7 @@ export const projects: Project[] = [
     short:
       "Full-scale campus recruitment and corporate placement ecosystem connecting universities, graduating students, and enterprise recruiters.",
     description:
-      "An end-to-end recruitment platform engineered to automate campus hiring drives, skill-based job matching, automated resume parsing, and multi-stage corporate interview scheduling.",
+      "An end-to-end recruitment platform engineered to automate campus hiring drives.",
     challenge:
       "University placement cells struggled to manage hundreds of simultaneous hiring pipelines across disparate spreadsheets, leading to scheduling collisions and missed student applications.",
     approach:
@@ -620,7 +619,7 @@ export const projects: Project[] = [
     short:
       "Comprehensive industrial manufacturing ERP unifying multi-plant inventory, production planning, procurement, and GST billing.",
     description:
-      "A custom-built enterprise resource planning system tailored for precision manufacturing operations, replacing legacy paper registers with automated production lines and inventory telemetry.",
+      "A custom-built enterprise resource planning system for precision manufacturing.",
     challenge:
       "Disconnected inventory records between the manufacturing plant and raw material warehouses caused production downtime, inaccurate billing, and blind spots in material procurement.",
     approach:
@@ -661,7 +660,7 @@ export const projects: Project[] = [
     short:
       "Real-time EV charging mobile app with live station locator, slot booking, OCPP charger control, and instant in-app payment.",
     description:
-      "A high-velocity cross-platform mobile application empowering electric vehicle drivers to find nearby compatible charging plugs, reserve charging slots in advance, monitor live kW flow, and pay seamlessly.",
+      "A high-velocity mobile application empowering drivers to find and reserve chargers.",
     challenge:
       "EV owners faced charger anxiety due to stale station availability data, broken chargers, and clunky on-site payment flows.",
     approach:
@@ -694,7 +693,7 @@ export const projects: Project[] = [
     short:
       "Public-facing commercial portal for EV charging network with interactive station finder, tariff calculator, and franchise investor portal.",
     description:
-      "A modern, high-conversion commercial website built for an electric vehicle charging network to drive fleet partnerships, showcase charging infrastructure coverage, and onboard host partners.",
+      "A modern commercial website built for an electric vehicle charging network.",
     challenge:
       "The charging network needed a scalable digital storefront to attract enterprise commercial property owners, fleet operators, and retail EV customers.",
     approach:
@@ -727,7 +726,7 @@ export const projects: Project[] = [
     short:
       "Enterprise operations ERP platform featuring strict role-based access control, asset lifecycle tracking, audit logs, and analytics.",
     description:
-      "A mission-critical enterprise resource planning system custom-architected for RPC operations, unifying human resource workflows, physical asset maintenance, financial budgeting, and regulatory compliance.",
+      "A mission-critical enterprise resource planning system custom-architected for RPC.",
     challenge:
       "Managing complex enterprise assets and audit compliance across multiple branches was slowed down by fragmented legacy databases and unverified document trails.",
     approach:
@@ -760,7 +759,7 @@ export const projects: Project[] = [
     short:
       "Engineered for Strength. Built for Durability — high-performance construction chemicals, waterproofing systems, and structural repair solutions.",
     description:
-      "Vchemics India Solutions specializes in high-performance construction chemicals, concrete admixtures, waterproofing systems, precision grouts and structural repair solutions engineered for demanding construction and infrastructure applications.",
+      "Vchemics India Solutions specializes in high-performance construction chemicals.",
     challenge:
       "Velmurugan Sivanantham needed a professional digital platform that could clearly communicate its technical expertise, product range and construction solutions while making it easier for contractors, consultants, builders and other industry professionals to discover and enquire about the right solutions.",
     approach:
@@ -778,7 +777,6 @@ export const projects: Project[] = [
     ],
     outcome:
       "A professional, technically focused and search-optimized digital experience that positions Vchemics India Solutions more effectively online while helping contractors, consultants, builders and industry professionals discover its products and engineering solutions.",
-    liveUrl: "https://www.vchemicsindia.com/",
     hasResults: true,
     results: [
       { label: "Technical Inquiries", value: "3x Increase" },
@@ -795,7 +793,7 @@ export const projects: Project[] = [
     short:
       "Luxury dining and authentic cuisine web platform featuring interactive digital menus, table reservation booking engine, online order dispatcher, and event catering portal.",
     description:
-      "An immersive culinary web experience crafted for Royal Suvai Restaurant to showcase gourmet traditional recipes, digital table reservations, WhatsApp food ordering, chef specialties, and catering inquiry management.",
+      "An immersive culinary web experience crafted for Royal Suvai Restaurant.",
     challenge:
       "The restaurant experienced high phone reservation friction during peak weekend dinner rushes, with customers struggling to view seasonal menus and order takeout without 3rd-party aggregator commissions.",
     approach:
@@ -1054,3 +1052,5 @@ export const timelineOptions = [
 ];
 
 export const contactMethods = ["Email", "Phone", "WhatsApp", "Video Call"];
+
+

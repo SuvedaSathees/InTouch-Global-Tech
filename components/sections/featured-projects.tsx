@@ -95,10 +95,10 @@ export function FeaturedProjects() {
 
               <div className="mt-6 pt-4 border-t border-slate-100">
                 <Link
-                  href={`/projects/${study.slug}`}
+                  href="/projects"
                   className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 group-hover:text-blue-700"
                 >
-                  View Case Study
+                  View Blueprint
                   <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
                 </Link>
               </div>

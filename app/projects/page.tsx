@@ -1,107 +1,83 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
-import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { projects } from '@/lib/site-config';
+import React, { useState, useRef, useMemo, useEffect } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion';
+import { projects, type Project } from '@/lib/site-config';
 import { TechBadgeIcon } from '@/components/tech-logos';
 import {
-  ArrowUpRight,
-  Sparkles,
   Building2,
   GraduationCap,
   Briefcase,
   BatteryCharging,
   Smartphone,
   Server,
-  Globe,
   Zap,
   Code2,
   ShieldCheck,
   CheckCircle2,
-  Cpu,
+  ArrowRight,
+  Search,
+  Check,
+  X,
+  Eye,
   Layers,
+  FlaskConical,
+  UtensilsCrossed,
+  Sparkles,
 } from 'lucide-react';
 
 const projectVisualIcons: Record<string, React.ElementType> = {
   'junior-junction-school': GraduationCap,
+  'junior-junction': GraduationCap,
   'portfolio': Sparkles,
-  'myjob-campus-website': Briefcase,
-  'erp-for-magnertia': Building2,
-  'mobile-app-for-ev-charge-station': Smartphone,
-  'website-for-ev-station': BatteryCharging,
-  'erp-for-rpc': Server,
-};
-
-const projectGradients: Record<string, { bg: string; border: string; glow: string; accent: string }> = {
-  'junior-junction-school': {
-    bg: 'from-amber-600/10 via-amber-500/5 to-transparent',
-    border: 'group-hover:border-amber-500',
-    glow: 'rgba(217, 119, 6, 0.15)',
-    accent: 'bg-amber-700 text-white',
-  },
-  'erp-for-magnertia': {
-    bg: 'from-indigo-600/10 via-amber-500/5 to-transparent',
-    border: 'group-hover:border-indigo-500',
-    glow: 'rgba(79, 70, 229, 0.15)',
-    accent: 'bg-indigo-700 text-white',
-  },
-  'mobile-app-for-ev-charge-station': {
-    bg: 'from-emerald-600/10 via-teal-500/5 to-transparent',
-    border: 'group-hover:border-emerald-500',
-    glow: 'rgba(16, 185, 129, 0.15)',
-    accent: 'bg-emerald-700 text-white',
-  },
-  'myjob-campus-website': {
-    bg: 'from-cyan-600/10 via-blue-500/5 to-transparent',
-    border: 'group-hover:border-cyan-500',
-    glow: 'rgba(6, 182, 212, 0.15)',
-    accent: 'bg-cyan-700 text-white',
-  },
-  'website-for-ev-station': {
-    bg: 'from-amber-600/10 via-orange-500/5 to-transparent',
-    border: 'group-hover:border-amber-500',
-    glow: 'rgba(245, 158, 11, 0.15)',
-    accent: 'bg-amber-700 text-white',
-  },
-  'portfolio': {
-    bg: 'from-violet-600/10 via-purple-500/5 to-transparent',
-    border: 'group-hover:border-violet-500',
-    glow: 'rgba(139, 92, 246, 0.15)',
-    accent: 'bg-violet-700 text-white',
-  },
-  'erp-for-rpc': {
-    bg: 'from-blue-700/10 via-indigo-600/5 to-transparent',
-    border: 'group-hover:border-blue-600',
-    glow: 'rgba(37, 99, 235, 0.15)',
-    accent: 'bg-blue-700 text-white',
-  },
+  'portfolio-website': Sparkles,
+  'job-campus': Briefcase,
+  'my-job-campus-website': Briefcase,
+  'erp-system': Building2,
+  'magnertia-erp-system': Building2,
+  'ev-mobile-application': Smartphone,
+  'ev-charging-station-website': BatteryCharging,
+  'ev-station-website': BatteryCharging,
+  'rtc-company-erp-system': Server,
+  'rpc-erp-system': Server,
+  'vchemics-website': FlaskConical,
+  'vchemics': FlaskConical,
+  'royal-suvai-restaurant-website': UtensilsCrossed,
+  'royal-suvai': UtensilsCrossed,
 };
 
 const filterCategories = [
-  'All Projects',
-  'ERP Platforms',
-  'Web Applications',
+  'All Systems',
+  'Enterprise ERPs',
+  'Web Platforms',
   'Mobile & IoT',
 ];
 
-// Interactive 3D Card with dynamic spotlight & tilt
-function AnimatedProjectCard({ project, index }: { project: (typeof projects)[0]; index: number }) {
+// -------------------------------------------------------------
+// PRO 3D INTERACTIVE PROJECT CARD (With Real Depth & Spotlight)
+// -------------------------------------------------------------
+function Pro3DProjectCard({
+  project,
+  index,
+}: {
+  project: Project;
+  index: number;
+}) {
+  const router = useRouter();
   const cardRef = useRef<HTMLDivElement>(null);
   const VisualIcon = projectVisualIcons[project.slug] || Code2;
-  const styling = projectGradients[project.slug] || {
-    bg: 'from-amber-600/10 to-transparent',
-    border: 'group-hover:border-amber-500',
-    glow: 'rgba(217, 119, 6, 0.15)',
-    accent: 'bg-amber-700 text-white',
-  };
+  const primaryRes = project.results?.[0];
+  const secondaryRes = project.results?.[1];
 
-  // Mouse tilt logic
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const [isHovered, setIsHovered] = useState(false);
 
-  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [6, -6]), { stiffness: 300, damping: 25 });
-  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-6, 6]), { stiffness: 300, damping: 25 });
+  // Smooth 3D spring tilt physics
+  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [6, -6]), { stiffness: 350, damping: 25 });
+  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-6, 6]), { stiffness: 350, damping: 25 });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
@@ -112,267 +88,434 @@ function AnimatedProjectCard({ project, index }: { project: (typeof projects)[0]
     mouseY.set(y);
   };
 
-  const handleMouseEnter = () => setIsHovered(true);
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    mouseX.set(0);
-    mouseY.set(0);
-  };
-
   return (
     <motion.div
       ref={cardRef}
-      layout
-      initial={{ opacity: 0, scale: 0.94, y: 30 }}
-      animate={{ opacity: 1, scale: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.94, y: -20 }}
-      transition={{ duration: 0.45, delay: index * 0.06, ease: [0.16, 1, 0.3, 1] }}
+      initial={{ opacity: 0, scale: 0.95, y: 25 }}
+      whileInView={{ opacity: 1, scale: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4, delay: index * 0.05 }}
       onMouseMove={handleMouseMove}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => {
+        setIsHovered(false);
+        mouseX.set(0);
+        mouseY.set(0);
+      }}
       style={{
         rotateX,
         rotateY,
         transformStyle: 'preserve-3d',
       }}
-      className={`group relative flex flex-col justify-between rounded-3xl border border-[#E8DFD1] bg-white shadow-xs hover:shadow-2xl hover:shadow-amber-700/10 transition-all duration-300 overflow-hidden cursor-default ${styling.border}`}
+      className="group relative flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-white shadow-sm hover:shadow-2xl hover:shadow-blue-500/10 hover:border-blue-400/90 transition-all duration-300 text-left overflow-hidden select-none cursor-pointer"
+      onClick={() => router.push(`/projects/${project.slug}`)}
     >
-      {/* Top Gradient Ambient Light */}
-      <div className={`absolute top-0 inset-x-0 h-44 bg-gradient-to-b ${styling.bg} pointer-events-none opacity-80`} />
+      {/* Top Accent Gradient Bar */}
+      <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-blue-600 via-cyan-400 to-indigo-600 opacity-90" />
 
       {/* Dynamic Cursor Spotlight Effect */}
       <motion.div
-        className="absolute inset-0 pointer-events-none transition-opacity duration-300"
+        className="absolute inset-0 pointer-events-none transition-opacity duration-300 z-10"
         style={{
           opacity: isHovered ? 1 : 0,
-          background: `radial-gradient(400px circle at ${(mouseX.get() + 0.5) * 100}% ${(mouseY.get() + 0.5) * 100}%, ${styling.glow}, transparent 80%)`,
+          background: `radial-gradient(450px circle at ${(mouseX.get() + 0.5) * 100}% ${(mouseY.get() + 0.5) * 100}%, rgba(0, 102, 255, 0.07), transparent 70%)`,
         }}
       />
 
-      <div className="p-7 sm:p-8 space-y-6 relative z-10">
+      {/* Card Content with 3D Depth */}
+      <div className="p-6 sm:p-8 space-y-5 flex-1 flex flex-col justify-between relative z-10">
         
-        {/* Top Header Bar with Animated Indicator */}
-        <div className="flex items-center justify-between gap-3 pb-3 border-b border-slate-100">
-          <div className="flex items-center gap-2">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400">
+        <div className="space-y-4">
+          
+          {/* Top Status & Industry Bar (Floating Layer) */}
+          <div
+            style={{ transform: 'translateZ(20px)' }}
+            className="flex items-center justify-between gap-2 border-b border-slate-100 pb-3"
+          >
+            <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-blue-600">
               {project.industry}
             </span>
-          </div>
 
-          <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-[10px] font-bold text-emerald-700 shadow-2xs">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="font-mono">PRODUCTION LIVE</span>
-          </div>
-        </div>
-
-        {/* Project Title, Category & Animatic Visual Icon */}
-        <div className="flex items-start justify-between gap-4">
-          <div className="space-y-1.5">
-            <h2 className="text-xl sm:text-2xl font-black text-slate-950 group-hover:text-amber-800 transition-colors leading-tight">
-              {project.name}
-            </h2>
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-bold text-amber-700 uppercase tracking-wide">
-                {project.category}
-              </span>
-              <span className="text-slate-300">•</span>
-              <span className="text-[11px] font-semibold text-slate-500">100% Sovereign Code</span>
+            <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-[10px] font-bold text-emerald-700 shadow-2xs">
+              <ShieldCheck className="h-3 w-3 text-emerald-600" />
+              <span>100% SOVEREIGN IP</span>
             </div>
           </div>
 
-          <motion.div
-            whileHover={{ scale: 1.15, rotate: 5 }}
-            transition={{ type: 'spring', stiffness: 400, damping: 15 }}
-            className="flex h-13 w-13 items-center justify-center rounded-2xl bg-amber-50 border border-amber-200 p-3 text-amber-800 shadow-xs group-hover:bg-amber-700 group-hover:text-white transition-all shrink-0"
+          {/* Title & Icon (Floating Layer) */}
+          <div
+            style={{ transform: 'translateZ(30px)' }}
+            className="flex items-start justify-between gap-3"
           >
-            <VisualIcon className="h-6 w-6" />
-          </motion.div>
-        </div>
+            <div>
+              <h3 className="text-xl sm:text-2xl font-black text-slate-950 group-hover:text-blue-600 transition-colors leading-tight">
+                {project.name}
+              </h3>
+              <span className="text-xs font-semibold text-slate-500 block mt-0.5">
+                {project.category}
+              </span>
+            </div>
 
-        {/* Description */}
-        <p className="text-xs sm:text-sm text-slate-600 font-normal leading-relaxed">
-          {project.short}
-        </p>
-
-        {/* Tech Stack Chips with Interactive Scaling */}
-        <div className="space-y-2.5 pt-2 border-t border-slate-100">
-          <div className="flex items-center justify-between">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
-              Engineered With:
-            </span>
-            <span className="text-[10px] font-mono text-amber-700 font-bold">
-              {project.technologies.length} Tech Modules
-            </span>
+            <div className="h-11 w-11 rounded-2xl bg-blue-50 border border-blue-200/80 flex items-center justify-center text-blue-600 shadow-2xs group-hover:bg-blue-600 group-hover:text-white transition-all shrink-0">
+              <VisualIcon className="h-5 w-5" />
+            </div>
           </div>
 
+          {/* Scope Narrative */}
+          <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed line-clamp-2">
+            {project.description || project.short}
+          </p>
+
+          {/* Prominent ROI Metric Pill (Floating Layer) */}
+          <div
+            style={{ transform: 'translateZ(25px)' }}
+            className="p-3.5 rounded-2xl bg-gradient-to-r from-blue-50/80 to-cyan-50/50 border border-blue-100 flex items-center justify-between"
+          >
+            <div>
+              <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 block font-semibold">
+                {primaryRes ? primaryRes.label : 'Ledger Safety'}
+              </span>
+              <span className="text-xl font-black text-blue-700 font-mono">
+                {primaryRes ? primaryRes.value : '100% ACID'}
+              </span>
+            </div>
+            <div className="text-right border-l border-blue-200/60 pl-3">
+              <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 block font-semibold">
+                {secondaryRes ? secondaryRes.label : 'Architecture SLA'}
+              </span>
+              <span className="text-sm font-black text-slate-900 font-mono">
+                {secondaryRes ? secondaryRes.value : '99.99%'}
+              </span>
+            </div>
+          </div>
+
+          {/* Delivered Capabilities Checklist */}
+          <div className="space-y-1.5 pt-1">
+            {(project.keyFeatures || [
+              'High-concurrency microservices with clean API contracts',
+              'Real-time automated transaction ledger & audit trail',
+              'Complete client source code ownership transfer',
+            ])
+              .slice(0, 3)
+              .map((feat, fIdx) => (
+                <div key={fIdx} className="flex items-start gap-2 text-xs text-slate-700 font-semibold">
+                  <CheckCircle2 className="h-3.5 w-3.5 text-blue-600 shrink-0 mt-0.5" />
+                  <span className="line-clamp-1">{feat}</span>
+                </div>
+              ))}
+          </div>
+
+        </div>
+
+        {/* Tech Stack & Action (Floating Layer) */}
+        <div
+          style={{ transform: 'translateZ(20px)' }}
+          className="space-y-4 pt-4 border-t border-slate-100"
+        >
+          {/* Tech Badges */}
           <div className="flex flex-wrap gap-1.5">
-            {project.technologies.map((tech) => (
-              <motion.span
+            {project.technologies.slice(0, 4).map((tech) => (
+              <span
                 key={tech}
-                whileHover={{ scale: 1.08, y: -1 }}
-                transition={{ duration: 0.15 }}
-                className="inline-flex items-center gap-1.5 rounded-xl bg-[#FAF7F2] border border-[#E8DFD1] px-2.5 py-1 text-[11px] font-semibold text-slate-800 shadow-2xs hover:border-amber-400 hover:bg-white transition-all"
+                className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-lg bg-slate-100/90 hover:bg-white border border-slate-200 text-[10px] font-mono font-semibold text-slate-700 transition-colors"
               >
                 <TechBadgeIcon name={tech} size="sm" />
                 <span>{tech}</span>
-              </motion.span>
+              </span>
             ))}
+            {project.technologies.length > 4 && (
+              <span className="inline-flex items-center rounded-lg bg-slate-100 px-2 py-0.5 text-[10px] font-mono font-bold text-slate-600">
+                +{project.technologies.length - 4}
+              </span>
+            )}
+          </div>
+
+          {/* Action Button */}
+          <div className="pt-1">
+            <Link
+              href={`/projects/${project.slug}`}
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+              className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-gradient-to-r from-blue-600 via-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white text-xs font-bold transition-all shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/30 group/btn cursor-pointer"
+            >
+              <Eye className="h-3.5 w-3.5" />
+              <span>Inspect Architecture Blueprint</span>
+              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-1" />
+            </Link>
           </div>
         </div>
 
-      </div>
-
-      {/* Card Bottom Interactive Action Deck */}
-      <div className="px-7 sm:px-8 py-4 bg-[#FAF7F2]/90 border-t border-[#E8DFD1] flex items-center justify-between gap-4 relative z-10">
-        {project.liveUrl ? (
-          <motion.a
-            whileHover={{ scale: 1.04, x: 2 }}
-            whileTap={{ scale: 0.97 }}
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-xs font-bold text-emerald-700 hover:text-emerald-800 bg-emerald-100/90 hover:bg-emerald-200 px-4 py-2 rounded-xl border border-emerald-300 transition-all shadow-xs cursor-pointer group/btn"
-          >
-            <Globe className="h-3.5 w-3.5 text-emerald-600 group-hover/btn:animate-spin" />
-            <span>Launch Live Product</span>
-            <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
-          </motion.a>
-        ) : (
-          <div className="flex items-center gap-1.5 text-xs text-slate-500 font-semibold">
-            <ShieldCheck className="h-4 w-4 text-amber-700" />
-            <span>Delivered Enterprise Infrastructure</span>
-          </div>
-        )}
-
-        <div className="text-[11px] font-mono text-slate-400 font-bold hidden sm:block">
-          0{index + 1} / 0{projects.length}
-        </div>
       </div>
     </motion.div>
   );
 }
 
+// -------------------------------------------------------------
+// MAIN PAGE COMPONENT
+// -------------------------------------------------------------
 export default function ProjectsPage() {
-  const [activeFilter, setActiveFilter] = useState('All Projects');
+  const [activeFilter, setActiveFilter] = useState<string>('All Systems');
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
 
-  const filteredProjects = projects.filter((project) => {
-    if (activeFilter === 'All Projects') return true;
-    if (activeFilter === 'ERP Platforms') return project.category.includes('ERP') || project.category === 'ERP';
-    if (activeFilter === 'Web Applications') return project.category.includes('Web') || project.category === 'Portfolio' || project.category === 'Campus';
-    if (activeFilter === 'Mobile & IoT') return project.category.includes('Mobile') || project.category.includes('EV');
-    return true;
-  });
+  // Concise, smart search query placeholders
+  const placeholderQueries = useMemo(() => [
+    "Search 'React', 'Node.js', or 'MongoDB'...",
+    "Search 'ERP', 'Portal', or 'Mobile'...",
+    "Search 'School', 'CleanTech', or 'Dining'...",
+    "Search systems by name or tech stack...",
+  ], []);
+  const [placeholderIndex, setPlaceholderIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setPlaceholderIndex((prev) => (prev + 1) % placeholderQueries.length);
+    }, 3200);
+    return () => clearInterval(timer);
+  }, [placeholderQueries.length]);
+
+  // Global Cmd+K / Ctrl+K keyboard shortcut listener
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        searchInputRef.current?.focus();
+      }
+      if (e.key === 'Escape') {
+        setSearchQuery('');
+        searchInputRef.current?.blur();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  const quickFilterChips = [
+    { label: 'React.js', query: 'React' },
+    { label: 'PostgreSQL', query: 'PostgreSQL' },
+    { label: 'ERP Core', query: 'ERP' },
+    { label: 'CleanTech IoT', query: 'Mobile' },
+  ];
+
+  // Filter logic
+  const filteredProjects = useMemo(() => {
+    return projects.filter((project) => {
+      let matchCat = true;
+      if (activeFilter === 'Enterprise ERPs') {
+        matchCat = project.category.includes('ERP') || project.category === 'ERP';
+      } else if (activeFilter === 'Web Platforms') {
+        matchCat = project.category.includes('Web') || project.category === 'Portfolio' || project.category === 'Campus';
+      } else if (activeFilter === 'Mobile & IoT') {
+        matchCat = project.category.includes('Mobile') || project.category.includes('EV');
+      }
+
+      let matchSearch = true;
+      if (searchQuery.trim()) {
+        const q = searchQuery.toLowerCase();
+        matchSearch =
+          project.name.toLowerCase().includes(q) ||
+          project.industry.toLowerCase().includes(q) ||
+          project.category.toLowerCase().includes(q) ||
+          project.short.toLowerCase().includes(q) ||
+          project.technologies.some((t) => t.toLowerCase().includes(q));
+      }
+
+      return matchCat && matchSearch;
+    });
+  }, [activeFilter, searchQuery]);
 
   return (
-    <main className="min-h-screen bg-[#FAF7F2] text-slate-900 pt-32 pb-24 select-none relative overflow-hidden">
-      {/* Precision Blueprint Ambient Grid */}
+    <main className="min-h-screen bg-[#F8FAFC] text-slate-900 pt-32 pb-24 select-none relative overflow-hidden">
+      {/* Precision Blueprint Grid */}
       <div
         className="absolute inset-0 opacity-[0.025] pointer-events-none"
         style={{
           backgroundImage:
-            'linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)',
+            'linear-gradient(to right, #001B48 1px, transparent 1px), linear-gradient(to bottom, #001B48 1px, transparent 1px)',
           backgroundSize: '40px 40px',
         }}
       />
 
-      {/* Floating Animated Geometric Particle Matrix in Background */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <motion.div
-          animate={{
-            rotate: [0, 360],
-            scale: [1, 1.08, 1],
-          }}
-          transition={{ duration: 45, repeat: Infinity, ease: 'linear' }}
-          className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full border border-amber-800/[0.04] border-dashed pointer-events-none"
-        />
-        <motion.div
-          animate={{
-            rotate: [360, 0],
-            scale: [1, 1.1, 1],
-          }}
-          transition={{ duration: 50, repeat: Infinity, ease: 'linear' }}
-          className="absolute -bottom-40 -right-40 w-[700px] h-[700px] rounded-full border border-amber-800/[0.04] border-dashed pointer-events-none"
-        />
-      </div>
+      {/* Atmospheric Soft Light Blooms */}
+      <div className="absolute top-20 right-1/4 w-[500px] h-[350px] rounded-full bg-blue-400/10 blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-20 left-1/4 w-[500px] h-[350px] rounded-full bg-cyan-400/10 blur-[140px] pointer-events-none" />
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 z-10 space-y-12 sm:space-y-16">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 z-10 space-y-12 text-left">
         
-        {/* Left-Aligned Header with Line Accent */}
-        <div className="max-w-4xl text-left">
-          <motion.div
-            initial={{ opacity: 0, x: -10 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.3 }}
-            className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-amber-800 mb-4"
-          >
-            <span className="w-5 h-[2px] bg-amber-700 rounded-full" />
-            <span>OUR PROJECTS</span>
-          </motion.div>
+        {/* Page Header */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b border-slate-200/80 pb-8">
+          <div className="max-w-2xl space-y-3">
+            <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-blue-600">
+              <span className="w-5 h-[2px] bg-blue-600 rounded-full" />
+              <span>PROVEN CLIENT SYSTEMS • PRODUCTION DELIVERIES</span>
+            </div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.05 }}
-            className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-950 leading-[1.08]"
-          >
-            Projects We&apos;ve Built.
-          </motion.h1>
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-950 leading-[1.08]">
+              Engineered Systems &{' '}
+              <span className="bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-700 bg-clip-text text-transparent">
+                Blueprints.
+              </span>
+            </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.1 }}
-            className="mt-4 text-sm sm:text-base text-slate-600 leading-relaxed font-normal max-w-2xl"
-          >
-            Explore our web applications, custom ERP platforms, and digital systems built for clients worldwide.
-          </motion.p>
+            <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed max-w-xl">
+              Hover over any system to experience interactive 3D perspective physics. Every architecture is delivered with 100% sovereign client code ownership.
+            </p>
+          </div>
+
+          {/* Quick Counter */}
+          <div className="flex items-center gap-3 self-start lg:self-auto">
+            <div className="px-4 py-2.5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs text-left">
+              <div className="text-base font-black text-slate-950 leading-tight">{projects.length}+ Live Systems</div>
+              <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-600">Built & Delivered</div>
+            </div>
+            <div className="px-4 py-2.5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs text-left">
+              <div className="text-base font-black text-emerald-600 leading-tight">99.99% Uptime</div>
+              <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-500">Proven Reliability</div>
+            </div>
+          </div>
         </div>
 
-        {/* Dynamic Category Filter Pills with Spring Indicator */}
-        <div className="flex flex-wrap items-center gap-2 border-b border-[#E8DFD1] pb-3">
-          {filterCategories.map((cat) => {
-            const isActive = activeFilter === cat;
-
-            return (
-              <button
-                key={cat}
-                onClick={() => setActiveFilter(cat)}
-                className={`relative px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                  isActive
-                    ? 'text-white'
-                    : 'text-slate-600 hover:text-slate-950 hover:bg-amber-50/50'
-                }`}
-              >
-                {isActive && (
-                  <motion.div
-                    layoutId="activeProjectsFilterPill"
-                    className="absolute inset-0 bg-amber-700 rounded-xl shadow-md shadow-amber-700/20"
-                    transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-                  />
-                )}
-                <span className="relative z-10 flex items-center gap-1.5">
-                  <span>{cat}</span>
-                  {cat === 'All Projects' && (
-                    <span className={`text-[10px] px-1.5 py-0.2 rounded-md ${isActive ? 'bg-amber-900/40 text-amber-200' : 'bg-slate-200/70 text-slate-600'}`}>
-                      {projects.length}
-                    </span>
+        {/* ------------------------------------------------------------- */}
+        {/* FUTURISTIC GLOWING SEARCH CAPSULE & CATEGORY PILLS (Single Line) */}
+        {/* ------------------------------------------------------------- */}
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-4 w-full">
+          
+          {/* Floating Category Filter Pills (Left) */}
+          <div className="flex flex-wrap items-center gap-2">
+            {filterCategories.map((cat) => {
+              const isActive = activeFilter === cat;
+              return (
+                <button
+                  key={cat}
+                  onClick={() => setActiveFilter(cat)}
+                  className={`relative px-4 py-2 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer select-none ${
+                    isActive
+                      ? 'text-white shadow-md shadow-blue-500/20'
+                      : 'bg-white/80 hover:bg-white text-slate-600 hover:text-slate-950 border border-slate-200/90 shadow-2xs hover:border-blue-300'
+                  }`}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeGlowingCapsuleCategory"
+                      className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full"
+                      transition={{ type: 'spring', stiffness: 500, damping: 35 }}
+                    />
                   )}
-                </span>
-              </button>
-            );
-          })}
+                  <span className="relative z-10">{cat}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Glowing Search Capsule (Right) */}
+          <div className="relative w-full lg:w-[460px] group">
+            {/* Ambient Electric Backlight Glow */}
+            <div
+              className={`absolute -inset-1 rounded-full bg-gradient-to-r from-blue-600 via-cyan-400 to-blue-600 blur-md transition-all duration-500 ${
+                isSearchFocused ? 'opacity-70 scale-[1.01]' : 'opacity-25 group-hover:opacity-45'
+              }`}
+            />
+
+            {/* Inner Pill Container */}
+            <div
+              className={`relative flex items-center bg-white rounded-full p-2 pl-5 sm:pl-6 shadow-xl shadow-blue-500/5 border transition-all duration-300 ${
+                isSearchFocused
+                  ? 'border-blue-500 ring-2 ring-blue-500/20'
+                  : 'border-slate-200/90 hover:border-slate-300'
+              }`}
+            >
+              {/* Search Icon with Radar Pulse */}
+              <div className="relative flex items-center justify-center mr-3 shrink-0">
+                <Search className={`h-5 w-5 transition-colors ${isSearchFocused ? 'text-blue-600' : 'text-slate-400'}`} />
+                {isSearchFocused && (
+                  <span className="absolute -top-1 -right-1 h-2 w-2 rounded-full bg-cyan-400 animate-ping" />
+                )}
+              </div>
+
+              {/* Input with Animated Typewriter Cycling Placeholder */}
+              <div className="relative flex-1 min-w-0">
+                <input
+                  ref={searchInputRef}
+                  type="text"
+                  value={searchQuery}
+                  onFocus={() => setIsSearchFocused(true)}
+                  onBlur={() => setIsSearchFocused(false)}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder={placeholderQueries[placeholderIndex]}
+                  className="w-full bg-transparent text-xs sm:text-sm font-semibold text-slate-950 placeholder:text-slate-400 focus:outline-none transition-all"
+                />
+              </div>
+
+              {/* Right Side Controls: Matches Badge + Clear Button */}
+              <div className="flex items-center gap-2 pr-1 shrink-0">
+                {/* Live Match Counter Beacon */}
+                <div className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono font-bold border transition-colors ${
+                  filteredProjects.length > 0
+                    ? 'bg-blue-50/80 border-blue-200 text-blue-700'
+                    : 'bg-amber-50 border-amber-200 text-amber-700'
+                }`}>
+                  <span className={`h-1.5 w-1.5 rounded-full ${filteredProjects.length > 0 ? 'bg-blue-600 animate-pulse' : 'bg-amber-500'}`} />
+                  <span>{filteredProjects.length} {filteredProjects.length === 1 ? 'System' : 'Systems'}</span>
+                </div>
+
+                {/* Clear Button */}
+                {searchQuery && (
+                  <button
+                    onClick={() => {
+                      setSearchQuery('');
+                      searchInputRef.current?.focus();
+                    }}
+                    className="h-6 w-6 rounded-full bg-slate-200 hover:bg-slate-300 text-slate-600 flex items-center justify-center text-[11px] font-bold transition-colors cursor-pointer mr-1"
+                    title="Clear search"
+                  >
+                    <X className="h-3.5 w-3.5" />
+                  </button>
+                )}
+              </div>
+            </div>
+          </div>
+
         </div>
 
-        {/* Premium 2-Column Animatic Showcase Gallery */}
-        <motion.div layout className="grid gap-8 grid-cols-1 md:grid-cols-2">
-          <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project, index) => (
-              <AnimatedProjectCard key={project.slug} project={project} index={index} />
-            ))}
-          </AnimatePresence>
-        </motion.div>
+        {/* Empty State */}
+        {filteredProjects.length === 0 && (
+          <div className="rounded-3xl border border-slate-200 bg-white p-12 text-center space-y-4 shadow-xs">
+            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 text-blue-600 mx-auto">
+              <Search className="h-7 w-7" />
+            </div>
+            <h3 className="text-lg font-black text-slate-950">No matching systems found</h3>
+            <p className="text-xs text-slate-500 max-w-sm mx-auto">
+              We couldn&apos;t find any systems matching your search criteria. Try resetting your filters.
+            </p>
+            <button
+              onClick={() => {
+                setActiveFilter('All Systems');
+                setSearchQuery('');
+              }}
+              className="px-4 py-2 rounded-xl bg-blue-600 text-white text-xs font-bold hover:bg-blue-700 transition-colors cursor-pointer"
+            >
+              Reset Filters
+            </button>
+          </div>
+        )}
+
+        {/* ------------------------------------------------------------- */}
+        {/* 3D PERSPECTIVE GRID (With 1000px Perspective & Multi-Layer Z Depth) */}
+        {/* ------------------------------------------------------------- */}
+        <div style={{ perspective: 1200 }} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+          {filteredProjects.map((project, index) => (
+            <Pro3DProjectCard
+              key={project.slug}
+              project={project}
+              index={index}
+            />
+          ))}
+        </div>
 
       </div>
+
     </main>
   );
 }

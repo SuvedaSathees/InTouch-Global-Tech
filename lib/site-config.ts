@@ -512,45 +512,45 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "junior-junction-school",
-    name: "Junior Junction School",
-    industry: "Education & Academy",
-    category: "Web",
-    technologies: ["Next.js 14", "TypeScript", "Tailwind CSS", "Framer Motion", "Node.js"],
+    slug: "junior-junction",
+    name: "Junior Junction",
+    industry: "Education & Early Learning",
+    category: "Website Design, Development & SEO",
+    technologies: ["Next.js", "React", "Tailwind CSS", "SEO Optimization", "Mobile Responsive"],
     short:
-      "Interactive digital campus portal with smart admissions, dynamic curriculum browser, and parent-teacher communication suite.",
+      "Where Little Minds Learn, Play & Grow — modern digital presence for Junior Junction preschool in Erode, Tamil Nadu.",
     description:
-      "A bespoke, interactive web portal engineered for Junior Junction School to streamline digital admissions, student lifecycle management, event calendars, and parent notifications with sub-second page loads.",
+      "Junior Junction is a joyful preschool focused on nurturing creativity, confidence and happy learning. We created a modern digital presence that reflects the school's environment while helping parents discover its programs, activities and learning experience.",
     challenge:
-      "The institution relied on paper inquiry forms and fragmented social messaging, creating high administrative overhead during peak admission cycles and delayed parent updates.",
+      "Mr. Raghupathi Arumugam approached us with the need for a professional website for Junior Junction that could effectively represent the preschool online and help parents easily discover the school.",
     approach:
-      "We engineered a child-centric, highly accessible, and lightning-fast web experience with integrated online application pipelines, automated SMS/email triggers, and an intuitive administrative backend.",
+      "We designed and developed a modern, parent-focused website combining engaging visuals, clear information, and intuitive navigation alongside regional SEO strategies for Erode.",
     solution:
-      "Built a secure Next.js digital campus featuring digital admissions with instant fee generation, interactive curriculum showcases, dynamic photo/video galleries, and real-time school announcement broadcasts.",
+      "Delivered a responsive website featuring complete program showcases (Toddler, Play Group, Pre-KG, LKG, UKG), visual storytelling, parent-focused navigation, and targeted local search optimization.",
     keyFeatures: [
-      "Online Admission & Digital Application Tracking Pipeline",
-      "Interactive Curriculum & Grade-Wise Activity Explorer",
-      "Real-Time Parent Announcement & Event Calendar Hub",
-      "High-Performance Responsive UI with 100% Mobile Optimization",
-      "Administrative Portal for Inquiry Management & Document Verification",
-      "Automated SMS & WhatsApp Parent Notification Dispatcher",
+      "Modern Responsive Website Design across all Devices",
+      "Comprehensive Program Showcase (Toddler to UKG)",
+      "Visual Storytelling with Authentic Activity Media",
+      "Parent-Focused Experience with Intuitive Navigation",
+      "Search Engine Optimization for Parents in Erode",
+      "Streamlined Parent Enquiry Journey & WhatsApp Funnel",
     ],
     outcome:
-      "Reduced admission processing cycle by 65% and unified all institutional communications on a single branded portal.",
+      "A professional, engaging and search-optimized digital experience that represents Junior Junction's vision, showcases its learning environment and creates a clear digital journey for prospective parents.",
     liveUrl: "https://www.juniorjunctionerode.com/",
     hasResults: true,
     results: [
-      { label: "Admission Turnaround", value: "3x Faster" },
-      { label: "Lighthouse Performance", value: "99/100" },
-      { label: "Parent Engagement", value: "+140%" },
+      { label: "Local Search", value: "Rank #1 in Erode" },
+      { label: "Parent Discovery", value: "+180%" },
+      { label: "Mobile Usability", value: "100%" },
     ],
   },
   {
-    slug: "portfolio",
-    name: "Modern Interactive Portfolio",
-    industry: "Design & Technology",
-    category: "Custom Software",
-    technologies: ["React", "Three.js", "Tailwind CSS", "Framer Motion", "TypeScript"],
+    slug: "portfolio-website",
+    name: "Portfolio Website",
+    industry: "Design & Creative Tech",
+    category: "Web Application",
+    technologies: ["React", "Three.js", "Tailwind CSS", "Node.js", "Express.js"],
     short:
       "Ultra-modern, 3D interactive portfolio platform with micro-interactions, dark/light aesthetics, and fluid layout physics.",
     description:
@@ -579,11 +579,11 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "myjob-campus-website",
-    name: "MyJob Campus Website",
-    industry: "EdTech & Career",
-    category: "Web",
-    technologies: ["Next.js", "PostgreSQL", "Prisma", "Tailwind CSS", "Redis"],
+    slug: "my-job-campus-website",
+    name: "My Job Campus Website",
+    industry: "EdTech & Recruitment",
+    category: "Web Application",
+    technologies: ["Next.js", "React", "Node.js", "Express.js", "PostgreSQL"],
     short:
       "Full-scale campus recruitment and corporate placement ecosystem connecting universities, graduating students, and enterprise recruiters.",
     description:
@@ -612,19 +612,19 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "erp-for-magnertia",
-    name: "ERP for Magnertia",
-    industry: "Manufacturing & Industrial",
-    category: "ERP",
-    technologies: ["React", "Node.js", "PostgreSQL", "Docker", "Redis", "Tailwind CSS"],
+    slug: "magnertia-erp-system",
+    name: "Magnertia ERP System",
+    industry: "Industrial & Manufacturing",
+    category: "ERP System",
+    technologies: ["React", "Next.js", "Node.js", "Express.js", "PostgreSQL", "Firebase"],
     short:
       "Comprehensive industrial manufacturing ERP unifying multi-plant inventory, production planning, procurement, and GST billing.",
     description:
-      "A custom-built enterprise resource planning system tailored for Magnertia's precision manufacturing operations, replacing legacy paper registers with automated production lines and inventory telemetry.",
+      "A custom-built enterprise resource planning system tailored for precision manufacturing operations, replacing legacy paper registers with automated production lines and inventory telemetry.",
     challenge:
       "Disconnected inventory records between the manufacturing plant and raw material warehouses caused production downtime, inaccurate billing, and blind spots in material procurement.",
     approach:
-      "We spent two weeks mapping factory-floor material flows, machine cycle times, and dispatch operations to build a custom ERP that matches their exact shopfloor processes.",
+      "We spent two weeks mapping factory-floor material flows, machine cycle times, and dispatch operations to build a custom ERP that matches exact shopfloor processes.",
     solution:
       "Delivered a centralized, role-based ERP platform covering bill of materials (BOM), automated vendor purchase orders, inventory barcode tracking, GST-compliant invoicing, and dispatch logistics.",
     keyFeatures: [
@@ -645,11 +645,19 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "mobile-app-for-ev-charge-station",
-    name: "Mobile App for EV Charge Station",
+    slug: "ev-mobile-application",
+    name: "EV Mobile Application",
     industry: "CleanTech & E-Mobility",
-    category: "Mobile",
-    technologies: ["React Native", "Node.js", "WebSockets", "Firebase", "PostgreSQL", "Mapbox"],
+    category: "Mobile Application",
+    technologies: [
+      "React Native",
+      "Node.js",
+      "Express.js",
+      "Firebase",
+      "Google Maps API",
+      "Geolocation",
+      "Firebase Cloud Messaging",
+    ],
     short:
       "Real-time EV charging mobile app with live station locator, slot booking, OCPP charger control, and instant in-app payment.",
     description:
@@ -659,14 +667,14 @@ export const projects: Project[] = [
     approach:
       "We built a real-time IoT bridge connected to the OCPP 1.6/2.0 protocol on the charger hardware, feeding live port statuses into a responsive mobile map experience.",
     solution:
-      "Engineered an intuitive mobile app with interactive Mapbox station search, connector-type filtering, RFID/QR code charger unlocking, live charging telemetry, and digital wallet integration.",
+      "Engineered an intuitive mobile app with interactive Google Maps station search, connector-type filtering, RFID/QR code charger unlocking, live charging telemetry, and digital wallet integration.",
     keyFeatures: [
       "Interactive Station Map with Live Port Availability & Navigation",
       "Connector-Type & Charging Speed (kW) Smart Filter Matrix",
       "Advance Slot Reservation & Queue Management System",
       "Instant Charger Start/Stop via QR Code & IoT WebSockets",
       "Live Charging Telemetry (Voltage, Current, Battery %, Cost)",
-      "Integrated Digital Wallet, UPI, and Automatic Invoicing",
+      "Firebase Cloud Messaging (FCM) Real-Time Status Alerts",
     ],
     outcome:
       "Provided an effortless charging experience with 99.98% session connection reliability across hundreds of charging points.",
@@ -678,11 +686,11 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "website-for-ev-station",
-    name: "Website for EV Station Network",
-    industry: "E-Mobility & Infrastructure",
-    category: "Web",
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Leaflet", "Node.js"],
+    slug: "ev-station-website",
+    name: "EV Station Website",
+    industry: "CleanTech & Infrastructure",
+    category: "Web Application",
+    technologies: ["React", "TypeScript", "Node.js", "Express.js", "PostgreSQL"],
     short:
       "Public-facing commercial portal for EV charging network with interactive station finder, tariff calculator, and franchise investor portal.",
     description:
@@ -692,7 +700,7 @@ export const projects: Project[] = [
     approach:
       "We developed an engaging, high-performance web platform featuring interactive tariff estimators, coverage maps, and partner ROI calculators.",
     solution:
-      "Built a Next.js web application with dynamic station locator maps, EV savings ROI calculator, franchise partner onboarding funnel, and enterprise fleet management inquiries.",
+      "Built a React & TypeScript web application with dynamic station locator maps, EV savings ROI calculator, franchise partner onboarding funnel, and enterprise fleet management inquiries.",
     keyFeatures: [
       "Interactive Charging Station Locator Map",
       "Dynamic Fuel Savings & Tariff Calculator",
@@ -711,11 +719,11 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "erp-for-rpc",
-    name: "ERP for RPC",
+    slug: "rpc-erp-system",
+    name: "RPC ERP System",
     industry: "Enterprise Operations",
-    category: "ERP",
-    technologies: ["Next.js", "NestJS", "PostgreSQL", "Redis", "Docker", "Tailwind CSS"],
+    category: "ERP System",
+    technologies: ["React", "Next.js", "Node.js", "Express.js", "PostgreSQL", "Firebase"],
     short:
       "Enterprise operations ERP platform featuring strict role-based access control, asset lifecycle tracking, audit logs, and analytics.",
     description:
@@ -741,6 +749,74 @@ export const projects: Project[] = [
       { label: "Audit Accuracy", value: "100%" },
       { label: "Approval Latency", value: "-80%" },
       { label: "System Uptime", value: "99.99%" },
+    ],
+  },
+  {
+    slug: "vchemics-website",
+    name: "Vchemics India Solutions",
+    industry: "Construction Chemicals & Infrastructure",
+    category: "Website Design, Development & SEO",
+    technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS", "SEO Optimization", "PostgreSQL"],
+    short:
+      "Engineered for Strength. Built for Durability — high-performance construction chemicals, waterproofing systems, and structural repair solutions.",
+    description:
+      "Vchemics India Solutions specializes in high-performance construction chemicals, concrete admixtures, waterproofing systems, precision grouts and structural repair solutions engineered for demanding construction and infrastructure applications.",
+    challenge:
+      "Velmurugan Sivanantham needed a professional digital platform that could clearly communicate its technical expertise, product range and construction solutions while making it easier for contractors, consultants, builders and other industry professionals to discover and enquire about the right solutions.",
+    approach:
+      "We designed and developed a modern, technical and conversion-focused website that presents Vchemics' products, applications and engineering solutions in a structured digital experience with SEO-friendly organization.",
+    solution:
+      "Delivered a structured corporate platform with product families, structural solution systems, technical data sheets, industry audience routing, and seamless quote pathways.",
+    keyFeatures: [
+      "Modern Corporate Website for Construction Chemicals",
+      "Structured Product Showcase (Admixtures, Grouts, Waterproofing, Repair)",
+      "Dedicated Technical Solutions (Basement, Terrace, Rehabilitation)",
+      "Industry-Focused Experience for Contractors, Consultants & RMC Plants",
+      "Complex Technical & Chemical Information Presentation",
+      "Search Engine Optimization for Construction Chemicals in Tamil Nadu",
+      "Streamlined Enquiry Journey & Technical Consultation Pathways",
+    ],
+    outcome:
+      "A professional, technically focused and search-optimized digital experience that positions Vchemics India Solutions more effectively online while helping contractors, consultants, builders and industry professionals discover its products and engineering solutions.",
+    liveUrl: "https://www.vchemicsindia.com/",
+    hasResults: true,
+    results: [
+      { label: "Technical Inquiries", value: "3x Increase" },
+      { label: "Contractor Reach", value: "Pan-Tamil Nadu" },
+      { label: "SEO Visibility", value: "Rank #1" },
+    ],
+  },
+  {
+    slug: "royal-suvai-restaurant-website",
+    name: "Royal Suvai Restaurant",
+    industry: "Food & Hospitality",
+    category: "Web Application",
+    technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Node.js", "Express.js", "MongoDB"],
+    short:
+      "Luxury dining and authentic cuisine web platform featuring interactive digital menus, table reservation booking engine, online order dispatcher, and event catering portal.",
+    description:
+      "An immersive culinary web experience crafted for Royal Suvai Restaurant to showcase gourmet traditional recipes, digital table reservations, WhatsApp food ordering, chef specialties, and catering inquiry management.",
+    challenge:
+      "The restaurant experienced high phone reservation friction during peak weekend dinner rushes, with customers struggling to view seasonal menus and order takeout without 3rd-party aggregator commissions.",
+    approach:
+      "We engineered an elegant, appetizing mobile-first web app with direct commission-free online ordering, real-time table slot booking, interactive culinary gallery, and instant WhatsApp order confirmation.",
+    solution:
+      "Developed a high-conversion Next.js dining platform with dietary filtering (Veg/Non-Veg/Vegan), real-time table seating reservations, banquet catering estimator, and automated kitchen notification hooks.",
+    keyFeatures: [
+      "Interactive Digital Food Menu with Dietary & Spice Level Filters",
+      "Real-Time Table Reservation & Seating Time-Slot Booking Engine",
+      "Direct Commission-Free Online Food Ordering via WhatsApp Webhook",
+      "Event Banquet & Catering Package Cost Estimator",
+      "Appetizing High-Resolution Culinary Showcase & Chef Specialties",
+      "Customer Reviews, Social Proof & Google Maps Turn-by-Turn GPS",
+    ],
+    outcome:
+      "Reduced table booking no-shows by 45% and generated over 300+ monthly direct takeout orders with zero third-party commissions.",
+    hasResults: true,
+    results: [
+      { label: "Direct Orders", value: "300+/mo" },
+      { label: "Booking No-Shows", value: "-45%" },
+      { label: "Commission Saved", value: "100%" },
     ],
   },
 ];

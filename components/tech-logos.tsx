@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image, { StaticImageData } from 'next/image';
+import { MapPin, Navigation, BellRing, Box, Radio, Layers, Database } from 'lucide-react';
 
 // 22 Real PNG Logos imported from /app/logo copy/
 import AngularLogo from '@/app/logo copy/Angular.png';
@@ -28,10 +29,11 @@ import VercelLogo from '@/app/logo copy/Vercel.png';
 import JavaLogo from '@/app/logo copy/java.png';
 
 export const techLogoMap: Record<string, StaticImageData> = {
-  // Variations & Exact Matches
   'Next.js 14 / 15': NextJSLogo,
   'Next.js 14': NextJSLogo,
   'Next.js': NextJSLogo,
+  'NextJS': NextJSLogo,
+  'React.js': ReactLogo,
   'React 18 / 19': ReactLogo,
   'React': ReactLogo,
   'React Native': ReactLogo,
@@ -40,14 +42,21 @@ export const techLogoMap: Record<string, StaticImageData> = {
   'JavaScript (ES6+)': JavaScriptLogo,
   'JavaScript': JavaScriptLogo,
   'Tailwind CSS': TailwindCSSLogo,
+  'TailwindCSS': TailwindCSSLogo,
+  'Tailwind': TailwindCSSLogo,
   'Node.js': NodeJSLogo,
+  'NodeJS': NodeJSLogo,
   'NestJS': NodeJSLogo,
   'Express.js': ExpressJSLogo,
+  'ExpressJS': ExpressJSLogo,
+  'Express': ExpressJSLogo,
   'Python': PythonLogo,
   'Java Enterprise': JavaLogo,
   'Java': JavaLogo,
   'PostgreSQL': PostgreSQLLogo,
+  'Postgres': PostgreSQLLogo,
   'MongoDB': MongoDBLogo,
+  'Mongo': MongoDBLogo,
   'MySQL': MySQLLogo,
   'Firebase': FirebaseLogo,
   'Docker & Compose': RailwayLogo,
@@ -70,6 +79,17 @@ export const techLogoMap: Record<string, StaticImageData> = {
   'Figma': FigmaLogo,
 };
 
+const customIconMap: Record<string, typeof Box> = {
+  'Three.js': Box,
+  'ThreeJS': Box,
+  'Google Maps API': MapPin,
+  'Google Maps': MapPin,
+  'Geolocation': Navigation,
+  'Firebase Cloud Messaging': BellRing,
+  'FCM': BellRing,
+  'WebSockets': Radio,
+};
+
 export function TechBadgeIcon({
   name,
   size = 'md',
@@ -80,11 +100,12 @@ export function TechBadgeIcon({
   className?: string;
 }) {
   const logo = techLogoMap[name];
+  const CustomIcon = customIconMap[name];
 
   const dimensions = {
-    sm: { box: 'h-5 w-5 p-0.5', img: 16 },
-    md: { box: 'h-9 w-9 p-1.5', img: 26 },
-    lg: { box: 'h-11 w-11 p-2', img: 32 },
+    sm: { box: 'h-5 w-5 p-0.5', img: 16, icon: 'h-3.5 w-3.5' },
+    md: { box: 'h-9 w-9 p-1.5', img: 26, icon: 'h-4 w-4' },
+    lg: { box: 'h-11 w-11 p-2', img: 32, icon: 'h-5 w-5' },
   };
 
   const dim = dimensions[size];
@@ -106,10 +127,21 @@ export function TechBadgeIcon({
     );
   }
 
-  // Fallback if not matched
+  if (CustomIcon) {
+    return (
+      <div
+        className={`inline-flex items-center justify-center rounded-xl bg-blue-50 border border-blue-200 text-blue-600 shadow-2xs shrink-0 group-hover:scale-105 group-hover:bg-blue-600 group-hover:text-white transition-all ${dim.box} ${className}`}
+        title={name}
+      >
+        <CustomIcon className={dim.icon} />
+      </div>
+    );
+  }
+
+  // Fallback
   return (
     <div
-      className={`inline-flex items-center justify-center rounded-xl bg-blue-600 text-white font-mono font-black shrink-0 ${dim.box} ${className}`}
+      className={`inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-mono font-black shrink-0 ${dim.box} ${className}`}
       title={name}
     >
       {name.charAt(0)}

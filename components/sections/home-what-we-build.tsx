@@ -1,8 +1,8 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 import {
   Building2,
   Sparkles,
@@ -16,30 +16,50 @@ import {
   CheckCircle2,
   Receipt,
   MessageSquare,
+  Zap,
+  Code2,
+  Cpu,
+  Server,
+  Lock,
 } from 'lucide-react';
+import { TechBadgeIcon } from '@/components/tech-logos';
 
 const softwareDomains = [
   {
     id: 'web',
     step: '01',
     name: 'Static & Dynamic Web Applications',
-    badge: 'STATIC & DYNAMIC • 100 LIGHTHOUSE',
+    badge: '100% LIGHTHOUSE • SUB-SECOND TTFB',
     icon: Globe,
-    gradient: 'from-amber-600 to-amber-800',
+    accent: '#0284c7',
+    glowColor: 'rgba(2, 132, 199, 0.25)',
+    gradient: 'from-blue-600 via-cyan-500 to-sky-500',
     description:
-      'Responsive, sub-second edge-rendered corporate websites, e-commerce stores, custom CMS, and web applications built for growing businesses worldwide.',
-    specs: ['Next.js', 'React', 'Tailwind CSS', 'WordPress CMS'],
+      'Responsive, sub-second edge-rendered corporate websites, e-commerce storefronts, custom CMS, and high-conversion web applications.',
+    features: [
+      'Edge-Rendered Next.js SSR & React 19',
+      'Ultra-Fast E-Commerce & Custom CMS',
+      'Mobile-First 100/100 Core Web Vitals',
+    ],
+    specs: ['Next.js', 'React', 'Tailwind CSS', 'TypeScript'],
     href: '/services/web-development',
   },
   {
     id: 'erp',
     step: '02',
     name: 'Custom ERP & Operations Platforms',
-    badge: 'MULTI-WAREHOUSE • GST READY',
+    badge: 'MULTI-WAREHOUSE • GST & ACID LEDGER',
     icon: Building2,
-    gradient: 'from-indigo-600 to-blue-700',
+    accent: '#2563eb',
+    glowColor: 'rgba(37, 99, 235, 0.25)',
+    gradient: 'from-indigo-600 via-blue-600 to-cyan-500',
     description:
-      'Centralized operations platform with multi-warehouse inventory, double-entry financial ledgers, vendor purchasing, and automated manufacturing workflows.',
+      'Centralized operations platform with multi-warehouse inventory, double-entry financial ledgers, vendor purchasing, and automated workflows.',
+    features: [
+      'Real-Time Multi-Warehouse Stock Sync',
+      'Automated BOM & Manufacturing Tracking',
+      'Zero-Loss PostgreSQL Transaction ACID Ledger',
+    ],
     specs: ['PostgreSQL', 'Node.js', 'Docker', 'Redis'],
     href: '/services/erp-development',
   },
@@ -47,173 +67,268 @@ const softwareDomains = [
     id: 'hrms',
     step: '03',
     name: 'HRMS Application & Payroll Engine',
-    badge: 'BIOMETRIC SYNC • STATUTORY PF/ESI',
+    badge: 'BIOMETRIC IOT • STATUTORY PF/ESI',
     icon: Users2,
-    gradient: 'from-purple-600 to-indigo-600',
+    accent: '#7c3aed',
+    glowColor: 'rgba(124, 58, 237, 0.25)',
+    gradient: 'from-purple-600 via-indigo-600 to-pink-500',
     description:
-      'End-to-end workforce management with biometric attendance capture, automatic salary calculation, tax deductions, shift rostering, and employee portals.',
-    specs: ['React', 'NestJS', 'PostgreSQL', 'Mobile App'],
+      'End-to-end workforce management with biometric attendance capture, automatic salary calculation, tax deductions, and employee self-service portals.',
+    features: [
+      'Hardware Biometric Attendance Sync',
+      '1-Click Automated Salary & Payslip Generation',
+      'Employee Self-Service Mobile Portal',
+    ],
+    specs: ['React', 'NestJS', 'PostgreSQL', 'Node.js'],
     href: '/services/hrms-application',
   },
   {
     id: 'crm-pos',
     step: '04',
     name: 'CRM & High-Speed GST Billing Software',
-    badge: 'LEAD PIPELINES • FAST POS',
+    badge: 'OMNICHANNEL • THERMAL RECEIPT API',
     icon: Receipt,
-    gradient: 'from-emerald-600 to-teal-600',
+    accent: '#059669',
+    glowColor: 'rgba(5, 150, 105, 0.25)',
+    gradient: 'from-emerald-600 via-teal-500 to-cyan-600',
     description:
-      'Omnichannel lead management, automated sales follow-up reminders, thermal receipt printing, barcode scanning, and instant GST invoices.',
-    specs: ['Node.js', 'SQLite / Cloud', 'Thermal Print API'],
+      'Omnichannel lead management, automated sales follow-ups, thermal receipt printing, barcode scanning, and instant WhatsApp GST invoices.',
+    features: [
+      'Visual Deal Pipeline with Automation Rules',
+      'High-Speed Thermal POS & Barcode Scanner',
+      'Instant WhatsApp Invoice & GST Dispatcher',
+    ],
+    specs: ['Node.js', 'React', 'FastAPI', 'SQLite / Cloud'],
     href: '/services/crm-application',
   },
   {
     id: 'hms',
     step: '05',
     name: 'Hospital & Pharmacy Management (HMS)',
-    badge: 'OPD / IPD • BATCH EXPIRY ALERTS',
+    badge: 'OPD / IPD • BATCH EXPIRY & EMR',
     icon: Activity,
-    gradient: 'from-amber-700 to-amber-900',
+    accent: '#0891b2',
+    glowColor: 'rgba(8, 145, 178, 0.25)',
+    gradient: 'from-cyan-600 via-teal-600 to-emerald-600',
     description:
-      'Full-featured clinic & hospital software for OPD/IPD patient registration, doctor appointments, EMR, lab reports, and pharmacy batch expiry registers.',
-    specs: ['PostgreSQL', 'Next.js', 'HL7/EMR Safe'],
+      'Full-featured clinic & hospital software for OPD/IPD patient registration, doctor appointments, EMR, lab reports, and pharmacy batch registers.',
+    features: [
+      'OPD/IPD Registration & Doctor Token Display',
+      'Digital EMR & Pathology Lab Test Dispatch',
+      'Pharmacy Inventory with Expiry Alerts',
+    ],
+    specs: ['PostgreSQL', 'Next.js', 'Node.js', 'Docker'],
     href: '/services/hospital-management-system',
   },
   {
     id: 'seo-gateway',
     step: '06',
-    name: 'SEO, SEM & WhatsApp / SMS Gateways',
-    badge: 'TOP RANKINGS • TRAI / DLT APPROVED',
-    icon: Search,
-    gradient: 'from-cyan-600 to-blue-700',
+    name: 'API, SMS & WhatsApp / ERP Gateways',
+    badge: 'DLT APPROVED • 99.99% UPTIME',
+    icon: MessageSquare,
+    accent: '#0284c7',
+    glowColor: 'rgba(2, 132, 199, 0.25)',
+    gradient: 'from-sky-500 via-blue-600 to-indigo-600',
     description:
-      'Performance-focused SEO driving organic Google search visibility, high-ROI Google Ads campaigns, official WhatsApp Business API, and high-speed OTP SMS.',
-    specs: ['Technical SEO', 'Google Ads', 'WhatsApp API', 'SMS Gateway'],
+      'Official WhatsApp Business API integration, high-throughput transactional OTP SMS gateways, and secure custom ERP RESTful APIs.',
+    features: [
+      'Official Meta WhatsApp Cloud API Integration',
+      'DLT High-Speed OTP SMS Broadcast Delivery',
+      'Secure High-Concurrency REST & Webhook APIs',
+    ],
+    specs: ['WhatsApp API', 'SMS Gateway', 'REST API', 'Webhooks'],
     href: '/services/seo-search-engine-optimization',
   },
 ];
 
-export function HomeWhatWeBuild() {
+function AttractiveDomainCard({
+  domain,
+  index,
+}: {
+  domain: (typeof softwareDomains)[0];
+  index: number;
+}) {
+  const Icon = domain.icon;
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
-    <section className="relative overflow-hidden bg-[#FAF7F2] text-slate-900 py-16 sm:py-20 select-none border-t border-[#E8DFD1]">
-      {/* Precision Background Blueprint Grid */}
+    <motion.div
+      initial={{ opacity: 0, y: 28 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.45, delay: index * 0.07, ease: [0.16, 1, 0.3, 1] }}
+      whileHover={{ y: -8, scale: 1.015 }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="group relative flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-white p-7 text-left shadow-xs hover:shadow-2xl hover:border-blue-400/90 transition-all duration-300 overflow-hidden cursor-pointer"
+      style={{
+        boxShadow: isHovered
+          ? `0 24px 50px -12px ${domain.glowColor}, 0 0 0 1px ${domain.accent}40`
+          : '0 4px 20px -4px rgba(0, 0, 0, 0.03)',
+      }}
+    >
+      {/* Top Ambient Colored Glow on Hover */}
       <div
-        className="absolute inset-0 opacity-[0.025] pointer-events-none"
+        className="absolute top-0 right-0 w-48 h-48 rounded-full blur-3xl pointer-events-none transition-opacity duration-500"
         style={{
-          backgroundImage:
-            'linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)',
-          backgroundSize: '40px 40px',
+          backgroundColor: domain.glowColor,
+          opacity: isHovered ? 0.75 : 0.15,
         }}
       />
 
-      {/* Floating Animated Geometric Particle Matrix */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <motion.div
-          animate={{ rotate: [0, 360], scale: [1, 1.05, 1] }}
-          transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
-          className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full border border-amber-800/[0.04] border-dashed pointer-events-none"
-        />
+      {/* Top Accent Gradient Line */}
+      <div
+        className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${domain.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+      />
+
+      <div className="relative z-10 space-y-5">
+        {/* Header: Icon + Badge + Step Number */}
+        <div className="flex items-center justify-between gap-3">
+          <motion.div
+            whileHover={{ scale: 1.12, rotate: 6 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 15 }}
+            className={`flex h-13 w-13 items-center justify-center rounded-2xl bg-gradient-to-br ${domain.gradient} text-white shadow-lg p-3 shrink-0`}
+            style={{
+              boxShadow: `0 8px 20px -4px ${domain.glowColor}`,
+            }}
+          >
+            <Icon className="h-6 w-6 drop-shadow-md" />
+          </motion.div>
+
+          <div className="flex flex-col items-end">
+            <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider mb-1">
+              SYSTEM {domain.step}
+            </span>
+            <span
+              className="px-2.5 py-1 rounded-full text-[9px] font-extrabold uppercase tracking-wider border shadow-2xs transition-colors"
+              style={{
+                backgroundColor: `${domain.accent}12`,
+                borderColor: `${domain.accent}30`,
+                color: domain.accent,
+              }}
+            >
+              {domain.badge}
+            </span>
+          </div>
+        </div>
+
+        {/* Title & Description */}
+        <div>
+          <h3 className="text-lg sm:text-xl font-black text-slate-950 group-hover:text-blue-600 transition-colors leading-snug">
+            {domain.name}
+          </h3>
+          <p className="text-xs sm:text-sm text-slate-600 font-normal leading-relaxed mt-2.5">
+            {domain.description}
+          </p>
+        </div>
+
+        {/* Feature Checkpoints */}
+        <div className="space-y-2 pt-2 border-t border-slate-100">
+          {domain.features.map((feat, fIdx) => (
+            <div key={fIdx} className="flex items-center gap-2 text-xs font-medium text-slate-700">
+              <span
+                className="w-1.5 h-1.5 rounded-full shrink-0"
+                style={{ backgroundColor: domain.accent }}
+              />
+              <span>{feat}</span>
+            </div>
+          ))}
+        </div>
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 z-10 space-y-10">
+      {/* Bottom Bar: Tech Specs & Interactive Action */}
+      <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between gap-3 relative z-10">
+        <div className="flex flex-wrap items-center gap-1.5">
+          {domain.specs.map((spec, sIdx) => (
+            <span
+              key={sIdx}
+              className="inline-flex items-center gap-1 rounded-lg bg-slate-50 border border-slate-200 px-2 py-0.5 text-[10px] font-semibold text-slate-700 shadow-2xs group-hover:border-blue-300 group-hover:bg-blue-50/50 transition-all"
+            >
+              <TechBadgeIcon name={spec} size="sm" />
+              <span>{spec}</span>
+            </span>
+          ))}
+        </div>
+
+        <Link
+          href={domain.href}
+          className="flex h-8 w-8 items-center justify-center rounded-xl bg-slate-100 text-slate-700 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shrink-0 shadow-2xs"
+          aria-label={`View ${domain.name}`}
+        >
+          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+        </Link>
+      </div>
+    </motion.div>
+  );
+}
+
+export function HomeWhatWeBuild() {
+  return (
+    <section className="relative overflow-hidden bg-gradient-to-b from-[#F8FAFC] via-white to-[#F8FAFC] text-slate-900 py-20 sm:py-28 select-none border-t border-slate-200/80">
+      {/* Precision Background Blueprint Grid */}
+      <div
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        style={{
+          backgroundImage:
+            'linear-gradient(to right, #001B48 1px, transparent 1px), linear-gradient(to bottom, #001B48 1px, transparent 1px)',
+          backgroundSize: '44px 44px',
+        }}
+      />
+
+      {/* Floating Ambient Glow Orbs */}
+      <div className="absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full bg-blue-500/10 blur-[140px] pointer-events-none" />
+      <div className="absolute -bottom-32 -left-32 w-[600px] h-[600px] rounded-full bg-cyan-500/10 blur-[140px] pointer-events-none" />
+
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 z-10 space-y-12 sm:space-y-16">
         
-        {/* Left-Aligned Header */}
-        <div className="max-w-2xl text-left">
-          <motion.div
-            initial={{ opacity: 0, x: -10 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.3 }}
-            className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-amber-800 mb-2"
-          >
-            <span className="w-4 h-[2px] bg-amber-700 rounded-full" />
-            <span>WHAT WE BUILD & DELIVER</span>
-          </motion.div>
-          
-          <motion.h2
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 0.05 }}
-            className="text-2xl sm:text-4xl font-black tracking-tight text-slate-950 leading-tight"
-          >
-            Production Web & Software Systems.
-          </motion.h2>
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 max-w-4xl text-left">
+          <div className="space-y-3">
+            <motion.div
+              initial={{ opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3 }}
+              className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-blue-600"
+            >
+              <span className="w-5 h-[2px] bg-blue-600 rounded-full shadow-[0_0_8px_rgba(37,99,235,0.6)]" />
+              <span>WHAT WE BUILD & DELIVER</span>
+            </motion.div>
+            
+            <motion.h2
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.05 }}
+              className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-950 leading-tight"
+            >
+              Production Web &{' '}
+              <span className="bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-700 bg-clip-text text-transparent">
+                Software Systems.
+              </span>
+            </motion.h2>
+          </div>
 
           <motion.p
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.1 }}
-            className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed font-normal"
+            className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal max-w-md"
           >
-            Sovereign client code ownership, modern cloud architecture, and mission-critical reliability built for SMBs worldwide.
+            100% sovereign client code ownership, modern cloud microservices, and mission-critical reliability engineered for businesses worldwide.
           </motion.p>
         </div>
 
-        {/* 6-Card High-Density Architecture Matrix with Animated Stagger */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {softwareDomains.map((domain, idx) => {
-            const Icon = domain.icon;
-
-            return (
-              <motion.div
-                key={domain.id}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: idx * 0.06 }}
-                whileHover={{ y: -6 }}
-                className="group relative flex flex-col justify-between rounded-3xl border border-[#E8DFD1] bg-white p-6 sm:p-7 text-left hover:border-amber-500 hover:shadow-xl hover:shadow-amber-700/10 transition-all duration-300 overflow-hidden"
-              >
-                {/* Top Subtle Ambient Light */}
-                <div className="absolute top-0 right-0 w-36 h-36 bg-amber-500/5 rounded-full blur-2xl pointer-events-none group-hover:bg-amber-500/10 transition-colors" />
-
-                <div className="relative z-10">
-                  {/* Top Bar: Icon + Blueprint Badge */}
-                  <div className="flex items-center justify-between mb-4">
-                    <motion.div
-                      whileHover={{ scale: 1.1, rotate: 4 }}
-                      transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-                      className={`flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br ${domain.gradient} text-white shadow-xs`}
-                    >
-                      <Icon className="h-5 w-5" />
-                    </motion.div>
-
-                    <span className="rounded-md bg-amber-50/90 border border-amber-200/80 px-2.5 py-1 text-[9px] font-extrabold uppercase tracking-wider text-amber-800 shadow-2xs">
-                      {domain.badge}
-                    </span>
-                  </div>
-
-                  {/* Title & Description */}
-                  <div className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider">
-                    SYSTEM {domain.step}
-                  </div>
-                  <h3 className="text-base sm:text-lg font-black text-slate-950 group-hover:text-amber-800 transition-colors mt-0.5 leading-snug">
-                    {domain.name}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 font-normal leading-relaxed mt-2.5">
-                    {domain.description}
-                  </p>
-                </div>
-
-                {/* Bottom Bar: Production Stack Specs */}
-                <div className="mt-6 pt-4 border-t border-slate-100 flex flex-wrap items-center gap-1.5 relative z-10">
-                  {domain.specs.map((spec, sIdx) => (
-                    <span
-                      key={sIdx}
-                      className="rounded-lg bg-[#FAF7F2] border border-[#E8DFD1] px-2 py-0.5 text-[10px] font-bold text-slate-700 shadow-2xs group-hover:border-amber-300 transition-colors"
-                    >
-                      {spec}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            );
-          })}
+        {/* 6-Card High-Impact Animatic Architecture Matrix */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
+          {softwareDomains.map((domain, idx) => (
+            <AttractiveDomainCard key={domain.id} domain={domain} index={idx} />
+          ))}
         </div>
 
       </div>
     </section>
   );
 }
+

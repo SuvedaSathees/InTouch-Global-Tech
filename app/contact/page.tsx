@@ -1,21 +1,19 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
   Mail,
   ShieldCheck,
   CheckCircle2,
   Send,
   ArrowUpRight,
-  Sparkles,
   Phone,
   Building2,
   User,
   MessageSquare,
   DollarSign,
   Layers,
-  Clock,
   Zap,
 } from 'lucide-react';
 import { siteConfig } from '@/lib/site-config';
@@ -73,88 +71,47 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#FAF7F2] text-slate-900 pt-28 sm:pt-32 pb-16 select-none relative flex flex-col justify-center overflow-hidden">
-      {/* Precision Blueprint Ambient Grid */}
+    <main className="min-h-screen bg-[#F8FAFC] text-slate-900 pt-28 sm:pt-32 pb-16 select-none relative flex flex-col justify-center overflow-hidden">
+      {/* Subtle Precision Grid */}
       <div
         className="absolute inset-0 opacity-[0.025] pointer-events-none"
         style={{
           backgroundImage:
-            'linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)',
+            'linear-gradient(to right, #001B48 1px, transparent 1px), linear-gradient(to bottom, #001B48 1px, transparent 1px)',
           backgroundSize: '40px 40px',
         }}
       />
 
-      {/* Floating Animated Geometric Particle Matrix */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <motion.div
-          animate={{ rotate: [0, 360], scale: [1, 1.05, 1] }}
-          transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
-          className="absolute -top-32 -left-32 w-[550px] h-[550px] rounded-full border border-amber-800/[0.04] border-dashed pointer-events-none"
-        />
-        <motion.div
-          animate={{ rotate: [360, 0], scale: [1, 1.08, 1] }}
-          transition={{ duration: 48, repeat: Infinity, ease: 'linear' }}
-          className="absolute -bottom-32 -right-32 w-[650px] h-[650px] rounded-full border border-amber-800/[0.04] border-dashed pointer-events-none"
-        />
-      </div>
-
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 z-10 w-full space-y-8">
         
-        {/* Header */}
-        <div className="text-left max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0, x: -10 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.3 }}
-            className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-800 mb-2"
-          >
-            <span className="w-5 h-[2px] bg-amber-700 rounded-full" />
+        {/* Minimal Header */}
+        <div className="text-left max-w-3xl">
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-blue-600 mb-2">
+            <span className="w-5 h-[2px] bg-blue-600 rounded-full" />
             <span>GET IN TOUCH WITH LEAD ENGINEERS</span>
-          </motion.div>
+          </div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.05 }}
-            className="text-3xl sm:text-5xl font-black tracking-tight text-slate-950 leading-[1.08]"
-          >
+          <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-slate-950 leading-tight">
             Let&apos;s Build Your Next Project.
-          </motion.h1>
+          </h1>
           
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.1 }}
-            className="mt-3 text-sm sm:text-base text-slate-600 font-normal leading-relaxed"
-          >
+          <p className="mt-3 text-sm sm:text-base text-slate-600 font-normal leading-relaxed">
             Fill in your project scope below. Our solution architects will review your requirements and respond with architectural guidance within 24 hours.
-          </motion.p>
+          </p>
         </div>
 
-        {/* 2-Column Luxury Layout */}
+        {/* 2-Column Minimal Layout */}
         <div className="grid gap-6 lg:grid-cols-12 items-stretch">
           
-          {/* Main Luxury Glass Form (7 cols) */}
+          {/* Main Form Card (7 cols) */}
           <div className="lg:col-span-7">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, delay: 0.15 }}
-              className="rounded-3xl border border-[#E8DFD1] bg-white p-7 sm:p-9 shadow-xl shadow-amber-900/5 text-left h-full flex flex-col justify-between relative overflow-hidden"
-            >
-              {/* Top Card Ambient Gradient */}
-              <div className="absolute top-0 inset-x-0 h-2 bg-gradient-to-r from-amber-600 via-amber-700 to-amber-900" />
-
+            <div className="rounded-3xl border border-slate-200/90 bg-white p-7 sm:p-9 shadow-sm text-left h-full flex flex-col justify-between relative overflow-hidden">
+              
               {submitted ? (
                 <div className="py-12 text-center space-y-5 my-auto">
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-                    className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600 border border-emerald-200 shadow-sm"
-                  >
+                  <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600 border border-emerald-200 shadow-xs">
                     <CheckCircle2 className="h-8 w-8" />
-                  </motion.div>
+                  </div>
                   <div className="space-y-1.5">
                     <h3 className="text-2xl sm:text-3xl font-black text-slate-950">
                       Inquiry Dispatched!
@@ -164,25 +121,23 @@ export default function ContactPage() {
                     </p>
                   </div>
 
-                  {/* Fast Action Buttons */}
+                  {/* Action Buttons */}
                   <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
                     <a
-                      href={`mailto:${siteConfig.email}?subject=${encodeURIComponent(`Project Inquiry: ${formData.projectType} - ${formData.name}`)}&body=${encodeURIComponent(
-                        `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nCompany: ${formData.company || 'N/A'}\nProject: ${formData.projectType}\nBudget: ${formData.budget}\n\nRequirements:\n${formData.message}`
-                      )}`}
-                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-700 hover:bg-amber-800 text-white text-xs font-bold shadow-md transition-all cursor-pointer"
+                      href={`mailto:${siteConfig.email}?subject=${encodeURIComponent(`Project Inquiry: ${formData.projectType} - ${formData.name}`)}`}
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-xs transition-all cursor-pointer"
                     >
                       <Mail className="h-4 w-4" />
                       <span>Re-open Email App</span>
                     </a>
 
                     <a
-                      href={`https://wa.me/918667709294?text=${encodeURIComponent(
+                      href={`https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(
                         `Hello Intouch Global Tech,\n\nI just submitted a project inquiry:\n• Name: ${formData.name}\n• Email: ${formData.email}\n• Phone: ${formData.phone}\n• Project: ${formData.projectType}\n• Budget: ${formData.budget}\n\nRequirements: ${formData.message}`
                       )}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white text-xs font-bold shadow-md transition-all cursor-pointer"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white text-xs font-bold shadow-xs transition-all cursor-pointer"
                     >
                       <WhatsAppOfficialIcon className="h-4 w-4 text-white" />
                       <span>Message on WhatsApp</span>
@@ -192,7 +147,7 @@ export default function ContactPage() {
                   <div className="pt-2">
                     <button
                       onClick={() => setSubmitted(false)}
-                      className="text-xs font-bold text-slate-500 hover:text-amber-800 transition-colors cursor-pointer"
+                      className="text-xs font-bold text-slate-500 hover:text-blue-600 transition-colors cursor-pointer"
                     >
                       ← Submit another inquiry
                     </button>
@@ -204,9 +159,9 @@ export default function ContactPage() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-1.5">
                       <label className="text-xs font-bold text-slate-800 flex items-center gap-1.5">
-                        <User className="h-3.5 w-3.5 text-amber-700" />
+                        <User className="h-3.5 w-3.5 text-blue-600" />
                         <span>Your Name</span>
-                        <span className="text-amber-700">*</span>
+                        <span className="text-blue-600">*</span>
                       </label>
                       <input
                         type="text"
@@ -214,15 +169,15 @@ export default function ContactPage() {
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         placeholder="John Doe"
-                        className="w-full rounded-2xl border border-[#E8DFD1] bg-[#FAF7F2]/70 px-4 py-3 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:border-amber-600 focus:bg-white focus:ring-4 focus:ring-amber-500/15 focus:outline-none transition-all shadow-2xs font-medium"
+                        className="w-full rounded-2xl border border-slate-200 bg-slate-50/60 px-4 py-3 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-500/10 focus:outline-none transition-all font-medium"
                       />
                     </div>
 
                     <div className="space-y-1.5">
                       <label className="text-xs font-bold text-slate-800 flex items-center gap-1.5">
-                        <Mail className="h-3.5 w-3.5 text-amber-700" />
+                        <Mail className="h-3.5 w-3.5 text-blue-600" />
                         <span>Email Address</span>
-                        <span className="text-amber-700">*</span>
+                        <span className="text-blue-600">*</span>
                       </label>
                       <input
                         type="email"
@@ -230,7 +185,7 @@ export default function ContactPage() {
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder="john@example.com"
-                        className="w-full rounded-2xl border border-[#E8DFD1] bg-[#FAF7F2]/70 px-4 py-3 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:border-amber-600 focus:bg-white focus:ring-4 focus:ring-amber-500/15 focus:outline-none transition-all shadow-2xs font-medium"
+                        className="w-full rounded-2xl border border-slate-200 bg-slate-50/60 px-4 py-3 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-500/10 focus:outline-none transition-all font-medium"
                       />
                     </div>
                   </div>
@@ -239,9 +194,9 @@ export default function ContactPage() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-1.5">
                       <label className="text-xs font-bold text-slate-800 flex items-center gap-1.5">
-                        <Phone className="h-3.5 w-3.5 text-amber-700" />
+                        <Phone className="h-3.5 w-3.5 text-blue-600" />
                         <span>Phone / WhatsApp</span>
-                        <span className="text-amber-700">*</span>
+                        <span className="text-blue-600">*</span>
                       </label>
                       <input
                         type="tel"
@@ -249,13 +204,13 @@ export default function ContactPage() {
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         placeholder="+91 98765 43210"
-                        className="w-full rounded-2xl border border-[#E8DFD1] bg-[#FAF7F2]/70 px-4 py-3 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:border-amber-600 focus:bg-white focus:ring-4 focus:ring-amber-500/15 focus:outline-none transition-all shadow-2xs font-medium"
+                        className="w-full rounded-2xl border border-slate-200 bg-slate-50/60 px-4 py-3 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-500/10 focus:outline-none transition-all font-medium"
                       />
                     </div>
 
                     <div className="space-y-1.5">
                       <label className="text-xs font-bold text-slate-800 flex items-center gap-1.5">
-                        <Building2 className="h-3.5 w-3.5 text-amber-700" />
+                        <Building2 className="h-3.5 w-3.5 text-blue-600" />
                         <span>Company Name</span>
                         <span className="text-slate-400 font-normal text-[11px]">(Optional)</span>
                       </label>
@@ -264,7 +219,7 @@ export default function ContactPage() {
                         value={formData.company}
                         onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                         placeholder="e.g. Acme Corp"
-                        className="w-full rounded-2xl border border-[#E8DFD1] bg-[#FAF7F2]/70 px-4 py-3 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:border-amber-600 focus:bg-white focus:ring-4 focus:ring-amber-500/15 focus:outline-none transition-all shadow-2xs font-medium"
+                        className="w-full rounded-2xl border border-slate-200 bg-slate-50/60 px-4 py-3 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-500/10 focus:outline-none transition-all font-medium"
                       />
                     </div>
                   </div>
@@ -273,15 +228,15 @@ export default function ContactPage() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-1.5">
                       <label className="text-xs font-bold text-slate-800 flex items-center gap-1.5">
-                        <Layers className="h-3.5 w-3.5 text-amber-700" />
+                        <Layers className="h-3.5 w-3.5 text-blue-600" />
                         <span>Project / Service Type</span>
-                        <span className="text-amber-700">*</span>
+                        <span className="text-blue-600">*</span>
                       </label>
                       <div className="relative">
                         <select
                           value={formData.projectType}
                           onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
-                          className="w-full rounded-2xl border border-[#E8DFD1] bg-[#FAF7F2]/70 px-4 py-3 text-xs sm:text-sm text-slate-900 focus:border-amber-600 focus:bg-white focus:ring-4 focus:ring-amber-500/15 focus:outline-none transition-all shadow-2xs font-medium cursor-pointer appearance-none"
+                          className="w-full rounded-2xl border border-slate-200 bg-slate-50/60 px-4 py-3 text-xs sm:text-sm text-slate-900 focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-500/10 focus:outline-none transition-all font-medium cursor-pointer appearance-none"
                         >
                           <option value="Web Development & E-Commerce">Web Development & E-Commerce</option>
                           <option value="Custom ERP & HRMS Software">Custom ERP & HRMS Software</option>
@@ -290,7 +245,7 @@ export default function ContactPage() {
                           <option value="SEO, SEM & WhatsApp Gateway">SEO, SEM & WhatsApp Gateway</option>
                           <option value="Custom Software / Other">Custom Software / Other</option>
                         </select>
-                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500">
+                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-400">
                           <svg className="h-4 w-4 fill-current" viewBox="0 0 20 20">
                             <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
                           </svg>
@@ -300,22 +255,22 @@ export default function ContactPage() {
 
                     <div className="space-y-1.5">
                       <label className="text-xs font-bold text-slate-800 flex items-center gap-1.5">
-                        <DollarSign className="h-3.5 w-3.5 text-amber-700" />
+                        <DollarSign className="h-3.5 w-3.5 text-blue-600" />
                         <span>Estimated Budget</span>
-                        <span className="text-amber-700">*</span>
+                        <span className="text-blue-600">*</span>
                       </label>
                       <div className="relative">
                         <select
                           value={formData.budget}
                           onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                          className="w-full rounded-2xl border border-[#E8DFD1] bg-[#FAF7F2]/70 px-4 py-3 text-xs sm:text-sm text-slate-900 focus:border-amber-600 focus:bg-white focus:ring-4 focus:ring-amber-500/15 focus:outline-none transition-all shadow-2xs font-medium cursor-pointer appearance-none"
+                          className="w-full rounded-2xl border border-slate-200 bg-slate-50/60 px-4 py-3 text-xs sm:text-sm text-slate-900 focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-500/10 focus:outline-none transition-all font-medium cursor-pointer appearance-none"
                         >
                           <option value="₹15,000 – ₹35,000">₹15,000 – ₹35,000</option>
                           <option value="₹35,000 – ₹75,000">₹35,000 – ₹75,000</option>
                           <option value="₹75,000 – ₹1,50,000">₹75,000 – ₹1,50,000</option>
                           <option value="₹1,50,000+ / Enterprise">₹1,50,000+ / Enterprise</option>
                         </select>
-                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500">
+                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-400">
                           <svg className="h-4 w-4 fill-current" viewBox="0 0 20 20">
                             <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
                           </svg>
@@ -327,9 +282,9 @@ export default function ContactPage() {
                   {/* Requirements Message */}
                   <div className="space-y-1.5">
                     <label className="text-xs font-bold text-slate-800 flex items-center gap-1.5">
-                      <MessageSquare className="h-3.5 w-3.5 text-amber-700" />
+                      <MessageSquare className="h-3.5 w-3.5 text-blue-600" />
                       <span>Project Requirements & Goals</span>
-                      <span className="text-amber-700">*</span>
+                      <span className="text-blue-600">*</span>
                     </label>
                     <textarea
                       required
@@ -337,7 +292,7 @@ export default function ContactPage() {
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       placeholder="Briefly describe what you're looking to build, desired features, integrations, or key timelines..."
-                      className="w-full rounded-2xl border border-[#E8DFD1] bg-[#FAF7F2]/70 px-4 py-3 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:border-amber-600 focus:bg-white focus:ring-4 focus:ring-amber-500/15 focus:outline-none transition-all shadow-2xs font-medium resize-none leading-relaxed"
+                      className="w-full rounded-2xl border border-slate-200 bg-slate-50/60 px-4 py-3 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-500/10 focus:outline-none transition-all font-medium resize-none leading-relaxed"
                     />
                   </div>
 
@@ -345,52 +300,48 @@ export default function ContactPage() {
                   <motion.button
                     type="submit"
                     disabled={isSubmitting}
-                    whileHover={{ scale: 1.01 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="w-full inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-amber-700 via-amber-800 to-amber-900 hover:from-amber-800 hover:to-amber-950 text-white font-bold px-6 py-3.5 rounded-2xl text-xs sm:text-sm shadow-xl shadow-amber-800/25 hover:shadow-2xl hover:shadow-amber-800/35 transition-all cursor-pointer group"
+                    whileHover={{ scale: 1.005 }}
+                    whileTap={{ scale: 0.99 }}
+                    className="w-full inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-bold px-6 py-3.5 rounded-2xl text-xs sm:text-sm shadow-md shadow-blue-600/20 hover:shadow-lg transition-all cursor-pointer group"
                   >
                     <span>{isSubmitting ? 'Submitting Inquiry...' : 'Send Project Inquiry'}</span>
                     <Send className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </motion.button>
                 </form>
               )}
-            </motion.div>
+            </div>
           </div>
 
-          {/* Unified Luxury Info Card (5 cols) */}
+          {/* Unified Info Card (5 cols) */}
           <div className="lg:col-span-5">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, delay: 0.2 }}
-              className="rounded-3xl border border-[#E8DFD1] bg-white p-7 sm:p-8 shadow-xl shadow-amber-900/5 text-left h-full flex flex-col justify-between space-y-6"
-            >
-              {/* Header with Live Radar Status */}
+            <div className="rounded-3xl border border-slate-200/90 bg-white p-7 sm:p-8 shadow-sm text-left h-full flex flex-col justify-between space-y-6">
+              
+              {/* Header */}
               <div>
-                <div className="flex items-center gap-2 border-b border-[#E8DFD1] pb-3.5 mb-5">
-                  <Zap className="h-4 w-4 text-amber-700" />
-                  <h3 className="text-xs font-black text-slate-950 uppercase tracking-widest font-mono">
+                <div className="flex items-center gap-2 border-b border-slate-100 pb-3.5 mb-5">
+                  <Zap className="h-4 w-4 text-blue-600" />
+                  <h2 className="text-xs font-black text-slate-950 uppercase tracking-widest font-mono">
                     DIRECT CONNECT
-                  </h3>
+                  </h2>
                 </div>
 
                 {/* Direct Action Channels */}
                 <div className="space-y-3">
                   {/* WhatsApp Direct Card */}
                   <motion.a
-                    whileHover={{ scale: 1.02, y: -2 }}
-                    whileTap={{ scale: 0.98 }}
-                    href="https://wa.me/918667709294?text=Hello%20Intouch%20Global%20Tech,%20I%20would%20like%20to%20discuss%20a%20project."
+                    whileHover={{ scale: 1.01, y: -1 }}
+                    whileTap={{ scale: 0.99 }}
+                    href={`https://wa.me/${siteConfig.whatsapp}?text=Hello%20${encodeURIComponent(siteConfig.name)},%20I%20would%20like%20to%20discuss%20a%20project.`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-gradient-to-br from-[#FAF7F2] to-white border border-[#E8DFD1] hover:border-emerald-500 hover:shadow-md hover:shadow-emerald-600/10 transition-all group cursor-pointer"
+                    className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-50/70 border border-slate-200/90 hover:border-emerald-500 hover:bg-white transition-all group cursor-pointer"
                   >
-                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 group-hover:bg-[#25D366] group-hover:text-white transition-all shadow-xs shrink-0">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 group-hover:bg-[#25D366] group-hover:text-white transition-all shadow-2xs shrink-0">
                       <WhatsAppOfficialIcon className="h-5 w-5" />
                     </div>
                     <div className="min-w-0 flex-1">
                       <span className="text-sm sm:text-base font-black text-slate-900 group-hover:text-emerald-700 transition-colors">
-                        +91 86677 09294
+                        {siteConfig.phone}
                       </span>
                     </div>
                     <ArrowUpRight className="h-4 w-4 text-slate-300 group-hover:text-emerald-600 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -398,60 +349,57 @@ export default function ContactPage() {
 
                   {/* Email Support Card */}
                   <motion.a
-                    whileHover={{ scale: 1.02, y: -2 }}
-                    whileTap={{ scale: 0.98 }}
+                    whileHover={{ scale: 1.01, y: -1 }}
+                    whileTap={{ scale: 0.99 }}
                     href={`mailto:${siteConfig.email}?subject=Project%20Inquiry%20-%20Intouch%20Global%20Tech`}
-                    className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-gradient-to-br from-[#FAF7F2] to-white border border-[#E8DFD1] hover:border-amber-500 hover:shadow-md hover:shadow-amber-700/10 transition-all group cursor-pointer"
+                    className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-50/70 border border-slate-200/90 hover:border-blue-500 hover:bg-white transition-all group cursor-pointer"
                   >
-                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-amber-50 text-amber-800 group-hover:bg-amber-700 group-hover:text-white transition-all shadow-xs shrink-0">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all shadow-2xs shrink-0">
                       <Mail className="h-5 w-5" />
                     </div>
                     <div className="min-w-0 flex-1">
-                      <span className="text-sm sm:text-base font-black text-slate-900 group-hover:text-amber-800 transition-colors truncate block">
+                      <span className="text-sm sm:text-base font-black text-slate-900 group-hover:text-blue-600 transition-colors truncate block">
                         {siteConfig.email}
                       </span>
                     </div>
-                    <ArrowUpRight className="h-4 w-4 text-slate-300 group-hover:text-amber-700 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    <ArrowUpRight className="h-4 w-4 text-slate-300 group-hover:text-blue-600 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </motion.a>
                 </div>
               </div>
 
               {/* Guarantees List */}
-              <div className="border-t border-[#E8DFD1] pt-4 space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-amber-800">
-                    Engineering Commitments
-                  </span>
-                  <Sparkles className="h-3.5 w-3.5 text-amber-700" />
-                </div>
+              <div className="border-t border-slate-100 pt-4 space-y-3">
+                <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-blue-700 block">
+                  Engineering Commitments
+                </span>
 
                 <ul className="space-y-2.5 text-xs text-slate-700 font-semibold">
                   <li className="flex items-start gap-2.5">
-                    <CheckCircle2 className="h-4 w-4 text-amber-700 shrink-0 mt-0.5" />
+                    <CheckCircle2 className="h-4 w-4 text-blue-600 shrink-0 mt-0.5" />
                     <span>Response & scope review within 24 hours</span>
                   </li>
                   <li className="flex items-start gap-2.5">
-                    <CheckCircle2 className="h-4 w-4 text-amber-700 shrink-0 mt-0.5" />
+                    <CheckCircle2 className="h-4 w-4 text-blue-600 shrink-0 mt-0.5" />
                     <span>Direct WhatsApp line with lead architects</span>
                   </li>
                   <li className="flex items-start gap-2.5">
-                    <CheckCircle2 className="h-4 w-4 text-amber-700 shrink-0 mt-0.5" />
+                    <CheckCircle2 className="h-4 w-4 text-blue-600 shrink-0 mt-0.5" />
                     <span>2-week working sprint demos with zero lock-in</span>
                   </li>
                   <li className="flex items-start gap-2.5">
-                    <CheckCircle2 className="h-4 w-4 text-amber-700 shrink-0 mt-0.5" />
+                    <CheckCircle2 className="h-4 w-4 text-blue-600 shrink-0 mt-0.5" />
                     <span>100% sovereign client source code ownership</span>
                   </li>
                 </ul>
               </div>
 
               {/* NDA & Sovereignty Seal */}
-              <div className="rounded-2xl border border-amber-200/90 bg-gradient-to-r from-amber-50/80 via-amber-50/40 to-white p-3.5 flex items-center gap-3 text-xs text-slate-800 font-bold shadow-2xs">
-                <ShieldCheck className="h-5 w-5 text-amber-700 shrink-0" />
+              <div className="rounded-2xl border border-blue-200/90 bg-blue-50/50 p-3.5 flex items-center gap-3 text-xs text-slate-800 font-bold shadow-2xs">
+                <ShieldCheck className="h-5 w-5 text-blue-600 shrink-0" />
                 <span>NDA Protected • 100% Confidential IP Guarantee</span>
               </div>
 
-            </motion.div>
+            </div>
           </div>
 
         </div>

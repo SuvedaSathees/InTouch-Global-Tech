@@ -131,7 +131,7 @@ const journeySteps = [
     accent: '#0284c7',
     glowColor: 'rgba(2, 132, 199, 0.2)',
     gradient: 'from-blue-600 to-cyan-600',
-    gate: '100% Sovereign IP & Git Transfer',
+    gate: '100% Full IP & Git Transfer',
     summary:
       'Blue/green containerized rollout on your private cloud with full Git repository handover, Docker configs, and zero-downtime DNS cutover.',
     deliverables: [
@@ -139,7 +139,7 @@ const journeySteps = [
       'Containerized Docker & Kubernetes Clusters',
       'Zero-Downtime Production DNS Cutover',
     ],
-    statusText: '100% Sovereign IP Transferred',
+    statusText: '100% Client IP Transferred',
   },
   {
     id: 'growth',
@@ -217,8 +217,8 @@ export function HomeClientJourney() {
         
         {/* Section Header */}
         <div className="space-y-3 max-w-2xl text-left">
-          <div className="inline-flex items-center gap-2 rounded-full border border-blue-200/80 bg-blue-50/90 px-3.5 py-1 text-xs font-bold text-blue-700 backdrop-blur-md shadow-2xs">
-            <span className="h-2 w-2 rounded-full bg-blue-600 animate-pulse" />
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-blue-600 mb-2">
+            <span className="w-5 h-[2px] bg-blue-600 rounded-full" />
             <span>FOUNDATIONAL METHODOLOGY</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-950 tracking-tight leading-[1.15]">
@@ -228,7 +228,7 @@ export function HomeClientJourney() {
             </span>
           </h2>
           <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
-            A disciplined 7-phase delivery pipeline designed for zero scope ambiguity, rapid feedback loops, and sovereign intellectual property transfer.
+            A disciplined 7-phase delivery pipeline designed for zero scope ambiguity, rapid feedback loops, and complete intellectual property transfer.
           </p>
         </div>
 

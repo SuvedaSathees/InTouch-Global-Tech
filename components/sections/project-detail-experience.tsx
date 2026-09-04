@@ -31,61 +31,43 @@ import { EvMobileDetailExperience } from '@/components/sections/ev-mobile-experi
 import { EvStationDetailExperience } from '@/components/sections/ev-station-experience';
 import { PortfolioWebsiteDetailExperience } from '@/components/sections/portfolio-website-experience';
 
-// Curated gallery frames for all 7 projects
+// Curated gallery frames for all 7 projects (2 photos/previews each)
 const projectGalleryData: Record<string, { title: string; subtitle: string; tag: string }[]> = {
   'junior-junction-school': [
     { title: 'Campus Home & Announcement Portal', subtitle: 'Welcoming interface with real-time academic announcements', tag: 'Web Portal' },
-    { title: 'Digital Admissions Funnel', subtitle: 'Online admission intake with instant fee calculation and upload', tag: 'Admissions' },
     { title: 'Interactive Curriculum Explorer', subtitle: 'Grade-wise developmental activities and classroom showcases', tag: 'Curriculum' },
-    { title: 'School Event & Photo Showcase', subtitle: 'High-speed media galleries with mobile-responsive views', tag: 'Media Gallery' },
   ],
   'portfolio': [
     { title: '3D WebGL Particle Canvas', subtitle: 'Fluid inertial physics and GPU-accelerated interactive particle mesh', tag: '3D Canvas' },
-    { title: 'Interactive Case Study Theater', subtitle: 'Architecture breakdowns with staggered animations', tag: 'Case Studies' },
     { title: 'Dynamic Bento Matrix', subtitle: 'Modular layout with real-time responsive grid adaptation', tag: 'UI Architecture' },
-    { title: 'Direct Contact Gateway', subtitle: 'Instant proposal dispatch console with automated lead routing', tag: 'Lead Funnel' },
   ],
   'job-campus': [
     { title: 'Corporate Placement Engine', subtitle: 'University hiring drives, eligibility filters & student rankings', tag: 'Placement Hub' },
     { title: 'Structured Candidate Skill Matrix', subtitle: 'Automated resume parsing and verified technical badge checks', tag: 'Recruiter View' },
-    { title: 'Live Interview Calendar Slotting', subtitle: 'Multi-stage interview scheduling with automatic collision alerts', tag: 'Scheduler' },
-    { title: 'Placement Officer Telemetry', subtitle: 'Real-time university batch statistics and company offer tracking', tag: 'Analytics' },
   ],
   'erp-system': [
     { title: 'Multi-Plant Inventory Control', subtitle: 'Raw materials & finished goods warehouse balance tracking', tag: 'Inventory Core' },
     { title: 'Dynamic Bill of Materials (BOM)', subtitle: 'Automated production line planning & machine cycle scheduling', tag: 'Manufacturing' },
-    { title: 'GST Billing & Ledger Accounting', subtitle: 'Automated ledger reconciliation, tax invoicing & dispatch logistics', tag: 'Finance' },
-    { title: 'Shopfloor Barcode Batch Scanner', subtitle: 'Tablet-optimized production batch telemetry and operator logs', tag: 'Shopfloor' },
   ],
   'ev-mobile-application': [
     { title: 'Live Map & Plug Locator', subtitle: 'Real-time charging plug availability and turn-by-turn navigation', tag: 'Google Maps GPS' },
-    { title: 'Instant QR Charger Unlock', subtitle: 'OCPP 1.6/2.0 IoT bridge & WebSocket bi-directional command link', tag: 'IoT Protocol' },
     { title: 'Live Charging Telemetry', subtitle: 'Voltage, kW draw, battery percentage and real-time charging cost', tag: 'Telemetry' },
-    { title: 'Firebase Cloud Messaging & Wallet', subtitle: 'Push alerts upon completion, UPI payments and auto GST receipts', tag: 'Fintech & FCM' },
   ],
   'ev-charging-station-website': [
     { title: 'Station Coverage Explorer', subtitle: 'Interactive public charging map, tariff lists and power ratings', tag: 'Public Portal' },
     { title: 'Fuel Savings & ROI Calculator', subtitle: 'Dynamic diesel vs electric fleet cost comparison calculator', tag: 'ROI Estimator' },
-    { title: 'Host Property Partner Funnel', subtitle: 'Commercial property owner onboarding and station feasibility intake', tag: 'Partner Hub' },
-    { title: 'Enterprise Fleet Portal', subtitle: 'Corporate fleet charge cards, monthly billing and driver management', tag: 'Fleet Console' },
   ],
   'rtc-company-erp-system': [
     { title: 'Role-Based Access Control (RBAC)', subtitle: 'Multi-tier approval chains and department permission matrix', tag: 'Security & Auth' },
     { title: 'Asset Lifecycle & Maintenance', subtitle: 'Preventative maintenance tracker with automated work orders', tag: 'Asset Care' },
-    { title: 'Multi-Branch Ledger Tracking', subtitle: 'Consolidated financial budgeting and inter-branch expense audits', tag: 'Accounting' },
-    { title: 'Executive Board Telemetry', subtitle: 'Real-time operations metrics with automated PDF/Excel exports', tag: 'Executive Reports' },
   ],
   'vchemics-website': [
     { title: 'Construction Chemical Catalog', subtitle: 'Searchable product catalog for waterproofing, concrete admixtures & repair mortars', tag: 'Product Catalog' },
     { title: 'Technical MSDS & TDS Download Hub', subtitle: 'Instant 1-click safety datasheets & technical application guides', tag: 'Technical Specs' },
-    { title: 'Contractor Quote & WhatsApp Funnel', subtitle: 'Fast commercial RFQ inquiry dispatch with instant contractor pricing', tag: 'Inquiry Pipeline' },
-    { title: 'Tamil Nadu Regional Distribution Portal', subtitle: 'Mobile-first distributor portal connecting builders and structural engineers', tag: 'Distribution Hub' },
   ],
   'royal-suvai-restaurant-website': [
     { title: 'Interactive Gourmet Menu & Dietary Filters', subtitle: 'Appetizing recipe showcase with spice level, vegan & chef signature highlights', tag: 'Digital Menu' },
     { title: 'Real-Time Table Reservation Engine', subtitle: 'Instant dinner seating slot booking with guest count and seating preferences', tag: 'Table Booking' },
-    { title: 'Direct WhatsApp Food Ordering', subtitle: 'Zero-commission direct takeout & delivery checkout with instant kitchen dispatch', tag: 'Direct Takeout' },
-    { title: 'Banquet & Event Catering Estimator', subtitle: 'Dynamic guest count calculator for weddings, corporate parties & celebrations', tag: 'Catering Hub' },
   ],
 };
 
@@ -133,7 +115,7 @@ const defaultFeatures = [
   },
   {
     title: 'Easy-to-Maintain Architecture',
-    description: 'A clean, modular codebase structured for seamless updates, enterprise reliability, and 100% sovereign client code ownership.',
+    description: 'A clean, modular codebase structured for seamless updates, enterprise reliability, and 100% complete client code ownership.',
     icon: Wrench,
   },
 ];
@@ -186,7 +168,6 @@ export function ProjectDetailExperience({ project }: { project: Project }) {
   const galleryItems = projectGalleryData[project.slug] || [
     { title: `${project.name} Interface`, subtitle: 'Primary responsive layout and navigation', tag: 'Web Portal' },
     { title: 'Core Application Workflow', subtitle: 'Automated digital forms and data processing', tag: 'Application' },
-    { title: 'Interactive Media Gallery', subtitle: 'Mobile-optimized galleries and event updates', tag: 'Media' },
   ];
 
   const threeKeyFeatures = projectKeyFeatures[project.slug] || defaultFeatures;
@@ -199,7 +180,7 @@ export function ProjectDetailExperience({ project }: { project: Project }) {
       {/* 1. HERO SECTION (Simple, Clean, Spacious) */}
       {/* ========================================================================= */}
       <header className="pt-32 pb-16 sm:pt-40 sm:pb-20 border-b border-slate-200/80 bg-white">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-6 text-left">
+        <div className="mx-auto max-w-[1084px] px-4 sm:px-6 lg:px-8 space-y-6 text-left">
           
           {/* Top Breadcrumb */}
           <div className="flex items-center justify-between text-xs text-slate-500 pb-2">
@@ -292,7 +273,7 @@ export function ProjectDetailExperience({ project }: { project: Project }) {
       {/* 2. PROJECT OVERVIEW (Clean Narrative & Context) */}
       {/* ========================================================================= */}
       <section className="py-16 sm:py-20 bg-white border-b border-slate-200/80">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-6 text-left">
+        <div className="mx-auto max-w-[1084px] px-4 sm:px-6 lg:px-8 space-y-6 text-left">
           
           <h2 className="text-2xl sm:text-3xl font-black text-slate-950 tracking-tight">
             Project Overview
@@ -321,7 +302,7 @@ export function ProjectDetailExperience({ project }: { project: Project }) {
             <div className="rounded-2xl border border-slate-200/80 bg-slate-50/70 p-5 space-y-1.5">
               <span className="text-[11px] font-mono font-bold uppercase text-blue-600">03. The Value Delivered</span>
               <p className="text-xs sm:text-sm text-slate-700 font-normal leading-relaxed">
-                Streamlines operations, reduces processing turnaround, and ensures 100% sovereign client code ownership.
+                Streamlines operations, reduces processing turnaround, and ensures 100% full client code ownership.
               </p>
             </div>
           </div>
@@ -333,7 +314,7 @@ export function ProjectDetailExperience({ project }: { project: Project }) {
       {/* 3. 3 KEY ARCHITECTURAL FEATURES (Clean & Balanced) */}
       {/* ========================================================================= */}
       <section className="py-16 sm:py-20 bg-[#F8FAFC] border-b border-slate-200/80">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-8 text-left">
+        <div className="mx-auto max-w-[1084px] px-4 sm:px-6 lg:px-8 space-y-8 text-left">
           
           <div>
             <h2 className="text-2xl sm:text-3xl font-black text-slate-950 tracking-tight">
@@ -383,7 +364,7 @@ export function ProjectDetailExperience({ project }: { project: Project }) {
       {/* 4. SCREENSHOT GALLERY (Clean Mockup Grid & Lightbox) */}
       {/* ========================================================================= */}
       <section className="py-16 sm:py-20 bg-white border-b border-slate-200/80">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-8 text-left">
+        <div className="mx-auto max-w-[1084px] px-4 sm:px-6 lg:px-8 space-y-8 text-left">
           
           <div className="flex items-end justify-between gap-4">
             <div>
@@ -396,7 +377,7 @@ export function ProjectDetailExperience({ project }: { project: Project }) {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {galleryItems.map((item, idx) => (
               <div
                 key={idx}
@@ -451,7 +432,7 @@ export function ProjectDetailExperience({ project }: { project: Project }) {
       {/* 5. CHALLENGES & SOLUTIONS (Simple Side-by-Side) */}
       {/* ========================================================================= */}
       <section className="py-16 sm:py-20 bg-[#F8FAFC] border-b border-slate-200/80">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-6 text-left">
+        <div className="mx-auto max-w-[1084px] px-4 sm:px-6 lg:px-8 space-y-6 text-left">
           
           <h2 className="text-2xl sm:text-3xl font-black text-slate-950 tracking-tight">
             Challenges & Solutions
@@ -510,7 +491,7 @@ export function ProjectDetailExperience({ project }: { project: Project }) {
       {/* 7. PREVIOUS / NEXT PAGER */}
       {/* ========================================================================= */}
       <footer className="border-t border-slate-200 bg-slate-50/50 py-8">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
+        <div className="mx-auto max-w-[1084px] px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
           <Link
             href={`/projects/${prevProject.slug}`}
             className="inline-flex items-center gap-2 text-xs font-bold text-slate-600 hover:text-blue-600 transition-colors"

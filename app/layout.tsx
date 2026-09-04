@@ -20,6 +20,16 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   keywords: siteConfig.seoKeywords,
   metadataBase: new URL(siteConfig.url),
+  icons: {
+    icon: [
+      { url: '/icon.png', sizes: '128x128', type: 'image/png' },
+      { url: '/icon-32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/icon-64.png', sizes: '64x64', type: 'image/png' },
+      { url: '/favicon.ico' },
+    ],
+    shortcut: '/favicon.ico',
+    apple: '/apple-icon.png',
+  },
   openGraph: {
     title: `${siteConfig.name} — ${siteConfig.tagline}`,
     description: siteConfig.description,
@@ -46,6 +56,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={fontSans.variable}>
+      <head>
+        <link rel="icon" type="image/png" sizes="128x128" href="/icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/apple-icon.png" />
+      </head>
       <body className={`min-h-screen bg-background font-sans antialiased ${fontSans.className}`}>
         <CustomCursor />
         <Navbar />

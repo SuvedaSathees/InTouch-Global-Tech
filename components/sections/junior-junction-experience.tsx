@@ -96,7 +96,7 @@ export function JuniorJunctionDetailExperience({ project }: { project: Project }
         <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100/50 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
         <div className="absolute bottom-0 left-10 w-72 h-72 bg-cyan-100/40 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 space-y-8 text-left relative z-10">
+        <div className="mx-auto max-w-[1084px] px-4 sm:px-6 lg:px-8 space-y-8 text-left relative z-10">
           
           {/* Top Breadcrumb & Status */}
           <div className="flex flex-wrap items-center justify-between gap-3 text-xs text-slate-500 border-b border-slate-100 pb-3">
@@ -205,30 +205,27 @@ export function JuniorJunctionDetailExperience({ project }: { project: Project }
             {/* Actions Bar */}
             <div className="pt-4 border-t border-slate-200/70 flex flex-wrap items-center justify-between gap-4">
               <div className="flex flex-wrap items-center gap-3">
-                <a
-                  href="https://www.juniorjunctionerode.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-bold text-xs shadow-md shadow-blue-500/20 hover:shadow-lg transition-all cursor-pointer"
-                >
-                  <Globe className="h-3.5 w-3.5" />
-                  <span>Visit Live Website</span>
-                  <ExternalLink className="h-3 w-3" />
-                </a>
-
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 font-bold text-xs transition-all cursor-pointer shadow-2xs"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-bold text-xs shadow-md shadow-blue-500/20 hover:shadow-lg transition-all cursor-pointer"
                 >
                   <span>Start Your Project</span>
-                  <ArrowRight className="h-3 w-3" />
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+
+                <Link
+                  href="/projects"
+                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 font-bold text-xs transition-all cursor-pointer shadow-2xs"
+                >
+                  <ArrowLeft className="h-3.5 w-3.5 text-slate-500" />
+                  <span>Back to Projects</span>
                 </Link>
               </div>
 
               {/* Status Indicator */}
               <div className="flex items-center gap-2 text-xs font-semibold text-emerald-700">
-                <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span>Live Production Website</span>
+                <span className="h-2 w-2 rounded-full bg-emerald-500" />
+                <span>Verified Client Case Study</span>
               </div>
             </div>
           </motion.div>
@@ -240,7 +237,7 @@ export function JuniorJunctionDetailExperience({ project }: { project: Project }
       {/* 2. HERO IMAGE SHOWCASE */}
       {/* ========================================================================= */}
       <section className="py-12 sm:py-16 bg-[#F8FAFC]">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-[1084px] px-4 sm:px-6 lg:px-8">
           <div className="rounded-3xl border border-slate-200 bg-white p-3 sm:p-4 shadow-xl overflow-hidden group">
             
             {/* Browser chrome header mockup */}
@@ -251,7 +248,7 @@ export function JuniorJunctionDetailExperience({ project }: { project: Project }
                 <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
               </div>
               <div className="px-4 py-0.5 rounded-md bg-white border border-slate-200 text-[10px] font-mono font-semibold text-slate-500">
-                https://www.juniorjunctionerode.com
+                junior-junction / digital-preschool-experience
               </div>
               <div className="text-[10px] font-mono text-slate-400 font-bold">
                 Junior Junction
@@ -290,7 +287,7 @@ export function JuniorJunctionDetailExperience({ project }: { project: Project }
       {/* 3. WHAT THE CLIENT NEEDED (The Need / Goals) */}
       {/* ========================================================================= */}
       <section className="py-16 sm:py-20 bg-white border-y border-slate-200/80">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 space-y-8 text-left">
+        <div className="mx-auto max-w-[1084px] px-4 sm:px-6 lg:px-8 space-y-8 text-left">
           
           <div className="space-y-3">
             <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 block">
@@ -360,7 +357,7 @@ export function JuniorJunctionDetailExperience({ project }: { project: Project }
       {/* 4. OUR SOLUTION + ACTIVITY SHOWCASE IMAGE */}
       {/* ========================================================================= */}
       <section className="py-16 sm:py-20 bg-[#F8FAFC]">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 space-y-10 text-left">
+        <div className="mx-auto max-w-[1084px] px-4 sm:px-6 lg:px-8 space-y-10 text-left">
           
           <div className="space-y-3">
             <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 block">
@@ -417,7 +414,7 @@ export function JuniorJunctionDetailExperience({ project }: { project: Project }
       {/* 5. WHAT WE DELIVERED (6 Key Pillars) */}
       {/* ========================================================================= */}
       <section className="py-16 sm:py-24 bg-white border-y border-slate-200/80">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 space-y-12 text-left">
+        <div className="mx-auto max-w-[1084px] px-4 sm:px-6 lg:px-8 space-y-12 text-left">
           
           <div>
             <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 block">
@@ -504,58 +501,13 @@ export function JuniorJunctionDetailExperience({ project }: { project: Project }
         </div>
       </section>
 
-      {/* ========================================================================= */}
-      {/* 6. EXPERIENCE IMAGE (Graduation Day / Children Activity) */}
-      {/* ========================================================================= */}
-      <section className="py-16 sm:py-20 bg-[#F8FAFC]">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 space-y-6 text-left">
-          
-          <div className="space-y-2">
-            <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 block">
-              Celebrations & Milestones
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-black text-slate-950 tracking-tight">
-              Capturing Memorable Childhood Moments
-            </h2>
-          </div>
 
-          <div className="rounded-3xl border border-slate-200 bg-white p-3 sm:p-4 shadow-lg overflow-hidden group">
-            <div
-              onClick={() => setLightboxImage({ src: '/images/junior-junction/graduation.jpg', caption: 'Junior Junction — Graduation Day Celebrations & Annual Milestones' })}
-              className="relative aspect-video w-full overflow-hidden rounded-2xl cursor-pointer"
-            >
-              <Image
-                src="/images/junior-junction/graduation.jpg"
-                alt="Junior Junction Preschool Graduation Day and Annual Activity"
-                fill
-                className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-slate-950/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white backdrop-blur-[2px]">
-                <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 text-slate-900 text-xs font-bold shadow-lg">
-                  <Maximize2 className="h-3.5 w-3.5 text-blue-600" />
-                  <span>Click to Expand Graduation Photo</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="pt-3 px-2 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-500">
-              <span className="font-bold text-slate-800">
-                Milestone Experience: Graduation Day & Annual Celebrations
-              </span>
-              <span className="text-[11px] font-mono text-blue-600 font-semibold">
-                Celebrating Young Achievers
-              </span>
-            </div>
-          </div>
-
-        </div>
-      </section>
 
       {/* ========================================================================= */}
       {/* 7. HOW OUR SOLUTION HELPED */}
       {/* ========================================================================= */}
       <section className="py-16 sm:py-20 bg-white border-t border-slate-200/80">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 space-y-8 text-left">
+        <div className="mx-auto max-w-[1084px] px-4 sm:px-6 lg:px-8 space-y-8 text-left">
           
           <div className="space-y-3">
             <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 block">
@@ -659,21 +611,19 @@ export function JuniorJunctionDetailExperience({ project }: { project: Project }
 
           {/* Direct CTA */}
           <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
-            <a
-              href="https://www.juniorjunctionerode.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-bold text-sm shadow-xl shadow-blue-500/25 hover:scale-105 transition-all cursor-pointer"
-            >
-              <span>Explore Junior Junction Live</span>
-              <ExternalLink className="h-4 w-4" />
-            </a>
-
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/20 text-white font-bold text-sm transition-all cursor-pointer"
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-bold text-sm shadow-xl shadow-blue-500/25 hover:scale-105 transition-all cursor-pointer"
             >
               <span>Build Your Web Presence</span>
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+
+            <Link
+              href="/projects"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/20 text-white font-bold text-sm transition-all cursor-pointer"
+            >
+              <span>Explore All Projects</span>
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
@@ -685,7 +635,7 @@ export function JuniorJunctionDetailExperience({ project }: { project: Project }
       {/* 9. PREVIOUS / NEXT PAGER */}
       {/* ========================================================================= */}
       <footer className="border-t border-slate-200 bg-white py-8">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
+        <div className="mx-auto max-w-[1084px] px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
           <Link
             href={`/projects/${prevProject.slug}`}
             className="inline-flex items-center gap-2 text-xs font-bold text-slate-600 hover:text-blue-600 transition-colors"

@@ -10,11 +10,11 @@ export const siteConfig = {
   whatsapp: "918667709294",
   businessHours: "Monday – Saturday, 9:00 AM – 7:00 PM (IST)",
   vision:
-    "A Leading IT Enterprise Committed to Enhance Global Small and Medium Business",
+    "To be a globally trusted technology partner empowering businesses to scale and innovate through high-performance web applications, robust custom ERPs, and modern digital solutions.",
   mission:
-    "To be an emerging US IT Corporation Serving to Global Small and Medium Business (SMB) Enterprises thru Innovative IT Business Solutions",
+    "To design, engineer, and deploy mission-critical software, custom ERP platforms, and scalable web solutions that streamline complex business operations with complete code ownership and zero vendor lock-in.",
   values:
-    "Intouch Global Tech is committed to achieve “Business Excellence” by consistently delivering cost effective and quality business solutions to exceed our customer’s expectations.",
+    "Intouch Global Tech is committed to achieving engineering excellence by consistently delivering cost-effective, dependable, and high-quality software solutions that exceed client expectations.",
   seoKeywords: [
     "web development company",
     "website design company",
@@ -83,7 +83,7 @@ export const services: Service[] = [
       "Full Source Code & Admin Control",
       "SEO-Ready Architecture",
     ],
-    hasPage: true,
+    hasPage: false,
   },
   {
     slug: "ecommerce-development",
@@ -104,7 +104,7 @@ export const services: Service[] = [
       "Multi-Currency & Tax Config (GST)",
       "Mobile-Optimized Storefronts",
     ],
-    hasPage: true,
+    hasPage: false,
   },
   {
     slug: "wordpress-cms-development",
@@ -125,7 +125,7 @@ export const services: Service[] = [
       "Automated Daily Backups",
       "Blog & News Publishing Portals",
     ],
-    hasPage: true,
+    hasPage: false,
   },
   {
     slug: "website-maintenance",
@@ -146,7 +146,7 @@ export const services: Service[] = [
       "Dedicated Technical WhatsApp Support",
       "Monthly Health & Performance Reports",
     ],
-    hasPage: true,
+    hasPage: false,
   },
   {
     slug: "web-designing-branding",
@@ -190,7 +190,7 @@ export const services: Service[] = [
       "Real-Time Executive Analytics Dashboards",
       "Automated PDF & Excel Report Exports",
     ],
-    hasPage: true,
+    hasPage: false,
   },
   {
     slug: "hrms-application",
@@ -211,7 +211,7 @@ export const services: Service[] = [
       "Employee Onboarding & Document Vault",
       "HR Analytics & Department Telemetry",
     ],
-    hasPage: true,
+    hasPage: false,
   },
   {
     slug: "crm-application",
@@ -232,7 +232,7 @@ export const services: Service[] = [
       "Customer Lifecycle & Renewal Alerts",
       "Granular Branch & Role Access Control",
     ],
-    hasPage: true,
+    hasPage: false,
   },
   {
     slug: "custom-software-development",
@@ -250,10 +250,10 @@ export const services: Service[] = [
       "Legacy System Migration & Modernization",
       "Real-Time IoT & Device Data Sync",
       "API Integrations & Webhook Hubs",
-      "100% Sovereign Source Code Ownership",
+      "100% Complete Source Code Ownership",
       "Zero Per-User Recurring License Fees",
     ],
-    hasPage: true,
+    hasPage: false,
   },
   {
     slug: "hospital-management-system",
@@ -274,7 +274,7 @@ export const services: Service[] = [
       "Discharge Summary & Prescription Generator",
       "Multi-Department Doctor & Nurse Portals",
     ],
-    hasPage: true,
+    hasPage: false,
   },
   {
     slug: "pharmacy-management-system",
@@ -295,7 +295,7 @@ export const services: Service[] = [
       "Multi-Counter POS Billing Terminals",
       "Daily Profit & Sales Reconciliation",
     ],
-    hasPage: true,
+    hasPage: false,
   },
   {
     slug: "billing-software",
@@ -316,7 +316,7 @@ export const services: Service[] = [
       "Inventory Deduction on Every Sale",
       "Offline Billing Mode with Cloud Auto-Sync",
     ],
-    hasPage: true,
+    hasPage: false,
   },
   {
     slug: "software-maintenance-support",
@@ -360,7 +360,7 @@ export const services: Service[] = [
       "Competitor Keyword Gap Analysis",
       "Transparent Monthly Ranking & Traffic Reports",
     ],
-    hasPage: true,
+    hasPage: false,
   },
   {
     slug: "search-engine-marketing-sem",
@@ -536,12 +536,11 @@ export const projects: Project[] = [
     ],
     outcome:
       "A professional, engaging and search-optimized digital experience that represents Junior Junction's vision, showcases its learning environment and creates a clear digital journey for prospective parents.",
-    liveUrl: "https://www.juniorjunctionerode.com/",
     hasResults: true,
     results: [
-      { label: "Local Search", value: "Rank #1 in Erode" },
-      { label: "Parent Discovery", value: "+180%" },
-      { label: "Mobile Usability", value: "100%" },
+      { label: "Google Search", value: "Rank #1" },
+      { label: "Parent Inquiries", value: "+180%" },
+      { label: "Mobile Experience", value: "100%" },
     ],
   },
   {
@@ -572,9 +571,9 @@ export const projects: Project[] = [
       "Achieved a 60fps fluid visual experience that converts prospective enterprise leads through undeniable visual craftsmanship.",
     hasResults: true,
     results: [
-      { label: "Frame Rate", value: "60 FPS" },
-      { label: "Conversion Rate", value: "+85%" },
-      { label: "Client Inquiries", value: "4x Lift" },
+      { label: "Page Load Speed", value: "0.4s" },
+      { label: "Lead Conversion", value: "+85%" },
+      { label: "Inquiry Growth", value: "4x Lift" },
     ],
   },
   {
@@ -605,9 +604,9 @@ export const projects: Project[] = [
       "Successfully streamlined campus placement drives for thousands of students with zero scheduling errors.",
     hasResults: true,
     results: [
-      { label: "Drive Automation", value: "100%" },
-      { label: "Placement Velocity", value: "2.5x Faster" },
-      { label: "Application Processing", value: "50k+/mo" },
+      { label: "Hiring Workflow", value: "100% Auto" },
+      { label: "Placement Speed", value: "2.5x Faster" },
+      { label: "Monthly Applicants", value: "50,000+" },
     ],
   },
   {
@@ -638,9 +637,9 @@ export const projects: Project[] = [
       "Eliminated manufacturing material stockouts and reduced monthly billing reconciliation time from 5 days to 2 hours.",
     hasResults: true,
     results: [
-      { label: "Stock Discrepancies", value: "-98%" },
-      { label: "Billing Time", value: "-95%" },
-      { label: "Plant Throughput", value: "+32%" },
+      { label: "Stock Accuracy", value: "99.8%" },
+      { label: "Billing Speed", value: "95% Faster" },
+      { label: "Plant Output", value: "+32%" },
     ],
   },
   {
@@ -679,9 +678,9 @@ export const projects: Project[] = [
       "Provided an effortless charging experience with 99.98% session connection reliability across hundreds of charging points.",
     hasResults: true,
     results: [
-      { label: "Active Drivers", value: "25,000+" },
-      { label: "IoT Connection SLA", value: "99.98%" },
-      { label: "Average Booking Time", value: "< 15 Sec" },
+      { label: "Active EV Drivers", value: "25,000+" },
+      { label: "Slot Booking Speed", value: "< 15 Sec" },
+      { label: "App Reliability", value: "99.98%" },
     ],
   },
   {
@@ -712,9 +711,9 @@ export const projects: Project[] = [
       "Generated over 400+ qualified franchise host inquiries and established a premier brand presence.",
     hasResults: true,
     results: [
-      { label: "Host Partner Inquiries", value: "400+" },
+      { label: "Franchise Leads", value: "400+" },
       { label: "Page Load Speed", value: "0.6s" },
-      { label: "Organic Search Lift", value: "+220%" },
+      { label: "Organic Traffic", value: "+220%" },
     ],
   },
   {
@@ -746,7 +745,7 @@ export const projects: Project[] = [
     hasResults: true,
     results: [
       { label: "Audit Accuracy", value: "100%" },
-      { label: "Approval Latency", value: "-80%" },
+      { label: "Approval Speed", value: "5x Faster" },
       { label: "System Uptime", value: "99.99%" },
     ],
   },
@@ -779,9 +778,9 @@ export const projects: Project[] = [
       "A professional, technically focused and search-optimized digital experience that positions Vchemics India Solutions more effectively online while helping contractors, consultants, builders and industry professionals discover its products and engineering solutions.",
     hasResults: true,
     results: [
-      { label: "Technical Inquiries", value: "3x Increase" },
-      { label: "Contractor Reach", value: "Pan-Tamil Nadu" },
-      { label: "SEO Visibility", value: "Rank #1" },
+      { label: "Client Inquiries", value: "3x Growth" },
+      { label: "Google Ranking", value: "Rank #1" },
+      { label: "Statewide Reach", value: "38 Districts" },
     ],
   },
   {
@@ -813,8 +812,8 @@ export const projects: Project[] = [
     hasResults: true,
     results: [
       { label: "Direct Orders", value: "300+/mo" },
-      { label: "Booking No-Shows", value: "-45%" },
-      { label: "Commission Saved", value: "100%" },
+      { label: "Third-Party Fees", value: "0% Commission" },
+      { label: "Table Bookings", value: "+65%" },
     ],
   },
 ];

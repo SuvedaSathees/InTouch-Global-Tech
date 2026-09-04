@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 import {
   Building2,
@@ -11,7 +10,6 @@ import {
   Activity,
   Search,
   Users2,
-  ArrowRight,
   ShieldCheck,
   CheckCircle2,
   Receipt,
@@ -42,7 +40,6 @@ const softwareDomains = [
       'Mobile-First 100/100 Core Web Vitals',
     ],
     specs: ['Next.js', 'React', 'Tailwind CSS', 'TypeScript'],
-    href: '/services/web-development',
   },
   {
     id: 'erp',
@@ -61,7 +58,6 @@ const softwareDomains = [
       'Zero-Loss PostgreSQL Transaction ACID Ledger',
     ],
     specs: ['PostgreSQL', 'Node.js', 'Docker', 'Redis'],
-    href: '/services/erp-development',
   },
   {
     id: 'hrms',
@@ -80,7 +76,6 @@ const softwareDomains = [
       'Employee Self-Service Mobile Portal',
     ],
     specs: ['React', 'NestJS', 'PostgreSQL', 'Node.js'],
-    href: '/services/hrms-application',
   },
   {
     id: 'crm-pos',
@@ -99,7 +94,6 @@ const softwareDomains = [
       'Instant WhatsApp Invoice & GST Dispatcher',
     ],
     specs: ['Node.js', 'React', 'FastAPI', 'SQLite / Cloud'],
-    href: '/services/crm-application',
   },
   {
     id: 'hms',
@@ -118,7 +112,6 @@ const softwareDomains = [
       'Pharmacy Inventory with Expiry Alerts',
     ],
     specs: ['PostgreSQL', 'Next.js', 'Node.js', 'Docker'],
-    href: '/services/hospital-management-system',
   },
   {
     id: 'seo-gateway',
@@ -137,7 +130,6 @@ const softwareDomains = [
       'Secure High-Concurrency REST & Webhook APIs',
     ],
     specs: ['WhatsApp API', 'SMS Gateway', 'REST API', 'Webhooks'],
-    href: '/services/seo-search-engine-optimization',
   },
 ];
 
@@ -160,7 +152,7 @@ function AttractiveDomainCard({
       whileHover={{ y: -8, scale: 1.015 }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="group relative flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-white p-7 text-left shadow-xs hover:shadow-2xl hover:border-blue-400/90 transition-all duration-300 overflow-hidden cursor-pointer"
+      className="group relative flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-white p-7 text-left shadow-xs hover:shadow-2xl hover:border-blue-400/90 transition-all duration-300 overflow-hidden"
       style={{
         boxShadow: isHovered
           ? `0 24px 50px -12px ${domain.glowColor}, 0 0 0 1px ${domain.accent}40`
@@ -236,8 +228,8 @@ function AttractiveDomainCard({
         </div>
       </div>
 
-      {/* Bottom Bar: Tech Specs & Interactive Action */}
-      <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between gap-3 relative z-10">
+      {/* Bottom Bar: Tech Specs */}
+      <div className="mt-6 pt-4 border-t border-slate-100 flex items-center gap-3 relative z-10">
         <div className="flex flex-wrap items-center gap-1.5">
           {domain.specs.map((spec, sIdx) => (
             <span
@@ -249,14 +241,6 @@ function AttractiveDomainCard({
             </span>
           ))}
         </div>
-
-        <Link
-          href={domain.href}
-          className="flex h-8 w-8 items-center justify-center rounded-xl bg-slate-100 text-slate-700 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shrink-0 shadow-2xs"
-          aria-label={`View ${domain.name}`}
-        >
-          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-        </Link>
       </div>
     </motion.div>
   );
@@ -282,7 +266,7 @@ export function HomeWhatWeBuild() {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 z-10 space-y-12 sm:space-y-16">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 max-w-4xl text-left">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 w-full text-left">
           <div className="space-y-3">
             <motion.div
               initial={{ opacity: 0, x: -10 }}
@@ -302,22 +286,26 @@ export function HomeWhatWeBuild() {
               transition={{ duration: 0.4, delay: 0.05 }}
               className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-950 leading-tight"
             >
-              Production Web &{' '}
-              <span className="bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-700 bg-clip-text text-transparent">
+              <span className="block">Production Web &</span>
+              <span className="block bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-700 bg-clip-text text-transparent">
                 Software Systems.
               </span>
             </motion.h2>
           </div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 0.1 }}
-            className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal max-w-md"
-          >
-            100% sovereign client code ownership, modern cloud microservices, and mission-critical reliability engineered for businesses worldwide.
-          </motion.p>
+          <div className="shrink-0 md:max-w-md">
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+              className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal"
+            >
+              100% complete client code ownership, modern cloud<br className="hidden sm:inline" />{' '}
+              microservices, and mission-critical reliability engineered for<br className="hidden sm:inline" />{' '}
+              businesses worldwide.
+            </motion.p>
+          </div>
         </div>
 
         {/* 6-Card High-Impact Animatic Architecture Matrix */}

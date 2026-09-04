@@ -168,7 +168,7 @@ export default function ContactPage() {
                         required
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        placeholder="John Doe"
+                        placeholder="Your Name"
                         className="w-full rounded-2xl border border-slate-200 bg-slate-50/60 px-4 py-3 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-500/10 focus:outline-none transition-all font-medium"
                       />
                     </div>
@@ -184,7 +184,7 @@ export default function ContactPage() {
                         required
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        placeholder="john@example.com"
+                        placeholder="Your Email"
                         className="w-full rounded-2xl border border-slate-200 bg-slate-50/60 px-4 py-3 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-500/10 focus:outline-none transition-all font-medium"
                       />
                     </div>
@@ -203,7 +203,7 @@ export default function ContactPage() {
                         required
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        placeholder="+91 98765 43210"
+                        placeholder="Your Phone Number"
                         className="w-full rounded-2xl border border-slate-200 bg-slate-50/60 px-4 py-3 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-500/10 focus:outline-none transition-all font-medium"
                       />
                     </div>
@@ -218,7 +218,7 @@ export default function ContactPage() {
                         type="text"
                         value={formData.company}
                         onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                        placeholder="e.g. Acme Corp"
+                        placeholder="Your Company Name"
                         className="w-full rounded-2xl border border-slate-200 bg-slate-50/60 px-4 py-3 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-500/10 focus:outline-none transition-all font-medium"
                       />
                     </div>
@@ -291,7 +291,7 @@ export default function ContactPage() {
                       rows={3}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      placeholder="Briefly describe what you're looking to build, desired features, integrations, or key timelines..."
+                      placeholder="Your project requirements, goals, or key details..."
                       className="w-full rounded-2xl border border-slate-200 bg-slate-50/60 px-4 py-3 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-500/10 focus:outline-none transition-all font-medium resize-none leading-relaxed"
                     />
                   </div>
@@ -388,12 +388,12 @@ export default function ContactPage() {
                   </li>
                   <li className="flex items-start gap-2.5">
                     <CheckCircle2 className="h-4 w-4 text-blue-600 shrink-0 mt-0.5" />
-                    <span>100% sovereign client source code ownership</span>
+                    <span>100% full client source code ownership</span>
                   </li>
                 </ul>
               </div>
 
-              {/* NDA & Sovereignty Seal */}
+              {/* NDA & IP Ownership Seal */}
               <div className="rounded-2xl border border-blue-200/90 bg-blue-50/50 p-3.5 flex items-center gap-3 text-xs text-slate-800 font-bold shadow-2xs">
                 <ShieldCheck className="h-5 w-5 text-blue-600 shrink-0" />
                 <span>NDA Protected • 100% Confidential IP Guarantee</span>

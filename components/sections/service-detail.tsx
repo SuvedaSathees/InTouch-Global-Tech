@@ -78,7 +78,7 @@ export function ServiceDetail({ service }: { service: Service }) {
                   </div>
                   <div className="flex items-start gap-2.5">
                     <ShieldCheck className="h-4 w-4 text-emerald-600 shrink-0 mt-0.5" />
-                    <span><strong className="text-slate-900">Complete Data Sovereignty:</strong> Hosted securely in your private cloud.</span>
+                    <span><strong className="text-slate-900">Complete Data Privacy & Control:</strong> Hosted securely in your private cloud.</span>
                   </div>
                 </div>
 

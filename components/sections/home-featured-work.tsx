@@ -181,7 +181,7 @@ export function HomeFeaturedWork() {
             </h2>
 
             <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed max-w-xl">
-              From high-concurrency custom ERPs to interactive web portals, every system is engineered for measurable business performance with 100% sovereign client IP.
+              From high-concurrency custom ERPs to interactive web portals, every system is engineered for measurable business performance with 100% client IP ownership.
             </p>
           </div>
 

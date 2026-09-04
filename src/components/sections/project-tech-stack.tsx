@@ -166,7 +166,7 @@ const technologies: TechItem[] = [
     category: 'Cloud & DevOps',
     badge: 'CI/CD & Versioning',
     metric: '100% Transfer',
-    description: 'Automated testing workflows, PR reviews, and sovereign source code delivery.',
+    description: 'Automated testing workflows, PR reviews, and complete source code delivery.',
   },
 ];
 
@@ -218,7 +218,7 @@ export function ProjectTechStack() {
             </h1>
 
             <p className="mt-2 text-xs sm:text-sm text-slate-600 font-normal leading-relaxed">
-              Battle-tested tools powering our custom ERPs, websites, mobile apps, and cloud backends with 100% sovereign client code.
+              Battle-tested tools powering our custom ERPs, websites, mobile apps, and cloud backends with 100% full client code ownership.
             </p>
           </div>
 

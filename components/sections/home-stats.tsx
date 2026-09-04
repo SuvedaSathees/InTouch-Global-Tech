@@ -25,7 +25,7 @@ const stats = [
   },
   {
     value: '100%',
-    unit: 'Sovereign',
+    unit: 'Guaranteed',
     label: 'IP Codebase Ownership',
     subtext: 'Full source code, container configurations, and database rights.',
     badge: 'Complete Transfer',

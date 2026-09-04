@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   ArrowLeft,
   ArrowRight,
@@ -22,6 +22,7 @@ import {
   Maximize2,
   ChevronLeft,
   ChevronRight,
+  X,
 } from 'lucide-react';
 import { type Project, projects } from '@/lib/site-config';
 
@@ -85,7 +86,7 @@ export function PortfolioWebsiteDetailExperience({ project }: { project: Project
         <div className="absolute top-0 right-0 w-[450px] h-[450px] bg-blue-100/50 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
         <div className="absolute bottom-0 left-10 w-72 h-72 bg-slate-100/80 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 space-y-8 text-left relative z-10">
+        <div className="mx-auto max-w-[1084px] px-4 sm:px-6 lg:px-8 space-y-8 text-left relative z-10">
           
           <div className="flex flex-wrap items-center justify-between gap-3 text-xs text-slate-500 border-b border-slate-100 pb-3">
             <Link
@@ -166,7 +167,7 @@ export function PortfolioWebsiteDetailExperience({ project }: { project: Project
                 </span>
               </div>
 
-              <div>
+              <div className="sm:-translate-x-[50px]">
                 <span className="text-[10px] font-mono uppercase font-bold text-slate-400 block tracking-wider">
                   Industry
                 </span>
@@ -216,7 +217,7 @@ export function PortfolioWebsiteDetailExperience({ project }: { project: Project
 
       {/* 2. HERO IMAGE SHOWCASE */}
       <section className="py-12 sm:py-16 bg-[#F8FAFC]">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-[1084px] px-4 sm:px-6 lg:px-8">
           <div className="rounded-3xl border border-slate-200 bg-white p-3 sm:p-4 shadow-xl overflow-hidden group">
             
             <div className="flex items-center justify-between px-3 py-2 border-b border-slate-100 bg-slate-50/80 rounded-t-2xl">
@@ -255,7 +256,7 @@ export function PortfolioWebsiteDetailExperience({ project }: { project: Project
 
       {/* 3. WHAT THE CLIENT NEEDED */}
       <section className="py-16 sm:py-20 bg-white border-y border-slate-200/80">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 space-y-8 text-left">
+        <div className="mx-auto max-w-[1084px] px-4 sm:px-6 lg:px-8 space-y-8 text-left">
           
           <div className="space-y-3">
             <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 block">
@@ -279,7 +280,7 @@ export function PortfolioWebsiteDetailExperience({ project }: { project: Project
 
       {/* 4. OUR SOLUTION + ACTIVITY IMAGES */}
       <section className="py-16 sm:py-20 bg-[#F8FAFC]">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 space-y-12 text-left">
+        <div className="mx-auto max-w-[1084px] px-4 sm:px-6 lg:px-8 space-y-12 text-left">
           
           <div className="space-y-6">
             <div className="space-y-3">
@@ -300,13 +301,38 @@ export function PortfolioWebsiteDetailExperience({ project }: { project: Project
               </p>
             </div>
           </div>
+
+          {/* Activity Image Frame */}
+          <div className="rounded-3xl border border-slate-200 bg-white p-3 sm:p-4 shadow-lg overflow-hidden group">
+            <div
+              onClick={() => setLightboxImage({ src: '/images/portfolio-website/project.jpg', caption: 'Creative Projects & Production Showcase' })}
+              className="relative aspect-video w-full overflow-hidden rounded-2xl cursor-pointer bg-slate-100 flex items-center justify-center"
+            >
+              <Image 
+                src="/images/portfolio-website/project.jpg" 
+                alt="Creative Projects Showcase" 
+                fill 
+                className="object-cover transition-transform duration-500 group-hover:scale-105" 
+              />
+              <div className="absolute inset-0 bg-slate-950/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white backdrop-blur-[2px]">
+                <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 text-slate-900 text-xs font-bold shadow-lg">
+                  <Maximize2 className="h-3.5 w-3.5 text-blue-600" />
+                  <span>Click to Expand Full Preview</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-3 px-2 flex items-center justify-between text-xs text-slate-500">
+              <span className="font-semibold text-slate-700">Creative Production & Showcase</span>
+            </div>
+          </div>
           
         </div>
       </section>
 
       {/* 5. WHAT WE DELIVERED */}
       <section className="py-16 sm:py-24 bg-white border-y border-slate-200/80">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 space-y-12 text-left">
+        <div className="mx-auto max-w-[1084px] px-4 sm:px-6 lg:px-8 space-y-12 text-left">
           
           <div>
             <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 block">
@@ -349,7 +375,7 @@ export function PortfolioWebsiteDetailExperience({ project }: { project: Project
 
       {/* 6. HOW OUR SOLUTION HELPED */}
       <section className="py-16 sm:py-20 bg-[#F8FAFC]">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 space-y-8 text-left">
+        <div className="mx-auto max-w-[1084px] px-4 sm:px-6 lg:px-8 space-y-8 text-left">
           <div className="space-y-3">
             <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 block">
               Business & Industry Impact
@@ -376,7 +402,7 @@ export function PortfolioWebsiteDetailExperience({ project }: { project: Project
       <section className="py-20 bg-gradient-to-b from-[#0A1628] to-[#0D1F3C] text-white text-center relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-blue-600/15 blur-[120px] pointer-events-none rounded-full" />
 
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-10 relative z-10">
+        <div className="mx-auto max-w-[956px] px-4 sm:px-6 lg:px-8 space-y-10 relative z-10">
           <div className="space-y-4 max-w-3xl mx-auto">
             <span className="text-xs font-mono font-bold uppercase tracking-wider text-cyan-400 block">
               Delivered Result
@@ -446,7 +472,7 @@ export function PortfolioWebsiteDetailExperience({ project }: { project: Project
 
       {/* 8. PREVIOUS / NEXT PAGER */}
       <footer className="border-t border-slate-200 bg-white py-8">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
+        <div className="mx-auto max-w-[1084px] px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
           <Link
             href={`/projects/${prevProject.slug}`}
             className="inline-flex items-center gap-2 text-xs font-bold text-slate-600 hover:text-blue-600 transition-colors"
@@ -471,6 +497,46 @@ export function PortfolioWebsiteDetailExperience({ project }: { project: Project
           </Link>
         </div>
       </footer>
+
+      {/* LIGHTBOX PREVIEW MODAL */}
+      <AnimatePresence>
+        {lightboxImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setLightboxImage(null)}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-slate-950/85 backdrop-blur-md cursor-zoom-out"
+          >
+            <div
+              onClick={(e) => e.stopPropagation()}
+              className="relative max-w-5xl w-full rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 shadow-2xl space-y-3 p-3"
+            >
+              <div className="flex items-center justify-between px-2 pt-1 text-white">
+                <span className="text-xs font-semibold text-slate-300">
+                  {lightboxImage.caption}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setLightboxImage(null)}
+                  className="p-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+
+              <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-slate-100">
+                <Image
+                  src={lightboxImage.src}
+                  alt={lightboxImage.caption}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
     </div>
   );

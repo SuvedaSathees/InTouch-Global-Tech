@@ -20,15 +20,15 @@ export type TeamMember = {
 const teamMembers: TeamMember[] = [
   {
     id: 1,
-    name: 'Alexander Reed',
-    role: 'Lead Solutions Architect & Founder',
+    name: 'Velumurugan',
+    role: 'CEO of Intouch',
     category: 'Leadership',
-    badge: 'Core Leadership',
+    badge: 'Executive Leadership',
     avatarColor: 'from-blue-600 to-indigo-700',
-    initials: 'AR',
-    bio: 'Designs end-to-end enterprise architectures, oversees major client projects, and ensures clean software delivery from Day 1.',
-    skills: ['System Architecture', 'Enterprise ERP', 'Cloud Scaling'],
-    experience: '9+ Years Experience',
+    initials: 'VM',
+    bio: 'Guides executive vision, enterprise software strategy, and high-scale digital innovation for Intouch Global Tech.',
+    skills: ['Executive Strategy', 'Enterprise Systems', 'Digital Transformation'],
+    experience: '12+ Years Experience',
   },
   {
     id: 2,

@@ -2,6 +2,7 @@
 
 import React, { useRef, useState } from 'react';
 import Image, { StaticImageData } from 'next/image';
+import veluAvatar from '@/app/terms/veluceo.png';
 import mathiAvatar from '@/app/terms/mathi.png';
 import sriAvatar from '@/app/terms/sri.png';
 import suvedaAvatar from '@/app/terms/suve.png';
@@ -9,7 +10,7 @@ import vigneshAvatar from '@/app/terms/vicky.png';
 import sivaAvatar from '@/app/terms/siva.png';
 import sanAvatar from '@/app/terms/san.png';
 import naveenAvatar from '@/app/terms/naveen.png';
-import { motion, useScroll, useTransform, useSpring, useMotionValue } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring, useMotionValue, type MotionValue } from 'framer-motion';
 import {
   CheckCircle2,
   ShieldCheck,
@@ -63,6 +64,36 @@ const teamMembers: TeamMember[] = [
   {
     id: 0,
     number: '01',
+    name: 'Velumurugan',
+    role: 'CEO of Intouch',
+    tagline: 'Strategic Vision, Executive Leadership & Enterprise Scaling',
+    department: 'Executive Leadership',
+    avatar: veluAvatar,
+    avatarClassName: 'scale-[1.03] -translate-x-[20px] -translate-y-[15px]',
+    avatarStyle: {
+      imageRendering: 'high-quality',
+      filter: 'contrast(1.08) brightness(1.03) saturate(1.06) drop-shadow(0 12px 28px rgba(0, 40, 100, 0.18))',
+    },
+    about: 'Leads the overarching strategic vision, executive roadmap, and technology innovations at Intouch Global Tech, driving scalable digital engineering and client success.',
+    philosophy: '"Empowering enterprises with robust digital platforms, scalable software systems, and complete technology ownership."',
+    experience: '12+ Yrs Leadership',
+    stack: ['Executive Strategy', 'Enterprise Architecture', 'Cloud Solutions', 'Digital Transformation'],
+    expertise: [
+      'Executive Leadership',
+      'Strategic Tech Vision',
+      'Enterprise Growth',
+      'Client Partnerships',
+    ],
+    email: 'velumurugan@intouchglobaltech.com',
+    linkedin: 'https://linkedin.com',
+    color: '#0066FF',
+    glowColor: 'rgba(0, 102, 255, 0.45)',
+    gradient: 'from-blue-600 to-indigo-900',
+    icon: Award,
+  },
+  {
+    id: 1,
+    number: '02',
     name: 'Srimun S S',
     role: 'ERP & CRM Architect Lead',
     tagline: 'Enterprise ERP Architecture & Custom CRM Solutions',
@@ -76,8 +107,8 @@ const teamMembers: TeamMember[] = [
     expertise: [
       'Custom ERP Architecture',
       'Multi-Tenant CRM Portals',
-      'Automated Business Workflows',
-      'Enterprise Data Integration',
+      'Automated Workflows',
+      'Enterprise Integration',
     ],
     email: 'srimun@example.com',
     linkedin: 'https://linkedin.com',
@@ -87,23 +118,27 @@ const teamMembers: TeamMember[] = [
     icon: Building2,
   },
   {
-    id: 1,
-    number: '02',
+    id: 2,
+    number: '03',
     name: 'Suveda S',
     role: 'Full Stack Developer',
     tagline: 'End-to-End Web Applications & High-Performance Architecture',
     department: 'Full Stack Engineering',
     avatar: suvedaAvatar,
-    avatarClassName: 'scale-[0.96] -translate-x-[30px] translate-y-[15px]',
+    avatarClassName: 'scale-[0.92] -translate-x-[50px] translate-y-[15px]',
+    avatarStyle: {
+      imageRendering: 'high-quality',
+      filter: 'contrast(1.06) brightness(1.02) saturate(1.04) drop-shadow(0 8px 24px rgba(0,0,0,0.12))',
+    },
     about: 'Engineers complete end-to-end web applications, modern React/Next.js frontends, scalable Node.js/PostgreSQL backends, and robust API ecosystems.',
     philosophy: '"Mastering the full stack creates seamless harmony between user experience and core backend power."',
     experience: '8+ Yrs Full Stack',
     stack: ['React', 'Next.js', 'Node.js', 'PostgreSQL', 'TypeScript', 'Cloud Architecture'],
     expertise: [
-      'Full-Stack Web Development',
-      'Next.js & React Frontends',
+      'Full-Stack Web Dev',
+      'Next.js & React Frontend',
       'Scalable Backend APIs',
-      'Database Architecture & Auth',
+      'Database Architecture',
     ],
     email: 'suveda@example.com',
     linkedin: 'https://linkedin.com',
@@ -113,21 +148,21 @@ const teamMembers: TeamMember[] = [
     icon: Code2,
   },
   {
-    id: 2,
-    number: '03',
+    id: 3,
+    number: '04',
     name: 'Vignesh K',
     role: 'Frontend Lead',
     tagline: 'Pixel-Perfect Web Experiences & Motion Systems',
     department: 'Web Interfaces & Motion',
     avatar: vigneshAvatar,
-    avatarClassName: 'scale-[1.06] -translate-x-[20px] -translate-y-[30px]',
+    avatarClassName: 'scale-[1.06] -translate-x-[20px] -translate-y-[20px]',
     about: 'Crafts pixel-perfect, lightning-fast user interfaces, design system components, micro-animations, and fluid responsive layouts.',
     philosophy: '"Motion should feel natural, intentional, and instantaneous."',
     experience: '7+ Yrs Frontend',
     stack: ['React', 'Next.js', 'Framer Motion', 'WebGL', 'Tailwind CSS'],
     expertise: [
       'Next.js & TypeScript',
-      'Responsive Web Architecture',
+      'Responsive Web UI',
       'State Management & UX',
       'Fluid Micro-Animations',
     ],
@@ -139,8 +174,8 @@ const teamMembers: TeamMember[] = [
     icon: Terminal,
   },
   {
-    id: 3,
-    number: '04',
+    id: 4,
+    number: '05',
     name: 'Sandhiya M',
     role: 'QA & Testing Lead',
     tagline: 'Zero-Defect Quality Assurance & Comprehensive Testing',
@@ -152,10 +187,10 @@ const teamMembers: TeamMember[] = [
     experience: '6+ Yrs QA & Testing',
     stack: ['Automated Testing', 'Playwright', 'Jest', 'Postman', 'Cypress', 'Regression QA'],
     expertise: [
-      'End-to-End Test Automation',
+      'End-to-End Automation',
       'Functional & Regression QA',
       'API & Security Validation',
-      'Zero-Defect Release Standards',
+      'Zero-Defect Standards',
     ],
     email: 'sandhiya@example.com',
     linkedin: 'https://linkedin.com',
@@ -165,8 +200,8 @@ const teamMembers: TeamMember[] = [
     icon: ShieldCheck,
   },
   {
-    id: 4,
-    number: '05',
+    id: 5,
+    number: '06',
     name: 'Naveen J',
     role: 'Digital Marketing Lead',
     tagline: 'High-ROI Growth Marketing, SEO & Performance Campaigns',
@@ -181,7 +216,7 @@ const teamMembers: TeamMember[] = [
       'Technical & On-Page SEO',
       'High-ROI PPC & Meta Ads',
       'Lead Generation Funnels',
-      'Conversion Rate Optimization',
+      'Conversion Optimization',
     ],
     email: 'naveen@example.com',
     linkedin: 'https://linkedin.com',
@@ -191,23 +226,27 @@ const teamMembers: TeamMember[] = [
     icon: Globe,
   },
   {
-    id: 5,
-    number: '06',
+    id: 6,
+    number: '07',
     name: 'Sunmathi S',
     role: 'Backend Developer',
     tagline: 'High-Throughput APIs, Distributed Databases & Core Systems',
     department: 'Core Backend & APIs',
     avatar: mathiAvatar,
-    avatarClassName: 'scale-[1.32] -translate-y-[90px]',
+    avatarClassName: 'scale-[0.95] -translate-x-[20px] -translate-y-[20px]',
+    avatarStyle: {
+      imageRendering: 'high-quality',
+      filter: 'contrast(1.06) brightness(1.02) saturate(1.04) drop-shadow(0 8px 24px rgba(0,0,0,0.12))',
+    },
     about: 'Architects resilient server backends, high-performance database schemas, scalable REST/GraphQL APIs, and secure microservices engines.',
     philosophy: '"Resilient systems are engineered from solid schema foundations and optimized database queries."',
     experience: '6+ Yrs Backend',
     stack: ['Node.js', 'Express.js', 'PostgreSQL', 'MongoDB', 'Redis', 'GraphQL'],
     expertise: [
-      'High-Speed API Engineering',
-      'PostgreSQL & Database Design',
-      'Authentication & Microservices',
-      'Server Caching & Performance',
+      'High-Speed APIs',
+      'PostgreSQL & DB Design',
+      'Auth & Microservices',
+      'Caching & Performance',
     ],
     email: 'sunmathi@example.com',
     linkedin: 'https://linkedin.com',
@@ -217,34 +256,34 @@ const teamMembers: TeamMember[] = [
     icon: Database,
   },
   {
-    id: 6,
-    number: '07',
+    id: 7,
+    number: '08',
     name: 'Sivaraj A',
-    role: 'UI/UX Lead',
-    tagline: 'Apple-Grade UI/UX Design, Design Systems & High-Fidelity Prototypes',
-    department: 'UI/UX & Product Design',
+    role: 'SaaS Lead',
+    tagline: 'Multi-Tenant SaaS Platforms, Cloud Subscriptions & Enterprise Systems',
+    department: 'SaaS Platforms & Cloud',
     avatar: sivaAvatar,
-    avatarClassName: 'scale-[0.85] -translate-x-[25px] translate-y-[25px]',
+    avatarClassName: 'scale-[1.10] -translate-x-[20px] -translate-y-[70px]',
     avatarStyle: {
       imageRendering: 'high-quality',
-      filter: 'contrast(1.08) brightness(1.03) saturate(1.06) drop-shadow(0 4px 12px rgba(0,0,0,0.12))',
+      filter: 'contrast(1.08) brightness(1.03) saturate(1.06) drop-shadow(0 10px 28px rgba(0,0,0,0.14))',
     },
-    about: 'Crafts Apple-grade user interfaces, interactive Figma design systems, friction-free user journeys, and high-conversion modern digital experiences.',
-    philosophy: '"Exceptional UI/UX design bridges human psychology with seamless digital interaction."',
-    experience: '8+ Yrs UI/UX Design',
-    stack: ['Figma', 'UI/UX Design', 'Design Systems', 'Wireframing', 'Prototyping', 'User Research'],
+    about: 'Architects modern multi-tenant SaaS applications, subscription billing pipelines, role-based access portals, and high-conversion software-as-a-service platforms.',
+    philosophy: '"Scalable SaaS architectures turn complex business logic into effortless recurring revenue engines."',
+    experience: '8+ Yrs SaaS & Cloud',
+    stack: ['Multi-Tenant SaaS', 'Stripe Billing', 'Next.js', 'PostgreSQL', 'Auth & RBAC', 'Cloud Scale'],
     expertise: [
-      'Figma & Design Tokens',
-      'Interactive UI/UX Prototypes',
-      'User Research & Wireframes',
-      'High-Conversion UX Flow',
+      'Multi-Tenant Architecture',
+      'Subscription & Billing',
+      'Role-Based Access (RBAC)',
+      'High-Availability SaaS',
     ],
     email: 'sivaraj@example.com',
     linkedin: 'https://linkedin.com',
     color: '#0066FF',
     glowColor: 'rgba(0, 102, 255, 0.45)',
     gradient: 'from-blue-600 to-indigo-900',
-    icon: Palette,
+    icon: Layers,
   },
 ];
 
@@ -268,6 +307,20 @@ export function TeamRoundTable() {
   const handleMouseLeave = () => {
     mouseX.set(0);
     mouseY.set(0);
+  };
+
+  const handlePillClick = (idx: number) => {
+    if (!containerRef.current) return;
+    const container = containerRef.current;
+    const rect = container.getBoundingClientRect();
+    const scrollTop = window.scrollY + rect.top;
+    const totalHeight = container.scrollHeight - window.innerHeight;
+    const step = 1 / totalMembers;
+    const targetFraction = idx === 0 ? 0 : idx === totalMembers - 1 ? 1 : idx * step + step * 0.5;
+    window.scrollTo({
+      top: scrollTop + targetFraction * totalHeight,
+      behavior: 'smooth',
+    });
   };
 
   // Track vertical scroll through the pinned theater section
@@ -329,42 +382,7 @@ export function TeamRoundTable() {
       {/* ========================================================================= */}
       <div className="sticky top-0 h-screen w-full flex flex-col justify-between overflow-hidden px-4 sm:px-8 lg:px-16 py-6 sm:py-8 z-10 select-none">
         
-        {/* Top Header with Live Activity Beacon & Audio Waveform */}
-        <div className="max-w-7xl mx-auto w-full flex items-center justify-between z-30 pb-3 border-b border-slate-200">
-          <div className="flex items-center gap-3">
-            <span className="w-6 h-[2px] bg-gradient-to-r from-blue-600 to-cyan-500 rounded-full" />
-            <span className="text-xs font-bold uppercase tracking-wider text-blue-600">
-              EXECUTIVE ENGINEERING CORE
-            </span>
-          </div>
 
-          <div className="flex items-center gap-3">
-            {/* Live Audio / Frequency Waveform Indicator */}
-            <div className="hidden sm:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 shadow-2xs text-[11px] font-mono font-bold text-blue-900">
-              <span className="flex items-end gap-[2px] h-3">
-                {[0.4, 0.9, 0.6, 1.0, 0.5, 0.8, 0.3].map((h, i) => (
-                  <motion.span
-                    key={i}
-                    animate={{ height: ['25%', '100%', '25%'] }}
-                    transition={{
-                      duration: 0.8 + i * 0.15,
-                      repeat: Infinity,
-                      ease: 'easeInOut',
-                    }}
-                    className="w-[2px] bg-blue-600 rounded-full"
-                    style={{ height: `${h * 100}%` }}
-                  />
-                ))}
-              </span>
-              <span className="pl-1">LIVE PRODUCTION SPRINT</span>
-            </div>
-
-            <div className="flex items-center gap-2 text-xs font-mono font-bold text-slate-400">
-              <span className="h-1.5 w-1.5 rounded-full bg-cyan-500 animate-ping" />
-              <span>SCROLL TO CYCLE</span>
-            </div>
-          </div>
-        </div>
 
         {/* ========================================================================= */}
         {/* CENTER CINEMATIC STAGE */}
@@ -521,7 +539,9 @@ export function TeamRoundTable() {
                             style={{ backgroundColor: member.color }}
                           />
                         </span>
-                        <span className="text-blue-900 font-extrabold tracking-wider">ARCHITECT {member.number}</span>
+                        <span className="text-blue-900 font-extrabold tracking-wider">
+                          {member.id === 0 ? 'EXECUTIVE' : 'ARCHITECT'} {member.number}
+                        </span>
                         <span className="text-slate-400">/ 0{totalMembers}</span>
                       </div>
 
@@ -645,7 +665,7 @@ export function TeamRoundTable() {
                       </div>
 
                       {/* Member Role Title */}
-                      <h4 className="text-2xl sm:text-3xl lg:text-[1.85rem] xl:text-[2.2rem] font-black text-slate-950 tracking-tight leading-none whitespace-nowrap">
+                      <h4 className="text-2xl sm:text-3xl lg:text-[1.85rem] xl:text-[2.2rem] font-black text-slate-950 tracking-tight leading-none">
                         {member.role}
                       </h4>
 
@@ -659,17 +679,17 @@ export function TeamRoundTable() {
                         <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400">
                           CORE FOCUS AREAS
                         </span>
-                        <div className="grid grid-cols-2 gap-2">
+                        <div className="grid grid-cols-2 gap-x-3 gap-y-2">
                           {member.expertise.map((tag, i) => (
                             <div
                               key={i}
-                              className="flex items-center gap-2 text-xs font-semibold text-slate-800"
+                              className="flex items-start gap-1.5 text-xs font-semibold text-slate-800"
                             >
                               <CheckCircle2
-                                className="h-4 w-4 shrink-0"
+                                className="h-4 w-4 shrink-0 mt-0.5"
                                 style={{ color: member.color }}
                               />
-                              <span className="truncate">{tag}</span>
+                              <span className="leading-snug text-slate-800">{tag}</span>
                             </div>
                           ))}
                         </div>
@@ -684,17 +704,97 @@ export function TeamRoundTable() {
         </div>
 
         {/* Floating Quick Switcher Navigation Dock at Bottom */}
-        <div className="max-w-xl mx-auto w-full flex items-center justify-center gap-2 z-30 pt-2">
+        <div className="max-w-xl mx-auto w-full flex items-center justify-center gap-2.5 z-30 pt-3 pb-1">
           {teamMembers.map((m, idx) => (
-            <motion.div
+            <DockPill
               key={m.id}
-              whileHover={{ scale: 1.3 }}
-              className="h-1.5 rounded-full transition-all duration-300 bg-slate-300 hover:bg-blue-600 w-8 cursor-pointer"
+              index={idx}
+              totalMembers={totalMembers}
+              progress={smoothProgress}
+              activeColor={m.color}
+              onClick={() => handlePillClick(idx)}
             />
           ))}
         </div>
 
       </div>
     </div>
+  );
+}
+
+function DockPill({
+  index,
+  totalMembers,
+  progress,
+  onClick,
+  activeColor,
+}: {
+  index: number;
+  totalMembers: number;
+  progress: MotionValue<number>;
+  onClick: () => void;
+  activeColor: string;
+}) {
+  const step = 1 / totalMembers;
+  const start = index * step;
+  const center = start + step * 0.5;
+  const end = (index + 1) * step;
+
+  const isFirst = index === 0;
+  const isLast = index === totalMembers - 1;
+
+  const inputRange = isFirst
+    ? [0, step * 0.5, end]
+    : isLast
+    ? [start, start + step * 0.5, 1]
+    : [start, center, end];
+
+  const width = useTransform(
+    progress,
+    inputRange,
+    isFirst ? ['44px', '44px', '22px'] : isLast ? ['22px', '44px', '44px'] : ['22px', '44px', '22px']
+  );
+
+  const backgroundColor = useTransform(
+    progress,
+    inputRange,
+    isFirst
+      ? [activeColor, activeColor, '#CBD5E1']
+      : isLast
+      ? ['#CBD5E1', activeColor, activeColor]
+      : ['#CBD5E1', activeColor, '#CBD5E1']
+  );
+
+  const opacity = useTransform(
+    progress,
+    inputRange,
+    isFirst ? [1, 1, 0.45] : isLast ? [0.45, 1, 1] : [0.45, 1, 0.45]
+  );
+
+  const boxShadow = useTransform(
+    progress,
+    inputRange,
+    isFirst
+      ? ['0 0 10px rgba(0, 102, 255, 0.6)', '0 0 10px rgba(0, 102, 255, 0.6)', '0 0 0px rgba(0,0,0,0)']
+      : isLast
+      ? ['0 0 0px rgba(0,0,0,0)', '0 0 10px rgba(0, 102, 255, 0.6)', '0 0 10px rgba(0, 102, 255, 0.6)']
+      : ['0 0 0px rgba(0,0,0,0)', '0 0 10px rgba(0, 102, 255, 0.6)', '0 0 0px rgba(0,0,0,0)']
+  );
+
+  return (
+    <motion.button
+      type="button"
+      onClick={onClick}
+      style={{
+        width,
+        backgroundColor,
+        opacity,
+        boxShadow,
+      }}
+      whileHover={{ scale: 1.25 }}
+      whileTap={{ scale: 0.9 }}
+      className="h-2 rounded-full cursor-pointer transition-colors duration-150 outline-none hover:opacity-100"
+      aria-label={`Jump to team member 0${index + 1}`}
+    />
   );
 }

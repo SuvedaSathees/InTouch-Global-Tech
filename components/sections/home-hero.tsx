@@ -16,7 +16,6 @@ import {
   Server,
   Layers,
   ShieldCheck,
-  Code2,
   Award,
   Users,
   Sparkles,
@@ -83,7 +82,6 @@ const keyMetrics = [
 const bottomTrustItems = [
   { icon: Award, label: '25+ PROJECTS DELIVERED' },
   { icon: ShieldCheck, label: '100% CODE OWNERSHIP' },
-  { icon: Code2, label: 'REACT & NODE.JS' },
   { icon: Users, label: '10+ INDUSTRIES' },
   { icon: Lock, label: 'ZERO VENDOR LOCK-IN' },
 ];
@@ -218,7 +216,7 @@ export function HomeHero() {
             >
               We architect and deploy custom web platforms, enterprise ERPs, and mobile applications with{' '}
               <span className="text-white font-semibold underline decoration-cyan-400/50 underline-offset-4">
-                100% sovereign code ownership
+                100% complete code ownership
               </span>{' '}
               and zero vendor lock-in.
             </motion.p>

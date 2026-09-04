@@ -200,23 +200,13 @@ export function InteractiveServicesStudio() {
 
                   {/* Bottom Action Link */}
                   <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
-                    {service.hasPage ? (
-                      <Link
-                        href={`/services/${service.slug}`}
-                        className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 hover:text-blue-800 group/link"
-                      >
-                        <span>View Details</span>
-                        <ArrowRight className="h-3.5 w-3.5 transform group-hover/link:translate-x-1 transition-transform" />
-                      </Link>
-                    ) : (
-                      <Link
-                        href="/contact"
-                        className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 hover:text-blue-800 group/link"
-                      >
-                        <span>Inquire Now</span>
-                        <ArrowRight className="h-3.5 w-3.5 transform group-hover/link:translate-x-1 transition-transform" />
-                      </Link>
-                    )}
+                    <Link
+                      href="/contact"
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 hover:text-blue-800 group/link"
+                    >
+                      <span>Inquire Now</span>
+                      <ArrowRight className="h-3.5 w-3.5 transform group-hover/link:translate-x-1 transition-transform" />
+                    </Link>
 
                     <span className="text-[10px] font-mono font-bold text-emerald-600 flex items-center gap-1">
                       <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />

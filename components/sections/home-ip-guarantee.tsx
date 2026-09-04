@@ -10,7 +10,7 @@ export function HomeIPGuarantee() {
         <div className="rounded-3xl border border-slate-200 bg-slate-50/80 p-8 sm:p-14 shadow-sm relative overflow-hidden text-center">
           <div className="relative z-10 max-w-3xl mx-auto mb-12">
             <span className="inline-flex items-center justify-center rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-blue-600 mb-4">
-              <span>SOVEREIGN GUARANTEE</span>
+              <span>OWNERSHIP GUARANTEE</span>
             </span>
 
             <h2 className="text-3xl sm:text-5xl font-black text-slate-950 leading-tight">
@@ -73,7 +73,7 @@ export function HomeIPGuarantee() {
             </motion.div>
           </div>
 
-          {/* Central Sovereign Seal */}
+          {/* Central Ownership Seal */}
           <div className="inline-flex flex-wrap items-center justify-center gap-3 sm:gap-6 rounded-2xl border border-blue-200 bg-blue-50 px-6 py-2.5 text-xs font-semibold font-bold text-blue-700">
             <span>YOUR CODE</span>
             <span className="text-slate-300">•</span>

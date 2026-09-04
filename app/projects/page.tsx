@@ -26,6 +26,7 @@ import {
   FlaskConical,
   UtensilsCrossed,
   Sparkles,
+  TrendingUp,
 } from 'lucide-react';
 
 const projectVisualIcons: Record<string, React.ElementType> = {
@@ -130,15 +131,20 @@ function Pro3DProjectCard({
           {/* Top Status & Industry Bar (Floating Layer) */}
           <div
             style={{ transform: 'translateZ(20px)' }}
-            className="flex items-center justify-between gap-2 border-b border-slate-100 pb-3"
+            className="flex items-center justify-between gap-2.5 border-b border-slate-100 pb-3"
           >
-            <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-blue-600">
+            <span className="text-[10px] sm:text-[10.5px] font-bold uppercase tracking-wider text-blue-600 leading-tight">
               {project.industry}
             </span>
 
-            <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-[10px] font-bold text-emerald-700 shadow-2xs">
-              <ShieldCheck className="h-3 w-3 text-emerald-600" />
-              <span>100% SOVEREIGN IP</span>
+            <div className="shrink-0 whitespace-nowrap inline-flex items-center gap-1.5 pl-1.5 pr-2.5 py-0.5 rounded-full bg-emerald-50/90 border border-emerald-200/90 shadow-[0_1px_3px_rgba(16,185,129,0.08)] backdrop-blur-xs group-hover:border-emerald-300 transition-colors">
+              <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-black text-[9.5px] tracking-tight shadow-xs">
+                <ShieldCheck className="h-2.5 w-2.5 text-emerald-100 stroke-[2.5]" />
+                100%
+              </span>
+              <span className="text-[9px] sm:text-[9.5px] font-bold uppercase tracking-wider text-emerald-800">
+                CLIENT IP
+              </span>
             </div>
           </div>
 
@@ -169,23 +175,40 @@ function Pro3DProjectCard({
           {/* Prominent ROI Metric Pill (Floating Layer) */}
           <div
             style={{ transform: 'translateZ(25px)' }}
-            className="p-3.5 rounded-2xl bg-gradient-to-r from-blue-50/80 to-cyan-50/50 border border-blue-100 flex items-center justify-between"
+            className="p-3.5 rounded-2xl bg-gradient-to-br from-blue-50/70 via-indigo-50/40 to-cyan-50/50 border border-blue-100/90 shadow-2xs group-hover:border-blue-200 transition-colors"
           >
-            <div>
-              <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 block font-semibold">
-                {primaryRes ? primaryRes.label : 'Ledger Safety'}
-              </span>
-              <span className="text-xl font-black text-blue-700 font-mono">
-                {primaryRes ? primaryRes.value : '100% ACID'}
+            {/* Context Header */}
+            <div className="flex items-center justify-between pb-2 mb-2 border-b border-blue-100/70">
+              <div className="flex items-center gap-1.5">
+                <TrendingUp className="h-3 w-3 text-blue-600 shrink-0" />
+                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-700">
+                  Measured Impact
+                </span>
+              </div>
+              <span className="text-[9px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200/80">
+                Verified ROI
               </span>
             </div>
-            <div className="text-right border-l border-blue-200/60 pl-3">
-              <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 block font-semibold">
-                {secondaryRes ? secondaryRes.label : 'Architecture SLA'}
-              </span>
-              <span className="text-sm font-black text-slate-900 font-mono">
-                {secondaryRes ? secondaryRes.value : '99.99%'}
-              </span>
+
+            {/* 2-Column Metrics */}
+            <div className="grid grid-cols-2 gap-2.5 divide-x divide-blue-200/60">
+              <div className="min-w-0">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block truncate">
+                  {primaryRes ? primaryRes.label : 'Audit Accuracy'}
+                </span>
+                <span className="text-[15px] sm:text-base md:text-[17px] font-black text-blue-700 tracking-tight block mt-0.5 whitespace-nowrap">
+                  {primaryRes ? primaryRes.value : '100%'}
+                </span>
+              </div>
+
+              <div className="pl-3 min-w-0">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block truncate">
+                  {secondaryRes ? secondaryRes.label : 'Approval Speed'}
+                </span>
+                <span className="text-[15px] sm:text-base md:text-[17px] font-black text-slate-900 tracking-tight block mt-0.5 whitespace-nowrap">
+                  {secondaryRes ? secondaryRes.value : '5x Faster'}
+                </span>
+              </div>
             </div>
           </div>
 
@@ -214,7 +237,7 @@ function Pro3DProjectCard({
         >
           {/* Tech Badges */}
           <div className="flex flex-wrap gap-1.5">
-            {project.technologies.slice(0, 4).map((tech) => (
+            {project.technologies.map((tech) => (
               <span
                 key={tech}
                 className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-lg bg-slate-100/90 hover:bg-white border border-slate-200 text-[10px] font-mono font-semibold text-slate-700 transition-colors"
@@ -223,11 +246,6 @@ function Pro3DProjectCard({
                 <span>{tech}</span>
               </span>
             ))}
-            {project.technologies.length > 4 && (
-              <span className="inline-flex items-center rounded-lg bg-slate-100 px-2 py-0.5 text-[10px] font-mono font-bold text-slate-600">
-                +{project.technologies.length - 4}
-              </span>
-            )}
           </div>
 
           {/* Action Button */}
@@ -240,7 +258,7 @@ function Pro3DProjectCard({
               className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-gradient-to-r from-blue-600 via-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white text-xs font-bold transition-all shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/30 group/btn cursor-pointer"
             >
               <Eye className="h-3.5 w-3.5" />
-              <span>Inspect Architecture Blueprint</span>
+              <span>View Case Study</span>
               <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-1" />
             </Link>
           </div>
@@ -360,7 +378,7 @@ export default function ProjectsPage() {
             </h1>
 
             <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed max-w-xl">
-              Hover over any system to experience interactive 3D perspective physics. Every architecture is delivered with 100% sovereign client code ownership.
+              Hover over any system to experience interactive 3D perspective physics. Every architecture is delivered with 100% complete client code ownership.
             </p>
           </div>
 

@@ -51,7 +51,7 @@ const trustPillars = [
     badge: '100% IP Handover',
     icon: Lock,
     gradient: 'from-cyan-500 to-blue-600',
-    title: '100% Sovereign IP Ownership',
+    title: '100% Full IP Ownership',
     description: 'You own 100% of the source code, Docker configs, and database schemas with complete legal transfer and zero proprietary vendor lock-in.',
     points: [
       'Full GitHub / GitLab repo transfer',
@@ -107,7 +107,7 @@ export function HomeWhyChooseUs() {
           </div>
           <div className="max-w-md text-left">
             <p className="text-base sm:text-lg text-slate-600 font-normal leading-relaxed">
-              We combine enterprise-grade technical rigor with transparent communication and sovereign IP ownership for every client.
+              We combine enterprise-grade technical rigor with transparent communication and complete IP ownership for every client.
             </p>
           </div>
         </div>

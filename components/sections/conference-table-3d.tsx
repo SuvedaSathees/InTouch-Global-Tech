@@ -48,12 +48,12 @@ export type TeamMember3D = {
 const teamMembers: TeamMember3D[] = [
   {
     id: 1,
-    name: 'Alexander Reed',
-    role: 'CEO / Founder',
+    name: 'Velumurugan',
+    role: 'CEO of Intouch',
     category: 'Executive Leadership',
-    description: 'Steers technological vision, enterprise strategy, and high-scale architecture blueprints.',
-    expertise: ['System Architecture', 'Enterprise Strategy', 'Venture Growth'],
-    initials: 'AR',
+    description: 'Steers technological vision, enterprise strategy, and high-scale architecture blueprints for Intouch.',
+    expertise: ['Enterprise Strategy', 'Executive Leadership', 'Digital Innovation'],
+    initials: 'VM',
     avatarColor: 'from-blue-600 to-indigo-700',
     outfitColor: '#1e293b', // Slate suit
     hairColor: '#0f172a',

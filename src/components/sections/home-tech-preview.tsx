@@ -64,7 +64,7 @@ const techLayers = [
   {
     id: 'cloud',
     step: '05',
-    name: 'Cloud Sovereignty',
+    name: 'Cloud Independence',
     icon: Cloud,
     badge: '100% Owned',
     color: 'from-blue-600 to-cyan-600',
@@ -101,7 +101,7 @@ export function HomeTechPreview() {
               <span>PRODUCTION TECH STACK</span>
             </div>
             <h2 className="text-2xl sm:text-4xl font-black tracking-tight text-slate-950 leading-tight">
-              Architected for Speed & Sovereignty.
+              Architected for Speed & Total Control.
             </h2>
           </div>
           <div className="max-w-sm text-left">

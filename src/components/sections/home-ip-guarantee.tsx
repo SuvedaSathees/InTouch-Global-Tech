@@ -11,7 +11,7 @@ export function HomeIPGuarantee() {
           </span>
 
           <h2 className="text-3xl sm:text-5xl font-black text-slate-950 leading-tight">
-            100% Intellectual Property & Code Sovereignty
+            100% Intellectual Property & Code Ownership
           </h2>
 
           <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed font-normal">

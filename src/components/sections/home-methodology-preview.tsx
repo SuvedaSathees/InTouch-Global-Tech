@@ -78,7 +78,7 @@ const cadencePhases = [
     gradient: 'from-cyan-500 to-blue-600',
     lightBg: 'bg-cyan-50/70',
     accentColor: '#06b6d4',
-    gate: '100% Sovereign IP Deed',
+    gate: '100% Full IP Transfer Deed',
     summary: 'Containerized private cloud deployment with complete Git repository transfer and 24/7 telemetry.',
     artifacts: ['docker-compose.prod.yml', 'k8s-cluster.tf', 'ip-handover-deed.pdf'],
     deliverables: [

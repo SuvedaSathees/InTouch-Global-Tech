@@ -15,7 +15,7 @@ export default function TermsPage() {
       <PageHeader
         label="Legal & Governance"
         title="Terms of Service"
-        description="Our standard terms of service, engagement agreements, and enterprise sovereign code delivery standards."
+        description="Our standard terms of service, engagement agreements, and enterprise full code ownership delivery standards."
       />
 
       <section className="py-16 sm:py-24">
@@ -46,7 +46,7 @@ export default function TermsPage() {
               <div className="space-y-3">
                 <h3 className="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2">
                   <CheckCircle2 className="h-4 w-4 text-blue-600 shrink-0" />
-                  2. 100% Code Sovereignty & Intellectual Property
+                  2. 100% Code Ownership & Intellectual Property
                 </h3>
                 <p>
                   Upon final milestone acceptance and settlement of project invoices, 100% of custom-developed source code, database architectures, schema migrations, and documentation belong exclusively to the client with zero perpetual licensing fees.

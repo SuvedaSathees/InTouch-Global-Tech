@@ -69,7 +69,7 @@ export default function PrivacyPage() {
                   4. Right to Deletion & Data Portability
                 </h3>
                 <p>
-                  Clients retain complete sovereignty over their data and may request comprehensive data exports or complete purging of development records at any time following project closure.
+                  Clients retain complete control over their data and may request comprehensive data exports or complete purging of development records at any time following project closure.
                 </p>
               </div>
             </div>

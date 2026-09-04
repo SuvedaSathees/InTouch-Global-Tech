@@ -25,6 +25,13 @@ export function WhatsAppOfficialIcon({ className = "h-5 w-5" }: { className?: st
 }
 
 export function Footer() {
+  const pathname = usePathname();
+
+  // Hide footer on contact page alone
+  if (pathname === '/contact' || pathname?.startsWith('/contact/')) {
+    return null;
+  }
+
   const currentYear = new Date().getFullYear();
 
   return (
@@ -58,12 +65,12 @@ export function Footer() {
             </Link>
 
             <p className="text-xs sm:text-sm text-slate-400 font-normal leading-relaxed max-w-xs text-justify">
-              Custom software, ERP platforms, and mobile apps engineered for growing businesses with 100% sovereign client source code ownership.
+              Custom software, ERP platforms, and mobile apps engineered for growing businesses with 100% complete client source code ownership.
             </p>
 
             <div className="flex items-center gap-2 text-xs font-mono text-cyan-400/90 pt-1">
               <ShieldCheck className="h-4 w-4 text-cyan-400 shrink-0" />
-              <span>100% Client Sovereign IP Guarantee</span>
+              <span>100% Client IP Ownership Guarantee</span>
             </div>
           </div>
 

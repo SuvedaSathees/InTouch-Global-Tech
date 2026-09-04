@@ -85,7 +85,7 @@ export function RpcErpDetailExperience({ project }: { project: Project }) {
         <div className="absolute top-0 right-0 w-[450px] h-[450px] bg-blue-100/50 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
         <div className="absolute bottom-0 left-10 w-72 h-72 bg-slate-100/80 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 space-y-8 text-left relative z-10">
+        <div className="mx-auto max-w-[1084px] px-4 sm:px-6 lg:px-8 space-y-8 text-left relative z-10">
           
           <div className="flex flex-wrap items-center justify-between gap-3 text-xs text-slate-500 border-b border-slate-100 pb-3">
             <Link
@@ -216,7 +216,7 @@ export function RpcErpDetailExperience({ project }: { project: Project }) {
 
       {/* 2. HERO IMAGE SHOWCASE */}
       <section className="py-12 sm:py-16 bg-[#F8FAFC]">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-[1084px] px-4 sm:px-6 lg:px-8">
           <div className="rounded-3xl border border-slate-200 bg-white p-3 sm:p-4 shadow-xl overflow-hidden group">
             
             <div className="flex items-center justify-between px-3 py-2 border-b border-slate-100 bg-slate-50/80 rounded-t-2xl">
@@ -255,7 +255,7 @@ export function RpcErpDetailExperience({ project }: { project: Project }) {
 
       {/* 3. WHAT THE CLIENT NEEDED */}
       <section className="py-16 sm:py-20 bg-white border-y border-slate-200/80">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 space-y-8 text-left">
+        <div className="mx-auto max-w-[1084px] px-4 sm:px-6 lg:px-8 space-y-8 text-left">
           
           <div className="space-y-3">
             <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 block">
@@ -282,7 +282,7 @@ export function RpcErpDetailExperience({ project }: { project: Project }) {
 
       {/* 4. OUR SOLUTION + ACTIVITY IMAGES */}
       <section className="py-16 sm:py-20 bg-[#F8FAFC]">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 space-y-12 text-left">
+        <div className="mx-auto max-w-[1084px] px-4 sm:px-6 lg:px-8 space-y-12 text-left">
           
           <div className="space-y-6">
             <div className="space-y-3">
@@ -337,7 +337,7 @@ export function RpcErpDetailExperience({ project }: { project: Project }) {
 
       {/* 5. WHAT WE DELIVERED */}
       <section className="py-16 sm:py-24 bg-white border-y border-slate-200/80">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 space-y-12 text-left">
+        <div className="mx-auto max-w-[1084px] px-4 sm:px-6 lg:px-8 space-y-12 text-left">
           
           <div>
             <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 block">
@@ -375,38 +375,13 @@ export function RpcErpDetailExperience({ project }: { project: Project }) {
               );
             })}
           </div>
-
-          {/* Activity Image Frame 2 */}
-          <div className="rounded-3xl border border-slate-200 bg-white p-3 sm:p-4 shadow-lg overflow-hidden group">
-            <div
-              onClick={() => setLightboxImage({ src: '/images/rpc-erp/reports.jpg', caption: 'Reports / Operations Image' })}
-              className="relative aspect-video w-full overflow-hidden rounded-2xl cursor-pointer bg-slate-100 flex items-center justify-center"
-            >
-              <Image 
-                src="/images/rpc-erp/reports.jpg" 
-                alt="Reports and Operations" 
-                fill 
-                className="object-cover transition-transform duration-500 group-hover:scale-105" 
-              />
-              <div className="absolute inset-0 bg-slate-950/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white backdrop-blur-[2px]">
-                <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 text-slate-900 text-xs font-bold shadow-lg">
-                  <Maximize2 className="h-3.5 w-3.5 text-blue-600" />
-                  <span>Click to Expand Full Preview</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="pt-3 px-2 flex items-center justify-between text-xs text-slate-500">
-              <span className="font-semibold text-slate-700">Reports / Operations Image</span>
-            </div>
-          </div>
           
         </div>
       </section>
 
       {/* 6. HOW OUR SOLUTION HELPED */}
       <section className="py-16 sm:py-20 bg-[#F8FAFC]">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 space-y-8 text-left">
+        <div className="mx-auto max-w-[1084px] px-4 sm:px-6 lg:px-8 space-y-8 text-left">
           <div className="space-y-3">
             <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 block">
               Business & Industry Impact
@@ -503,7 +478,7 @@ export function RpcErpDetailExperience({ project }: { project: Project }) {
 
       {/* 8. PREVIOUS / NEXT PAGER */}
       <footer className="border-t border-slate-200 bg-white py-8">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
+        <div className="mx-auto max-w-[1084px] px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
           <Link
             href={`/projects/${prevProject.slug}`}
             className="inline-flex items-center gap-2 text-xs font-bold text-slate-600 hover:text-blue-600 transition-colors"

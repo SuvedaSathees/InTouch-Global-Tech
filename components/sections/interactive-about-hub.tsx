@@ -35,15 +35,15 @@ const foundationalPillars = [
     gradient: 'from-blue-600 via-cyan-500 to-sky-500',
     quote: siteConfig.vision,
     description:
-      'Empowering global small, medium, and enterprise businesses with modern cloud architecture, 100% sovereign code ownership, and high-velocity digital products that scale worldwide.',
+      'Empowering growing businesses and enterprises with modern cloud architecture, scalable custom ERPs, high-performance web applications, and 100% complete code ownership.',
     highlights: [
-      'Global Small & Medium Business Growth',
-      '100% Client Code & IP Sovereignty',
-      'Modern, Scalable Cloud Infrastructure',
+      'Custom ERP & Cloud Architecture',
+      '100% Client Code & IP Ownership',
+      'High-Performance Web Applications',
       'Zero Proprietary Vendor Lock-in',
     ],
     metricValue: 'Global Reach',
-    metricLabel: 'Serving worldwide SMBs & growing enterprises',
+    metricLabel: 'Serving growing businesses & enterprises',
   },
   {
     id: 'mission',
@@ -56,12 +56,12 @@ const foundationalPillars = [
     gradient: 'from-indigo-600 via-blue-600 to-cyan-500',
     quote: siteConfig.mission,
     description:
-      'Delivering innovative, reliable, and high-performing digital business solutions that eliminate operational bottlenecks, streamline core workflows, and maximize client ROI.',
+      'Delivering innovative, reliable, and high-performing custom software suites that eliminate operational bottlenecks, automate complex workflows, and maximize business ROI.',
     highlights: [
-      'Innovative IT & Custom Software Suites',
+      'Custom Software & ERP Suites',
       'Live 2-Week Working Sprint Demos',
       'Direct Communication with Senior Engineers',
-      'Rapid Deployment & Continuous Integration',
+      'Rapid Deployment & Continuous Support',
     ],
     metricValue: '2-Week Sprints',
     metricLabel: 'Predictable, transparent delivery cycles',
@@ -77,9 +77,9 @@ const foundationalPillars = [
     gradient: 'from-purple-600 via-indigo-600 to-pink-500',
     quote: siteConfig.values,
     description:
-      'Committed to achieving business excellence through cost-effective, dependable engineering, precision QA testing, transparent milestone pricing, and enduring client partnership.',
+      'Committed to achieving engineering excellence through cost-effective development, precision QA testing, transparent milestone pricing, and enduring client partnership.',
     highlights: [
-      'Commitment to Business Excellence',
+      'Commitment to Engineering Excellence',
       'Transparent Fixed-Milestone Pricing',
       'Rigorous Automated & Manual QA Testing',
       '99.99% Production Uptime Standards',
@@ -95,7 +95,7 @@ const companyPillars = [
     accent: '#0284c7',
     glowColor: 'rgba(2, 132, 199, 0.22)',
     gradient: 'from-blue-600 to-cyan-600',
-    title: '100% Code Sovereignty',
+    title: '100% Code Ownership',
     subtitle: 'Zero Hidden Fees or Lock-In',
     description:
       'You own every line of code, database schema, and design asset from day one with full intellectual property rights.',

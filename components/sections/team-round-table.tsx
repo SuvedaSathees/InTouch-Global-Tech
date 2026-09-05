@@ -10,6 +10,7 @@ import vigneshAvatar from '@/app/terms/vicky.png';
 import sivaAvatar from '@/app/terms/siva.png';
 import sanAvatar from '@/app/terms/san.png';
 import naveenAvatar from '@/app/terms/naveen.png';
+import sudharAvatar from '@/app/terms/meta_sudharasanm.png';
 import { motion, useScroll, useTransform, useSpring, useMotionValue, type MotionValue } from 'framer-motion';
 import {
   CheckCircle2,
@@ -35,6 +36,7 @@ import {
   Fingerprint,
   Quote,
   Palette,
+  Target,
 } from 'lucide-react';
 
 export type TeamMember = {
@@ -202,6 +204,36 @@ const teamMembers: TeamMember[] = [
   {
     id: 5,
     number: '06',
+    name: 'Sudharsanam',
+    role: 'Meta & Google Ads Creator',
+    tagline: 'High-Converting Meta Ads, Google PPC Campaigns & Creative Strategy',
+    department: 'Performance Marketing & Ads',
+    avatar: sudharAvatar,
+    avatarClassName: 'scale-[1.30] -translate-x-[15px] -translate-y-[110px]',
+    avatarStyle: {
+      imageRendering: 'high-quality',
+      filter: 'contrast(1.06) brightness(1.02) saturate(1.04) drop-shadow(0 12px 32px rgba(0, 40, 100, 0.2))',
+    },
+    about: 'Crafts high-converting Meta and Google advertising campaigns, persuasive ad creatives, surgical audience targeting funnels, and data-backed performance marketing strategies.',
+    philosophy: '"Exceptional ad creatives and surgical audience targeting turn ad spend into exponential revenue."',
+    experience: '6+ Yrs Performance Ads',
+    stack: ['Meta Ads Manager', 'Google Ads (PPC)', 'Ad Creative Design', 'Audience Retargeting', 'Conversion Tracking', 'A/B Creative Testing'],
+    expertise: [
+      'Meta Ads & Campaigns',
+      'Google Ads & PPC',
+      'High-ROI Creatives',
+      'Audience Retargeting',
+    ],
+    email: 'sudharsanam@intouchglobaltech.com',
+    linkedin: 'https://linkedin.com',
+    color: '#0066FF',
+    glowColor: 'rgba(0, 102, 255, 0.45)',
+    gradient: 'from-blue-600 to-indigo-900',
+    icon: Target,
+  },
+  {
+    id: 6,
+    number: '07',
     name: 'Naveen J',
     role: 'Digital Marketing Lead',
     tagline: 'High-ROI Growth Marketing, SEO & Performance Campaigns',
@@ -226,8 +258,8 @@ const teamMembers: TeamMember[] = [
     icon: Globe,
   },
   {
-    id: 6,
-    number: '07',
+    id: 7,
+    number: '08',
     name: 'Sunmathi S',
     role: 'Backend Developer',
     tagline: 'High-Throughput APIs, Distributed Databases & Core Systems',
@@ -256,8 +288,8 @@ const teamMembers: TeamMember[] = [
     icon: Database,
   },
   {
-    id: 7,
-    number: '08',
+    id: 8,
+    number: '09',
     name: 'Sivaraj A',
     role: 'SaaS Lead',
     tagline: 'Multi-Tenant SaaS Platforms, Cloud Subscriptions & Enterprise Systems',
@@ -655,7 +687,7 @@ export function TeamRoundTable() {
                     style={{ x: rightTextX }}
                     className="lg:col-span-4 text-left space-y-6 order-3"
                   >
-                    <div className="space-y-4">
+                    <div className="space-y-4 lg:translate-x-[30px]">
                       {/* Department / Category Monospace Tag */}
                       <div className="flex items-center gap-2">
                         <span className="h-1.5 w-6 rounded-full" style={{ backgroundColor: member.color }} />
@@ -689,7 +721,7 @@ export function TeamRoundTable() {
                                 className="h-4 w-4 shrink-0 mt-0.5"
                                 style={{ color: member.color }}
                               />
-                              <span className="leading-snug text-slate-800">{tag}</span>
+                              <span className="leading-snug text-slate-800 whitespace-nowrap">{tag}</span>
                             </div>
                           ))}
                         </div>

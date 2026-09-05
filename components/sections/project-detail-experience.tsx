@@ -35,7 +35,7 @@ import { PortfolioWebsiteDetailExperience } from '@/components/sections/portfoli
 const projectGalleryData: Record<string, { title: string; subtitle: string; tag: string }[]> = {
   'junior-junction-school': [
     { title: 'Campus Home & Announcement Portal', subtitle: 'Welcoming interface with real-time academic announcements', tag: 'Web Portal' },
-    { title: 'Interactive Curriculum Explorer', subtitle: 'Grade-wise developmental activities and classroom showcases', tag: 'Curriculum' },
+    { title: 'Year of Celebrations & Milestone Hub', subtitle: 'Interactive timeline with grade-wise celebrations and activities', tag: 'Activity Timeline' },
   ],
   'portfolio': [
     { title: '3D WebGL Particle Canvas', subtitle: 'Fluid inertial physics and GPU-accelerated interactive particle mesh', tag: '3D Canvas' },

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -34,6 +34,19 @@ export function PortfolioWebsiteDetailExperience({ project }: { project: Project
   const prevProject = projects[(currentIndex - 1 + projects.length) % projects.length];
 
   const [lightboxImage, setLightboxImage] = useState<{ src: string; caption: string } | null>(null);
+
+  useEffect(() => {
+    if (!lightboxImage) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setLightboxImage(null);
+    };
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [lightboxImage]);
 
   const deliverables = [
     {
@@ -226,17 +239,23 @@ export function PortfolioWebsiteDetailExperience({ project }: { project: Project
                 <span className="h-2.5 w-2.5 rounded-full bg-amber-400" />
                 <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
               </div>
+              <div className="px-4 py-0.5 rounded-md bg-white border border-slate-200 text-[10px] font-mono font-semibold text-slate-500">
+                portfolio-website / creative-production-experience
+              </div>
+              <div className="text-[10px] font-mono text-slate-400 font-bold">
+                Creative Portfolio
+              </div>
             </div>
 
             <div
-              onClick={() => setLightboxImage({ src: '/images/portfolio-website/hero.jpg', caption: 'Hero Image — Creative Portfolio Website' })}
-              className="relative aspect-video w-full overflow-hidden rounded-b-2xl cursor-pointer bg-slate-100 flex items-center justify-center"
+              onClick={() => setLightboxImage({ src: '/images/portfolio-website/hero.png', caption: 'Zero 19 Creatives — Brand Communications & Production House' })}
+              className="relative aspect-video w-full overflow-hidden rounded-b-2xl cursor-pointer bg-slate-950 flex items-center justify-center"
             >
               <Image 
-                src="/images/portfolio-website/hero.jpg" 
-                alt="Creative Portfolio Website" 
+                src="/images/portfolio-website/hero.png" 
+                alt="Zero 19 Creatives Portfolio — Meet Sirpy" 
                 fill 
-                className="object-contain transition-transform duration-500 group-hover:scale-105" 
+                className="object-contain transition-transform duration-500 group-hover:scale-[1.02]" 
               />
               <div className="absolute inset-0 bg-slate-950/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white backdrop-blur-[2px]">
                 <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 text-slate-900 text-xs font-bold shadow-lg">
@@ -247,8 +266,8 @@ export function PortfolioWebsiteDetailExperience({ project }: { project: Project
             </div>
 
             <div className="pt-3 px-2 flex items-center justify-between text-xs text-slate-500">
-              <span className="font-semibold text-slate-700">Hero Image — Creative Portfolio Website</span>
-              <span className="text-[11px] font-mono">Media & Advertising Experience</span>
+              <span className="font-semibold text-slate-700">Zero 19 Creatives — Brand Communications & Production House</span>
+              <span className="text-[11px] font-mono">Creative Portfolio & Media Production</span>
             </div>
           </div>
         </div>
@@ -299,31 +318,6 @@ export function PortfolioWebsiteDetailExperience({ project }: { project: Project
               <p>
                 The website brings together advertising campaigns, reels, film-production work and brand shoots into a strong digital portfolio, while providing direct WhatsApp and email contact options so potential clients can easily start an enquiry.
               </p>
-            </div>
-          </div>
-
-          {/* Activity Image Frame */}
-          <div className="rounded-3xl border border-slate-200 bg-white p-3 sm:p-4 shadow-lg overflow-hidden group">
-            <div
-              onClick={() => setLightboxImage({ src: '/images/portfolio-website/project.jpg', caption: 'Creative Projects & Production Showcase' })}
-              className="relative aspect-video w-full overflow-hidden rounded-2xl cursor-pointer bg-slate-100 flex items-center justify-center"
-            >
-              <Image 
-                src="/images/portfolio-website/project.jpg" 
-                alt="Creative Projects Showcase" 
-                fill 
-                className="object-cover transition-transform duration-500 group-hover:scale-105" 
-              />
-              <div className="absolute inset-0 bg-slate-950/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white backdrop-blur-[2px]">
-                <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 text-slate-900 text-xs font-bold shadow-lg">
-                  <Maximize2 className="h-3.5 w-3.5 text-blue-600" />
-                  <span>Click to Expand Full Preview</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="pt-3 px-2 flex items-center justify-between text-xs text-slate-500">
-              <span className="font-semibold text-slate-700">Creative Production & Showcase</span>
             </div>
           </div>
           
@@ -506,34 +500,40 @@ export function PortfolioWebsiteDetailExperience({ project }: { project: Project
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setLightboxImage(null)}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-slate-950/85 backdrop-blur-md cursor-zoom-out"
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-8 bg-slate-950/85 backdrop-blur-md cursor-zoom-out"
           >
-            <div
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ duration: 0.2 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative max-w-5xl w-full rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 shadow-2xl space-y-3 p-3"
+              className="relative max-w-6xl w-full rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 shadow-2xl space-y-3 p-3 sm:p-4 cursor-default"
             >
               <div className="flex items-center justify-between px-2 pt-1 text-white">
-                <span className="text-xs font-semibold text-slate-300">
+                <span className="text-xs sm:text-sm font-semibold text-slate-300">
                   {lightboxImage.caption}
                 </span>
                 <button
                   type="button"
                   onClick={() => setLightboxImage(null)}
-                  className="p-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+                  className="p-1.5 sm:p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+                  aria-label="Close Preview"
                 >
                   <X className="h-5 w-5" />
                 </button>
               </div>
 
-              <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-slate-100">
+              <div className="relative w-full h-[60vh] sm:h-[75vh] md:h-[80vh] overflow-hidden rounded-2xl bg-slate-950 flex items-center justify-center">
                 <Image
                   src={lightboxImage.src}
                   alt={lightboxImage.caption}
                   fill
-                  className="object-cover"
+                  priority
+                  className="object-contain"
                 />
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

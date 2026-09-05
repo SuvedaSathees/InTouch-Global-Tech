@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -37,6 +37,19 @@ export function JuniorJunctionDetailExperience({ project }: { project: Project }
 
   // Lightbox state for zoomable photo preview
   const [lightboxImage, setLightboxImage] = useState<{ src: string; caption: string } | null>(null);
+
+  useEffect(() => {
+    if (!lightboxImage) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setLightboxImage(null);
+    };
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [lightboxImage]);
 
   const programs = [
     { name: 'Toddler', age: '1.5 – 2.5 Years', desc: 'Sensory discovery, motor skills, and joyful social introduction.' },
@@ -257,15 +270,15 @@ export function JuniorJunctionDetailExperience({ project }: { project: Project }
 
             {/* Showcase Image */}
             <div
-              onClick={() => setLightboxImage({ src: '/images/junior-junction/hero.jpg', caption: 'Junior Junction — Modern Digital Preschool Experience' })}
-              className="relative aspect-video w-full overflow-hidden rounded-b-2xl cursor-pointer mt-2"
+              onClick={() => setLightboxImage({ src: '/images/junior-junction/hero.png', caption: 'Junior Junction — Modern Digital Preschool Experience' })}
+              className="relative aspect-[3/2] w-full overflow-hidden rounded-b-2xl cursor-pointer mt-2 bg-slate-50"
             >
               <Image
-                src="/images/junior-junction/hero.jpg"
+                src="/images/junior-junction/hero.png"
                 alt="Junior Junction Digital Preschool Experience"
                 fill
                 priority
-                className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
+                className="object-contain group-hover:scale-[1.01] transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-slate-950/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white backdrop-blur-[2px]">
                 <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 text-slate-900 text-xs font-bold shadow-lg">
@@ -276,8 +289,8 @@ export function JuniorJunctionDetailExperience({ project }: { project: Project }
             </div>
 
             <div className="pt-3 px-2 flex items-center justify-between text-xs text-slate-500">
-              <span className="font-semibold text-slate-700">Junior Junction Hero Experience</span>
-              <span className="text-[11px] font-mono">Modern Classroom & Parent Portal Mockup</span>
+              <span className="font-semibold text-slate-700">Junior Junction Official Web Experience</span>
+              <span className="text-[11px] font-mono">Preschool Homepage & Parent Portal</span>
             </div>
           </div>
         </div>
@@ -377,17 +390,17 @@ export function JuniorJunctionDetailExperience({ project }: { project: Project }
             </p>
           </div>
 
-          {/* Activity Image Frame (Messy Play / Creative Play) */}
+          {/* Activity Image Frame (Celebrations & Activity Timeline) */}
           <div className="rounded-3xl border border-slate-200 bg-white p-3 sm:p-4 shadow-lg overflow-hidden group">
             <div
-              onClick={() => setLightboxImage({ src: '/images/junior-junction/messy-play.jpg', caption: 'Creative Play & Sensory Learning — Junior Junction Preschool Activities' })}
-              className="relative aspect-video w-full overflow-hidden rounded-2xl cursor-pointer"
+              onClick={() => setLightboxImage({ src: '/images/junior-junction/celebrations.png', caption: 'Junior Junction — Year of Celebrations & Activity Milestone Explorer' })}
+              className="relative aspect-[3/2] w-full overflow-hidden rounded-2xl cursor-pointer bg-slate-50"
             >
               <Image
-                src="/images/junior-junction/messy-play.jpg"
-                alt="Junior Junction Messy Play and Creative Play Activities"
+                src="/images/junior-junction/celebrations.png"
+                alt="Junior Junction Year of Celebrations and Welcoming Activities"
                 fill
-                className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
+                className="object-contain group-hover:scale-[1.01] transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-slate-950/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white backdrop-blur-[2px]">
                 <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 text-slate-900 text-xs font-bold shadow-lg">
@@ -399,10 +412,10 @@ export function JuniorJunctionDetailExperience({ project }: { project: Project }
 
             <div className="pt-3 px-2 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-500">
               <span className="font-bold text-slate-800">
-                Activity Showcase: Creative Messy Play & Sensory Development
+                Activity Showcase: Year of Celebrations & Interactive Milestones
               </span>
               <span className="text-[11px] font-mono text-blue-600 font-semibold">
-                Authentic Classroom Moments
+                Authentic Classroom Moments & Events
               </span>
             </div>
           </div>
@@ -671,34 +684,40 @@ export function JuniorJunctionDetailExperience({ project }: { project: Project }
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setLightboxImage(null)}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-slate-950/85 backdrop-blur-md cursor-zoom-out"
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-8 bg-slate-950/85 backdrop-blur-md cursor-zoom-out"
           >
-            <div
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ duration: 0.2 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative max-w-5xl w-full rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 shadow-2xl space-y-3 p-3"
+              className="relative max-w-6xl w-full rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 shadow-2xl space-y-3 p-3 sm:p-4 cursor-default"
             >
               <div className="flex items-center justify-between px-2 pt-1 text-white">
-                <span className="text-xs font-semibold text-slate-300">
+                <span className="text-xs sm:text-sm font-semibold text-slate-300">
                   {lightboxImage.caption}
                 </span>
                 <button
                   type="button"
                   onClick={() => setLightboxImage(null)}
-                  className="p-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+                  className="p-1.5 sm:p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+                  aria-label="Close Preview"
                 >
                   <X className="h-5 w-5" />
                 </button>
               </div>
 
-              <div className="relative aspect-video w-full overflow-hidden rounded-2xl">
+              <div className="relative w-full h-[60vh] sm:h-[75vh] md:h-[80vh] overflow-hidden rounded-2xl bg-slate-950 flex items-center justify-center">
                 <Image
                   src={lightboxImage.src}
                   alt={lightboxImage.caption}
                   fill
+                  priority
                   className="object-contain"
                 />
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

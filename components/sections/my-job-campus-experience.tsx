@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -44,6 +44,19 @@ export function MyJobCampusDetailExperience({ project }: { project: Project }) {
 
   // Lightbox state for zoomable photo preview
   const [lightboxImage, setLightboxImage] = useState<{ src: string; caption: string } | null>(null);
+
+  useEffect(() => {
+    if (!lightboxImage) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setLightboxImage(null);
+    };
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [lightboxImage]);
 
   const deliverables = [
     {
@@ -253,7 +266,7 @@ export function MyJobCampusDetailExperience({ project }: { project: Project }) {
       {/* 2. HERO IMAGE SHOWCASE */}
       {/* ========================================================================= */}
       <section className="py-12 sm:py-16 bg-[#F8FAFC]">
-        <div className="mx-auto max-w-[1084px] px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-[1220px] px-4 sm:px-6 lg:px-8">
           <div className="rounded-3xl border border-slate-200 bg-white p-3 sm:p-4 shadow-xl overflow-hidden group">
             
             {/* Browser chrome header mockup */}
@@ -264,35 +277,96 @@ export function MyJobCampusDetailExperience({ project }: { project: Project }) {
                 <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
               </div>
               <div className="px-4 py-0.5 rounded-md bg-white border border-slate-200 text-[10px] font-mono font-semibold text-slate-500">
-                https://www.myjobcampus.com
+                https://www.myjobcampus.com • Platform Redesign
               </div>
-              <div className="text-[10px] font-mono text-slate-400 font-bold">
-                My Job Campus
+              <div className="text-[10px] font-mono text-blue-600 font-bold flex items-center gap-1">
+                <span>Before</span>
+                <ArrowRight className="h-3 w-3" />
+                <span>After</span>
               </div>
             </div>
 
-            {/* Showcase Image */}
-            <div
-              onClick={() => setLightboxImage({ src: '/images/job-campus/hero.jpg', caption: 'My Job Campus — Multilingual Job & Career Discovery Platform' })}
-              className="relative aspect-video w-full overflow-hidden rounded-b-2xl cursor-pointer bg-slate-100 flex items-center justify-center"
-            >
-              <Image 
-                src="/images/job-campus/hero.jpg" 
-                alt="My Job Campus Hero Image" 
-                fill 
-                className="object-cover transition-transform duration-500 group-hover:scale-105" 
-              />
-              <div className="absolute inset-0 bg-slate-950/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white backdrop-blur-[2px]">
-                <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 text-slate-900 text-xs font-bold shadow-lg">
-                  <Maximize2 className="h-3.5 w-3.5 text-blue-600" />
-                  <span>Click to Expand Full Preview</span>
+            {/* Single Comparison Showcase: Left (Old) -> Center Arrow -> Right (New) */}
+            <div className="relative mt-2 p-2 sm:p-3 bg-slate-50/70 rounded-b-2xl border border-slate-100">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 items-center relative">
+                
+                {/* LEFT: Previous / Old Portal */}
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between px-1">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
+                      <span className="h-2 w-2 rounded-full bg-slate-400" />
+                      Previous Portal Design
+                    </span>
+                    <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-slate-200/80 text-slate-600 font-bold">
+                      Before
+                    </span>
+                  </div>
+
+                  <div
+                    onClick={() => setLightboxImage({ src: '/images/job-campus/job_old.png', caption: 'My Job Campus — Previous Portal Design (Before)' })}
+                    className="relative h-[340px] sm:h-[375px] lg:h-[390px] w-full overflow-hidden rounded-2xl cursor-pointer border border-slate-200 shadow-sm bg-white group/card flex items-center justify-center"
+                  >
+                    <Image
+                      src="/images/job-campus/job_old.png"
+                      alt="My Job Campus Previous Portal Design"
+                      fill
+                      priority
+                      className="object-contain p-2 sm:p-3 transition-transform duration-500 group-hover/card:scale-[1.02]"
+                    />
+                    <div className="absolute inset-0 bg-slate-950/25 opacity-0 group-hover/card:opacity-100 transition-opacity flex items-center justify-center text-white backdrop-blur-[2px]">
+                      <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/95 text-slate-900 text-xs font-bold shadow-lg hover:scale-105 active:scale-95 transition-all">
+                        <Maximize2 className="h-3.5 w-3.5 text-blue-600" />
+                        <span>Click to Expand Full Preview</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+
+                {/* CENTER FLOATING ARROW INDICATOR (Desktop only) */}
+                <div className="hidden lg:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none">
+                  <div className="h-10 w-10 rounded-full bg-blue-600 text-white shadow-xl shadow-blue-500/40 border-2 border-white flex items-center justify-center">
+                    <ArrowRight className="h-5 w-5" />
+                  </div>
+                </div>
+
+                {/* RIGHT: New Redesigned Platform */}
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between px-1">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-blue-600 flex items-center gap-1.5">
+                      <span className="h-2 w-2 rounded-full bg-emerald-500" />
+                      Redesigned Modern Experience
+                    </span>
+                    <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 font-bold">
+                      Current Live (After)
+                    </span>
+                  </div>
+
+                  <div
+                    onClick={() => setLightboxImage({ src: '/images/job-campus/job1.png', caption: 'My Job Campus — Redesigned Modern Experience (After)' })}
+                    className="relative h-[340px] sm:h-[375px] lg:h-[390px] w-full overflow-hidden rounded-2xl cursor-pointer border border-blue-200 shadow-md bg-white group/card flex items-center justify-center"
+                  >
+                    <Image
+                      src="/images/job-campus/job1.png"
+                      alt="My Job Campus Redesigned Modern Experience"
+                      fill
+                      priority
+                      className="object-contain p-2 sm:p-3 transition-transform duration-500 group-hover/card:scale-[1.02]"
+                    />
+                    <div className="absolute inset-0 bg-slate-950/25 opacity-0 group-hover/card:opacity-100 transition-opacity flex items-center justify-center text-white backdrop-blur-[2px]">
+                      <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/95 text-slate-900 text-xs font-bold shadow-lg hover:scale-105 active:scale-95 transition-all">
+                        <Maximize2 className="h-3.5 w-3.5 text-blue-600" />
+                        <span>Click to Expand Full Preview</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
               </div>
             </div>
 
             <div className="pt-3 px-2 flex items-center justify-between text-xs text-slate-500">
-              <span className="font-semibold text-slate-700">My Job Campus Hero Experience</span>
-              <span className="text-[11px] font-mono">Modern Multilingual Portal Mockup</span>
+              <span className="font-semibold text-slate-700">Platform Modernization Journey</span>
+              <span className="text-[11px] font-mono">From Legacy Portal ➔ High-Conversion Discovery Platform</span>
             </div>
           </div>
         </div>
@@ -357,37 +431,7 @@ export function MyJobCampusDetailExperience({ project }: { project: Project }) {
               Alongside the website development, we also implemented SEO strategies to improve the platform&apos;s search visibility and help more job seekers discover My Job Campus through search engines.
             </p>
           </div>
-
-          {/* Activity Image Frame (Job Listing / Multilingual) */}
-          <div className="rounded-3xl border border-slate-200 bg-white p-3 sm:p-4 shadow-lg overflow-hidden group">
-            <div
-              onClick={() => setLightboxImage({ src: '/images/job-campus/multilingual.jpg', caption: 'Job Listing / Multilingual Website' })}
-              className="relative aspect-video w-full overflow-hidden rounded-2xl cursor-pointer bg-slate-100 flex items-center justify-center"
-            >
-              <Image 
-                src="/images/job-campus/multilingual.jpg" 
-                alt="Multilingual Job Listing Interface" 
-                fill 
-                className="object-cover transition-transform duration-500 group-hover:scale-105" 
-              />
-              <div className="absolute inset-0 bg-slate-950/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white backdrop-blur-[2px]">
-                <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 text-slate-900 text-xs font-bold shadow-lg">
-                  <Maximize2 className="h-3.5 w-3.5 text-blue-600" />
-                  <span>Click to Expand Interface Photo</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="pt-3 px-2 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-500">
-              <span className="font-bold text-slate-800">
-                Interface Showcase: Multilingual Job Listings
-              </span>
-              <span className="text-[11px] font-mono text-blue-600 font-semibold">
-                Access across Regions
-              </span>
-            </div>
-          </div>
-
+          
         </div>
       </section>
 
@@ -596,34 +640,40 @@ export function MyJobCampusDetailExperience({ project }: { project: Project }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setLightboxImage(null)}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-slate-950/85 backdrop-blur-md cursor-zoom-out"
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-8 bg-slate-950/85 backdrop-blur-md cursor-zoom-out"
           >
-            <div
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ duration: 0.2 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative max-w-5xl w-full rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 shadow-2xl space-y-3 p-3"
+              className="relative max-w-6xl w-full rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 shadow-2xl space-y-3 p-3 sm:p-4 cursor-default"
             >
               <div className="flex items-center justify-between px-2 pt-1 text-white">
-                <span className="text-xs font-semibold text-slate-300">
+                <span className="text-xs sm:text-sm font-semibold text-slate-300">
                   {lightboxImage.caption}
                 </span>
                 <button
                   type="button"
                   onClick={() => setLightboxImage(null)}
-                  className="p-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+                  className="p-1.5 sm:p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+                  aria-label="Close Preview"
                 >
                   <X className="h-5 w-5" />
                 </button>
               </div>
 
-              <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-slate-100">
+              <div className="relative w-full h-[60vh] sm:h-[75vh] md:h-[80vh] overflow-hidden rounded-2xl bg-slate-950 flex items-center justify-center">
                 <Image
                   src={lightboxImage.src}
                   alt={lightboxImage.caption}
                   fill
-                  className="object-cover"
+                  priority
+                  className="object-contain"
                 />
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

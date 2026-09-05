@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   ArrowLeft,
   ArrowRight,
@@ -21,6 +21,7 @@ import {
   Maximize2,
   ChevronLeft,
   ChevronRight,
+  X,
 } from 'lucide-react';
 import { type Project, projects } from '@/lib/site-config';
 
@@ -32,6 +33,19 @@ export function EvMobileDetailExperience({ project }: { project: Project }) {
   const prevProject = projects[(currentIndex - 1 + projects.length) % projects.length];
 
   const [lightboxImage, setLightboxImage] = useState<{ src: string; caption: string } | null>(null);
+
+  useEffect(() => {
+    if (!lightboxImage) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setLightboxImage(null);
+    };
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [lightboxImage]);
 
   const deliverables = [
     {
@@ -208,42 +222,100 @@ export function EvMobileDetailExperience({ project }: { project: Project }) {
         </div>
       </header>
 
-      {/* 2. HERO IMAGE SHOWCASE */}
+      {/* 2. HERO IMAGE SHOWCASE (Side-by-Side Left & Right Phone Mockups) */}
       <section className="py-12 sm:py-16 bg-[#F8FAFC]">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-3xl border border-slate-200 bg-white p-3 sm:p-4 shadow-xl overflow-hidden group max-w-xs sm:max-w-[320px] mx-auto">
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8 items-start justify-center max-w-3xl mx-auto">
             
-            <div className="flex items-center justify-between px-3 py-2 border-b border-slate-100 bg-slate-50/80 rounded-t-2xl">
-              <div className="flex items-center gap-1.5">
-                <span className="h-2.5 w-2.5 rounded-full bg-rose-400" />
-                <span className="h-2.5 w-2.5 rounded-full bg-amber-400" />
-                <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
-              </div>
-            </div>
-
-            <div
-              onClick={() => setLightboxImage({ src: '/images/ev-mobile/app-screen-1.jpg', caption: 'Hero Image — EV Mobile Application' })}
-              className="relative aspect-[1/2.1] w-full overflow-hidden rounded-b-2xl cursor-pointer bg-slate-100 flex items-center justify-center"
+            {/* LEFT PHONE: Autonomous Wireless EV Charging (mobile1) */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+              className="rounded-3xl border border-slate-200 bg-white p-3 sm:p-4 shadow-xl overflow-hidden group max-w-[300px] sm:max-w-[315px] w-full mx-auto"
             >
-              <Image 
-                src="/images/ev-mobile/app-screen-1.jpg" 
-                alt="EV Mobile Application Dashboard" 
-                fill 
-                className="object-contain transition-transform duration-500 group-hover:scale-105" 
-              />
-              <div className="absolute inset-0 bg-slate-950/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white backdrop-blur-[2px]">
-                <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 text-slate-900 text-xs font-bold shadow-lg">
-                  <Maximize2 className="h-3.5 w-3.5 text-blue-600" />
-                  <span>Click to Expand Full Preview</span>
+              <div className="flex items-center justify-between pb-3 px-1 border-b border-slate-100">
+                <div className="flex items-center gap-1.5">
+                  <span className="h-2.5 w-2.5 rounded-full bg-rose-400" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-amber-400" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
+                </div>
+                <span className="text-[10px] font-mono font-semibold text-slate-400 uppercase tracking-wider">
+                  Screen 1 • Charging Flow
+                </span>
+              </div>
+
+              <div
+                onClick={() => setLightboxImage({ src: '/images/ev-mobile/mobile1.png', caption: 'EV Mobile App — Autonomous Wireless EV Charging Flow' })}
+                className="relative aspect-[9/19] max-h-[560px] w-full overflow-hidden rounded-2xl cursor-pointer bg-slate-950 border border-slate-200/80 shadow-inner mt-3 group/screen mx-auto flex items-center justify-center"
+              >
+                <Image
+                  src="/images/ev-mobile/mobile1.png"
+                  alt="Autonomous Wireless EV Charging Screen"
+                  fill
+                  priority
+                  className="object-contain transition-transform duration-500 group-hover/screen:scale-[1.02]"
+                />
+                <div className="absolute inset-0 bg-slate-950/20 opacity-0 group-hover/screen:opacity-100 transition-opacity flex items-center justify-center">
+                  <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/95 text-slate-900 text-xs font-bold shadow-lg backdrop-blur-xs">
+                    <Maximize2 className="h-3.5 w-3.5 text-blue-600" />
+                    <span>Click to Expand Full Preview</span>
+                  </div>
                 </div>
               </div>
-            </div>
+
+              <div className="pt-3 px-1 flex items-center justify-between text-[11px] sm:text-xs text-slate-500 font-medium border-t border-slate-100 mt-3">
+                <span className="font-semibold text-slate-700">Autonomous EV Charging</span>
+                <span className="text-blue-600 font-semibold">Flow</span>
+              </div>
+            </motion.div>
+
+            {/* RIGHT PHONE: Select Your EV & Battery Telemetry (mobile2) */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+              className="rounded-3xl border border-slate-200 bg-white p-3 sm:p-4 shadow-xl overflow-hidden group max-w-[300px] sm:max-w-[315px] w-full mx-auto"
+            >
+              <div className="flex items-center justify-between pb-3 px-1 border-b border-slate-100">
+                <div className="flex items-center gap-1.5">
+                  <span className="h-2.5 w-2.5 rounded-full bg-rose-400" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-amber-400" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
+                </div>
+                <span className="text-[10px] font-mono font-semibold text-slate-400 uppercase tracking-wider">
+                  Screen 2 • Vehicle Selection
+                </span>
+              </div>
+
+              <div
+                onClick={() => setLightboxImage({ src: '/images/ev-mobile/mobile2.png', caption: 'EV Mobile App — Select Your EV & Battery Telemetry' })}
+                className="relative aspect-[9/19] max-h-[560px] w-full overflow-hidden rounded-2xl cursor-pointer bg-slate-950 border border-slate-200/80 shadow-inner mt-3 group/screen mx-auto flex items-center justify-center"
+              >
+                <Image
+                  src="/images/ev-mobile/mobile2.png"
+                  alt="Select Your EV Vehicle Screen"
+                  fill
+                  priority
+                  className="object-contain transition-transform duration-500 group-hover/screen:scale-[1.02]"
+                />
+                <div className="absolute inset-0 bg-slate-950/20 opacity-0 group-hover/screen:opacity-100 transition-opacity flex items-center justify-center">
+                  <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/95 text-slate-900 text-xs font-bold shadow-lg backdrop-blur-xs">
+                    <Maximize2 className="h-3.5 w-3.5 text-blue-600" />
+                    <span>Click to Expand Full Preview</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-3 px-1 flex items-center justify-between text-[11px] sm:text-xs text-slate-500 font-medium border-t border-slate-100 mt-3">
+                <span className="font-semibold text-slate-700">Tata Nexon EV</span>
+                <span className="text-emerald-600 font-semibold">Specs</span>
+              </div>
+            </motion.div>
+
           </div>
-          
-          <div className="pt-4 max-w-xs sm:max-w-[320px] mx-auto px-2 flex items-center justify-between text-xs text-slate-500">
-            <span className="font-semibold text-slate-700">Hero Image — EV Mobile Application</span>
-            <span className="text-[11px] font-mono">Electric Mobility Experience</span>
-          </div>
+
         </div>
       </section>
 
@@ -294,40 +366,6 @@ export function EvMobileDetailExperience({ project }: { project: Project }) {
               </p>
             </div>
           </div>
-
-          {/* Activity Image Frame 1 */}
-          <div className="rounded-3xl border border-slate-200 bg-white p-3 sm:p-4 shadow-lg overflow-hidden group max-w-xs sm:max-w-[320px] mx-auto">
-            <div className="flex items-center justify-between px-3 py-2 border-b border-slate-100 bg-slate-50/80 rounded-t-2xl">
-              <div className="flex items-center gap-1.5">
-                <span className="h-2.5 w-2.5 rounded-full bg-rose-400" />
-                <span className="h-2.5 w-2.5 rounded-full bg-amber-400" />
-                <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
-              </div>
-            </div>
-
-            <div
-              onClick={() => setLightboxImage({ src: '/images/ev-mobile/app-screen-2.jpg', caption: 'Project Image — EV Station Finder Interface' })}
-              className="relative aspect-[1/2.1] w-full overflow-hidden rounded-b-2xl cursor-pointer bg-slate-100 flex items-center justify-center"
-            >
-              <Image 
-                src="/images/ev-mobile/app-screen-2.jpg" 
-                alt="EV Station Finder Interface" 
-                fill 
-                className="object-contain transition-transform duration-500 group-hover:scale-105" 
-              />
-              <div className="absolute inset-0 bg-slate-950/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white backdrop-blur-[2px]">
-                <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 text-slate-900 text-xs font-bold shadow-lg">
-                  <Maximize2 className="h-3.5 w-3.5 text-blue-600" />
-                  <span>Click to Expand Full Preview</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div className="pt-2 max-w-xs sm:max-w-[320px] mx-auto px-2 flex items-center justify-between text-xs text-slate-500">
-            <span className="font-semibold text-slate-700">Project Image — EV Station Finder Interface</span>
-          </div>
-          
         </div>
       </section>
 
@@ -498,6 +536,52 @@ export function EvMobileDetailExperience({ project }: { project: Project }) {
           </Link>
         </div>
       </footer>
+
+      {/* LIGHTBOX PREVIEW MODAL */}
+      <AnimatePresence>
+        {lightboxImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setLightboxImage(null)}
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-8 bg-slate-950/85 backdrop-blur-md cursor-zoom-out"
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative max-w-md w-full rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 shadow-2xl space-y-3 p-3 cursor-default"
+            >
+              <div className="flex items-center justify-between px-2 pt-1 text-white">
+                <span className="text-xs font-semibold text-slate-300">
+                  {lightboxImage.caption}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setLightboxImage(null)}
+                  className="p-1.5 sm:p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+                  aria-label="Close Preview"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+
+              <div className="relative aspect-[9/19] w-full max-h-[80vh] overflow-hidden rounded-2xl bg-slate-950 flex items-center justify-center">
+                <Image
+                  src={lightboxImage.src}
+                  alt={lightboxImage.caption}
+                  fill
+                  priority
+                  className="object-contain"
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
     </div>
   );

@@ -31,6 +31,9 @@ function findProject(slug: string) {
   if (slug === 'rtc-company-erp-system') {
     return projects.find((p) => p.slug === 'rpc-erp-system');
   }
+  if (slug === 'ev-mobile-app' || slug === 'ev-mobile') {
+    return projects.find((p) => p.slug === 'ev-mobile-application');
+  }
   return undefined;
 }
 

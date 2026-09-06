@@ -322,11 +322,11 @@ export default function ProjectsPage() {
     return projects.filter((project) => {
       let matchCat = true;
       if (activeFilter === 'Enterprise ERPs') {
-        matchCat = project.category.includes('ERP') || project.category === 'ERP';
+        matchCat = (project.category as string).includes('ERP');
       } else if (activeFilter === 'Web Platforms') {
-        matchCat = project.category.includes('Web') || project.category === 'Portfolio' || project.category === 'Campus';
+        matchCat = (project.category as string).includes('Web') || (project.category as string) === 'Custom Software';
       } else if (activeFilter === 'Mobile & IoT') {
-        matchCat = project.category.includes('Mobile') || project.category.includes('EV');
+        matchCat = (project.category as string).includes('Mobile') || (project.category as string).includes('EV');
       }
 
       let matchSearch = true;
@@ -401,14 +401,14 @@ export default function ProjectsPage() {
         <div className="flex flex-col lg:flex-row items-center justify-between gap-4 w-full">
           
           {/* Floating Category Filter Pills (Left) */}
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex items-center gap-2 overflow-x-auto w-full lg:w-auto no-scrollbar py-1 scroll-smooth max-w-full">
             {filterCategories.map((cat) => {
               const isActive = activeFilter === cat;
               return (
                 <button
                   key={cat}
                   onClick={() => setActiveFilter(cat)}
-                  className={`relative px-4 py-2 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer select-none ${
+                  className={`relative px-4 py-2 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer select-none whitespace-nowrap shrink-0 ${
                     isActive
                       ? 'text-white shadow-md shadow-blue-500/20'
                       : 'bg-white/80 hover:bg-white text-slate-600 hover:text-slate-950 border border-slate-200/90 shadow-2xs hover:border-blue-300'

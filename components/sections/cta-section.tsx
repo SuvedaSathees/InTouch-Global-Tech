@@ -23,7 +23,7 @@ export function CTASection({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-50px' }}
           transition={{ duration: 0.5 }}
-          className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#001738] via-[#0A2558] to-[#0052D4] p-8 text-center sm:p-14 shadow-2xl shadow-blue-950/20 border border-blue-800/40"
+          className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#001738] via-[#0A2558] to-[#0052D4] p-5 min-[380px]:p-8 text-center sm:p-14 shadow-2xl shadow-blue-950/20 border border-blue-800/40"
         >
           {/* Subtle Glow */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,198,255,0.15),transparent_60%)] pointer-events-none" />
@@ -50,7 +50,7 @@ export function CTASection({
             </div>
 
             {/* Reassurance pills */}
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-5 text-xs text-blue-200 border-t border-blue-700/50 pt-6 font-medium">
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-5 text-xs text-blue-200 border-t border-blue-700/50 pt-6 font-medium">
               <span className="flex items-center gap-1.5">
                 <ShieldCheck className="h-4 w-4 text-cyan-300" />
                 NDA Protected

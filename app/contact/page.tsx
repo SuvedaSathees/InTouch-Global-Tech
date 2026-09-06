@@ -154,7 +154,7 @@ export default function ContactPage() {
                   </div>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
+                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5 min-w-0 max-w-full overflow-hidden">
                   {/* Name & Email */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-1.5">
@@ -358,7 +358,7 @@ export default function ContactPage() {
                       <Mail className="h-5 w-5" />
                     </div>
                     <div className="min-w-0 flex-1">
-                      <span className="text-sm sm:text-base font-black text-slate-900 group-hover:text-blue-600 transition-colors truncate block">
+                      <span className="text-xs min-[360px]:text-sm sm:text-base font-black text-slate-900 group-hover:text-blue-600 transition-colors break-all block">
                         {siteConfig.email}
                       </span>
                     </div>

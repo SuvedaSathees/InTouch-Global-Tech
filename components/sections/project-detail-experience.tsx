@@ -414,10 +414,10 @@ export function ProjectDetailExperience({ project }: { project: Project }) {
                 </div>
 
                 <div>
-                  <h4 className="text-xs font-bold text-slate-950 group-hover:text-blue-600 transition-colors truncate">
+                  <h4 className="text-xs font-bold text-slate-950 group-hover:text-blue-600 transition-colors leading-tight">
                     {item.title}
                   </h4>
-                  <p className="text-[11px] text-slate-500 leading-snug truncate mt-0.5">
+                  <p className="text-[11px] text-slate-500 leading-snug mt-0.5">
                     {item.subtitle}
                   </p>
                 </div>

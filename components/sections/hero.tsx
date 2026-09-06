@@ -78,14 +78,14 @@ export function HeroSection() {
             initial={{ opacity: 0, y: -15, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.4 }}
-            className="inline-flex items-center gap-2.5 rounded-full border border-blue-200/80 bg-white/95 px-4 py-1.5 text-xs sm:text-sm font-semibold text-blue-700 backdrop-blur-2xl shadow-sm mb-7"
+            className="inline-flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 rounded-full border border-blue-200/80 bg-white/95 px-3.5 sm:px-4 py-1.5 text-xs sm:text-sm font-semibold text-blue-700 backdrop-blur-2xl shadow-sm mb-7 max-w-full"
           >
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600" />
             </span>
             <span className="text-slate-800 font-bold">Intouch Global Tech</span>
-            <span className="text-slate-300">•</span>
+            <span className="text-slate-300 hidden min-[360px]:inline">•</span>
             <span className="text-blue-600 font-extrabold">Enterprise Software Systems</span>
           </motion.div>
 
@@ -94,7 +94,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-balance text-4xl font-black tracking-tight sm:text-6xl lg:text-7xl leading-[1.08] text-slate-950"
+            className="text-balance text-3xl min-[360px]:text-4xl font-black tracking-tight sm:text-6xl lg:text-7xl leading-[1.08] text-slate-950"
           >
             Software Engineered to{' '}
             <span className="bg-gradient-to-r from-blue-600 via-cyan-500 to-indigo-600 bg-clip-text text-transparent">
@@ -190,7 +190,7 @@ export function HeroSection() {
             {/* Top Deck Controls */}
             <div className="flex flex-wrap items-center justify-between border-b border-slate-100 bg-slate-50/90 px-5 py-3.5 gap-3">
               {/* Interactive Tabs */}
-              <div className="flex items-center gap-1.5 bg-slate-200/70 p-1 rounded-xl">
+              <div className="flex items-center gap-1.5 bg-slate-200/70 p-1 rounded-xl max-w-full overflow-x-auto no-scrollbar shrink-0">
                 {tabs.map((tab) => {
                   const Icon = tab.icon;
                   const isActive = activeTab === tab.id;

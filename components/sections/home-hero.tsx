@@ -146,7 +146,19 @@ export function HomeHero() {
   };
 
   const currentActive = hoveredNode || activeNode;
-  const orbitRadius = 230;
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const orbitRadiusX = isMobile ? 105 : 230;
+  const orbitRadiusY = isMobile ? 90 : 230;
 
   return (
     <section
@@ -226,11 +238,11 @@ export function HomeHero() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="pt-2 flex flex-wrap items-center gap-3.5 w-full sm:w-auto"
+              className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full sm:w-auto"
             >
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold text-xs shadow-[0_0_25px_rgba(0,194,255,0.35)] hover:shadow-[0_0_35px_rgba(0,194,255,0.5)] hover:scale-105 transition-all cursor-pointer group border border-cyan-400/30"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold text-xs shadow-[0_0_25px_rgba(0,194,255,0.35)] hover:shadow-[0_0_35px_rgba(0,194,255,0.5)] hover:scale-105 transition-all cursor-pointer group border border-cyan-400/30 text-center"
               >
                 <span>Start a Project</span>
                 <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
@@ -238,25 +250,25 @@ export function HomeHero() {
 
               <Link
                 href="/projects"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/20 text-white font-bold text-xs backdrop-blur-md transition-all cursor-pointer hover:border-cyan-400/50"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/20 text-white font-bold text-xs backdrop-blur-md transition-all cursor-pointer hover:border-cyan-400/50 text-center"
               >
                 <span>View Projects</span>
               </Link>
             </motion.div>
 
-            {/* 3 Metrics Bar */}
+            {/* 3 Metrics Bar (Hidden on Mobile < lg, Preserved on Desktop lg:grid) */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="pt-6 border-t border-white/10 w-full grid grid-cols-3 gap-4"
+              className="hidden lg:grid pt-6 border-t border-white/10 w-full grid-cols-3 gap-2 sm:gap-4"
             >
               {keyMetrics.map((metric, idx) => (
                 <div key={idx} className="space-y-0.5 text-left">
-                  <div className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+                  <div className="text-xl sm:text-3xl font-black text-white tracking-tight">
                     {metric.value}
                   </div>
-                  <div className="text-[10px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                  <div className="text-[9.5px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider">
                     {metric.label}
                   </div>
                 </div>
@@ -266,12 +278,12 @@ export function HomeHero() {
           </div>
 
           {/* RIGHT COLUMN: 3D PRO TELEMETRY ORBITAL HUB */}
-          <div className="lg:col-span-7 flex items-center justify-center translate-x-[10px] lg:translate-x-[20px]">
+          <div className="lg:col-span-7 flex items-center justify-center lg:translate-x-[20px] overflow-visible py-4 lg:py-0">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="relative w-full flex items-center justify-center min-h-[460px]"
+              className="relative w-full flex items-center justify-center min-h-[340px] sm:min-h-[440px] lg:min-h-[460px] overflow-visible"
               style={{ perspective: '1100px' }}
             >
               {/* Parallax 3D Plane */}
@@ -283,7 +295,7 @@ export function HomeHero() {
                   y: smoothTranslateY,
                   transformStyle: 'preserve-3d',
                 }}
-                className="relative flex items-center justify-center w-full h-[460px]"
+                className="relative flex items-center justify-center w-full h-[340px] sm:h-[440px] lg:h-[460px] scale-[0.72] min-[360px]:scale-[0.78] min-[400px]:scale-[0.84] sm:scale-100 lg:scale-100 origin-center overflow-visible"
               >
                 {/* Center Glow Aura */}
                 <div className="absolute w-[340px] h-[340px] rounded-full bg-radial from-cyan-500/20 via-blue-600/10 to-transparent blur-3xl pointer-events-none" />
@@ -315,7 +327,7 @@ export function HomeHero() {
                   <circle
                     cx="0"
                     cy="0"
-                    r="90"
+                    r={isMobile ? "50" : "90"}
                     fill="none"
                     stroke="rgba(56,189,248,0.12)"
                     strokeWidth="1"
@@ -324,19 +336,20 @@ export function HomeHero() {
                   <circle
                     cx="0"
                     cy="0"
-                    r="155"
+                    r={isMobile ? "85" : "155"}
                     fill="none"
                     stroke="rgba(56,189,248,0.22)"
                     strokeWidth="1.2"
                     strokeDasharray="4 6"
                   />
-                  {/* Outer Circular Orbit Ring */}
-                  <circle
+                  {/* Outer Orbit Ellipse / Ring */}
+                  <ellipse
                     cx="0"
                     cy="0"
-                    r="230"
+                    rx={orbitRadiusX}
+                    ry={orbitRadiusY}
                     fill="none"
-                    stroke="rgba(56,189,248,0.18)"
+                    stroke="rgba(56,189,248,0.22)"
                     strokeWidth="1.2"
                     strokeDasharray="5 5"
                   />
@@ -344,10 +357,10 @@ export function HomeHero() {
                   {/* Dynamic Connecting Circuits with Animated Laser Beams */}
                   {systemNodes.map((node) => {
                     const rad = (node.angle * Math.PI) / 180;
-                    const nodeOffsetX = node.id === 'hms' ? -20 : node.id === 'web' ? 20 : 0;
-                    const nodeOffsetY = node.id === 'seo' || node.id === 'cloud' ? 5 : node.id === 'crm' || node.id === 'erp' ? -5 : 0;
-                    const x = Math.round(Math.cos(rad) * orbitRadius) + nodeOffsetX;
-                    const y = Math.round(Math.sin(rad) * orbitRadius) + nodeOffsetY;
+                    const nodeOffsetX = isMobile ? 0 : node.id === 'hms' ? -20 : node.id === 'web' ? 20 : 0;
+                    const nodeOffsetY = isMobile ? 0 : node.id === 'seo' || node.id === 'cloud' ? 5 : node.id === 'crm' || node.id === 'erp' ? -5 : 0;
+                    const x = Math.round(Math.cos(rad) * orbitRadiusX) + nodeOffsetX;
+                    const y = Math.round(Math.sin(rad) * orbitRadiusY) + nodeOffsetY;
                     const isActive = currentActive === node.id;
 
                     return (
@@ -426,19 +439,19 @@ export function HomeHero() {
                 {/* Central Brand Pedestal */}
                 <motion.div
                   whileHover={{ scale: 1.05 }}
-                  className="relative z-30 flex items-center justify-center px-4 py-3 rounded-2xl bg-slate-900/90 backdrop-blur-xl shadow-[0_0_35px_rgba(56,189,248,0.35)] border border-cyan-400/40 ring-1 ring-cyan-400/20 cursor-default"
+                  className="relative z-30 flex items-center justify-center px-1.5 py-1 sm:px-4 sm:py-3 rounded-xl sm:rounded-2xl bg-slate-900/95 backdrop-blur-xl shadow-[0_0_25px_rgba(56,189,248,0.35)] border border-cyan-400/40 ring-1 ring-cyan-400/20 cursor-default"
                   style={{ transform: 'translateZ(35px)' }}
                 >
-                  <CompanyLogo width={165} height={46} theme="dark" imgClassName="scale-105" />
+                  <CompanyLogo width={isMobile ? 65 : 165} height={isMobile ? 18 : 46} theme="dark" imgClassName="scale-105" />
                 </motion.div>
 
                 {/* 6 High-Tech Capability Pills */}
                 {systemNodes.map((node, index) => {
                   const rad = (node.angle * Math.PI) / 180;
-                  const nodeOffsetX = node.id === 'hms' ? -20 : node.id === 'web' ? 20 : 0;
-                  const nodeOffsetY = node.id === 'seo' || node.id === 'cloud' ? 5 : node.id === 'crm' || node.id === 'erp' ? -5 : 0;
-                  const x = Math.round(Math.cos(rad) * orbitRadius) + nodeOffsetX;
-                  const y = Math.round(Math.sin(rad) * orbitRadius) + nodeOffsetY;
+                  const nodeOffsetX = isMobile ? 0 : node.id === 'hms' ? -20 : node.id === 'web' ? 20 : 0;
+                  const nodeOffsetY = isMobile ? 0 : node.id === 'seo' || node.id === 'cloud' ? 5 : node.id === 'crm' || node.id === 'erp' ? -5 : 0;
+                  const x = Math.round(Math.cos(rad) * orbitRadiusX) + nodeOffsetX;
+                  const y = Math.round(Math.sin(rad) * orbitRadiusY) + nodeOffsetY;
                   const Icon = node.icon;
                   const isActive = currentActive === node.id;
 
@@ -467,23 +480,23 @@ export function HomeHero() {
                           scale: { type: 'spring', stiffness: 350, damping: 25 },
                           y: { duration: 4 + (index % 3) * 0.5, repeat: Infinity, ease: 'easeInOut' },
                         }}
-                        className={`relative flex items-center gap-3 rounded-2xl px-4 py-2.5 text-left transition-all duration-300 cursor-pointer ${
+                        className={`relative flex items-center gap-1.5 sm:gap-3 rounded-xl sm:rounded-2xl px-2 py-1 sm:px-4 sm:py-2.5 text-left transition-all duration-300 cursor-pointer ${
                           isActive
-                            ? 'border-2 border-cyan-400 bg-slate-800/95 shadow-[0_0_30px_rgba(56,189,248,0.4)] ring-4 ring-cyan-400/20'
+                            ? 'border-2 border-cyan-400 bg-slate-800/95 shadow-[0_0_25px_rgba(56,189,248,0.4)] ring-2 sm:ring-4 ring-cyan-400/20'
                             : 'border border-slate-700/80 bg-slate-900/90 backdrop-blur-md shadow-md hover:border-cyan-400/60 hover:shadow-lg'
                         }`}
                       >
                         <div
-                          className={`flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${node.gradient} text-white font-bold shadow-xs`}
+                          className={`flex h-6 w-6 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-lg sm:rounded-xl bg-gradient-to-br ${node.gradient} text-white font-bold shadow-xs`}
                         >
-                          <Icon className="h-4 w-4 sm:h-4.5 sm:w-4.5 text-white" />
+                          <Icon className="h-3 w-3 sm:h-4.5 sm:w-4.5 text-white" />
                         </div>
                         <div className="flex flex-col text-left">
-                          <span className="text-xs sm:text-sm font-bold text-white whitespace-nowrap">
+                          <span className="text-[10px] sm:text-sm font-bold text-white whitespace-nowrap">
                             {node.label}
                           </span>
                           {isActive && (
-                            <span className="text-[10px] font-mono font-semibold text-cyan-400 animate-fadeIn truncate max-w-[130px]">
+                            <span className="text-[8.5px] font-mono font-semibold text-cyan-400 animate-fadeIn max-w-[110px] sm:max-w-[160px] leading-tight block">
                               {node.description}
                             </span>
                           )}
@@ -499,16 +512,16 @@ export function HomeHero() {
         </div>
       </div>
 
-      {/* BOTTOM TRUST & CAPABILITIES RIBBON */}
-      <div className="relative z-10 w-full border-t border-cyan-400/25 border-b border-white/10 bg-[#060A14]/95 backdrop-blur-2xl py-[30px] shadow-[0_-10px_30px_rgba(0,194,255,0.06)]">
+      {/* BOTTOM TRUST & CAPABILITIES RIBBON (2x2 Grid on Mobile, Flex Row on Desktop) */}
+      <div className="relative z-10 w-full border-t border-cyan-400/25 border-b border-white/10 bg-[#060A14]/95 backdrop-blur-2xl py-4 sm:py-[30px] shadow-[0_-10px_30px_rgba(0,194,255,0.06)]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between gap-6 lg:gap-10 text-xs sm:text-[13px] text-slate-200 font-bold whitespace-nowrap overflow-x-auto no-scrollbar">
+          <div className="grid grid-cols-2 gap-3 sm:flex sm:items-center sm:justify-between sm:gap-6 lg:gap-10 text-[11px] sm:text-[13px] text-slate-200 font-bold">
             {bottomTrustItems.map((item, idx) => (
-              <div key={idx} className="flex items-center gap-3 hover:text-cyan-400 transition-colors shrink-0 group">
-                <div className="h-8 w-8 rounded-xl bg-cyan-400/10 border border-cyan-400/25 flex items-center justify-center text-cyan-400 group-hover:bg-cyan-400/25 group-hover:scale-105 transition-all shadow-[0_0_15px_rgba(56,189,248,0.15)]">
-                  <item.icon className="h-4 w-4 shrink-0" />
+              <div key={idx} className="flex items-center gap-2 sm:gap-3 hover:text-cyan-400 transition-colors shrink-0 group">
+                <div className="h-7 w-7 sm:h-8 sm:w-8 rounded-lg sm:rounded-xl bg-cyan-400/10 border border-cyan-400/25 flex items-center justify-center text-cyan-400 group-hover:bg-cyan-400/25 group-hover:scale-105 transition-all shadow-[0_0_15px_rgba(56,189,248,0.15)] shrink-0">
+                  <item.icon className="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0" />
                 </div>
-                <span className="tracking-wider">{item.label}</span>
+                <span className="tracking-wider leading-tight">{item.label}</span>
               </div>
             ))}
           </div>

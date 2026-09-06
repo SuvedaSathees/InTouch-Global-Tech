@@ -178,7 +178,7 @@ export async function GET() {
       }
     }
 
-    function resizeRgba(src: Buffer, sw: number, sh: number, dw: number, dh: number): Buffer {
+    const resizeRgba = (src: Buffer, sw: number, sh: number, dw: number, dh: number): Buffer => {
       const dst = Buffer.alloc(dw * dh * 4);
       for (let dy = 0; dy < dh; dy++) {
         for (let dx = 0; dx < dw; dx++) {

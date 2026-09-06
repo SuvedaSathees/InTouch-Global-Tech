@@ -12,7 +12,7 @@ export function ServicesGrid() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service, i) => {
-            const Icon = (Icons as Record<string, React.ComponentType<{ className?: string }>>)[service.icon] || Icons.Code2;
+            const Icon = (Icons as unknown as Record<string, React.ComponentType<{ className?: string }>>)[service.icon] || Icons.Code2;
             return (
               <motion.div
                 key={service.slug}

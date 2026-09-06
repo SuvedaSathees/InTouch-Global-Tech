@@ -556,7 +556,7 @@ export function ConferenceTable3D() {
                   {/* Active Duty Live Pulse */}
                   <div className="rounded-xl bg-slate-50 border border-slate-200 p-2 text-[10px] text-slate-700 flex items-center gap-2 mb-3 font-medium">
                     <span className="h-2 w-2 rounded-full bg-emerald-500 animate-ping shrink-0" />
-                    <span className="truncate"><strong>Working on:</strong> {activePerson.activityText}</span>
+                    <span className="leading-tight"><strong>Working on:</strong> {activePerson.activityText}</span>
                   </div>
 
                   <p className="text-xs text-slate-600 leading-relaxed font-normal">

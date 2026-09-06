@@ -94,3 +94,31 @@ body {
   will-change: transform, opacity;
 }
 
+/* ==========================================================================
+   MOBILE & TABLET ISOLATED RESPONSIVE OVERRIDES (DESKTOP >= 1024px IS UNTOUCHED)
+   ========================================================================== */
+
+/* 1. TABLET & MOBILE (< 1024px) */
+
+/* 2. MOBILE (< 768px) */
+@media (max-width: 767px) {
+  .mobile-touch-scroll {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+  .mobile-flex-wrap {
+    flex-wrap: wrap !important;
+  }
+}
+
+/* 3. SMALL MOBILE (< 480px - 320px, 360px, 375px, 390px, 414px) */
+@media (max-width: 479px) {
+  .small-mobile-compact-p {
+    padding: 0.875rem !important;
+  }
+  .small-mobile-text-sm {
+    font-size: 0.8125rem !important;
+  }
+}
+
+

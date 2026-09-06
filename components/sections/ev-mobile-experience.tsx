@@ -511,13 +511,13 @@ export function EvMobileDetailExperience({ project }: { project: Project }) {
 
       {/* 8. PREVIOUS / NEXT PAGER */}
       <footer className="border-t border-slate-200 bg-white py-8">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-3 sm:gap-4">
           <Link
             href={`/projects/${prevProject.slug}`}
-            className="inline-flex items-center gap-2 text-xs font-bold text-slate-600 hover:text-blue-600 transition-colors"
+            className="inline-flex items-center gap-2 text-xs font-bold text-slate-600 hover:text-blue-600 transition-colors min-w-0 max-w-[48%] sm:max-w-none"
           >
-            <ChevronLeft className="h-4 w-4" />
-            <span>Previous: {prevProject.name}</span>
+            <ChevronLeft className="h-4 w-4 shrink-0" />
+            <span className="leading-tight">Previous: {prevProject.name}</span>
           </Link>
 
           <Link
@@ -529,10 +529,10 @@ export function EvMobileDetailExperience({ project }: { project: Project }) {
 
           <Link
             href={`/projects/${nextProject.slug}`}
-            className="inline-flex items-center gap-2 text-xs font-bold text-slate-600 hover:text-blue-600 transition-colors"
+            className="inline-flex items-center gap-2 text-xs font-bold text-slate-600 hover:text-blue-600 transition-colors min-w-0 max-w-[48%] sm:max-w-none ml-auto sm:ml-0"
           >
-            <span>Next: {nextProject.name}</span>
-            <ChevronRight className="h-4 w-4" />
+            <span className="leading-tight">Next: {nextProject.name}</span>
+            <ChevronRight className="h-4 w-4 shrink-0" />
           </Link>
         </div>
       </footer>

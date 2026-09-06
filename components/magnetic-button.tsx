@@ -12,6 +12,7 @@ type MagneticButtonProps = {
   variant?: 'default' | 'outline' | 'ghost' | 'secondary';
   size?: 'sm' | 'default' | 'lg';
   className?: string;
+  style?: React.CSSProperties;
 };
 
 const variantClasses: Record<string, string> = {
@@ -34,6 +35,7 @@ export function MagneticButton({
   variant = 'default',
   size = 'default',
   className,
+  style,
 }: MagneticButtonProps) {
   const ref = useRef<HTMLAnchorElement | HTMLButtonElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -70,6 +72,7 @@ export function MagneticButton({
           ref={ref as React.RefObject<HTMLAnchorElement>}
           href={href}
           className={classes}
+          style={style}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
           onClick={onClick}
@@ -85,6 +88,7 @@ export function MagneticButton({
       <button
         ref={ref as React.RefObject<HTMLButtonElement>}
         className={classes}
+        style={style}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         onClick={onClick}

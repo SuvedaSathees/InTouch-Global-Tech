@@ -158,9 +158,9 @@ export function ArchitectureSimulator() {
                     <span className="h-3 w-3 rounded-full bg-amber-500 inline-block" />
                     <span className="h-3 w-3 rounded-full bg-emerald-500 inline-block" />
                   </div>
-                  <span className="text-xs font-mono text-slate-400 ml-2 flex items-center gap-1.5 font-semibold">
-                    <Terminal className="h-3.5 w-3.5 text-cyan-400" />
-                    intouch-cluster-simulator://live-mesh
+                  <span className="text-xs font-mono text-slate-400 ml-2 flex items-center gap-1.5 font-semibold min-w-0 truncate">
+                    <Terminal className="h-3.5 w-3.5 text-cyan-400 shrink-0" />
+                    <span className="truncate">intouch-cluster-simulator://live-mesh</span>
                   </span>
                 </div>
                 <span className="text-xs font-mono text-emerald-400 font-bold flex items-center gap-1.5">

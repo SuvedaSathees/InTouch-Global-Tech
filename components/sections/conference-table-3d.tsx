@@ -533,7 +533,7 @@ export function ConferenceTable3D() {
                     top: `${activePerson.tablePos.yPercent}%`,
                     transform: `translate(calc(-50% + ${activePerson.cardOffset.x}px), calc(-50% + ${activePerson.cardOffset.y}px)) translateZ(80px)`,
                   }}
-                  className="absolute z-40 w-72 sm:w-80 rounded-3xl border border-slate-200 bg-white/95 backdrop-blur-xl p-5 shadow-[0_20px_50px_rgba(0,0,0,0.12)] pointer-events-none select-none text-left"
+                  className="absolute z-40 w-[270px] min-[360px]:w-72 sm:w-80 max-w-[calc(100vw-24px)] rounded-3xl border border-slate-200 bg-white/95 backdrop-blur-xl p-4 sm:p-5 shadow-[0_20px_50px_rgba(0,0,0,0.12)] pointer-events-none select-none text-left"
                 >
                   {/* Card Header */}
                   <div className="flex items-start justify-between gap-3 mb-3">
@@ -559,7 +559,7 @@ export function ConferenceTable3D() {
                   {/* Active Duty Live Pulse */}
                   <div className="rounded-xl bg-slate-50 border border-slate-200 p-2 text-[10px] text-slate-700 flex items-center gap-2 mb-3 font-medium">
                     <span className="h-2 w-2 rounded-full bg-emerald-500 animate-ping shrink-0" />
-                    <span className="truncate"><strong>Working on:</strong> {activePerson.activityText}</span>
+                    <span className="leading-tight"><strong>Working on:</strong> {activePerson.activityText}</span>
                   </div>
 
                   <p className="text-xs text-slate-600 leading-relaxed font-normal">

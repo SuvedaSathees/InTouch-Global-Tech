@@ -1,4 +1,5 @@
-export const dynamic = 'force-dynamic';
+import { NextResponse } from 'next/server';
+
 export async function GET() {
-  return new Response(null, { status: 204 });
+  return NextResponse.json({ status: 'ok', time: new Date().toISOString() });
 }

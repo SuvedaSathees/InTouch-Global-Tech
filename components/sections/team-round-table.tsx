@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import veluAvatar from '@/app/terms/veluceo.png';
 import mathiAvatar from '@/app/terms/mathi.png';
@@ -71,9 +71,9 @@ const teamMembers: TeamMember[] = [
     tagline: 'Strategic Vision, Executive Leadership & Enterprise Scaling',
     department: 'Executive Leadership',
     avatar: veluAvatar,
-    avatarClassName: 'scale-[1.03] -translate-x-[20px] -translate-y-[15px]',
+    avatarClassName: 'scale-100 translate-y-0 lg:scale-[1.03] lg:-translate-x-[20px] lg:-translate-y-[15px]',
     avatarStyle: {
-      imageRendering: 'high-quality',
+      imageRendering: 'auto' as any,
       filter: 'contrast(1.08) brightness(1.03) saturate(1.06) drop-shadow(0 12px 28px rgba(0, 40, 100, 0.18))',
     },
     about: 'Leads the overarching strategic vision, executive roadmap, and technology innovations at Intouch Global Tech, driving scalable digital engineering and client success.',
@@ -101,7 +101,11 @@ const teamMembers: TeamMember[] = [
     tagline: 'Enterprise ERP Architecture & Custom CRM Solutions',
     department: 'ERP & CRM Systems',
     avatar: sriAvatar,
-    avatarClassName: 'scale-[0.84] -translate-x-[15px] translate-y-[50px]',
+    avatarClassName: 'scale-100 translate-y-0 lg:scale-[0.84] lg:-translate-x-[15px] lg:translate-y-[50px]',
+    avatarStyle: {
+      imageRendering: 'auto' as any,
+      filter: 'contrast(1.06) brightness(1.02) saturate(1.04) drop-shadow(0 12px 32px rgba(0, 40, 100, 0.2))',
+    },
     about: 'Specializes in high-scale custom ERP platforms, multi-tenant CRM systems, automated inventory/billing pipelines, and mission-critical business workflows.',
     philosophy: '"Enterprise ERP & CRM systems should eliminate friction and accelerate operational velocity."',
     experience: '9+ Yrs ERP & CRM',
@@ -127,9 +131,9 @@ const teamMembers: TeamMember[] = [
     tagline: 'End-to-End Web Applications & High-Performance Architecture',
     department: 'Full Stack Engineering',
     avatar: suvedaAvatar,
-    avatarClassName: 'scale-[0.92] -translate-x-[50px] translate-y-[15px]',
+    avatarClassName: 'scale-100 translate-y-0 translate-x-0 lg:scale-[0.92] lg:-translate-x-[50px] lg:translate-y-[15px]',
     avatarStyle: {
-      imageRendering: 'high-quality',
+      imageRendering: 'auto' as any,
       filter: 'contrast(1.06) brightness(1.02) saturate(1.04) drop-shadow(0 8px 24px rgba(0,0,0,0.12))',
     },
     about: 'Engineers complete end-to-end web applications, modern React/Next.js frontends, scalable Node.js/PostgreSQL backends, and robust API ecosystems.',
@@ -157,7 +161,11 @@ const teamMembers: TeamMember[] = [
     tagline: 'Pixel-Perfect Web Experiences & Motion Systems',
     department: 'Web Interfaces & Motion',
     avatar: vigneshAvatar,
-    avatarClassName: 'scale-[1.06] -translate-x-[20px] -translate-y-[20px]',
+    avatarClassName: 'scale-100 translate-y-0 lg:scale-[1.06] lg:-translate-x-[20px] lg:-translate-y-[20px]',
+    avatarStyle: {
+      imageRendering: 'auto' as any,
+      filter: 'contrast(1.06) brightness(1.02) saturate(1.04) drop-shadow(0 12px 32px rgba(0, 40, 100, 0.2))',
+    },
     about: 'Crafts pixel-perfect, lightning-fast user interfaces, design system components, micro-animations, and fluid responsive layouts.',
     philosophy: '"Motion should feel natural, intentional, and instantaneous."',
     experience: '7+ Yrs Frontend',
@@ -183,7 +191,11 @@ const teamMembers: TeamMember[] = [
     tagline: 'Zero-Defect Quality Assurance & Comprehensive Testing',
     department: 'Quality Assurance & Testing',
     avatar: sanAvatar,
-    avatarClassName: 'scale-[0.92] -translate-x-[20px] translate-y-[30px]',
+    avatarClassName: 'scale-100 translate-y-0 lg:scale-[0.92] lg:-translate-x-[20px] lg:translate-y-[30px]',
+    avatarStyle: {
+      imageRendering: 'auto' as any,
+      filter: 'contrast(1.06) brightness(1.02) saturate(1.04) drop-shadow(0 12px 32px rgba(0, 40, 100, 0.2))',
+    },
     about: 'Guarantees rock-solid software stability and flawless user experiences through rigorous automated testing, regression suites, and continuous quality audits.',
     philosophy: '"Flawless software begins with relentless attention to detail and rigorous testing."',
     experience: '6+ Yrs QA & Testing',
@@ -209,9 +221,9 @@ const teamMembers: TeamMember[] = [
     tagline: 'High-Converting Meta Ads, Google PPC Campaigns & Creative Strategy',
     department: 'Performance Marketing & Ads',
     avatar: sudharAvatar,
-    avatarClassName: 'scale-[1.30] -translate-x-[15px] -translate-y-[110px]',
+    avatarClassName: 'scale-100 translate-y-0 lg:scale-[1.30] lg:-translate-x-[15px] lg:-translate-y-[110px]',
     avatarStyle: {
-      imageRendering: 'high-quality',
+      imageRendering: 'auto' as any,
       filter: 'contrast(1.06) brightness(1.02) saturate(1.04) drop-shadow(0 12px 32px rgba(0, 40, 100, 0.2))',
     },
     about: 'Crafts high-converting Meta and Google advertising campaigns, persuasive ad creatives, surgical audience targeting funnels, and data-backed performance marketing strategies.',
@@ -239,7 +251,11 @@ const teamMembers: TeamMember[] = [
     tagline: 'High-ROI Growth Marketing, SEO & Performance Campaigns',
     department: 'Digital Marketing & Growth',
     avatar: naveenAvatar,
-    avatarClassName: 'scale-[0.88] -translate-x-[20px] translate-y-[45px]',
+    avatarClassName: 'scale-100 translate-y-0 lg:scale-[0.88] lg:-translate-x-[20px] lg:translate-y-[45px]',
+    avatarStyle: {
+      imageRendering: 'auto' as any,
+      filter: 'contrast(1.06) brightness(1.02) saturate(1.04) drop-shadow(0 12px 32px rgba(0, 40, 100, 0.2))',
+    },
     about: 'Drives high-converting digital marketing funnels, technical SEO rankings, performance PPC ads, and organic growth strategies for scaling businesses.',
     philosophy: '"Data-driven marketing turns clicks into high-value customer relationships."',
     experience: '6+ Yrs Digital Marketing',
@@ -265,9 +281,9 @@ const teamMembers: TeamMember[] = [
     tagline: 'High-Throughput APIs, Distributed Databases & Core Systems',
     department: 'Core Backend & APIs',
     avatar: mathiAvatar,
-    avatarClassName: 'scale-[0.95] -translate-x-[20px] -translate-y-[20px]',
+    avatarClassName: 'scale-100 translate-y-0 lg:scale-[0.95] lg:-translate-x-[20px] lg:-translate-y-[20px]',
     avatarStyle: {
-      imageRendering: 'high-quality',
+      imageRendering: 'auto' as any,
       filter: 'contrast(1.06) brightness(1.02) saturate(1.04) drop-shadow(0 8px 24px rgba(0,0,0,0.12))',
     },
     about: 'Architects resilient server backends, high-performance database schemas, scalable REST/GraphQL APIs, and secure microservices engines.',
@@ -295,9 +311,9 @@ const teamMembers: TeamMember[] = [
     tagline: 'Multi-Tenant SaaS Platforms, Cloud Subscriptions & Enterprise Systems',
     department: 'SaaS Platforms & Cloud',
     avatar: sivaAvatar,
-    avatarClassName: 'scale-[1.10] -translate-x-[20px] -translate-y-[70px]',
+    avatarClassName: 'scale-100 translate-y-0 lg:scale-[1.10] lg:-translate-x-[20px] lg:-translate-y-[70px]',
     avatarStyle: {
-      imageRendering: 'high-quality',
+      imageRendering: 'auto' as any,
       filter: 'contrast(1.08) brightness(1.03) saturate(1.06) drop-shadow(0 10px 28px rgba(0,0,0,0.14))',
     },
     about: 'Architects modern multi-tenant SaaS applications, subscription billing pipelines, role-based access portals, and high-conversion software-as-a-service platforms.',
@@ -321,6 +337,14 @@ const teamMembers: TeamMember[] = [
 
 export function TeamRoundTable() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Mouse interaction for interactive 3D perspective tilt
   const mouseX = useMotionValue(0);
@@ -367,18 +391,196 @@ export function TeamRoundTable() {
     mass: 0.75,
   });
 
+  const [activeMobileIdx, setActiveMobileIdx] = useState(0);
   const totalMembers = teamMembers.length;
+  const activeMobileMember = teamMembers[activeMobileIdx];
+  const ActiveMobileIcon = activeMobileMember.icon;
+
+  const mobileScrollRef = useRef<HTMLDivElement>(null);
+
+  const handleMobileScroll = () => {
+    if (!mobileScrollRef.current) return;
+    const container = mobileScrollRef.current;
+    const cardWidth = container.clientWidth;
+    if (cardWidth === 0) return;
+    const newIndex = Math.round(container.scrollLeft / cardWidth);
+    if (newIndex >= 0 && newIndex < totalMembers && newIndex !== activeMobileIdx) {
+      setActiveMobileIdx(newIndex);
+    }
+  };
+
+  const scrollToMobileMember = (idx: number) => {
+    setActiveMobileIdx(idx);
+    if (!mobileScrollRef.current) return;
+    const container = mobileScrollRef.current;
+    const cardWidth = container.clientWidth;
+    container.scrollTo({
+      left: idx * cardWidth,
+      behavior: 'smooth',
+    });
+  };
 
   return (
-    <div
-      ref={containerRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      className="relative bg-[#F8FAFC] text-slate-900"
-      style={{
-        height: `${totalMembers * 115}vh`,
-      }}
-    >
+    <>
+      {/* ========================================================================= */}
+      {/* 📱 MOBILE RESPONSIVE TEAM SHOWCASE (< lg screens) — HORIZONTAL SWIPE CAROUSEL */}
+      {/* ========================================================================= */}
+      <section className="block lg:hidden relative bg-[#F8FAFC] py-12 px-4 border-t border-slate-200/80 text-left z-20 overflow-hidden">
+        <div className="max-w-7xl mx-auto space-y-6">
+          
+          {/* Header */}
+          <div className="space-y-2">
+            <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-blue-600">
+              <span className="w-5 h-[2px] bg-blue-600 rounded-full" />
+              <span>ENGINEERING LEADS & ARCHITECTS</span>
+            </div>
+            <h2 className="text-3xl font-black text-slate-950 tracking-tight leading-tight">
+              Meet the Minds Behind Intouch
+            </h2>
+            <div className="flex items-center justify-between">
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Swipe left or right to explore our core engineering leadership.
+              </p>
+              <div className="flex items-center gap-1 text-[11px] font-mono font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200 shrink-0">
+                <span>0{activeMobileIdx + 1}</span>
+                <span className="text-slate-400">/</span>
+                <span className="text-slate-400">09</span>
+              </div>
+            </div>
+          </div>
+
+
+
+          {/* Horizontal Snap-Swipe Carousel Container */}
+          <div
+            ref={mobileScrollRef}
+            onScroll={handleMobileScroll}
+            className="flex gap-4 overflow-x-auto no-scrollbar snap-x snap-mandatory scroll-smooth w-full py-1"
+          >
+            {teamMembers.map((m, idx) => {
+              const IconComp = m.icon;
+              return (
+                <div
+                  key={m.id}
+                  className="w-full shrink-0 snap-center snap-always rounded-3xl border border-slate-200/90 bg-white p-5 sm:p-6 shadow-sm space-y-5 overflow-hidden"
+                >
+                  {/* Top Status & Department Header */}
+                  <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+                    <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-blue-600 flex items-center gap-2">
+                      <span className="h-2 w-2 rounded-full bg-blue-600 animate-ping" />
+                      {m.department}
+                    </span>
+                    <div className="flex items-center gap-2 text-xs font-mono font-bold text-slate-400">
+                      <button
+                        onClick={() => scrollToMobileMember(Math.max(0, idx - 1))}
+                        disabled={idx === 0}
+                        className="px-1.5 py-0.5 rounded text-slate-600 disabled:opacity-30 hover:bg-slate-100 cursor-pointer font-bold"
+                      >
+                        ←
+                      </button>
+                      <span>0{idx + 1} / 09</span>
+                      <button
+                        onClick={() => scrollToMobileMember(Math.min(totalMembers - 1, idx + 1))}
+                        disabled={idx === totalMembers - 1}
+                        className="px-1.5 py-0.5 rounded text-slate-600 disabled:opacity-30 hover:bg-slate-100 cursor-pointer font-bold"
+                      >
+                        →
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Member Photo Container */}
+                  <div className="relative w-full h-[320px] min-[380px]:h-[360px] flex items-center justify-center overflow-visible my-1">
+                    <div
+                      className="absolute inset-4 rounded-full blur-3xl opacity-30 pointer-events-none"
+                      style={{ backgroundColor: m.glowColor }}
+                    />
+                    {m.avatar ? (
+                      <Image
+                        src={m.avatar}
+                        alt={m.name}
+                        fill
+                        sizes="360px"
+                        unoptimized
+                        className="object-contain object-center scale-100 translate-y-0 transition-all duration-300 pointer-events-none select-none"
+                        style={m.avatarStyle}
+                      />
+                    ) : (
+                      <div className="relative w-56 h-72 rounded-3xl bg-gradient-to-b from-blue-50 to-white border border-blue-200 p-6 flex flex-col items-center justify-center text-center">
+                        <div className="w-16 h-16 rounded-2xl bg-blue-600 text-white flex items-center justify-center mb-3">
+                          <IconComp className="w-8 h-8" />
+                        </div>
+                        <div className="text-base font-bold text-slate-900">{m.name}</div>
+                        <div className="text-xs text-blue-600 font-mono font-semibold mt-1">{m.role}</div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Identity Details */}
+                  <div className="space-y-2.5">
+                    <h3 className="text-2xl font-black text-slate-950 leading-tight">
+                      {m.name}
+                    </h3>
+                    <p className="text-xs font-mono font-bold text-blue-600 uppercase tracking-wider">
+                      {m.role} • {m.experience}
+                    </p>
+                    <blockquote className="text-sm font-bold text-slate-900 border-l-2 border-blue-600 pl-3 py-0.5 italic">
+                      {m.philosophy}
+                    </blockquote>
+                    <p className="text-xs text-slate-600 leading-relaxed">
+                      {m.about}
+                    </p>
+                  </div>
+
+                  {/* Tech Stack Badges */}
+                  <div className="pt-3 border-t border-slate-100 space-y-2">
+                    <span className="text-[10px] font-mono font-bold uppercase text-slate-400 block">
+                      Technical Stack & Expertise
+                    </span>
+                    <div className="flex flex-wrap gap-1.5">
+                      {m.stack.map((s) => (
+                        <span key={s} className="px-2.5 py-1 rounded-lg bg-slate-100 text-[10px] font-mono font-semibold text-slate-700">
+                          {s}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Actions */}
+                  <div className="pt-2 flex items-center gap-2">
+                    <a
+                      href={`mailto:${m.email}`}
+                      className="flex-1 inline-flex items-center justify-center gap-2 py-2.5 rounded-xl bg-blue-600 text-white font-bold text-xs shadow-md shadow-blue-600/20"
+                    >
+                      <span>Connect via Email</span>
+                    </a>
+                  </div>
+
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Swipe Hint Indicator */}
+          <div className="flex items-center justify-center gap-2 text-[11px] font-mono text-slate-500 font-semibold pt-1">
+            <span>← Swipe left or right to view team members →</span>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 🎬 100VH STICKY PINNED STORYTELLING THEATER (DESKTOP ONLY) */}
+      {/* ========================================================================= */}
+      <div
+        ref={containerRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        className="hidden lg:block relative bg-[#F8FAFC] text-slate-900"
+        style={{
+          height: `${totalMembers * 115}vh`,
+        }}
+      >
       {/* Precision Blueprint Grid */}
       <div
         className="absolute inset-0 opacity-[0.025] pointer-events-none"
@@ -437,10 +639,10 @@ export function TeamRoundTable() {
                 ? [start, start + step * 0.35, 1]
                 : [start, start + step * 0.35, end - step * 0.35, end],
               isFirst
-                ? ['0vw', '0vw', '-65vw']
+                ? ['0vw', '0vw', isMobile ? '-35vw' : '-65vw']
                 : isLast
-                ? ['65vw', '0vw', '0vw']
-                : ['65vw', '0vw', '0vw', '-65vw']
+                ? [isMobile ? '35vw' : '65vw', '0vw', '0vw']
+                : [isMobile ? '35vw' : '65vw', '0vw', '0vw', isMobile ? '-35vw' : '-65vw']
             );
 
             // Opacity: Member 01 starts at 1 at scroll 0
@@ -529,7 +731,7 @@ export function TeamRoundTable() {
                   scale,
                   rotateY,
                   perspective: 1400,
-                  pointerEvents: opacity === 0 ? 'none' : 'auto',
+                  pointerEvents: (opacity as any) === 0 ? 'none' : 'auto',
                 }}
                 className="absolute inset-0 flex items-center justify-center"
               >
@@ -554,7 +756,7 @@ export function TeamRoundTable() {
                     className="lg:col-span-4 text-left space-y-4 order-2 lg:order-1 relative"
                   >
                     {/* Giant Translucent Watermark Number with Glow */}
-                    <span className="absolute -top-20 -left-6 text-[10rem] font-black text-slate-900/[0.04] select-none pointer-events-none font-mono">
+                    <span className="absolute -top-20 -left-6 text-[10rem] font-black text-slate-900/[0.04] select-none pointer-events-none font-mono hidden sm:block">
                       {member.number}
                     </span>
 
@@ -578,7 +780,7 @@ export function TeamRoundTable() {
                       </div>
 
                       {/* Name with Luxury Typography */}
-                      <h3 className="text-4xl sm:text-6xl font-black tracking-tight leading-[1.04] bg-gradient-to-r from-slate-950 via-slate-900 to-blue-950 bg-clip-text text-transparent">
+                      <h3 className="text-2xl sm:text-4xl md:text-6xl font-black tracking-tight leading-[1.04] bg-gradient-to-r from-slate-950 via-slate-900 to-blue-950 bg-clip-text text-transparent">
                         {member.name}
                       </h3>
                     </div>
@@ -637,7 +839,7 @@ export function TeamRoundTable() {
 
                       {/* Main Portrait Display (Border-free & Enlarged) */}
                       <div
-                        className="relative w-72 h-[450px] sm:w-96 sm:h-[560px] md:w-[420px] md:h-[640px] lg:w-[480px] lg:h-[700px] max-h-[80vh] transition-all duration-300"
+                        className="relative w-[280px] min-[360px]:w-[320px] h-[340px] min-[360px]:h-[380px] sm:w-96 sm:h-[560px] md:w-[420px] md:h-[640px] lg:w-[480px] lg:h-[700px] max-h-[75vh] sm:max-h-[80vh] transition-all duration-300"
                         style={{
                           filter: `drop-shadow(0 25px 45px ${member.glowColor})`,
                         }}
@@ -652,7 +854,7 @@ export function TeamRoundTable() {
                               priority={index === 0}
                               sizes="(max-width: 768px) 384px, (max-width: 1200px) 480px, 600px"
                               unoptimized
-                              className={`object-contain object-bottom transition-transform duration-300 ${member.avatarClassName || ''}`}
+                              className={`object-contain object-center sm:object-bottom transition-transform duration-300 ${member.avatarClassName || ''}`}
                               style={member.avatarStyle}
                             />
                           ) : (
@@ -721,7 +923,7 @@ export function TeamRoundTable() {
                                 className="h-4 w-4 shrink-0 mt-0.5"
                                 style={{ color: member.color }}
                               />
-                              <span className="leading-snug text-slate-800 whitespace-nowrap">{tag}</span>
+                              <span className="leading-snug text-slate-800">{tag}</span>
                             </div>
                           ))}
                         </div>
@@ -750,7 +952,8 @@ export function TeamRoundTable() {
         </div>
 
       </div>
-    </div>
+      </div>
+    </>
   );
 }
 

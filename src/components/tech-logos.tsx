@@ -3,29 +3,29 @@
 import React from 'react';
 import Image, { StaticImageData } from 'next/image';
 
-// 22 Real PNG Logos imported from /app/logo copy/
-import AngularLogo from '@/app/logo copy/Angular.png';
-import BootstrapLogo from '@/app/logo copy/Bootstrap.png';
-import CSS3Logo from '@/app/logo copy/CSS3.png';
-import ExpressJSLogo from '@/app/logo copy/ExpressJS.png';
-import FigmaLogo from '@/app/logo copy/Figma.png';
-import FirebaseLogo from '@/app/logo copy/Firebase.png';
-import GitLogo from '@/app/logo copy/Git.png';
-import GitHubLogo from '@/app/logo copy/GitHub.png';
-import HTML5Logo from '@/app/logo copy/HTML5.png';
-import JavaScriptLogo from '@/app/logo copy/JavaScript.png';
-import MongoDBLogo from '@/app/logo copy/MongoDB.png';
-import MySQLLogo from '@/app/logo copy/MySQL.png';
-import NextJSLogo from '@/app/logo copy/NextJS.png';
-import NodeJSLogo from '@/app/logo copy/NodeJS.png';
-import PostgreSQLLogo from '@/app/logo copy/PostgreSQL.png';
-import PythonLogo from '@/app/logo copy/Python.png';
-import RailwayLogo from '@/app/logo copy/Railway.png';
-import ReactLogo from '@/app/logo copy/React.png';
-import TailwindCSSLogo from '@/app/logo copy/TailwindCSS.png';
-import TypeScriptLogo from '@/app/logo copy/TypeScript.png';
-import VercelLogo from '@/app/logo copy/Vercel.png';
-import JavaLogo from '@/app/logo copy/java.png';
+// 22 Real PNG Logos imported from /app/_logo_copy/
+import AngularLogo from '@/app/_logo_copy/Angular.png';
+import BootstrapLogo from '@/app/_logo_copy/Bootstrap.png';
+import CSS3Logo from '@/app/_logo_copy/CSS3.png';
+import ExpressJSLogo from '@/app/_logo_copy/ExpressJS.png';
+import FigmaLogo from '@/app/_logo_copy/Figma.png';
+import FirebaseLogo from '@/app/_logo_copy/Firebase.png';
+import GitLogo from '@/app/_logo_copy/Git.png';
+import GitHubLogo from '@/app/_logo_copy/GitHub.png';
+import HTML5Logo from '@/app/_logo_copy/HTML5.png';
+import JavaScriptLogo from '@/app/_logo_copy/JavaScript.png';
+import MongoDBLogo from '@/app/_logo_copy/MongoDB.png';
+import MySQLLogo from '@/app/_logo_copy/MySQL.png';
+import NextJSLogo from '@/app/_logo_copy/NextJS.png';
+import NodeJSLogo from '@/app/_logo_copy/NodeJS.png';
+import PostgreSQLLogo from '@/app/_logo_copy/PostgreSQL.png';
+import PythonLogo from '@/app/_logo_copy/Python.png';
+import RailwayLogo from '@/app/_logo_copy/Railway.png';
+import ReactLogo from '@/app/_logo_copy/React.png';
+import TailwindCSSLogo from '@/app/_logo_copy/TailwindCSS.png';
+import TypeScriptLogo from '@/app/_logo_copy/TypeScript.png';
+import VercelLogo from '@/app/_logo_copy/Vercel.png';
+import JavaLogo from '@/app/_logo_copy/java.png';
 
 export const techLogoMap: Record<string, StaticImageData> = {
   'Next.js 14 / 15': NextJSLogo,

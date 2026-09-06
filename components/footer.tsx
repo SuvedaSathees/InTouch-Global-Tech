@@ -35,7 +35,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-[#0A0F1D] text-white pt-16 pb-8 select-none border-t border-slate-800/80 overflow-hidden">
+    <footer className="relative bg-[#0A0F1D] text-white pt-16 pb-20 sm:pb-8 select-none border-t border-slate-800/80 overflow-hidden">
       {/* Atmospheric Ambient Background Glows */}
       <div className="absolute top-0 left-1/4 w-[500px] h-[300px] rounded-full bg-blue-600/10 blur-[130px] pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-[450px] h-[250px] rounded-full bg-cyan-500/10 blur-[120px] pointer-events-none" />
@@ -74,76 +74,79 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Column 2: Explore Navigation (2 cols) */}
-          <div className="md:col-span-2 space-y-3 md:translate-x-[100px]">
-            <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-cyan-400/80 block mb-2">
-              Explore
-            </span>
-            <ul className="space-y-2.5 text-xs sm:text-sm font-medium text-slate-300">
-              <li>
-                <Link href="/" className="hover:text-cyan-400 transition-colors inline-flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shrink-0" />
-                  <span>Home</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="hover:text-cyan-400 transition-colors inline-flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shrink-0" />
-                  <span>About</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/services" className="hover:text-cyan-400 transition-colors inline-flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shrink-0" />
-                  <span>Services</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/projects" className="hover:text-cyan-400 transition-colors inline-flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shrink-0" />
-                  <span>Projects</span>
-                </Link>
-              </li>
-            </ul>
-          </div>
+          {/* Mobile 2-Column Group (Desktop Order: Explore then Services; Mobile: Services left, Explore right) */}
+          <div className="grid grid-cols-2 gap-6 md:col-span-6 md:contents">
+            {/* Column 2: Explore Navigation (Desktop Col 2; Mobile Right Side) */}
+            <div className="space-y-3 order-2 md:order-none md:col-span-2 md:translate-x-[100px]">
+              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-cyan-400/80 block mb-2">
+                Explore
+              </span>
+              <ul className="space-y-2.5 text-xs sm:text-sm font-medium text-slate-300">
+                <li>
+                  <Link href="/" className="hover:text-cyan-400 transition-colors inline-flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shrink-0" />
+                    <span>Home</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/about" className="hover:text-cyan-400 transition-colors inline-flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shrink-0" />
+                    <span>About</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services" className="hover:text-cyan-400 transition-colors inline-flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shrink-0" />
+                    <span>Services</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/projects" className="hover:text-cyan-400 transition-colors inline-flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shrink-0" />
+                    <span>Projects</span>
+                  </Link>
+                </li>
+              </ul>
+            </div>
 
-          {/* Column 3: Services / What We Provide (4 cols - Strictly 1 Line per Point) */}
-          <div className="md:col-span-4 space-y-3 md:translate-x-[90px]">
-            <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-cyan-400/80 block mb-2">
-              Services
-            </span>
-            <ul className="space-y-2.5 text-xs sm:text-sm font-medium text-slate-300">
-              <li>
-                <Link href="/services" className="hover:text-cyan-400 transition-colors inline-flex items-center gap-2 whitespace-nowrap">
-                  <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shrink-0" />
-                  <span>Custom ERP & CRM Platforms</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/services" className="hover:text-cyan-400 transition-colors inline-flex items-center gap-2 whitespace-nowrap">
-                  <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shrink-0" />
-                  <span>Web Application Development</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/services" className="hover:text-cyan-400 transition-colors inline-flex items-center gap-2 whitespace-nowrap">
-                  <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shrink-0" />
-                  <span>Mobile Apps (iOS & Android)</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/services" className="hover:text-cyan-400 transition-colors inline-flex items-center gap-2 whitespace-nowrap">
-                  <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shrink-0" />
-                  <span>AI & Workflow Automation</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/services" className="hover:text-cyan-400 transition-colors inline-flex items-center gap-2 whitespace-nowrap">
-                  <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shrink-0" />
-                  <span>Cloud Architecture & DevOps</span>
-                </Link>
-              </li>
-            </ul>
+            {/* Column 3: Services (Desktop Col 3; Mobile Left Side) */}
+            <div className="space-y-3 order-1 md:order-none md:col-span-4 md:translate-x-[90px]">
+              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-cyan-400/80 block mb-2">
+                Services
+              </span>
+              <ul className="space-y-2.5 text-xs sm:text-sm font-medium text-slate-300">
+                <li>
+                  <Link href="/services" className="hover:text-cyan-400 transition-colors inline-flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shrink-0" />
+                    <span>Custom ERP & CRM Platforms</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services" className="hover:text-cyan-400 transition-colors inline-flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shrink-0" />
+                    <span>Web Application Development</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services" className="hover:text-cyan-400 transition-colors inline-flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shrink-0" />
+                    <span>Mobile Apps (iOS & Android)</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services" className="hover:text-cyan-400 transition-colors inline-flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shrink-0" />
+                    <span>AI & Workflow Automation</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services" className="hover:text-cyan-400 transition-colors inline-flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shrink-0" />
+                    <span>Cloud Architecture & DevOps</span>
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
 
           {/* Column 4: Contact & Inquiries (3 cols) */}
@@ -171,7 +174,7 @@ export function Footer() {
                   className="inline-flex items-center gap-2.5 text-slate-200 hover:text-cyan-400 transition-colors group"
                 >
                   <Mail className="h-4 w-4 text-cyan-400 shrink-0 group-hover:scale-110 transition-transform" />
-                  <span>{siteConfig.email}</span>
+                  <span className="break-all">{siteConfig.email}</span>
                 </a>
               </div>
             </div>
@@ -222,9 +225,9 @@ export function WhatsAppButton() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Direct WhatsApp Contact"
-          className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-xl shadow-[#25D366]/35 hover:bg-[#20bd5a] hover:scale-105 transition-all duration-300 group cursor-pointer"
+          className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-xl shadow-[#25D366]/35 hover:bg-[#20bd5a] hover:scale-105 transition-all duration-300 group cursor-pointer"
         >
-          <WhatsAppOfficialIcon className="h-7 w-7 text-white" />
+          <WhatsAppOfficialIcon className="h-6 w-6 sm:h-7 sm:w-7 text-white" />
           <span className="sr-only">Chat on WhatsApp</span>
         </motion.a>
       )}

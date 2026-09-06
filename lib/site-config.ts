@@ -496,7 +496,7 @@ export type Project = {
   slug: string;
   name: string;
   industry: string;
-  category: "Web" | "ERP" | "CRM" | "Mobile" | "E-commerce" | "Custom Software";
+  category: "Web" | "ERP" | "CRM" | "Mobile" | "E-commerce" | "Custom Software" | (string & {});
   technologies: string[];
   short: string;
   description: string;

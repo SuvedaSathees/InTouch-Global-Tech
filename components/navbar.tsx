@@ -56,7 +56,7 @@ export function Navbar() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           
           {/* Brand Logo */}
-          <Link href="/" className="flex items-center group py-0.5" aria-label={siteConfig.name}>
+          <Link href="/" className="flex items-center group py-0.5 max-w-[175px] min-[360px]:max-w-[210px] sm:max-w-none" aria-label={siteConfig.name}>
             <CompanyLogo
               width={285}
               height={68}
@@ -162,7 +162,7 @@ export function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 bottom-0 z-50 w-full max-w-sm bg-white p-6 shadow-2xl lg:hidden flex flex-col justify-between"
+              className="fixed top-0 right-0 bottom-0 z-50 w-full max-w-[280px] xs:max-w-sm bg-white p-5 sm:p-6 shadow-2xl lg:hidden flex flex-col justify-between overflow-y-auto max-h-[100dvh]"
             >
               <div className="space-y-6">
                 {/* Header */}

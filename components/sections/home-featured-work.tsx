@@ -186,7 +186,7 @@ export function HomeFeaturedWork() {
           </div>
 
           {/* Interactive Category Filter Pills */}
-          <div className="flex flex-wrap items-center gap-1.5 p-1.5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs self-start md:self-auto">
+          <div className="flex items-center gap-1.5 p-1.5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs self-start md:self-auto max-w-full overflow-x-auto no-scrollbar">
             {categories.map((cat) => {
               const isActive = activeTab === cat;
               return (
@@ -296,7 +296,7 @@ export function HomeFeaturedWork() {
                       {proj.features.map((feat, fIdx) => (
                         <div key={fIdx} className="flex items-start gap-2 text-xs text-slate-700 font-semibold">
                           <CheckCircle2 className="h-3.5 w-3.5 text-blue-600 shrink-0 mt-0.5" />
-                          <span className="line-clamp-1">{feat}</span>
+                          <span className="leading-snug">{feat}</span>
                         </div>
                       ))}
                     </div>

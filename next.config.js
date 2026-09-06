@@ -4,7 +4,7 @@ const path = require('path');
 
 try {
   // 1. Sync Magnertia ERP
-  const magSrc = path.join(__dirname, 'app', '1', 'magnertiaerp.png');
+  const magSrc = path.join(__dirname, 'app', '_1', 'magnertiaerp.png');
   const magDir = path.join(__dirname, 'public', 'images', 'magnertia-erp');
   if (!fs.existsSync(magDir)) fs.mkdirSync(magDir, { recursive: true });
   if (fs.existsSync(magSrc)) {
@@ -14,7 +14,7 @@ try {
   }
 
   // 2. Sync Robotics ERP
-  const rpcSrc = path.join(__dirname, 'app', '1', 'roboticerp.png');
+  const rpcSrc = path.join(__dirname, 'app', '_1', 'roboticerp.png');
   const rpcDir = path.join(__dirname, 'public', 'images', 'rpc-erp');
   if (!fs.existsSync(rpcDir)) fs.mkdirSync(rpcDir, { recursive: true });
   if (fs.existsSync(rpcSrc)) {
@@ -24,7 +24,7 @@ try {
   }
 
   // 3. Sync EV Website
-  const evSrc = path.join(__dirname, 'app', '1', 'ev website.png');
+  const evSrc = path.join(__dirname, 'app', '_1', 'ev website.png');
   const evDir = path.join(__dirname, 'public', 'images', 'ev-station');
   if (!fs.existsSync(evDir)) fs.mkdirSync(evDir, { recursive: true });
   if (fs.existsSync(evSrc)) {
@@ -34,7 +34,7 @@ try {
   }
 
   // 4. Sync Royal Suvai Video
-  const vidSrc = path.join(__dirname, 'app', '1', 'royalsuvai.mp4');
+  const vidSrc = path.join(__dirname, 'app', '_1', 'royalsuvai.mp4');
   const vidDir = path.join(__dirname, 'public', 'videos');
   if (!fs.existsSync(vidDir)) fs.mkdirSync(vidDir, { recursive: true });
   if (fs.existsSync(vidSrc)) {
@@ -47,8 +47,8 @@ try {
   const mobDir = path.join(__dirname, 'public', 'images', 'ev-mobile');
   if (!fs.existsSync(mobDir)) fs.mkdirSync(mobDir, { recursive: true });
 
-  const mob1Src = path.join(__dirname, 'app', '1', 'mobile1 .png');
-  const mob1SrcAlt = path.join(__dirname, 'app', '1', 'mobile1.png');
+  const mob1Src = path.join(__dirname, 'app', '_1', 'mobile1 .png');
+  const mob1SrcAlt = path.join(__dirname, 'app', '_1', 'mobile1.png');
   const actualMob1 = fs.existsSync(mob1Src) ? mob1Src : fs.existsSync(mob1SrcAlt) ? mob1SrcAlt : null;
   if (actualMob1) {
     fs.copyFileSync(actualMob1, path.join(mobDir, 'mobile1.png'));
@@ -56,7 +56,7 @@ try {
     fs.copyFileSync(actualMob1, path.join(mobDir, 'app-screen-1.jpg'));
   }
 
-  const mob2Src = path.join(__dirname, 'app', '1', 'mobile2.png');
+  const mob2Src = path.join(__dirname, 'app', '_1', 'mobile2.png');
   if (fs.existsSync(mob2Src)) {
     fs.copyFileSync(mob2Src, path.join(mobDir, 'mobile2.png'));
     fs.copyFileSync(mob2Src, path.join(mobDir, 'app-screen-2.png'));

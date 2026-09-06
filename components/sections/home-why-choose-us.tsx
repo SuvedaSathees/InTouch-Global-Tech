@@ -206,7 +206,7 @@ export function HomeWhyChooseUs() {
 
           <MagneticButton
             href="/contact"
-            size="md"
+            size="default"
             className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-bold px-7 py-3 rounded-2xl text-xs sm:text-sm shadow-md shadow-blue-500/20 shrink-0"
           >
             Start Your Project

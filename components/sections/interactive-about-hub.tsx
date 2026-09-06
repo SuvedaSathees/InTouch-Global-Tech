@@ -236,8 +236,8 @@ export function InteractiveAboutHub() {
           </motion.p>
         </div>
 
-        {/* 4 Key Metrics Cards with Interactive Hover Elevation & Brand Icons */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+        {/* 4 Key Metrics Cards: 2x2 Grid on Mobile, 4 Columns on Desktop */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 min-[380px]:gap-3.5 sm:gap-5 py-1">
           {companyMetrics.map((metric, idx) => {
             const MIcon = metric.icon;
 
@@ -249,7 +249,7 @@ export function InteractiveAboutHub() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.08 }}
                 whileHover={{ y: -6, scale: 1.02 }}
-                className="group relative rounded-3xl border border-slate-200/90 bg-white p-5 sm:p-6 text-left shadow-xs hover:shadow-xl hover:border-blue-400 transition-all duration-300 overflow-hidden cursor-pointer"
+                className="group relative w-full rounded-2xl sm:rounded-3xl border border-slate-200/90 bg-white p-3.5 min-[380px]:p-4 sm:p-6 text-left shadow-xs hover:shadow-xl hover:border-blue-400 transition-all duration-300 overflow-hidden cursor-pointer"
               >
                 {/* Ambient glow spot on hover */}
                 <div
@@ -257,9 +257,9 @@ export function InteractiveAboutHub() {
                   style={{ backgroundColor: metric.color }}
                 />
 
-                <div className="flex items-center justify-between mb-3 relative z-10">
+                <div className="flex items-center justify-between mb-2 sm:mb-3 relative z-10">
                   <div
-                    className="flex h-9 w-9 items-center justify-center rounded-xl text-white shadow-xs p-2"
+                    className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-xl text-white shadow-xs p-1.5 sm:p-2"
                     style={{ backgroundColor: metric.color }}
                   >
                     <MIcon className="h-4 w-4" />
@@ -267,13 +267,13 @@ export function InteractiveAboutHub() {
                   <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                 </div>
 
-                <div className="text-2xl sm:text-3xl font-black text-slate-950 tracking-tight group-hover:text-blue-600 transition-colors relative z-10">
+                <div className="text-xl min-[380px]:text-2xl sm:text-3xl font-black text-slate-950 tracking-tight group-hover:text-blue-600 transition-colors relative z-10">
                   {metric.value}
                 </div>
                 <div className="text-xs font-bold text-slate-800 mt-1 relative z-10">
                   {metric.label}
                 </div>
-                <div className="text-[11px] text-blue-600 font-semibold mt-0.5 relative z-10">
+                <div className="text-[10px] min-[380px]:text-[11px] text-blue-600 font-semibold mt-0.5 relative z-10 whitespace-nowrap">
                   {metric.sub}
                 </div>
               </motion.div>
@@ -294,9 +294,9 @@ export function InteractiveAboutHub() {
               </h2>
             </div>
 
-            {/* Pillar Selector Tabs with Active Scrubber */}
-            <div className="flex items-center">
-              <div className="inline-flex p-1.5 rounded-2xl bg-white border border-slate-200 shadow-xs">
+            {/* Pillar Selector Tabs with Active Scrubber (Desktop/Tablet) */}
+            <div className="hidden sm:flex items-center max-w-full overflow-x-auto no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0">
+              <div className="inline-flex p-1 sm:p-1.5 rounded-2xl bg-white border border-slate-200 shadow-xs">
                 {foundationalPillars.map((pillar, idx) => {
                   const isActive = activePillarIndex === idx;
                   const PIcon = pillar.icon;
@@ -307,7 +307,7 @@ export function InteractiveAboutHub() {
                       onClick={() => {
                         setActivePillarIndex(idx);
                       }}
-                      className={`relative flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all duration-300 cursor-pointer overflow-hidden ${
+                      className={`relative flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 rounded-xl text-[11px] sm:text-xs font-bold transition-all duration-300 cursor-pointer overflow-hidden whitespace-nowrap ${
                         isActive
                           ? 'text-white'
                           : 'text-slate-600 hover:text-slate-950 hover:bg-slate-50'
@@ -344,7 +344,7 @@ export function InteractiveAboutHub() {
           </div>
 
           {/* Interactive 3D Parallax Pillar Feature Card */}
-          <div
+          <motion.div
             ref={pillarCardRef}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
@@ -398,7 +398,7 @@ export function InteractiveAboutHub() {
                       </div>
                     </div>
 
-                    <blockquote className="text-xl sm:text-2xl lg:text-3xl font-black text-slate-950 leading-tight tracking-tight border-l-4 border-blue-600 pl-4 py-1">
+                    <blockquote className="text-base min-[400px]:text-xl sm:text-2xl lg:text-3xl font-black text-slate-950 leading-tight tracking-tight border-l-4 border-blue-600 pl-4 py-1">
                       “{currentPillar.quote}”
                     </blockquote>
 
@@ -451,7 +451,7 @@ export function InteractiveAboutHub() {
                 </motion.div>
               </AnimatePresence>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Section: 4 Core Guarantees with Interactive 3D Bento Cards */}

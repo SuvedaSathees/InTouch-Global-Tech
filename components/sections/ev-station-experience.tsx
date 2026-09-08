@@ -95,22 +95,22 @@ export function EvStationDetailExperience({ project }: { project: Project }) {
 
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 space-y-8 text-left relative z-10">
           
-          <div className="flex flex-wrap items-center justify-between gap-3 text-xs text-slate-500 border-b border-slate-100 pb-3">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-3 text-xs text-slate-500 border-b border-slate-100 pb-3">
             <Link
               href="/projects"
-              className="inline-flex items-center gap-1.5 font-bold text-slate-600 hover:text-blue-600 transition-colors cursor-pointer"
+              className="inline-flex items-center gap-1.5 font-bold text-slate-600 hover:text-blue-600 transition-colors cursor-pointer w-fit"
             >
               <ArrowLeft className="h-3.5 w-3.5" />
               <span>Back to Projects</span>
             </Link>
 
-            <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-blue-50 border border-blue-200/80 text-[10px] font-mono font-bold text-blue-700">
-                <Sparkles className="h-3 w-3 text-blue-600" />
-                <span>CASE STUDY</span>
+            <div className="flex items-center gap-2 min-w-0">
+              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-blue-50 border border-blue-200/80 text-[10px] font-mono font-bold text-blue-700 whitespace-nowrap shrink-0">
+                <Sparkles className="h-3 w-3 text-blue-600 shrink-0" />
+                <span className="whitespace-nowrap">CASE STUDY</span>
               </span>
-              <span className="text-slate-300">•</span>
-              <span className="font-mono text-[11px] uppercase tracking-wider text-slate-500 font-semibold">
+              <span className="text-slate-300 shrink-0">•</span>
+              <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-wider text-slate-500 font-semibold truncate">
                 Electric Mobility & EV Infrastructure
               </span>
             </div>
@@ -143,7 +143,7 @@ export function EvStationDetailExperience({ project }: { project: Project }) {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.35, delay: 0.12 }}
-              className="text-sm sm:text-base text-slate-600 leading-relaxed font-medium max-w-3xl pt-1"
+              className="text-sm sm:text-base text-slate-600 leading-relaxed font-medium max-w-3xl pt-1 text-justify sm:text-left"
             >
               The website was designed primarily for CEO and administrative use, providing a clear and structured interface to manage station information, locations, users and operational records from one place.
             </motion.p>
@@ -280,7 +280,7 @@ export function EvStationDetailExperience({ project }: { project: Project }) {
             </h2>
           </div>
 
-          <div className="space-y-4 text-base sm:text-lg text-slate-700 leading-relaxed font-normal">
+          <div className="space-y-4 text-base sm:text-lg text-slate-700 leading-relaxed font-normal text-justify sm:text-left">
             <p>
               The client approached us with the requirement for a centralized web platform to manage EV charging stations and monitor the overall EV network.
             </p>
@@ -305,7 +305,7 @@ export function EvStationDetailExperience({ project }: { project: Project }) {
               </h2>
             </div>
             
-            <div className="space-y-4 text-base sm:text-lg text-slate-700 leading-relaxed font-normal">
+            <div className="space-y-4 text-base sm:text-lg text-slate-700 leading-relaxed font-normal text-justify sm:text-left">
               <p>
                 We developed a web-based EV Station Management Platform that gives the CEO centralized control over the EV charging network.
               </p>
@@ -318,7 +318,7 @@ export function EvStationDetailExperience({ project }: { project: Project }) {
         </div>
       </section>
 
-      {/* 5. WHAT WE DELIVERED */}
+      {/* 5. WHAT WE DELIVERED - 2x2 Square Boxes on Mobile */}
       <section className="py-16 sm:py-24 bg-white border-y border-slate-200/80">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 space-y-12 text-left">
           
@@ -331,27 +331,27 @@ export function EvStationDetailExperience({ project }: { project: Project }) {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5 min-[380px]:gap-3.5 sm:gap-6">
             {deliverables.map((item, idx) => {
               const IconComp = item.icon;
               return (
                 <div
                   key={idx}
-                  className="rounded-2xl border border-slate-200/90 bg-gradient-to-b from-white to-slate-50/50 p-6 shadow-xs hover:border-blue-300 hover:shadow-md transition-all space-y-3 flex flex-col justify-between"
+                  className="aspect-square sm:aspect-auto flex flex-col justify-between p-3 min-[380px]:p-3.5 sm:p-6 rounded-2xl border border-slate-200/90 bg-gradient-to-b from-white to-slate-50/50 shadow-xs hover:border-blue-300 hover:shadow-md transition-all"
                 >
-                  <div className="space-y-3">
-                    <div className="h-10 w-10 rounded-xl bg-blue-50 border border-blue-200/70 flex items-center justify-center text-blue-600">
-                      <IconComp className="h-5 w-5" />
+                  <div className="space-y-2 sm:space-y-3">
+                    <div className="h-7 w-7 min-[380px]:h-8 min-[380px]:w-8 sm:h-10 sm:w-10 rounded-xl bg-blue-50 border border-blue-200/70 flex items-center justify-center text-blue-600 shrink-0">
+                      <IconComp className="h-3.5 w-3.5 min-[380px]:h-4 min-[380px]:w-4 sm:h-5 sm:w-5" />
                     </div>
-                    <h3 className="text-base font-bold text-slate-950">
+                    <h3 className="text-xs min-[380px]:text-sm sm:text-base font-bold text-slate-950 leading-tight">
                       {item.title}
                     </h3>
-                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                    <p className="text-[10px] min-[380px]:text-[11px] sm:text-sm text-slate-600 leading-snug sm:leading-relaxed font-normal text-justify sm:text-left line-clamp-3 sm:line-clamp-none">
                       {item.description}
                     </p>
                   </div>
-                  <div className="pt-2 text-[11px] font-mono text-emerald-600 font-bold flex items-center gap-1.5 border-t border-slate-100">
-                    <CheckCircle2 className="h-3.5 w-3.5" />
+                  <div className="pt-1.5 sm:pt-2 text-[10px] sm:text-[11px] font-mono text-emerald-600 font-bold flex items-center gap-1 sm:gap-1.5 border-t border-slate-100">
+                    <CheckCircle2 className="h-3.5 w-3.5 shrink-0" />
                     <span>Implemented</span>
                   </div>
                 </div>
@@ -372,7 +372,7 @@ export function EvStationDetailExperience({ project }: { project: Project }) {
               How Our Solution Helped
             </h2>
           </div>
-          <div className="space-y-4 text-base sm:text-lg text-slate-700 leading-relaxed font-normal">
+          <div className="space-y-4 text-base sm:text-lg text-slate-700 leading-relaxed font-normal text-justify sm:text-left">
             <p>
               The platform gives the CEO a single place to manage and oversee the EV charging station network.
             </p>
@@ -387,47 +387,47 @@ export function EvStationDetailExperience({ project }: { project: Project }) {
       </section>
 
       {/* 7. THE OUTCOME */}
-      <section className="py-20 bg-gradient-to-b from-[#0A1628] to-[#0D1F3C] text-white text-center relative overflow-hidden">
+      <section className="py-12 sm:py-20 bg-gradient-to-b from-[#0A1628] to-[#0D1F3C] text-white text-center relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-blue-600/15 blur-[120px] pointer-events-none rounded-full" />
 
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-10 relative z-10">
-          <div className="space-y-4 max-w-3xl mx-auto">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-10 relative z-10">
+          <div className="space-y-3 sm:space-y-4 max-w-3xl mx-auto">
             <span className="text-xs font-mono font-bold uppercase tracking-wider text-cyan-400 block">
               Delivered Result
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white">
               The Outcome
             </h2>
-            <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
+            <p className="text-xs sm:text-base text-slate-300 leading-relaxed font-normal text-justify sm:text-center">
               The result is a centralized EV Station Management Website designed specifically for administrative and CEO-level control.
             </p>
-            <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
+            <p className="text-xs sm:text-base text-slate-300 leading-relaxed font-normal text-justify sm:text-center">
               The platform provides a clear digital foundation for managing EV charging stations, monitoring activities and maintaining operational information as the EV network grows.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-2">
-            <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md space-y-1">
-              <span className="text-cyan-400 text-lg">⚙️</span>
-              <p className="text-xs sm:text-sm font-bold text-white leading-tight">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3.5 pt-1">
+            <div className="flex flex-col items-center justify-center text-center py-3 px-2.5 sm:py-4 sm:px-3 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md space-y-1.5 hover:bg-white/10 hover:border-white/20 transition-all">
+              <span className="text-base sm:text-lg">⚙️</span>
+              <p className="text-[11px] sm:text-xs font-bold text-white leading-snug">
                 Centralized control.
               </p>
             </div>
-            <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md space-y-1">
-              <span className="text-cyan-400 text-lg">💡</span>
-              <p className="text-xs sm:text-sm font-bold text-white leading-tight">
+            <div className="flex flex-col items-center justify-center text-center py-3 px-2.5 sm:py-4 sm:px-3 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md space-y-1.5 hover:bg-white/10 hover:border-white/20 transition-all">
+              <span className="text-base sm:text-lg">💡</span>
+              <p className="text-[11px] sm:text-xs font-bold text-white leading-snug">
                 Smarter station management.
               </p>
             </div>
-            <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md space-y-1">
-              <span className="text-cyan-400 text-lg">📊</span>
-              <p className="text-xs sm:text-sm font-bold text-white leading-tight">
+            <div className="flex flex-col items-center justify-center text-center py-3 px-2.5 sm:py-4 sm:px-3 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md space-y-1.5 hover:bg-white/10 hover:border-white/20 transition-all">
+              <span className="text-base sm:text-lg">📊</span>
+              <p className="text-[11px] sm:text-xs font-bold text-white leading-snug">
                 Clear operational visibility.
               </p>
             </div>
-            <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md space-y-1">
-              <span className="text-cyan-400 text-lg">⚡</span>
-              <p className="text-xs sm:text-sm font-bold text-white leading-tight">
+            <div className="flex flex-col items-center justify-center text-center py-3 px-2.5 sm:py-4 sm:px-3 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md space-y-1.5 hover:bg-white/10 hover:border-white/20 transition-all">
+              <span className="text-base sm:text-lg">⚡</span>
+              <p className="text-[11px] sm:text-xs font-bold text-white leading-snug">
                 Built for the future of EV infrastructure.
               </p>
             </div>
@@ -459,30 +459,65 @@ export function EvStationDetailExperience({ project }: { project: Project }) {
       </section>
 
       {/* 8. PREVIOUS / NEXT PAGER */}
-      <footer className="border-t border-slate-200 bg-white py-8">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-3 sm:gap-4">
-          <Link
-            href={`/projects/${prevProject.slug}`}
-            className="inline-flex items-center gap-2 text-xs font-bold text-slate-600 hover:text-blue-600 transition-colors min-w-0 max-w-[48%] sm:max-w-none"
-          >
-            <ChevronLeft className="h-4 w-4 shrink-0" />
-            <span className="leading-tight">Previous: {prevProject.name}</span>
-          </Link>
+      <footer className="border-t border-slate-200/80 bg-white py-8 sm:py-10">
+        <div className="mx-auto max-w-[1084px] px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-[1fr_auto_1fr] items-center gap-3 sm:gap-4 lg:gap-6">
+            {/* Previous Project Card */}
+            <Link
+              href={`/projects/${prevProject.slug}`}
+              className="group flex items-center gap-3 sm:gap-4 p-3 sm:p-4 lg:p-5 rounded-2xl border border-slate-200/90 bg-slate-50/50 hover:bg-white hover:border-blue-300 hover:shadow-lg hover:shadow-blue-500/5 transition-all duration-300"
+            >
+              <div className="flex h-9 w-9 sm:h-11 sm:w-11 items-center justify-center rounded-xl bg-white border border-slate-200 text-slate-700 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-all duration-300 shrink-0 shadow-xs group-hover:-translate-x-0.5">
+                <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
+              </div>
+              <div className="min-w-0 text-left">
+                <span className="text-[9px] sm:text-[11px] font-mono font-bold uppercase tracking-wider text-slate-400 group-hover:text-blue-600 transition-colors block mb-0.5 sm:mb-1">
+                  Previous Project
+                </span>
+                <span className="text-xs sm:text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors truncate block leading-tight">
+                  {prevProject.name}
+                </span>
+                <span className="hidden sm:block text-xs text-slate-500 truncate mt-0.5 font-medium">
+                  {prevProject.category}
+                </span>
+              </div>
+            </Link>
 
-          <Link
-            href="/projects"
-            className="text-xs font-semibold text-slate-400 hover:text-slate-700 transition-colors hidden sm:inline"
-          >
-            All Case Studies
-          </Link>
+            {/* Center All Projects link (desktop) */}
+            <Link
+              href="/projects"
+              className="hidden md:inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-slate-200/90 bg-white hover:bg-slate-50 hover:border-blue-300 hover:text-blue-600 text-xs font-bold text-slate-700 transition-all shadow-xs shrink-0 group"
+            >
+              <svg className="h-4 w-4 text-slate-400 group-hover:text-blue-600 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <rect width="7" height="7" x="3" y="3" rx="1" />
+                <rect width="7" height="7" x="14" y="3" rx="1" />
+                <rect width="7" height="7" x="14" y="14" rx="1" />
+                <rect width="7" height="7" x="3" y="14" rx="1" />
+              </svg>
+              <span>All Projects</span>
+            </Link>
 
-          <Link
-            href={`/projects/${nextProject.slug}`}
-            className="inline-flex items-center gap-2 text-xs font-bold text-slate-600 hover:text-blue-600 transition-colors min-w-0 max-w-[48%] sm:max-w-none ml-auto sm:ml-0"
-          >
-            <span className="leading-tight">Next: {nextProject.name}</span>
-            <ChevronRight className="h-4 w-4 shrink-0" />
-          </Link>
+            {/* Next Project Card */}
+            <Link
+              href={`/projects/${nextProject.slug}`}
+              className="group flex items-center justify-end text-right gap-3 sm:gap-4 p-3 sm:p-4 lg:p-5 rounded-2xl border border-slate-200/90 bg-slate-50/50 hover:bg-white hover:border-blue-300 hover:shadow-lg hover:shadow-blue-500/5 transition-all duration-300"
+            >
+              <div className="min-w-0 text-right">
+                <span className="text-[9px] sm:text-[11px] font-mono font-bold uppercase tracking-wider text-slate-400 group-hover:text-blue-600 transition-colors block mb-0.5 sm:mb-1">
+                  Next Project
+                </span>
+                <span className="text-xs sm:text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors truncate block leading-tight">
+                  {nextProject.name}
+                </span>
+                <span className="hidden sm:block text-xs text-slate-500 truncate mt-0.5 font-medium">
+                  {nextProject.category}
+                </span>
+              </div>
+              <div className="flex h-9 w-9 sm:h-11 sm:w-11 items-center justify-center rounded-xl bg-white border border-slate-200 text-slate-700 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-all duration-300 shrink-0 shadow-xs group-hover:translate-x-0.5">
+                <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
+              </div>
+            </Link>
+          </div>
         </div>
       </footer>
 
@@ -494,7 +529,7 @@ export function EvStationDetailExperience({ project }: { project: Project }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setLightboxImage(null)}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-8 bg-slate-950/85 backdrop-blur-md cursor-zoom-out"
+            className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 bg-slate-950/85 backdrop-blur-md cursor-zoom-out"
           >
             <motion.div
               initial={{ scale: 0.95, opacity: 0 }}
@@ -502,29 +537,27 @@ export function EvStationDetailExperience({ project }: { project: Project }) {
               exit={{ scale: 0.95, opacity: 0 }}
               transition={{ duration: 0.2 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative max-w-6xl w-full rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 shadow-2xl space-y-3 p-3 sm:p-4 cursor-default"
+              className="relative max-w-[95vw] sm:max-w-5xl max-h-[92vh] w-fit flex flex-col rounded-2xl sm:rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 shadow-2xl p-2.5 sm:p-3.5 cursor-default"
             >
-              <div className="flex items-center justify-between px-2 pt-1 text-white">
-                <span className="text-xs sm:text-sm font-semibold text-slate-300">
+              <div className="flex items-center justify-between px-1 pb-2 text-white gap-3 shrink-0">
+                <span className="text-xs sm:text-sm font-semibold text-slate-300 truncate">
                   {lightboxImage.caption}
                 </span>
                 <button
                   type="button"
                   onClick={() => setLightboxImage(null)}
-                  className="p-1.5 sm:p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+                  className="p-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer shrink-0 ml-auto"
                   aria-label="Close Preview"
                 >
-                  <X className="h-5 w-5" />
+                  <X className="h-4 w-4 sm:h-5 sm:w-5" />
                 </button>
               </div>
 
-              <div className="relative w-full h-[60vh] sm:h-[75vh] md:h-[80vh] overflow-hidden rounded-2xl bg-slate-950 flex items-center justify-center">
-                <Image
+              <div className="relative overflow-hidden rounded-xl sm:rounded-2xl bg-slate-950 flex items-center justify-center">
+                <img
                   src={lightboxImage.src}
                   alt={lightboxImage.caption}
-                  fill
-                  priority
-                  className="object-contain"
+                  className="max-h-[72vh] sm:max-h-[80vh] w-auto max-w-full object-contain rounded-xl sm:rounded-2xl block"
                 />
               </div>
             </motion.div>

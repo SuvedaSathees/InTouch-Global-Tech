@@ -21,7 +21,7 @@ export function StatsSection() {
           description="We take pride in building software systems that operate reliably under heavy load and generate real commercial value."
         />
 
-        <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 sm:mt-16 grid grid-cols-2 lg:grid-cols-4 gap-2.5 min-[380px]:gap-3.5 sm:gap-6">
           {stats.map((stat, i) => {
             const Icon = stat.icon;
             return (
@@ -32,20 +32,22 @@ export function StatsSection() {
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ delay: i * 0.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 whileHover={{ y: -8, transition: { duration: 0.25 } }}
-                className="group relative rounded-3xl border border-slate-200 bg-white p-8 text-center shadow-sm transition-all duration-300 hover:border-blue-400 hover:shadow-2xl"
+                className="group relative aspect-square sm:aspect-auto rounded-2xl sm:rounded-3xl border border-slate-200 bg-white p-3 min-[380px]:p-3.5 sm:p-8 text-center shadow-xs transition-all duration-300 hover:border-blue-400 hover:shadow-xl flex flex-col justify-between"
               >
                 <motion.div
                   whileHover={{ rotate: 12, scale: 1.15 }}
                   transition={{ type: 'spring', stiffness: 400, damping: 10 }}
-                  className="mx-auto mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-blue-50 text-blue-600 shadow-2xs"
+                  className="mx-auto flex h-8 w-8 sm:h-11 sm:w-11 items-center justify-center rounded-xl sm:rounded-2xl bg-blue-50 text-blue-600 shadow-2xs"
                 >
-                  <Icon className="h-5 w-5" />
+                  <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
                 </motion.div>
-                <div className="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900 font-mono">
+                <div className="my-auto py-1 text-2xl min-[380px]:text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 font-mono">
                   <AnimatedCounter value={stat.value} suffix={stat.suffix} prefix={stat.prefix} />
                 </div>
-                <h4 className="mt-3 text-base font-bold text-slate-900">{stat.label}</h4>
-                <p className="mt-1 text-xs text-slate-500">{stat.desc}</p>
+                <div>
+                  <h4 className="text-[11px] min-[380px]:text-xs sm:text-base font-bold text-slate-900 line-clamp-2">{stat.label}</h4>
+                  <p className="hidden sm:block mt-1 text-xs text-slate-500">{stat.desc}</p>
+                </div>
               </motion.div>
             );
           })}

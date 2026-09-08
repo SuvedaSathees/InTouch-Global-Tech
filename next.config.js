@@ -33,17 +33,7 @@ try {
     fs.copyFileSync(evSrc, path.join(evDir, 'hero.jpg'));
   }
 
-  // 4. Sync Royal Suvai Video
-  const vidSrc = path.join(__dirname, 'app', '_1', 'royalsuvai.mp4');
-  const vidDir = path.join(__dirname, 'public', 'videos');
-  if (!fs.existsSync(vidDir)) fs.mkdirSync(vidDir, { recursive: true });
-  if (fs.existsSync(vidSrc)) {
-    fs.copyFileSync(vidSrc, path.join(vidDir, 'royalsuvai.mp4'));
-    const imgDir = path.join(__dirname, 'public', 'images');
-    fs.copyFileSync(vidSrc, path.join(imgDir, 'royalsuvai.mp4'));
-  }
-
-  // 5. Sync EV Mobile Application Images
+  // 4. Sync EV Mobile Application Images
   const mobDir = path.join(__dirname, 'public', 'images', 'ev-mobile');
   if (!fs.existsSync(mobDir)) fs.mkdirSync(mobDir, { recursive: true });
 
@@ -62,9 +52,52 @@ try {
     fs.copyFileSync(mob2Src, path.join(mobDir, 'app-screen-2.png'));
     fs.copyFileSync(mob2Src, path.join(mobDir, 'app-screen-2.jpg'));
   }
+
+  // 5. Sync Vchemics Website Images
+  const vchemicsDir = path.join(__dirname, 'public', 'images', 'vchemics');
+  if (!fs.existsSync(vchemicsDir)) fs.mkdirSync(vchemicsDir, { recursive: true });
+
+  const v1Src = path.join(__dirname, 'app', '_1', 'v1 image.png');
+  if (fs.existsSync(v1Src)) {
+    fs.copyFileSync(v1Src, path.join(vchemicsDir, 'v1 image.png'));
+    fs.copyFileSync(v1Src, path.join(vchemicsDir, 'v1.png'));
+    fs.copyFileSync(v1Src, path.join(vchemicsDir, 'hero.png'));
+    fs.copyFileSync(v1Src, path.join(vchemicsDir, 'hero.jpg'));
+  }
+
+  const v2Src = path.join(__dirname, 'app', '_1', 'v2 image.png');
+  if (fs.existsSync(v2Src)) {
+    fs.copyFileSync(v2Src, path.join(vchemicsDir, 'v2 image.png'));
+    fs.copyFileSync(v2Src, path.join(vchemicsDir, 'v2.png'));
+    fs.copyFileSync(v2Src, path.join(vchemicsDir, 'products.png'));
+    fs.copyFileSync(v2Src, path.join(vchemicsDir, 'products.jpg'));
+  }
 } catch (err) {
   console.error('Error syncing project assets:', err);
 }
+
+// Automatically print local network IP in terminal for mobile testing
+try {
+  const os = require('os');
+  const nets = os.networkInterfaces();
+  const ips = [];
+  for (const name of Object.keys(nets)) {
+    for (const net of nets[name] || []) {
+      if ((net.family === 'IPv4' || net.family === 4) && !net.internal) {
+        ips.push({ iface: name, ip: net.address });
+      }
+    }
+  }
+  if (ips.length > 0) {
+    console.log('\n\x1b[36m%s\x1b[0m', '════════════════════════════════════════════════════════════');
+    console.log('\x1b[1m\x1b[32m%s\x1b[0m', '  📱 MOBILE TESTING URL:');
+    ips.forEach(item => {
+      console.log(`     • [${item.iface}]: \x1b[1m\x1b[33mhttp://${item.ip}:3000\x1b[0m`);
+      console.log(`       Direct Vchemics: \x1b[34mhttp://${item.ip}:3000/projects/vchemics-website\x1b[0m`);
+    });
+    console.log('\x1b[36m%s\x1b[0m\n', '════════════════════════════════════════════════════════════');
+  }
+} catch (e) {}
 
 const nextConfig = {
   eslint: {

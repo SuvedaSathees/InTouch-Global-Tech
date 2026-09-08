@@ -1,5 +1,6 @@
 'use client';
 
+// Interactive About Hub — 4 Core Guarantees & Strategic Pillars
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import {
@@ -236,7 +237,7 @@ export function InteractiveAboutHub() {
           </motion.p>
         </div>
 
-        {/* 4 Key Metrics Cards: 2x2 Grid on Mobile, 4 Columns on Desktop */}
+        {/* 4 Key Metrics Cards: 2x2 Square Grid on Mobile, 4 Columns on Desktop */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 min-[380px]:gap-3.5 sm:gap-5 py-1">
           {companyMetrics.map((metric, idx) => {
             const MIcon = metric.icon;
@@ -249,7 +250,7 @@ export function InteractiveAboutHub() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.08 }}
                 whileHover={{ y: -6, scale: 1.02 }}
-                className="group relative w-full rounded-2xl sm:rounded-3xl border border-slate-200/90 bg-white p-3.5 min-[380px]:p-4 sm:p-6 text-left shadow-xs hover:shadow-xl hover:border-blue-400 transition-all duration-300 overflow-hidden cursor-pointer"
+                className="group relative w-full aspect-square sm:aspect-auto flex flex-col justify-between rounded-2xl sm:rounded-3xl border border-slate-200/90 bg-white p-3 min-[380px]:p-3.5 sm:p-6 text-left shadow-xs hover:shadow-xl hover:border-blue-400 transition-all duration-300 overflow-hidden cursor-pointer"
               >
                 {/* Ambient glow spot on hover */}
                 <div
@@ -257,24 +258,29 @@ export function InteractiveAboutHub() {
                   style={{ backgroundColor: metric.color }}
                 />
 
-                <div className="flex items-center justify-between mb-2 sm:mb-3 relative z-10">
+                <div className="flex items-center justify-between relative z-10">
                   <div
-                    className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-xl text-white shadow-xs p-1.5 sm:p-2"
+                    className="flex h-7 w-7 min-[380px]:h-8 min-[380px]:w-8 sm:h-9 sm:w-9 items-center justify-center rounded-xl text-white shadow-xs p-1.5 sm:p-2"
                     style={{ backgroundColor: metric.color }}
                   >
-                    <MIcon className="h-4 w-4" />
+                    <MIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                   </div>
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                 </div>
 
-                <div className="text-xl min-[380px]:text-2xl sm:text-3xl font-black text-slate-950 tracking-tight group-hover:text-blue-600 transition-colors relative z-10">
-                  {metric.value}
+                <div className="my-auto py-0.5 sm:py-1 relative z-10">
+                  <span className="text-2xl min-[380px]:text-3xl sm:text-3xl font-black text-slate-950 font-mono tracking-tight group-hover:text-blue-600 transition-colors leading-none block">
+                    {metric.value}
+                  </span>
                 </div>
-                <div className="text-xs font-bold text-slate-800 mt-1 relative z-10">
-                  {metric.label}
-                </div>
-                <div className="text-[10px] min-[380px]:text-[11px] text-blue-600 font-semibold mt-0.5 relative z-10 whitespace-nowrap">
-                  {metric.sub}
+
+                <div className="relative z-10">
+                  <div className="text-[11px] min-[380px]:text-xs sm:text-xs font-bold text-slate-900 leading-tight">
+                    {metric.label}
+                  </div>
+                  <div className="text-[9px] min-[380px]:text-[10px] sm:text-[11px] text-blue-600 font-semibold mt-0.5 truncate">
+                    {metric.sub}
+                  </div>
                 </div>
               </motion.div>
             );
@@ -294,9 +300,9 @@ export function InteractiveAboutHub() {
               </h2>
             </div>
 
-            {/* Pillar Selector Tabs with Active Scrubber (Desktop/Tablet) */}
-            <div className="hidden sm:flex items-center max-w-full overflow-x-auto no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0">
-              <div className="inline-flex p-1 sm:p-1.5 rounded-2xl bg-white border border-slate-200 shadow-xs">
+            {/* Pillar Selector Tabs with Active Scrubber (Responsive on Mobile & Desktop) */}
+            <div className="flex items-center w-full sm:w-auto overflow-x-auto no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0">
+              <div className="flex sm:inline-flex w-full sm:w-auto p-1 sm:p-1.5 rounded-xl sm:rounded-2xl bg-white border border-slate-200 shadow-xs">
                 {foundationalPillars.map((pillar, idx) => {
                   const isActive = activePillarIndex === idx;
                   const PIcon = pillar.icon;
@@ -307,7 +313,7 @@ export function InteractiveAboutHub() {
                       onClick={() => {
                         setActivePillarIndex(idx);
                       }}
-                      className={`relative flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 rounded-xl text-[11px] sm:text-xs font-bold transition-all duration-300 cursor-pointer overflow-hidden whitespace-nowrap ${
+                      className={`relative flex flex-1 sm:flex-initial items-center justify-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-lg sm:rounded-xl text-[11px] sm:text-xs font-bold transition-all duration-300 cursor-pointer overflow-hidden whitespace-nowrap ${
                         isActive
                           ? 'text-white'
                           : 'text-slate-600 hover:text-slate-950 hover:bg-slate-50'
@@ -316,7 +322,7 @@ export function InteractiveAboutHub() {
                       {isActive && (
                         <motion.div
                           layoutId="active-pillar-indicator"
-                          className="absolute inset-0 bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 rounded-xl shadow-md shadow-blue-600/30"
+                          className="absolute inset-0 bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 rounded-lg sm:rounded-xl shadow-md shadow-blue-600/30"
                           transition={{ type: 'spring', stiffness: 450, damping: 35 }}
                         />
                       )}
@@ -332,9 +338,10 @@ export function InteractiveAboutHub() {
                         />
                       )}
 
-                      <span className="relative z-10 flex items-center gap-1.5">
-                        <PIcon className="h-3.5 w-3.5" />
-                        <span>{pillar.label}</span>
+                      <span className="relative z-10 flex items-center justify-center gap-1.5">
+                        <PIcon className="h-3.5 w-3.5 shrink-0" />
+                        <span className="sm:hidden">{pillar.id === 'vision' ? 'Vision' : pillar.id === 'mission' ? 'Mission' : 'Values'}</span>
+                        <span className="hidden sm:inline">{pillar.label}</span>
                       </span>
                     </button>
                   );
@@ -354,7 +361,7 @@ export function InteractiveAboutHub() {
               transformStyle: 'preserve-3d',
             }}
           >
-            <div className="rounded-3xl border border-slate-200/90 bg-white/95 backdrop-blur-xl p-6 sm:p-10 shadow-xl shadow-slate-900/5 relative overflow-hidden transition-all">
+            <div className="rounded-2xl sm:rounded-3xl border border-slate-200/90 bg-white/95 backdrop-blur-xl p-4 min-[380px]:p-5 sm:p-10 shadow-xl shadow-slate-900/5 relative overflow-hidden transition-all">
               
               {/* Dynamic Accent Glow */}
               <div
@@ -369,81 +376,81 @@ export function InteractiveAboutHub() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -16 }}
                   transition={{ duration: 0.28, ease: 'easeOut' }}
-                  className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10"
+                  className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 lg:gap-12 items-center relative z-10"
                 >
                   {/* Left: Quote & Narrative (7 cols) */}
-                  <div className="lg:col-span-7 space-y-6">
-                    <div className="flex items-center gap-3.5">
+                  <div className="lg:col-span-7 space-y-3.5 sm:space-y-6">
+                    <div className="flex items-center gap-2.5 sm:gap-3.5">
                       <motion.div
                         whileHover={{ scale: 1.15, rotate: 6 }}
                         transition={{ type: 'spring', stiffness: 400, damping: 15 }}
-                        className={`flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${currentPillar.gradient} text-white shadow-lg p-3`}
+                        className={`flex h-9 w-9 min-[380px]:h-10 min-[380px]:w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl bg-gradient-to-br ${currentPillar.gradient} text-white shadow-md sm:shadow-lg p-2 sm:p-3 shrink-0`}
                         style={{
                           boxShadow: `0 8px 20px -4px ${currentPillar.glowColor}`,
                         }}
                       >
-                        <CurrentIcon className="h-6 w-6 drop-shadow-md" />
+                        <CurrentIcon className="h-4.5 w-4.5 sm:h-6 sm:w-6 drop-shadow-md" />
                       </motion.div>
 
                       <div>
                         <span
-                          className="text-[10px] font-mono font-extrabold uppercase tracking-widest block"
+                          className="text-[9px] min-[380px]:text-[10px] font-mono font-extrabold uppercase tracking-widest block"
                           style={{ color: currentPillar.accent }}
                         >
                           PILLAR {currentPillar.number} • {currentPillar.tag}
                         </span>
-                        <h3 className="text-lg font-black text-slate-950">
+                        <h3 className="text-sm min-[380px]:text-base sm:text-lg font-black text-slate-950">
                           {currentPillar.label}
                         </h3>
                       </div>
                     </div>
 
-                    <blockquote className="text-base min-[400px]:text-xl sm:text-2xl lg:text-3xl font-black text-slate-950 leading-tight tracking-tight border-l-4 border-blue-600 pl-4 py-1">
+                    <blockquote className="text-xs min-[360px]:text-[13px] sm:text-xl lg:text-2xl font-bold sm:font-black text-slate-900 leading-snug sm:leading-tight border-l-2 sm:border-l-4 border-blue-600 pl-3 sm:pl-4 py-0.5 text-justify sm:text-left">
                       “{currentPillar.quote}”
                     </blockquote>
 
-                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                    <p className="text-[11px] min-[360px]:text-xs sm:text-sm text-slate-600 leading-relaxed font-normal text-justify sm:text-left">
                       {currentPillar.description}
                     </p>
 
                     {/* Micro metric bar */}
-                    <div className="flex items-center gap-3 pt-2">
-                      <div className="h-2.5 w-2.5 rounded-full bg-blue-600 animate-pulse shadow-[0_0_8px_rgba(37,99,235,0.8)]" />
-                      <span className="text-xs font-bold text-slate-900">
+                    <div className="flex items-center gap-2 pt-1">
+                      <div className="h-2 w-2 rounded-full bg-blue-600 animate-pulse shadow-[0_0_8px_rgba(37,99,235,0.8)]" />
+                      <span className="text-[11px] sm:text-xs font-bold text-slate-900">
                         {currentPillar.metricValue}
                       </span>
                       <span className="text-xs text-slate-300">•</span>
-                      <span className="text-xs text-slate-500 font-medium">
+                      <span className="text-[10px] sm:text-xs text-slate-500 font-medium">
                         {currentPillar.metricLabel}
                       </span>
                     </div>
                   </div>
 
                   {/* Right: Key Principles List (5 cols) */}
-                  <div className="lg:col-span-5 bg-slate-50/80 rounded-2xl border border-slate-200 p-6 space-y-4 shadow-sm">
-                    <div className="flex items-center justify-between border-b border-slate-200/80 pb-3">
-                      <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-500">
+                  <div className="lg:col-span-5 bg-slate-50/80 rounded-xl sm:rounded-2xl border border-slate-200 p-3.5 sm:p-6 space-y-2.5 sm:space-y-4 shadow-sm">
+                    <div className="flex items-center justify-between border-b border-slate-200/80 pb-2 sm:pb-3">
+                      <span className="text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wider text-slate-500">
                         Key Engineering Pillars
                       </span>
-                      <Sparkles className="h-4 w-4 text-blue-600" />
+                      <Sparkles className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-blue-600" />
                     </div>
 
-                    <ul className="space-y-3">
+                    <ul className="space-y-1.5 sm:space-y-3">
                       {currentPillar.highlights.map((item, idx) => (
                         <motion.li
                           key={idx}
                           initial={{ opacity: 0, x: 8 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: idx * 0.08 }}
-                          className="flex items-start gap-2.5 text-xs sm:text-sm font-bold text-slate-800 p-2 rounded-xl hover:bg-white hover:shadow-2xs transition-all"
+                          className="flex items-start gap-2 text-[10.5px] min-[360px]:text-[11px] sm:text-sm font-semibold text-slate-800 p-1.5 sm:p-2 rounded-lg sm:rounded-xl hover:bg-white transition-all"
                         >
                           <div
-                            className="flex h-5 w-5 items-center justify-center rounded-md text-white shrink-0 mt-0.5 shadow-2xs"
+                            className="flex h-4 w-4 sm:h-5 sm:w-5 items-center justify-center rounded-md text-white shrink-0 mt-0.5 shadow-2xs"
                             style={{ backgroundColor: currentPillar.accent }}
                           >
-                            <Check className="h-3 w-3 stroke-[3]" />
+                            <Check className="h-2.5 w-2.5 sm:h-3 sm:w-3 stroke-[3]" />
                           </div>
-                          <span className="leading-snug">{item}</span>
+                          <span className="leading-snug text-justify sm:text-left">{item}</span>
                         </motion.li>
                       ))}
                     </ul>
@@ -454,8 +461,8 @@ export function InteractiveAboutHub() {
           </motion.div>
         </div>
 
-        {/* Section: 4 Core Guarantees with Interactive 3D Bento Cards */}
-        <div className="space-y-8 text-left">
+        {/* Section: 4 Core Guarantees */}
+        <div className="space-y-6 sm:space-y-8 text-left">
           <div className="space-y-2">
             <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-blue-600">
               <span className="w-4 h-[2px] bg-blue-600 rounded-full shadow-[0_0_8px_rgba(37,99,235,0.6)]" />
@@ -466,7 +473,8 @@ export function InteractiveAboutHub() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+          {/* Responsive Grid: 2x2 Grid on Mobile, 4 Columns on Desktop */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 min-[380px]:gap-3.5 sm:gap-6">
             {companyPillars.map((pillar, idx) => {
               const PillarIcon = pillar.icon;
 
@@ -478,7 +486,7 @@ export function InteractiveAboutHub() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: idx * 0.08 }}
                   whileHover={{ y: -6, scale: 1.015 }}
-                  className="group relative rounded-3xl border border-slate-200/90 bg-white p-7 text-left flex flex-col justify-between hover:border-blue-400 hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer"
+                  className="group relative flex flex-col justify-between rounded-2xl sm:rounded-3xl border border-slate-200/90 bg-white p-3 min-[380px]:p-3.5 sm:p-7 text-left hover:border-blue-400 hover:shadow-xl transition-all duration-300 cursor-pointer w-full h-full"
                 >
                   {/* Top Ambient Glow */}
                   <div
@@ -492,46 +500,46 @@ export function InteractiveAboutHub() {
                   />
 
                   <div>
-                    <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center justify-between mb-2 sm:mb-4">
                       <motion.div
                         whileHover={{ scale: 1.15, rotate: 6 }}
                         transition={{ type: 'spring', stiffness: 400, damping: 15 }}
-                        className={`flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br ${pillar.gradient} text-white shadow-lg p-2.5`}
+                        className={`flex h-8 w-8 min-[380px]:h-9 min-[380px]:w-9 sm:h-11 sm:w-11 items-center justify-center rounded-xl sm:rounded-2xl bg-gradient-to-br ${pillar.gradient} text-white shadow-md sm:shadow-lg p-2 sm:p-2.5`}
                         style={{
                           boxShadow: `0 8px 20px -4px ${pillar.glowColor}`,
                         }}
                       >
-                        <PillarIcon className="h-5 w-5 drop-shadow-md" />
+                        <PillarIcon className="h-4 w-4 sm:h-5 sm:w-5 drop-shadow-md" />
                       </motion.div>
 
-                      <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider">
-                        GUARANTEE 0{idx + 1}
+                      <span className="text-[8.5px] min-[380px]:text-[9px] sm:text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider">
+                        0{idx + 1}
                       </span>
                     </div>
 
-                    <h3 className="text-lg sm:text-xl font-black text-slate-950 group-hover:text-blue-600 transition-colors leading-snug">
+                    <h3 className="text-xs min-[380px]:text-sm sm:text-lg font-black text-slate-950 group-hover:text-blue-600 transition-colors leading-snug">
                       {pillar.title}
                     </h3>
                     <div
-                      className="text-xs font-bold mt-0.5"
+                      className="text-[10px] min-[380px]:text-[11px] sm:text-xs font-bold mt-0.5 leading-snug"
                       style={{ color: pillar.accent }}
                     >
                       {pillar.subtitle}
                     </div>
 
-                    <p className="text-xs sm:text-sm text-slate-600 font-normal leading-relaxed mt-3">
+                    <p className="text-[9.5px] min-[380px]:text-[10.5px] sm:text-sm text-slate-600 font-normal leading-relaxed mt-1.5 sm:mt-3 text-justify sm:text-left">
                       {pillar.description}
                     </p>
                   </div>
 
-                  <div className="mt-6 pt-4 border-t border-slate-100 flex items-center gap-2.5 text-xs font-bold text-slate-900">
+                  <div className="mt-3 sm:mt-6 pt-2 sm:pt-4 border-t border-slate-100 flex items-center gap-1.5 sm:gap-2 text-[9px] min-[380px]:text-[10px] sm:text-xs font-bold text-slate-900 leading-tight">
                     <div
-                      className="flex h-4.5 w-4.5 items-center justify-center rounded-full text-white shrink-0 shadow-2xs"
+                      className="flex h-3.5 w-3.5 sm:h-4.5 sm:w-4.5 items-center justify-center rounded-full text-white shrink-0 shadow-2xs"
                       style={{ backgroundColor: pillar.accent }}
                     >
-                      <Check className="h-2.5 w-2.5 stroke-[3]" />
+                      <Check className="h-2 w-2 sm:h-2.5 sm:w-2.5 stroke-[3]" />
                     </div>
-                    <span>{pillar.highlight}</span>
+                    <span className="leading-tight flex-1">{pillar.highlight}</span>
                   </div>
                 </motion.div>
               );

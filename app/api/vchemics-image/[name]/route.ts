@@ -2,10 +2,14 @@ import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 
+const root = process.cwd();
 const imageMap: Record<string, string> = {
-  hero: 'C:\\Users\\Admin\\.gemini\\antigravity-ide\\brain\\c9a0aaeb-1768-4d18-a3fc-a67e0b1b01eb\\vchemics_hero_1788332389942.jpg',
-  products: 'C:\\Users\\Admin\\.gemini\\antigravity-ide\\brain\\c9a0aaeb-1768-4d18-a3fc-a67e0b1b01eb\\vchemics_products_1788332414813.jpg',
-  solutions: 'C:\\Users\\Admin\\.gemini\\antigravity-ide\\brain\\c9a0aaeb-1768-4d18-a3fc-a67e0b1b01eb\\vchemics_solutions_1788332441035.jpg',
+  hero: path.join(root, 'app', '_1', 'v1 image.png'),
+  products: path.join(root, 'app', '_1', 'v2 image.png'),
+  v1: path.join(root, 'app', '_1', 'v1 image.png'),
+  v2: path.join(root, 'app', '_1', 'v2 image.png'),
+  'v1-image': path.join(root, 'app', '_1', 'v1 image.png'),
+  'v2-image': path.join(root, 'app', '_1', 'v2 image.png'),
 };
 
 export async function GET(
@@ -25,13 +29,14 @@ export async function GET(
         fs.mkdirSync(publicDir, { recursive: true });
       }
       fs.writeFileSync(path.join(publicDir, `${name}.jpg`), buffer);
+      fs.writeFileSync(path.join(publicDir, `${name}.png`), buffer);
     } catch {
       // ignore
     }
 
     return new NextResponse(buffer, {
       headers: {
-        'Content-Type': 'image/jpeg',
+        'Content-Type': filePath.endsWith('.png') ? 'image/png' : 'image/jpeg',
         'Cache-Control': 'public, max-age=31536000, immutable',
       },
     });

@@ -783,39 +783,6 @@ export const projects: Project[] = [
       { label: "Statewide Reach", value: "38 Districts" },
     ],
   },
-  {
-    slug: "royal-suvai-restaurant-website",
-    name: "Royal Suvai Restaurant",
-    industry: "Food & Hospitality",
-    category: "Web Application",
-    technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Node.js", "Express.js", "MongoDB"],
-    short:
-      "Luxury dining and authentic cuisine web platform featuring interactive digital menus, table reservation booking engine, online order dispatcher, and event catering portal.",
-    description:
-      "An immersive culinary web experience crafted for Royal Suvai Restaurant.",
-    challenge:
-      "The restaurant experienced high phone reservation friction during peak weekend dinner rushes, with customers struggling to view seasonal menus and order takeout without 3rd-party aggregator commissions.",
-    approach:
-      "We engineered an elegant, appetizing mobile-first web app with direct commission-free online ordering, real-time table slot booking, interactive culinary gallery, and instant WhatsApp order confirmation.",
-    solution:
-      "Developed a high-conversion Next.js dining platform with dietary filtering (Veg/Non-Veg/Vegan), real-time table seating reservations, banquet catering estimator, and automated kitchen notification hooks.",
-    keyFeatures: [
-      "Interactive Digital Food Menu with Dietary & Spice Level Filters",
-      "Real-Time Table Reservation & Seating Time-Slot Booking Engine",
-      "Direct Commission-Free Online Food Ordering via WhatsApp Webhook",
-      "Event Banquet & Catering Package Cost Estimator",
-      "Appetizing High-Resolution Culinary Showcase & Chef Specialties",
-      "Customer Reviews, Social Proof & Google Maps Turn-by-Turn GPS",
-    ],
-    outcome:
-      "Reduced table booking no-shows by 45% and generated over 300+ monthly direct takeout orders with zero third-party commissions.",
-    hasResults: true,
-    results: [
-      { label: "Direct Orders", value: "300+/mo" },
-      { label: "Third-Party Fees", value: "0% Commission" },
-      { label: "Table Bookings", value: "+65%" },
-    ],
-  },
 ];
 
 export type TeamMember = {

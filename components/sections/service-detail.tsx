@@ -35,18 +35,18 @@ export function ServiceDetail({ service }: { service: Service }) {
                 <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
                   Engineered Modules & Architecture Features
                 </h2>
-                <p className="mt-3 text-sm text-slate-600 leading-relaxed">
+                <p className="mt-3 text-sm text-slate-600 leading-relaxed text-justify sm:text-left">
                   Every deployment is built modularly with clean separation of concerns, row-level permissions, and complete audit trail capabilities.
                 </p>
 
-                <div className="mt-8 grid gap-3 sm:grid-cols-2">
+                <div className="mt-8 grid grid-cols-2 gap-2.5 sm:gap-3">
                   {service.features.map((feature) => (
                     <div
                       key={feature}
-                      className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-800"
+                      className="flex items-center gap-2 sm:gap-3 rounded-xl border border-slate-200 bg-white p-2.5 sm:p-4 text-xs sm:text-sm text-slate-800"
                     >
                       <CheckCircle2 className="h-4 w-4 text-blue-600 shrink-0" />
-                      <span className="font-semibold">{feature}</span>
+                      <span className="font-semibold text-justify sm:text-left">{feature}</span>
                     </div>
                   ))}
                 </div>
@@ -56,7 +56,7 @@ export function ServiceDetail({ service }: { service: Service }) {
                     <ShieldCheck className="h-4 w-4 text-blue-600" />
                     Our Enterprise Code & Architecture Standard
                   </h4>
-                  <p className="mt-2 text-xs text-blue-800 leading-relaxed">
+                  <p className="mt-2 text-xs text-blue-800 leading-relaxed text-justify sm:text-left">
                     All source code is delivered in your private repository with CI/CD setup, Docker containers, database migration scripts, and comprehensive API documentation.
                   </p>
                 </div>

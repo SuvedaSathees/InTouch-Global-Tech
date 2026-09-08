@@ -35,7 +35,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-[#0A0F1D] text-white pt-16 pb-20 sm:pb-8 select-none border-t border-slate-800/80 overflow-hidden">
+    <footer className="relative bg-[#0A0F1D] text-white pt-10 sm:pt-16 pb-6 sm:pb-8 select-none border-t border-slate-800/80 overflow-hidden">
       {/* Atmospheric Ambient Background Glows */}
       <div className="absolute top-0 left-1/4 w-[500px] h-[300px] rounded-full bg-blue-600/10 blur-[130px] pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-[450px] h-[250px] rounded-full bg-cyan-500/10 blur-[120px] pointer-events-none" />
@@ -50,58 +50,58 @@ export function Footer() {
         }}
       />
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 z-10 space-y-12">
-        {/* Main 3-Column Split */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-10 border-b border-slate-800/80 text-left">
-          {/* Column 1: Brand & Bio (3 cols) */}
-          <div className="md:col-span-3 space-y-4">
-            <Link href="/" className="inline-flex items-center group py-1">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 z-10 space-y-6 sm:space-y-12">
+        {/* Main 4-Column Split */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 pb-6 sm:pb-10 border-b border-slate-800/80 text-left">
+          {/* Column 1: Brand & Bio */}
+          <div className="md:col-span-4 lg:col-span-3 space-y-3 sm:space-y-4">
+            <Link href="/" className="inline-flex items-center group py-0.5 sm:py-1">
               <CompanyLogo
-                width={240}
-                height={62}
+                width={220}
+                height={58}
                 theme="dark"
                 className="group-hover:scale-105 transition-transform duration-300"
               />
             </Link>
 
-            <p className="text-xs sm:text-sm text-slate-400 font-normal leading-relaxed max-w-xs text-justify">
-              Custom software, ERP platforms, and mobile apps engineered for growing businesses with 100% complete client source code ownership.
+            <p className="text-xs sm:text-sm text-slate-400 font-normal leading-relaxed text-justify sm:text-left">
+              Custom software, enterprise ERP platforms, and mobile apps engineered for growing businesses with 100% complete client source code ownership.
             </p>
 
-            <div className="flex items-center gap-2 text-xs font-mono text-cyan-400/90 pt-1">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-950/40 border border-cyan-500/20 text-xs font-mono text-cyan-300">
               <ShieldCheck className="h-4 w-4 text-cyan-400 shrink-0" />
-              <span>100% Client IP Ownership Guarantee</span>
+              <span>100% Client IP Ownership</span>
             </div>
           </div>
 
-          {/* Mobile 2-Column Group (Desktop Order: Explore then Services; Mobile: Services left, Explore right) */}
-          <div className="grid grid-cols-2 gap-6 md:col-span-6 md:contents">
-            {/* Column 2: Explore Navigation (Desktop Col 2; Mobile Right Side) */}
-            <div className="space-y-3 order-2 md:order-none md:col-span-2 md:translate-x-[100px]">
-              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-cyan-400/80 block mb-2">
-                Explore
+          {/* Mobile 2-Column Group: Navigation (Left) & Services (Right) */}
+          <div className="grid grid-cols-2 gap-4 sm:gap-6 md:col-span-5 lg:col-span-6 md:contents">
+            {/* Column 2: Navigation (Home) - Left */}
+            <div className="space-y-3 order-1 md:order-none md:col-span-2 md:translate-x-[60px] lg:translate-x-[90px]">
+              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-cyan-400/80 block">
+                Navigation
               </span>
               <ul className="space-y-2.5 text-xs sm:text-sm font-medium text-slate-300">
                 <li>
-                  <Link href="/" className="hover:text-cyan-400 transition-colors inline-flex items-center gap-2">
+                  <Link href="/" className="hover:text-cyan-400 transition-colors inline-flex items-center gap-2 py-0.5">
                     <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shrink-0" />
                     <span>Home</span>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/about" className="hover:text-cyan-400 transition-colors inline-flex items-center gap-2">
+                  <Link href="/about" className="hover:text-cyan-400 transition-colors inline-flex items-center gap-2 py-0.5">
                     <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shrink-0" />
-                    <span>About</span>
+                    <span>About Us</span>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/services" className="hover:text-cyan-400 transition-colors inline-flex items-center gap-2">
+                  <Link href="/services" className="hover:text-cyan-400 transition-colors inline-flex items-center gap-2 py-0.5">
                     <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shrink-0" />
                     <span>Services</span>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/projects" className="hover:text-cyan-400 transition-colors inline-flex items-center gap-2">
+                  <Link href="/projects" className="hover:text-cyan-400 transition-colors inline-flex items-center gap-2 py-0.5">
                     <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shrink-0" />
                     <span>Projects</span>
                   </Link>
@@ -109,81 +109,90 @@ export function Footer() {
               </ul>
             </div>
 
-            {/* Column 3: Services (Desktop Col 3; Mobile Left Side) */}
-            <div className="space-y-3 order-1 md:order-none md:col-span-4 md:translate-x-[90px]">
-              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-cyan-400/80 block mb-2">
-                Services
+            {/* Column 3: Services - Right */}
+            <div className="space-y-3 order-2 md:order-none md:col-span-3 lg:col-span-4 md:translate-x-[50px] lg:translate-x-[70px]">
+              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-cyan-400/80 block">
+                Our Services
               </span>
               <ul className="space-y-2.5 text-xs sm:text-sm font-medium text-slate-300">
                 <li>
-                  <Link href="/services" className="hover:text-cyan-400 transition-colors inline-flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shrink-0" />
-                    <span>Custom ERP & CRM Platforms</span>
+                  <Link href="/services" className="hover:text-cyan-400 transition-colors inline-flex items-start gap-2 py-0.5">
+                    <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shrink-0 mt-1.5" />
+                    <span className="leading-snug">Custom ERP & CRM</span>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/services" className="hover:text-cyan-400 transition-colors inline-flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shrink-0" />
-                    <span>Web Application Development</span>
+                  <Link href="/services" className="hover:text-cyan-400 transition-colors inline-flex items-start gap-2 py-0.5">
+                    <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shrink-0 mt-1.5" />
+                    <span className="leading-snug">Web Development</span>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/services" className="hover:text-cyan-400 transition-colors inline-flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shrink-0" />
-                    <span>Mobile Apps (iOS & Android)</span>
+                  <Link href="/services" className="hover:text-cyan-400 transition-colors inline-flex items-start gap-2 py-0.5">
+                    <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shrink-0 mt-1.5" />
+                    <span className="leading-snug">Mobile Apps</span>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/services" className="hover:text-cyan-400 transition-colors inline-flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shrink-0" />
-                    <span>AI & Workflow Automation</span>
+                  <Link href="/services" className="hover:text-cyan-400 transition-colors inline-flex items-start gap-2 py-0.5">
+                    <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shrink-0 mt-1.5" />
+                    <span className="leading-snug">AI Automation</span>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/services" className="hover:text-cyan-400 transition-colors inline-flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shrink-0" />
-                    <span>Cloud Architecture & DevOps</span>
+                  <Link href="/services" className="hover:text-cyan-400 transition-colors inline-flex items-start gap-2 py-0.5">
+                    <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shrink-0 mt-1.5" />
+                    <span className="leading-snug">Cloud & DevOps</span>
                   </Link>
                 </li>
               </ul>
             </div>
           </div>
 
-          {/* Column 4: Contact & Inquiries (3 cols) */}
+          {/* Column 4: Contact & Enquiries */}
           <div className="md:col-span-3 space-y-3">
-            <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-cyan-400/80 block mb-2">
-              Contact & Inquiries
+            <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-cyan-400/80 block">
+              Contact & Enquiries
             </span>
 
-            <div className="space-y-3 text-xs sm:text-sm font-medium text-slate-300">
-              {/* Phone / Call Line */}
-              <div>
-                <a
-                  href={`tel:${siteConfig.phone.replace(/\s+/g, '')}`}
-                  className="inline-flex items-center gap-2.5 text-slate-200 hover:text-cyan-400 transition-colors group"
-                >
-                  <Phone className="h-4 w-4 text-cyan-400 shrink-0 group-hover:scale-110 transition-transform" />
-                  <span>{siteConfig.phone}</span>
-                </a>
-              </div>
+            <div className="grid grid-cols-1 gap-2 pt-1">
+              <a
+                href={`tel:${siteConfig.phone.replace(/\s+/g, '')}`}
+                className="flex items-center gap-3 p-2.5 sm:p-3 rounded-2xl bg-slate-900/80 border border-slate-800/90 hover:border-cyan-500/40 hover:bg-slate-800/60 transition-all group"
+              >
+                <div className="w-9 h-9 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 shrink-0 group-hover:scale-105 transition-transform">
+                  <Phone className="h-4 w-4" />
+                </div>
+                <div className="min-w-0">
+                  <div className="text-[10px] font-mono uppercase tracking-wider text-slate-400">Direct Phone</div>
+                  <div className="text-xs font-bold text-slate-200 group-hover:text-cyan-300 transition-colors">{siteConfig.phone}</div>
+                </div>
+              </a>
 
-              {/* Email Line */}
-              <div>
-                <a
-                  href={`mailto:${siteConfig.email}?subject=Project%20Inquiry%20-%20Intouch%20Global%20Tech`}
-                  className="inline-flex items-center gap-2.5 text-slate-200 hover:text-cyan-400 transition-colors group"
-                >
-                  <Mail className="h-4 w-4 text-cyan-400 shrink-0 group-hover:scale-110 transition-transform" />
-                  <span className="break-all">{siteConfig.email}</span>
-                </a>
-              </div>
+              <a
+                href={`mailto:${siteConfig.email}?subject=Project%20Enquiry%20-%20Intouch%20Global%20Tech`}
+                className="flex items-center gap-3 p-2.5 sm:p-3 rounded-2xl bg-slate-900/80 border border-slate-800/90 hover:border-cyan-500/40 hover:bg-slate-800/60 transition-all group"
+              >
+                <div className="w-9 h-9 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 shrink-0 group-hover:scale-105 transition-transform">
+                  <Mail className="h-4 w-4" />
+                </div>
+                <div className="min-w-0">
+                  <div className="text-[10px] font-mono uppercase tracking-wider text-slate-400">Email Enquiries</div>
+                  <div className="text-xs font-bold text-slate-200 group-hover:text-cyan-300 transition-colors truncate">{siteConfig.email}</div>
+                </div>
+              </a>
             </div>
           </div>
         </div>
 
-        {/* Bottom Bar: Copyright */}
-        <div className="flex items-center justify-center text-center text-xs font-mono text-slate-500">
-          <span>© {currentYear} {siteConfig.name} Studio • All rights reserved</span>
+        {/* Bottom Bar: Copyright & Legal */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-2.5 sm:gap-4 text-center sm:text-left text-xs font-mono text-slate-500">
+          <span>© {currentYear} {siteConfig.name}. All rights reserved.</span>
+          <div className="flex items-center gap-4 text-xs font-normal text-slate-400">
+            <Link href="/privacy" className="hover:text-cyan-400 transition-colors">Privacy Policy</Link>
+            <span className="text-slate-600">•</span>
+            <Link href="/terms" className="hover:text-cyan-400 transition-colors">Terms of Service</Link>
+          </div>
         </div>
       </div>
     </footer>

@@ -24,7 +24,6 @@ import {
   Eye,
   Layers,
   FlaskConical,
-  UtensilsCrossed,
   Sparkles,
   TrendingUp,
 } from 'lucide-react';
@@ -45,8 +44,6 @@ const projectVisualIcons: Record<string, React.ElementType> = {
   'rpc-erp-system': Server,
   'vchemics-website': FlaskConical,
   'vchemics': FlaskConical,
-  'royal-suvai-restaurant-website': UtensilsCrossed,
-  'royal-suvai': UtensilsCrossed,
 };
 
 const filterCategories = [
@@ -168,7 +165,7 @@ function Pro3DProjectCard({
           </div>
 
           {/* Scope Narrative */}
-          <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed line-clamp-2">
+          <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed line-clamp-2 text-justify">
             {project.description || project.short}
           </p>
 
@@ -401,14 +398,14 @@ export default function ProjectsPage() {
         <div className="flex flex-col lg:flex-row items-center justify-between gap-4 w-full">
           
           {/* Floating Category Filter Pills (Left) */}
-          <div className="flex items-center gap-2 overflow-x-auto w-full lg:w-auto no-scrollbar py-1 scroll-smooth max-w-full">
+          <div className="grid grid-cols-2 sm:flex items-center gap-2 w-full lg:w-auto py-1">
             {filterCategories.map((cat) => {
               const isActive = activeFilter === cat;
               return (
                 <button
                   key={cat}
                   onClick={() => setActiveFilter(cat)}
-                  className={`relative px-4 py-2 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer select-none whitespace-nowrap shrink-0 ${
+                  className={`relative flex items-center justify-center text-center px-3 sm:px-4 py-2.5 sm:py-2 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer select-none ${
                     isActive
                       ? 'text-white shadow-md shadow-blue-500/20'
                       : 'bg-white/80 hover:bg-white text-slate-600 hover:text-slate-950 border border-slate-200/90 shadow-2xs hover:border-blue-300'

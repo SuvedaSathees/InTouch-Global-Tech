@@ -14,7 +14,6 @@ import {
   Smartphone,
   BatteryCharging,
   FlaskConical,
-  UtensilsCrossed,
   Layers,
   Sparkles,
   ShieldCheck,
@@ -99,24 +98,6 @@ const showcaseProjects = [
     tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'PostgreSQL'],
   },
   {
-    id: 'royal-suvai',
-    slug: 'royal-suvai-restaurant-website',
-    title: 'Royal Suvai Restaurant',
-    category: 'Web Applications',
-    industry: 'Hospitality & Dining',
-    icon: UtensilsCrossed,
-    accentColor: '#d97706',
-    summary: 'Mouth-watering digital dining portal with interactive chef specials, table reservation engine, and direct WhatsApp takeaway ordering.',
-    primaryMetric: { value: '+65%', label: 'Online Table Bookings' },
-    secondaryMetric: { value: '100%', label: 'Mobile Optimized' },
-    features: [
-      'Visual digital menu with allergen filters & spice meters',
-      'Instant table reservation system with SMS confirmation',
-      'Direct WhatsApp takeaway ordering funnel with zero commissions',
-    ],
-    tech: ['React', 'Next.js', 'Tailwind CSS', 'WhatsApp Cloud API'],
-  },
-  {
     id: 'rpc-erp',
     slug: 'rpc-erp-system',
     title: 'RPC Enterprise ERP',
@@ -186,14 +167,14 @@ export function HomeFeaturedWork() {
           </div>
 
           {/* Interactive Category Filter Pills */}
-          <div className="flex items-center gap-1.5 p-1.5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs self-start md:self-auto max-w-full overflow-x-auto no-scrollbar">
+          <div className="w-full sm:w-auto grid grid-cols-2 sm:flex items-center gap-1.5 p-1.5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs">
             {categories.map((cat) => {
               const isActive = activeTab === cat;
               return (
                 <button
                   key={cat}
                   onClick={() => setActiveTab(cat)}
-                  className={`relative px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer select-none ${
+                  className={`relative flex items-center justify-center text-center px-3 sm:px-4 py-2.5 sm:py-2 rounded-xl text-xs font-bold transition-all cursor-pointer select-none ${
                     isActive
                       ? 'text-white'
                       : 'text-slate-600 hover:text-slate-950 hover:bg-slate-50'
@@ -232,14 +213,14 @@ export function HomeFeaturedWork() {
                 >
                   <div className="space-y-4">
                     {/* Top Status & Industry Bar */}
-                    <div className="flex items-center justify-between gap-2 border-b border-slate-100 pb-3">
-                      <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-blue-600">
+                    <div className="flex items-center justify-between gap-2 border-b border-slate-100 pb-3 min-w-0">
+                      <span className="text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wider text-blue-600 min-w-0 truncate">
                         {proj.industry}
                       </span>
 
-                      <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-blue-50 border border-blue-200/80 text-[10px] font-bold text-blue-700 shadow-2xs">
-                        <span className="h-1.5 w-1.5 rounded-full bg-blue-500" />
-                        <span>PRODUCTION BUILD</span>
+                      <div className="shrink-0 whitespace-nowrap inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-blue-50 border border-blue-200/80 text-[9.5px] sm:text-[10px] font-bold text-blue-700 shadow-2xs">
+                        <span className="h-1.5 w-1.5 rounded-full bg-blue-500 shrink-0" />
+                        <span className="whitespace-nowrap">PRODUCTION BUILD</span>
                       </div>
                     </div>
 
@@ -267,7 +248,7 @@ export function HomeFeaturedWork() {
                     </div>
 
                     {/* Summary */}
-                    <p className="text-xs text-slate-600 font-medium leading-relaxed line-clamp-3">
+                    <p className="text-xs text-slate-600 font-medium leading-relaxed line-clamp-3 text-justify">
                       {proj.summary}
                     </p>
 
@@ -339,7 +320,7 @@ export function HomeFeaturedWork() {
             href="/projects"
             className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white text-xs sm:text-sm font-bold shadow-md shadow-blue-600/20 hover:shadow-lg transition-all hover:scale-105 active:scale-95"
           >
-            <span>Explore All Production Blueprints & Source Specs</span>
+            <span>View All Projects</span>
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>

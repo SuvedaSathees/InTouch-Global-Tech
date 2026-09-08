@@ -37,6 +37,8 @@ import {
   Quote,
   Palette,
   Target,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react';
 
 export type TeamMember = {
@@ -67,7 +69,7 @@ const teamMembers: TeamMember[] = [
     id: 0,
     number: '01',
     name: 'Velumurugan',
-    role: 'CEO of Intouch',
+    role: 'CEO of Intouch Global Tech',
     tagline: 'Strategic Vision, Executive Leadership & Enterprise Scaling',
     department: 'Executive Leadership',
     avatar: veluAvatar,
@@ -131,10 +133,10 @@ const teamMembers: TeamMember[] = [
     tagline: 'End-to-End Web Applications & High-Performance Architecture',
     department: 'Full Stack Engineering',
     avatar: suvedaAvatar,
-    avatarClassName: 'scale-100 translate-y-0 translate-x-0 lg:scale-[0.92] lg:-translate-x-[50px] lg:translate-y-[15px]',
+    avatarClassName: 'scale-100 translate-y-0 translate-x-0 lg:scale-[0.92] lg:-translate-x-[50px] lg:translate-y-[25px]',
     avatarStyle: {
-      imageRendering: 'auto' as any,
-      filter: 'contrast(1.06) brightness(1.02) saturate(1.04) drop-shadow(0 8px 24px rgba(0,0,0,0.12))',
+      imageRendering: '-webkit-optimize-contrast' as any,
+      filter: 'contrast(1.08) brightness(1.02) saturate(1.05) drop-shadow(0 14px 30px rgba(0, 40, 100, 0.16))',
     },
     about: 'Engineers complete end-to-end web applications, modern React/Next.js frontends, scalable Node.js/PostgreSQL backends, and robust API ecosystems.',
     philosophy: '"Mastering the full stack creates seamless harmony between user experience and core backend power."',
@@ -437,16 +439,6 @@ export function TeamRoundTable() {
             <h2 className="text-3xl font-black text-slate-950 tracking-tight leading-tight">
               Meet the Minds Behind Intouch
             </h2>
-            <div className="flex items-center justify-between">
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Swipe left or right to explore our core engineering leadership.
-              </p>
-              <div className="flex items-center gap-1 text-[11px] font-mono font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200 shrink-0">
-                <span>0{activeMobileIdx + 1}</span>
-                <span className="text-slate-400">/</span>
-                <span className="text-slate-400">09</span>
-              </div>
-            </div>
           </div>
 
 
@@ -464,33 +456,8 @@ export function TeamRoundTable() {
                   key={m.id}
                   className="w-full shrink-0 snap-center snap-always rounded-3xl border border-slate-200/90 bg-white p-5 sm:p-6 shadow-sm space-y-5 overflow-hidden"
                 >
-                  {/* Top Status & Department Header */}
-                  <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                    <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-blue-600 flex items-center gap-2">
-                      <span className="h-2 w-2 rounded-full bg-blue-600 animate-ping" />
-                      {m.department}
-                    </span>
-                    <div className="flex items-center gap-2 text-xs font-mono font-bold text-slate-400">
-                      <button
-                        onClick={() => scrollToMobileMember(Math.max(0, idx - 1))}
-                        disabled={idx === 0}
-                        className="px-1.5 py-0.5 rounded text-slate-600 disabled:opacity-30 hover:bg-slate-100 cursor-pointer font-bold"
-                      >
-                        ←
-                      </button>
-                      <span>0{idx + 1} / 09</span>
-                      <button
-                        onClick={() => scrollToMobileMember(Math.min(totalMembers - 1, idx + 1))}
-                        disabled={idx === totalMembers - 1}
-                        className="px-1.5 py-0.5 rounded text-slate-600 disabled:opacity-30 hover:bg-slate-100 cursor-pointer font-bold"
-                      >
-                        →
-                      </button>
-                    </div>
-                  </div>
-
                   {/* Member Photo Container */}
-                  <div className="relative w-full h-[320px] min-[380px]:h-[360px] flex items-center justify-center overflow-visible my-1">
+                  <div className="relative w-full h-[300px] min-[380px]:h-[340px] flex items-center justify-center overflow-visible my-1">
                     <div
                       className="absolute inset-4 rounded-full blur-3xl opacity-30 pointer-events-none"
                       style={{ backgroundColor: m.glowColor }}
@@ -498,11 +465,11 @@ export function TeamRoundTable() {
                     {m.avatar ? (
                       <Image
                         src={m.avatar}
-                        alt={m.name}
+                        alt={m.role}
                         fill
                         sizes="360px"
                         unoptimized
-                        className="object-contain object-center scale-100 translate-y-0 transition-all duration-300 pointer-events-none select-none"
+                        className={`object-contain object-center transition-all duration-300 pointer-events-none select-none ${m.avatarClassName || 'scale-100 translate-y-0'}`}
                         style={m.avatarStyle}
                       />
                     ) : (
@@ -510,60 +477,35 @@ export function TeamRoundTable() {
                         <div className="w-16 h-16 rounded-2xl bg-blue-600 text-white flex items-center justify-center mb-3">
                           <IconComp className="w-8 h-8" />
                         </div>
-                        <div className="text-base font-bold text-slate-900">{m.name}</div>
-                        <div className="text-xs text-blue-600 font-mono font-semibold mt-1">{m.role}</div>
+                        <div className="text-base font-bold text-slate-900">{m.role}</div>
                       </div>
                     )}
                   </div>
 
                   {/* Identity Details */}
-                  <div className="space-y-2.5">
-                    <h3 className="text-2xl font-black text-slate-950 leading-tight">
-                      {m.name}
-                    </h3>
-                    <p className="text-xs font-mono font-bold text-blue-600 uppercase tracking-wider">
-                      {m.role} • {m.experience}
-                    </p>
-                    <blockquote className="text-sm font-bold text-slate-900 border-l-2 border-blue-600 pl-3 py-0.5 italic">
-                      {m.philosophy}
-                    </blockquote>
-                    <p className="text-xs text-slate-600 leading-relaxed">
+                  <div className="space-y-2 pt-1">
+                    {/* Department Tag with Blue Accent */}
+                    <div className="flex items-center gap-2">
+                      <span className="h-1.5 w-6 rounded-full" style={{ backgroundColor: m.color }} />
+                      <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-blue-600">
+                        {m.department}
+                      </span>
+                    </div>
+
+                    {/* Member Role Heading */}
+                    <h4 className="text-2xl font-black text-slate-950 tracking-tight leading-tight">
+                      {m.role}
+                    </h4>
+
+                    {/* Description */}
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal text-justify">
                       {m.about}
                     </p>
-                  </div>
-
-                  {/* Tech Stack Badges */}
-                  <div className="pt-3 border-t border-slate-100 space-y-2">
-                    <span className="text-[10px] font-mono font-bold uppercase text-slate-400 block">
-                      Technical Stack & Expertise
-                    </span>
-                    <div className="flex flex-wrap gap-1.5">
-                      {m.stack.map((s) => (
-                        <span key={s} className="px-2.5 py-1 rounded-lg bg-slate-100 text-[10px] font-mono font-semibold text-slate-700">
-                          {s}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Actions */}
-                  <div className="pt-2 flex items-center gap-2">
-                    <a
-                      href={`mailto:${m.email}`}
-                      className="flex-1 inline-flex items-center justify-center gap-2 py-2.5 rounded-xl bg-blue-600 text-white font-bold text-xs shadow-md shadow-blue-600/20"
-                    >
-                      <span>Connect via Email</span>
-                    </a>
                   </div>
 
                 </div>
               );
             })}
-          </div>
-
-          {/* Swipe Hint Indicator */}
-          <div className="flex items-center justify-center gap-2 text-[11px] font-mono text-slate-500 font-semibold pt-1">
-            <span>← Swipe left or right to view team members →</span>
           </div>
 
         </div>

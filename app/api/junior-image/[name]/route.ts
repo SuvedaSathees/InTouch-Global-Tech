@@ -12,7 +12,6 @@ const imageMap: Record<string, string> = {
   magnertiaerp: path.join(process.cwd(), 'app', '1', 'magnertiaerp.png'),
   roboticerp: path.join(process.cwd(), 'app', '1', 'roboticerp.png'),
   'ev-website': path.join(process.cwd(), 'app', '1', 'ev website.png'),
-  royalsuvai: path.join(process.cwd(), 'app', '1', 'royalsuvai.mp4'),
   mobile1: path.join(process.cwd(), 'app', '1', 'mobile1 .png'),
   mobile2: path.join(process.cwd(), 'app', '1', 'mobile2.png'),
   graduation: 'C:\\Users\\Admin\\.gemini\\antigravity-ide\\brain\\c9a0aaeb-1768-4d18-a3fc-a67e0b1b01eb\\junior_graduation_day_1788329044755.jpg',
@@ -72,14 +71,6 @@ export async function GET(
         fs.writeFileSync(path.join(evDir, 'ev-website.png'), buffer);
         fs.writeFileSync(path.join(evDir, 'hero.png'), buffer);
         fs.writeFileSync(path.join(evDir, 'hero.jpg'), buffer);
-      } else if (name === 'royalsuvai') {
-        const vidDir = path.join(process.cwd(), 'public', 'videos');
-        if (!fs.existsSync(vidDir)) {
-          fs.mkdirSync(vidDir, { recursive: true });
-        }
-        fs.writeFileSync(path.join(vidDir, 'royalsuvai.mp4'), buffer);
-        const imgDir = path.join(process.cwd(), 'public', 'images');
-        fs.writeFileSync(path.join(imgDir, 'royalsuvai.mp4'), buffer);
       } else if (name === 'mobile1' || name === 'mobile2') {
         const mobDir = path.join(process.cwd(), 'public', 'images', 'ev-mobile');
         if (!fs.existsSync(mobDir)) {

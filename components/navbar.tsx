@@ -19,12 +19,28 @@ export function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 30);
+      if (pathname === '/') {
+        const heroEl = document.getElementById('home-hero-section');
+        if (heroEl) {
+          const heroBottom = heroEl.getBoundingClientRect().bottom;
+          // When the bottom of the hero section is completely scrolled past the navbar (approx 75px)
+          setScrolled(heroBottom <= 75);
+          return;
+        }
+        setScrolled(window.scrollY > (window.innerHeight - 80));
+      } else {
+        setScrolled(window.scrollY > 20);
+      }
     };
 
+    handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    window.addEventListener('resize', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
+  }, [pathname]);
 
   useEffect(() => {
     if (mobileOpen) {
@@ -39,7 +55,7 @@ export function Navbar() {
 
   return (
     <>
-      {/* Dynamic Adaptive Navbar: Dark on Home Hero, Frosted Light on Scroll & Subpages */}
+      {/* Dynamic Adaptive Navbar: Dark on Home Hero, Solid White everywhere else */}
       <motion.header
         initial={{ y: -40, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -47,10 +63,8 @@ export function Navbar() {
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
           isHomeHero
-            ? 'bg-[#0F172A]/75 backdrop-blur-xl border-b border-white/10 py-3 sm:py-4 text-white'
-            : scrolled
-            ? 'bg-white/95 backdrop-blur-2xl border-b border-slate-200/80 shadow-xs py-2.5 sm:py-3 text-slate-900'
-            : 'bg-white/80 backdrop-blur-md border-b border-slate-200/60 py-3 sm:py-4 text-slate-900'
+            ? 'bg-[#0F172A]/85 backdrop-blur-xl border-b border-white/10 py-3 sm:py-4 text-white'
+            : 'bg-white border-b border-slate-200/80 shadow-xs py-2.5 sm:py-3 text-slate-900'
         )}
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between">

@@ -302,8 +302,33 @@ export function ServicesPageContent() {
   const sceneContainerRef = useRef<HTMLDivElement>(null);
   const mobilePillarsScrollRef = useRef<HTMLDivElement>(null);
   const [activeHeroIdx, setActiveHeroIdx] = useState<number>(0);
+  const [isHeroHovered, setIsHeroHovered] = useState<boolean>(false);
   const [currentPillarIdx, setCurrentPillarIdx] = useState<number>(0);
   const [isScattered, setIsScattered] = useState<boolean>(false);
+
+  // Auto-advance every 3 seconds to next box in both website and mobile responsive
+  useEffect(() => {
+    if (isHeroHovered) return;
+
+    const timer = setInterval(() => {
+      setActiveHeroIdx((prev) => {
+        const nextIdx = (prev + 1) % pillarsData.length;
+        if (mobilePillarsScrollRef.current) {
+          const container = mobilePillarsScrollRef.current;
+          const cardWidth = container.clientWidth;
+          if (cardWidth > 0) {
+            container.scrollTo({
+              left: nextIdx * cardWidth,
+              behavior: 'smooth',
+            });
+          }
+        }
+        return nextIdx;
+      });
+    }, 3000);
+
+    return () => clearInterval(timer);
+  }, [isHeroHovered]);
 
   const handleMobilePillarsScroll = () => {
     if (!mobilePillarsScrollRef.current) return;
@@ -321,10 +346,12 @@ export function ServicesPageContent() {
     if (!mobilePillarsScrollRef.current) return;
     const container = mobilePillarsScrollRef.current;
     const cardWidth = container.clientWidth;
-    container.scrollTo({
-      left: idx * cardWidth,
-      behavior: 'smooth',
-    });
+    if (cardWidth > 0) {
+      container.scrollTo({
+        left: idx * cardWidth,
+        behavior: 'smooth',
+      });
+    }
   };
 
 
@@ -444,27 +471,55 @@ export function ServicesPageContent() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, delay: 0.2 }}
-            className="rounded-3xl border border-slate-200/80 bg-white/90 backdrop-blur-md p-4 sm:p-6 shadow-lg shadow-blue-950/5 max-w-6xl w-full"
+            onMouseEnter={() => setIsHeroHovered(true)}
+            onMouseLeave={() => setIsHeroHovered(false)}
+            className="rounded-3xl border border-slate-200/80 bg-white/90 backdrop-blur-md p-3.5 sm:p-6 shadow-lg shadow-blue-950/5 max-w-6xl w-full"
           >
-            <div className="flex items-center justify-between border-b border-slate-100 pb-2.5 mb-3 text-[11px] font-mono text-slate-400">
-              <span className="flex items-center gap-1.5 text-blue-600 font-bold uppercase tracking-wider">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-2 mb-2.5 sm:mb-3 text-[11px] font-mono text-slate-400">
+              <span className="flex items-center gap-1.5 text-blue-600 font-bold uppercase tracking-wider text-[11px]">
                 <span className="h-2 w-2 rounded-full bg-cyan-500 animate-ping" />
                 CAPABILITY FLOW
               </span>
-              <span className="hidden sm:inline font-semibold text-slate-600">Active: {pillarsData[activeHeroIdx].name}</span>
+              <span className="font-semibold text-slate-600 text-[11px]">
+                {pillarsData[activeHeroIdx].number} / 06 • <span className="text-blue-600 font-bold">{pillarsData[activeHeroIdx].name}</span>
+              </span>
             </div>
 
-            <div className="flex items-center justify-start sm:justify-between gap-2 w-full py-1 max-w-full overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory">
+            {/* Mobile 3x2 Grid View (sm:hidden) - 100% Width, Zero Overflow / Cut-off */}
+            <div className="grid grid-cols-3 gap-1.5 sm:hidden py-0.5">
+              {pillarsData.map((p, idx) => {
+                const isActive = activeHeroIdx === idx;
+                const PIcon = p.icon;
+
+                return (
+                  <button
+                    key={p.name}
+                    onClick={() => scrollToMobilePillar(idx)}
+                    className={`relative flex items-center justify-center gap-1 px-1.5 py-2 rounded-xl text-[11px] font-black transition-all duration-300 cursor-pointer select-none ${
+                      isActive
+                        ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-md shadow-blue-600/25 border border-blue-700 ring-2 ring-blue-500/20 scale-[1.02]'
+                        : 'bg-slate-50 text-slate-700 border border-slate-200/90 hover:bg-white hover:text-blue-600'
+                    }`}
+                  >
+                    <PIcon className={`h-3 w-3 shrink-0 ${isActive ? 'text-white' : 'text-slate-400'}`} />
+                    <span className="truncate">{p.name}</span>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Desktop Full Flow Rail with Arrows (hidden sm:flex) */}
+            <div className="hidden sm:flex items-center justify-between gap-2 w-full py-1">
               {pillarsData.map((p, idx) => {
                 const isActive = activeHeroIdx === idx;
 
                 return (
                   <React.Fragment key={p.name}>
                     <button
-                      onClick={() => setActiveHeroIdx(idx)}
-                      className={`relative flex items-center justify-center gap-1 px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl sm:rounded-2xl transition-all duration-300 cursor-pointer text-xs sm:text-sm md:text-base font-black whitespace-nowrap snap-center shrink-0 ${
+                      onClick={() => scrollToMobilePillar(idx)}
+                      className={`relative flex items-center justify-center gap-1 px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl sm:rounded-2xl transition-all duration-300 cursor-pointer text-xs sm:text-sm md:text-base font-black whitespace-nowrap shrink-0 ${
                         isActive
-                          ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-md shadow-blue-600/25 border border-blue-700 ring-2 ring-blue-500/20'
+                          ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-md shadow-blue-600/25 border border-blue-700 ring-2 ring-blue-500/20 scale-[1.03]'
                           : 'bg-slate-50 text-slate-800 border border-slate-200 hover:border-blue-400 hover:text-blue-600 hover:bg-white'
                       }`}
                     >
@@ -473,7 +528,7 @@ export function ServicesPageContent() {
 
                     {idx < pillarsData.length - 1 && (
                       <span
-                        className={`font-bold text-[10px] sm:text-xs md:text-sm transition-colors duration-300 shrink-0 ${
+                        className={`font-bold text-xs md:text-sm transition-colors duration-300 shrink-0 ${
                           activeHeroIdx === idx || activeHeroIdx === idx + 1
                             ? 'text-blue-600 font-black'
                             : 'text-slate-300'
@@ -487,10 +542,25 @@ export function ServicesPageContent() {
               })}
             </div>
 
-            <div className="mt-3 pt-2.5 border-t border-slate-100 text-left">
-              <p className="text-xs text-slate-600 font-medium">
-                <strong className="text-slate-900 font-bold">{pillarsData[activeHeroIdx].name}:</strong> {pillarsData[activeHeroIdx].tagline} — {pillarsData[activeHeroIdx].desc}
-              </p>
+            {/* Active Pillar Description Card with smooth AnimatePresence transition */}
+            <div className="mt-2.5 pt-2 border-t border-slate-100 text-left min-h-[42px] overflow-hidden">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeHeroIdx}
+                  initial={{ opacity: 0, y: 4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -4 }}
+                  transition={{ duration: 0.25, ease: 'easeOut' }}
+                  className="flex items-start gap-2"
+                >
+                  <span className="inline-flex items-center px-1.5 py-0.5 rounded-md bg-blue-50 text-blue-700 text-[10px] font-mono font-bold uppercase shrink-0 mt-0.5 border border-blue-200/70">
+                    {pillarsData[activeHeroIdx].name}
+                  </span>
+                  <p className="text-xs text-slate-600 font-medium leading-relaxed">
+                    <strong className="text-slate-900 font-bold">{pillarsData[activeHeroIdx].tagline}</strong> — {pillarsData[activeHeroIdx].desc}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
             </div>
           </motion.div>
 
@@ -523,11 +593,6 @@ export function ServicesPageContent() {
               <span className="h-2 w-2 rounded-full bg-cyan-500 animate-ping" />
               06 CORE CAPABILITIES
             </span>
-            <div className="flex items-center gap-1 text-[11px] font-mono font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200 shrink-0">
-              <span>PILLAR 0{activeHeroIdx + 1}</span>
-              <span className="text-slate-400">/</span>
-              <span className="text-slate-400">06</span>
-            </div>
           </div>
 
           {/* Horizontal Snap-Swipe Carousel Container */}
@@ -626,11 +691,6 @@ export function ServicesPageContent() {
                 </div>
               </div>
             ))}
-          </div>
-
-          {/* Swipe Hint Indicator */}
-          <div className="flex items-center justify-center gap-2 text-[11px] font-mono text-slate-500 font-semibold pt-1">
-            <span>← Swipe left or right to explore our core capabilities →</span>
           </div>
         </div>
       </section>

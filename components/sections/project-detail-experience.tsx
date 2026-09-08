@@ -24,7 +24,6 @@ import { TechBadgeIcon } from '@/components/tech-logos';
 import { JuniorJunctionDetailExperience } from '@/components/sections/junior-junction-experience';
 import { VchemicsDetailExperience } from '@/components/sections/vchemics-experience';
 import { MyJobCampusDetailExperience } from '@/components/sections/my-job-campus-experience';
-import { RoyalSuvaiDetailExperience } from '@/components/sections/royal-suvai-experience';
 import { RpcErpDetailExperience } from '@/components/sections/rpc-erp-experience';
 import { MagnertiaErpDetailExperience } from '@/components/sections/magnertia-erp-experience';
 import { EvMobileDetailExperience } from '@/components/sections/ev-mobile-experience';
@@ -64,10 +63,6 @@ const projectGalleryData: Record<string, { title: string; subtitle: string; tag:
   'vchemics-website': [
     { title: 'Construction Chemical Catalog', subtitle: 'Searchable product catalog for waterproofing, concrete admixtures & repair mortars', tag: 'Product Catalog' },
     { title: 'Technical MSDS & TDS Download Hub', subtitle: 'Instant 1-click safety datasheets & technical application guides', tag: 'Technical Specs' },
-  ],
-  'royal-suvai-restaurant-website': [
-    { title: 'Interactive Gourmet Menu & Dietary Filters', subtitle: 'Appetizing recipe showcase with spice level, vegan & chef signature highlights', tag: 'Digital Menu' },
-    { title: 'Real-Time Table Reservation Engine', subtitle: 'Instant dinner seating slot booking with guest count and seating preferences', tag: 'Table Booking' },
   ],
 };
 
@@ -133,10 +128,6 @@ export function ProjectDetailExperience({ project }: { project: Project }) {
     return <MyJobCampusDetailExperience project={project} />;
   }
 
-  if (project.slug === 'royal-suvai-restaurant-website' || project.slug === 'royal-suvai') {
-    return <RoyalSuvaiDetailExperience project={project} />;
-  }
-
   if (project.slug === 'rpc-erp-system' || project.slug === 'rtc-company-erp-system') {
     return <RpcErpDetailExperience project={project} />;
   }
@@ -183,16 +174,16 @@ export function ProjectDetailExperience({ project }: { project: Project }) {
         <div className="mx-auto max-w-[1084px] px-4 sm:px-6 lg:px-8 space-y-6 text-left">
           
           {/* Top Breadcrumb */}
-          <div className="flex items-center justify-between text-xs text-slate-500 pb-2">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-3 text-xs text-slate-500 pb-2">
             <Link
               href="/projects"
-              className="inline-flex items-center gap-1.5 font-semibold text-slate-600 hover:text-blue-600 transition-colors"
+              className="inline-flex items-center gap-1.5 font-semibold text-slate-600 hover:text-blue-600 transition-colors w-fit"
             >
               <ArrowLeft className="h-3.5 w-3.5" />
               <span>Back to Projects</span>
             </Link>
 
-            <span className="font-mono text-[11px] uppercase tracking-wider text-slate-400">
+            <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-wider text-slate-400 truncate">
               {project.industry} • {project.category}
             </span>
           </div>
@@ -212,7 +203,7 @@ export function ProjectDetailExperience({ project }: { project: Project }) {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.1 }}
-            className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal max-w-3xl"
+            className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal max-w-3xl text-justify"
           >
             {project.short}
           </motion.p>
@@ -279,29 +270,29 @@ export function ProjectDetailExperience({ project }: { project: Project }) {
             Project Overview
           </h2>
 
-          <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+          <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal text-justify sm:text-left">
             {project.description}
           </p>
 
-          {/* 3 Simple Context Highlights */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
-            <div className="rounded-2xl border border-slate-200/80 bg-slate-50/70 p-5 space-y-1.5">
-              <span className="text-[11px] font-mono font-bold uppercase text-blue-600">01. What Was Built</span>
-              <p className="text-xs sm:text-sm text-slate-700 font-normal leading-relaxed">
+          {/* 3 Simple Context Highlights - 2x2 Square Boxes on Mobile */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 min-[380px]:gap-3.5 sm:gap-4 pt-4">
+            <div className="aspect-square sm:aspect-auto flex flex-col justify-between rounded-2xl border border-slate-200/80 bg-slate-50/70 p-3 min-[380px]:p-3.5 sm:p-5">
+              <span className="text-[10px] min-[380px]:text-[11px] font-mono font-bold uppercase text-blue-600">01. What Was Built</span>
+              <p className="text-[10px] min-[380px]:text-[11px] sm:text-sm text-slate-700 font-normal leading-snug sm:leading-relaxed text-justify sm:text-left line-clamp-4 sm:line-clamp-none">
                 A secure, fast web application with automated digital workflows, real-time updates, and responsive layouts.
               </p>
             </div>
 
-            <div className="rounded-2xl border border-slate-200/80 bg-slate-50/70 p-5 space-y-1.5">
-              <span className="text-[11px] font-mono font-bold uppercase text-blue-600">02. Why It Was Built</span>
-              <p className="text-xs sm:text-sm text-slate-700 font-normal leading-relaxed">
+            <div className="aspect-square sm:aspect-auto flex flex-col justify-between rounded-2xl border border-slate-200/80 bg-slate-50/70 p-3 min-[380px]:p-3.5 sm:p-5">
+              <span className="text-[10px] min-[380px]:text-[11px] font-mono font-bold uppercase text-blue-600">02. Why It Was Built</span>
+              <p className="text-[10px] min-[380px]:text-[11px] sm:text-sm text-slate-700 font-normal leading-snug sm:leading-relaxed text-justify sm:text-left line-clamp-4 sm:line-clamp-none">
                 To replace fragmented manual processes with an all-in-one digital system accessible anywhere.
               </p>
             </div>
 
-            <div className="rounded-2xl border border-slate-200/80 bg-slate-50/70 p-5 space-y-1.5">
-              <span className="text-[11px] font-mono font-bold uppercase text-blue-600">03. The Value Delivered</span>
-              <p className="text-xs sm:text-sm text-slate-700 font-normal leading-relaxed">
+            <div className="col-span-2 sm:col-span-1 aspect-[2/1] sm:aspect-auto flex flex-col justify-between rounded-2xl border border-slate-200/80 bg-slate-50/70 p-3 min-[380px]:p-3.5 sm:p-5">
+              <span className="text-[10px] min-[380px]:text-[11px] font-mono font-bold uppercase text-blue-600">03. The Value Delivered</span>
+              <p className="text-[10px] min-[380px]:text-[11px] sm:text-sm text-slate-700 font-normal leading-snug sm:leading-relaxed text-justify sm:text-left line-clamp-3 sm:line-clamp-none">
                 Streamlines operations, reduces processing turnaround, and ensures 100% full client code ownership.
               </p>
             </div>
@@ -320,37 +311,39 @@ export function ProjectDetailExperience({ project }: { project: Project }) {
             <h2 className="text-2xl sm:text-3xl font-black text-slate-950 tracking-tight">
               Key Features
             </h2>
-            <p className="text-xs sm:text-sm text-slate-500 mt-1 font-normal">
+            <p className="text-xs sm:text-sm text-slate-500 mt-1 font-normal text-justify sm:text-left">
               Built for speed, user clarity, and easy future maintenance.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-2.5 min-[380px]:gap-3.5 sm:gap-5">
             {threeKeyFeatures.map((feat, idx) => {
               const FeatureIcon = feat.icon;
 
               return (
                 <div
                   key={feat.title}
-                  className="rounded-2xl border border-slate-200/90 bg-white p-6 shadow-xs hover:border-blue-300 hover:shadow-md transition-all space-y-3 flex flex-col justify-between"
+                  className={`aspect-square sm:aspect-auto flex flex-col justify-between p-3 min-[380px]:p-3.5 sm:p-6 rounded-2xl border border-slate-200/90 bg-white shadow-xs hover:border-blue-300 hover:shadow-md transition-all ${
+                    idx === 2 ? 'col-span-2 md:col-span-1 aspect-[2/1] sm:aspect-auto' : ''
+                  }`}
                 >
-                  <div className="space-y-3">
-                    <div className="h-10 w-10 rounded-xl bg-blue-50 border border-blue-200/70 flex items-center justify-center text-blue-600">
-                      <FeatureIcon className="h-5 w-5" />
+                  <div className="space-y-2 sm:space-y-3">
+                    <div className="h-7 w-7 min-[380px]:h-8 min-[380px]:w-8 sm:h-10 sm:w-10 rounded-xl bg-blue-50 border border-blue-200/70 flex items-center justify-center text-blue-600 shrink-0">
+                      <FeatureIcon className="h-3.5 w-3.5 min-[380px]:h-4 min-[380px]:w-4 sm:h-5 sm:w-5" />
                     </div>
 
-                    <h3 className="text-base font-bold text-slate-950">
+                    <h3 className="text-xs min-[380px]:text-sm sm:text-base font-bold text-slate-950 leading-tight">
                       {feat.title}
                     </h3>
 
-                    <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                    <p className="text-[10px] min-[380px]:text-[11px] sm:text-sm text-slate-600 leading-snug sm:leading-relaxed font-normal text-justify sm:text-left line-clamp-3 sm:line-clamp-none">
                       {feat.description}
                     </p>
                   </div>
 
-                  <div className="pt-2 text-[11px] font-mono text-emerald-600 font-bold flex items-center gap-1.5">
-                    <CheckCircle2 className="h-3.5 w-3.5" />
-                    <span>Production Verified</span>
+                  <div className="pt-1.5 sm:pt-2 text-[10px] sm:text-[11px] font-mono text-emerald-600 font-bold flex items-center gap-1 sm:gap-1.5 border-t border-slate-100">
+                    <CheckCircle2 className="h-3 w-3 sm:h-3.5 sm:w-3.5 shrink-0" />
+                    <span className="truncate">Production Verified</span>
                   </div>
                 </div>
               );
@@ -377,7 +370,7 @@ export function ProjectDetailExperience({ project }: { project: Project }) {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-2.5 sm:gap-4">
             {galleryItems.map((item, idx) => (
               <div
                 key={idx}
@@ -385,39 +378,39 @@ export function ProjectDetailExperience({ project }: { project: Project }) {
                   setSelectedPhotoIdx(idx);
                   setLightboxOpen(true);
                 }}
-                className="group rounded-2xl border border-slate-200/90 bg-white p-3.5 shadow-xs hover:border-blue-400 hover:shadow-lg transition-all cursor-pointer flex flex-col justify-between space-y-3"
+                className="group rounded-2xl border border-slate-200/90 bg-white p-2.5 sm:p-3.5 shadow-xs hover:border-blue-400 hover:shadow-lg transition-all cursor-pointer flex flex-col justify-between space-y-2 sm:space-y-3"
               >
                 {/* Viewport Frame */}
-                <div className="relative h-36 w-full rounded-xl bg-gradient-to-br from-slate-900 to-[#0A2558] p-3 text-white overflow-hidden flex flex-col justify-between">
-                  <div className="flex items-center justify-between border-b border-white/10 pb-1.5">
+                <div className="relative h-24 min-[380px]:h-28 sm:h-36 w-full rounded-xl bg-gradient-to-br from-slate-900 to-[#0A2558] p-2 sm:p-3 text-white overflow-hidden flex flex-col justify-between">
+                  <div className="flex items-center justify-between border-b border-white/10 pb-1 sm:pb-1.5">
                     <div className="flex items-center gap-1">
                       <span className="h-1.5 w-1.5 rounded-full bg-rose-500/80" />
                       <span className="h-1.5 w-1.5 rounded-full bg-amber-500/80" />
                       <span className="h-1.5 w-1.5 rounded-full bg-emerald-500/80" />
                     </div>
-                    <span className="text-[8px] font-mono text-cyan-300 font-bold uppercase">
+                    <span className="text-[7px] sm:text-[8px] font-mono text-cyan-300 font-bold uppercase truncate max-w-[80px] sm:max-w-none">
                       {item.tag}
                     </span>
                   </div>
 
-                  <div className="space-y-1.5 my-auto py-1">
-                    <div className="h-2 w-3/4 rounded bg-white/20" />
-                    <div className="h-1.5 w-1/2 rounded bg-cyan-400/40" />
+                  <div className="space-y-1 sm:space-y-1.5 my-auto py-1">
+                    <div className="h-1.5 sm:h-2 w-3/4 rounded bg-white/20" />
+                    <div className="h-1 sm:h-1.5 w-1/2 rounded bg-cyan-400/40" />
                   </div>
 
                   <div className="absolute inset-0 bg-blue-600/30 backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
-                    <div className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/20 backdrop-blur-md text-[11px] font-bold">
-                      <Maximize2 className="h-3 w-3" />
+                    <div className="flex items-center gap-1 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-white/20 backdrop-blur-md text-[10px] sm:text-[11px] font-bold">
+                      <Maximize2 className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
                       <span>Inspect</span>
                     </div>
                   </div>
                 </div>
 
                 <div>
-                  <h4 className="text-xs font-bold text-slate-950 group-hover:text-blue-600 transition-colors leading-tight">
+                  <h4 className="text-[11px] sm:text-xs font-bold text-slate-950 group-hover:text-blue-600 transition-colors leading-tight line-clamp-1 sm:line-clamp-none">
                     {item.title}
                   </h4>
-                  <p className="text-[11px] text-slate-500 leading-snug mt-0.5">
+                  <p className="text-[10px] sm:text-[11px] text-slate-500 leading-snug mt-0.5 line-clamp-2 text-justify sm:text-left">
                     {item.subtitle}
                   </p>
                 </div>
@@ -445,7 +438,7 @@ export function ProjectDetailExperience({ project }: { project: Project }) {
                 <AlertCircle className="h-4 w-4 shrink-0" />
                 <h3 className="text-sm font-bold text-slate-950 uppercase tracking-wide">The Challenge</h3>
               </div>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal text-justify">
                 {project.challenge}
               </p>
             </div>
@@ -456,7 +449,7 @@ export function ProjectDetailExperience({ project }: { project: Project }) {
                 <CheckCircle2 className="h-4 w-4 shrink-0" />
                 <h3 className="text-sm font-bold text-slate-950 uppercase tracking-wide">The Solution</h3>
               </div>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal text-justify">
                 {project.solution}
               </p>
             </div>
@@ -490,30 +483,65 @@ export function ProjectDetailExperience({ project }: { project: Project }) {
       {/* ========================================================================= */}
       {/* 7. PREVIOUS / NEXT PAGER */}
       {/* ========================================================================= */}
-      <footer className="border-t border-slate-200 bg-slate-50/50 py-8">
-        <div className="mx-auto max-w-[1084px] px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
-          <Link
-            href={`/projects/${prevProject.slug}`}
-            className="inline-flex items-center gap-2 text-xs font-bold text-slate-600 hover:text-blue-600 transition-colors"
-          >
-            <ChevronLeft className="h-4 w-4" />
-            <span>Previous: {prevProject.name}</span>
-          </Link>
+      <footer className="border-t border-slate-200/80 bg-white py-8 sm:py-10">
+        <div className="mx-auto max-w-[1084px] px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-[1fr_auto_1fr] items-center gap-3 sm:gap-4 lg:gap-6">
+            {/* Previous Project Card */}
+            <Link
+              href={`/projects/${prevProject.slug}`}
+              className="group flex items-center gap-3 sm:gap-4 p-3 sm:p-4 lg:p-5 rounded-2xl border border-slate-200/90 bg-slate-50/50 hover:bg-white hover:border-blue-300 hover:shadow-lg hover:shadow-blue-500/5 transition-all duration-300"
+            >
+              <div className="flex h-9 w-9 sm:h-11 sm:w-11 items-center justify-center rounded-xl bg-white border border-slate-200 text-slate-700 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-all duration-300 shrink-0 shadow-xs group-hover:-translate-x-0.5">
+                <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
+              </div>
+              <div className="min-w-0 text-left">
+                <span className="text-[9px] sm:text-[11px] font-mono font-bold uppercase tracking-wider text-slate-400 group-hover:text-blue-600 transition-colors block mb-0.5 sm:mb-1">
+                  Previous Project
+                </span>
+                <span className="text-xs sm:text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors truncate block leading-tight">
+                  {prevProject.name}
+                </span>
+                <span className="hidden sm:block text-xs text-slate-500 truncate mt-0.5 font-medium">
+                  {prevProject.category}
+                </span>
+              </div>
+            </Link>
 
-          <Link
-            href="/projects"
-            className="text-xs font-semibold text-slate-400 hover:text-slate-700 transition-colors hidden sm:inline"
-          >
-            All Projects
-          </Link>
+            {/* Center All Projects link (desktop) */}
+            <Link
+              href="/projects"
+              className="hidden md:inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-slate-200/90 bg-white hover:bg-slate-50 hover:border-blue-300 hover:text-blue-600 text-xs font-bold text-slate-700 transition-all shadow-xs shrink-0 group"
+            >
+              <svg className="h-4 w-4 text-slate-400 group-hover:text-blue-600 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <rect width="7" height="7" x="3" y="3" rx="1" />
+                <rect width="7" height="7" x="14" y="3" rx="1" />
+                <rect width="7" height="7" x="14" y="14" rx="1" />
+                <rect width="7" height="7" x="3" y="14" rx="1" />
+              </svg>
+              <span>All Projects</span>
+            </Link>
 
-          <Link
-            href={`/projects/${nextProject.slug}`}
-            className="inline-flex items-center gap-2 text-xs font-bold text-slate-600 hover:text-blue-600 transition-colors"
-          >
-            <span>Next: {nextProject.name}</span>
-            <ChevronRight className="h-4 w-4" />
-          </Link>
+            {/* Next Project Card */}
+            <Link
+              href={`/projects/${nextProject.slug}`}
+              className="group flex items-center justify-end text-right gap-3 sm:gap-4 p-3 sm:p-4 lg:p-5 rounded-2xl border border-slate-200/90 bg-slate-50/50 hover:bg-white hover:border-blue-300 hover:shadow-lg hover:shadow-blue-500/5 transition-all duration-300"
+            >
+              <div className="min-w-0 text-right">
+                <span className="text-[9px] sm:text-[11px] font-mono font-bold uppercase tracking-wider text-slate-400 group-hover:text-blue-600 transition-colors block mb-0.5 sm:mb-1">
+                  Next Project
+                </span>
+                <span className="text-xs sm:text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors truncate block leading-tight">
+                  {nextProject.name}
+                </span>
+                <span className="hidden sm:block text-xs text-slate-500 truncate mt-0.5 font-medium">
+                  {nextProject.category}
+                </span>
+              </div>
+              <div className="flex h-9 w-9 sm:h-11 sm:w-11 items-center justify-center rounded-xl bg-white border border-slate-200 text-slate-700 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-all duration-300 shrink-0 shadow-xs group-hover:translate-x-0.5">
+                <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
+              </div>
+            </Link>
+          </div>
         </div>
       </footer>
 

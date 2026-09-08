@@ -95,7 +95,7 @@ export default function ContactPage() {
             Let&apos;s Build Your Next Project.
           </h1>
           
-          <p className="mt-3 text-sm sm:text-base text-slate-600 font-normal leading-relaxed">
+          <p className="mt-3 text-sm sm:text-base text-slate-600 font-normal leading-relaxed text-justify sm:text-left">
             Fill in your project scope below. Our solution architects will review your requirements and respond with architectural guidance within 24 hours.
           </p>
         </div>
@@ -116,8 +116,8 @@ export default function ContactPage() {
                     <h3 className="text-2xl sm:text-3xl font-black text-slate-950">
                       Inquiry Dispatched!
                     </h3>
-                    <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
-                      Your project inquiry has been formatted and forwarded to <strong className="text-slate-900 font-bold">{siteConfig.email}</strong>. Our engineering leads will review your scope and get in touch within 24 hours.
+                    <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto leading-relaxed text-justify sm:text-center">
+                      Your project inquiry has been formatted and forwarded to <strong className="text-slate-900 font-bold whitespace-nowrap">{siteConfig.email}</strong>. Our engineering leads will review your scope and get in touch within 24 hours.
                     </p>
                   </div>
 
@@ -352,17 +352,17 @@ export default function ContactPage() {
                     whileHover={{ scale: 1.01, y: -1 }}
                     whileTap={{ scale: 0.99 }}
                     href={`mailto:${siteConfig.email}?subject=Project%20Inquiry%20-%20Intouch%20Global%20Tech`}
-                    className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-50/70 border border-slate-200/90 hover:border-blue-500 hover:bg-white transition-all group cursor-pointer"
+                    className="flex items-center gap-3 sm:gap-3.5 p-3 sm:p-3.5 rounded-2xl bg-slate-50/70 border border-slate-200/90 hover:border-blue-500 hover:bg-white transition-all group cursor-pointer"
                   >
-                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all shadow-2xs shrink-0">
+                    <div className="flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-xl bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all shadow-2xs shrink-0">
                       <Mail className="h-5 w-5" />
                     </div>
-                    <div className="min-w-0 flex-1">
-                      <span className="text-xs min-[360px]:text-sm sm:text-base font-black text-slate-900 group-hover:text-blue-600 transition-colors break-all block">
+                    <div className="min-w-0 flex-1 overflow-hidden">
+                      <span className="text-[12px] min-[360px]:text-[13px] sm:text-base font-black text-slate-900 group-hover:text-blue-600 transition-colors whitespace-nowrap truncate block tracking-tight">
                         {siteConfig.email}
                       </span>
                     </div>
-                    <ArrowUpRight className="h-4 w-4 text-slate-300 group-hover:text-blue-600 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    <ArrowUpRight className="h-4 w-4 text-slate-300 group-hover:text-blue-600 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0" />
                   </motion.a>
                 </div>
               </div>
@@ -376,19 +376,19 @@ export default function ContactPage() {
                 <ul className="space-y-2.5 text-xs text-slate-700 font-semibold">
                   <li className="flex items-start gap-2.5">
                     <CheckCircle2 className="h-4 w-4 text-blue-600 shrink-0 mt-0.5" />
-                    <span>Response & scope review within 24 hours</span>
+                    <span className="text-justify leading-relaxed flex-1">Response & scope review within 24 hours</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <CheckCircle2 className="h-4 w-4 text-blue-600 shrink-0 mt-0.5" />
-                    <span>Direct WhatsApp line with lead architects</span>
+                    <span className="text-justify leading-relaxed flex-1">Direct WhatsApp line with lead architects</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <CheckCircle2 className="h-4 w-4 text-blue-600 shrink-0 mt-0.5" />
-                    <span>2-week working sprint demos with zero lock-in</span>
+                    <span className="text-justify leading-relaxed flex-1">2-week working sprint demos with zero lock-in</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <CheckCircle2 className="h-4 w-4 text-blue-600 shrink-0 mt-0.5" />
-                    <span>100% full client source code ownership</span>
+                    <span className="text-justify leading-relaxed flex-1">100% full client source code ownership</span>
                   </li>
                 </ul>
               </div>
@@ -396,7 +396,7 @@ export default function ContactPage() {
               {/* NDA & IP Ownership Seal */}
               <div className="rounded-2xl border border-blue-200/90 bg-blue-50/50 p-3.5 flex items-center gap-3 text-xs text-slate-800 font-bold shadow-2xs">
                 <ShieldCheck className="h-5 w-5 text-blue-600 shrink-0" />
-                <span>NDA Protected • 100% Confidential IP Guarantee</span>
+                <span className="text-justify">NDA Protected • 100% Confidential IP Guarantee</span>
               </div>
 
             </div>

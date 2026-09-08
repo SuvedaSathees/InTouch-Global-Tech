@@ -33,7 +33,7 @@ const teamMembers: TeamMember[] = [
   {
     id: 1,
     name: 'Velumurugan',
-    role: 'CEO of Intouch',
+    role: 'CEO of Intouch Global Tech',
     category: 'Leadership',
     badge: 'Executive Leadership',
     avatarColor: 'from-blue-600 to-indigo-700',

@@ -26,6 +26,8 @@ const systemNodes = [
   {
     id: 'web',
     label: 'Web Dev & CMS',
+    shortLabel: 'Web Dev',
+    tinyLabel: 'Web Dev',
     icon: Globe,
     angle: 0,
     gradient: 'from-blue-500 to-cyan-400',
@@ -34,6 +36,8 @@ const systemNodes = [
   {
     id: 'erp',
     label: 'ERP & HRMS',
+    shortLabel: 'ERP & HRMS',
+    tinyLabel: 'ERP',
     icon: Building2,
     angle: 60,
     gradient: 'from-indigo-500 to-blue-500',
@@ -42,6 +46,8 @@ const systemNodes = [
   {
     id: 'crm',
     label: 'CRM & Billing',
+    shortLabel: 'CRM & Billing',
+    tinyLabel: 'CRM',
     icon: Layers,
     angle: 120,
     gradient: 'from-cyan-500 to-teal-400',
@@ -50,6 +56,8 @@ const systemNodes = [
   {
     id: 'hms',
     label: 'Hospital HMS',
+    shortLabel: 'Hospital HMS',
+    tinyLabel: 'Hospital',
     icon: Activity,
     angle: 180,
     gradient: 'from-emerald-500 to-teal-400',
@@ -58,6 +66,8 @@ const systemNodes = [
   {
     id: 'seo',
     label: 'SEO & Growth',
+    shortLabel: 'SEO & Growth',
+    tinyLabel: 'SEO',
     icon: Search,
     angle: 240,
     gradient: 'from-purple-500 to-indigo-400',
@@ -66,6 +76,8 @@ const systemNodes = [
   {
     id: 'cloud',
     label: 'Cloud & DevOps',
+    shortLabel: 'Cloud & DevOps',
+    tinyLabel: 'Cloud',
     icon: Server,
     angle: 300,
     gradient: 'from-blue-400 to-indigo-500',
@@ -146,22 +158,33 @@ export function HomeHero() {
   };
 
   const currentActive = hoveredNode || activeNode;
-  const [isMobile, setIsMobile] = useState(false);
+  const [deviceType, setDeviceType] = useState<'desktop' | 'tablet' | 'mobile'>('desktop');
 
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 1024);
+    const updateDeviceType = () => {
+      const w = window.innerWidth;
+      if (w < 640) {
+        setDeviceType('mobile');
+      } else if (w < 1024) {
+        setDeviceType('tablet');
+      } else {
+        setDeviceType('desktop');
+      }
     };
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    updateDeviceType();
+    window.addEventListener('resize', updateDeviceType);
+    return () => window.removeEventListener('resize', updateDeviceType);
   }, []);
 
-  const orbitRadiusX = isMobile ? 105 : 230;
-  const orbitRadiusY = isMobile ? 90 : 230;
+  const isMobile = deviceType === 'mobile';
+  const isTablet = deviceType === 'tablet';
+
+  const orbitRadiusX = isMobile ? 128 : isTablet ? 175 : 230;
+  const orbitRadiusY = isMobile ? 106 : isTablet ? 155 : 230;
 
   return (
     <section
+      id="home-hero-section"
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
@@ -278,27 +301,27 @@ export function HomeHero() {
           </div>
 
           {/* RIGHT COLUMN: 3D PRO TELEMETRY ORBITAL HUB */}
-          <div className="lg:col-span-7 flex items-center justify-center lg:translate-x-[20px] overflow-visible py-4 lg:py-0">
+          <div className="lg:col-span-7 flex flex-col items-center justify-center lg:translate-x-[20px] overflow-visible py-2 sm:py-4 lg:py-0">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="relative w-full flex items-center justify-center min-h-[340px] sm:min-h-[440px] lg:min-h-[460px] overflow-visible"
+              className="relative w-full flex items-center justify-center min-h-[300px] sm:min-h-[400px] lg:min-h-[460px] overflow-visible"
               style={{ perspective: '1100px' }}
             >
               {/* Parallax 3D Plane */}
               <motion.div
                 style={{
-                  rotateX: smoothRotateX,
-                  rotateY: smoothRotateY,
-                  x: smoothTranslateX,
-                  y: smoothTranslateY,
+                  rotateX: isMobile ? 0 : smoothRotateX,
+                  rotateY: isMobile ? 0 : smoothRotateY,
+                  x: isMobile ? 0 : smoothTranslateX,
+                  y: isMobile ? 0 : smoothTranslateY,
                   transformStyle: 'preserve-3d',
                 }}
-                className="relative flex items-center justify-center w-full h-[340px] sm:h-[440px] lg:h-[460px] scale-[0.72] min-[360px]:scale-[0.78] min-[400px]:scale-[0.84] sm:scale-100 lg:scale-100 origin-center overflow-visible"
+                className="relative flex items-center justify-center w-full h-[290px] sm:h-[390px] lg:h-[460px] origin-center overflow-visible"
               >
                 {/* Center Glow Aura */}
-                <div className="absolute w-[340px] h-[340px] rounded-full bg-radial from-cyan-500/20 via-blue-600/10 to-transparent blur-3xl pointer-events-none" />
+                <div className="absolute w-[300px] sm:w-[340px] h-[300px] sm:h-[340px] rounded-full bg-radial from-cyan-500/20 via-blue-600/10 to-transparent blur-3xl pointer-events-none" />
 
                 {/* SVG Vector Radar & Telemetry Canvas */}
                 <svg
@@ -327,7 +350,7 @@ export function HomeHero() {
                   <circle
                     cx="0"
                     cy="0"
-                    r={isMobile ? "50" : "90"}
+                    r={isMobile ? "50" : isTablet ? "75" : "90"}
                     fill="none"
                     stroke="rgba(56,189,248,0.12)"
                     strokeWidth="1"
@@ -336,7 +359,7 @@ export function HomeHero() {
                   <circle
                     cx="0"
                     cy="0"
-                    r={isMobile ? "85" : "155"}
+                    r={isMobile ? "88" : isTablet ? "120" : "155"}
                     fill="none"
                     stroke="rgba(56,189,248,0.22)"
                     strokeWidth="1.2"
@@ -357,8 +380,40 @@ export function HomeHero() {
                   {/* Dynamic Connecting Circuits with Animated Laser Beams */}
                   {systemNodes.map((node) => {
                     const rad = (node.angle * Math.PI) / 180;
-                    const nodeOffsetX = isMobile ? 0 : node.id === 'hms' ? -20 : node.id === 'web' ? 20 : 0;
-                    const nodeOffsetY = isMobile ? 0 : node.id === 'seo' || node.id === 'cloud' ? 5 : node.id === 'crm' || node.id === 'erp' ? -5 : 0;
+                    const nodeOffsetX = isMobile
+                      ? node.id === 'seo'
+                        ? -14
+                        : node.id === 'cloud'
+                        ? 14
+                        : node.id === 'crm'
+                        ? -14
+                        : node.id === 'erp'
+                        ? 14
+                        : 0
+                      : isTablet
+                      ? node.id === 'hms'
+                        ? -15
+                        : node.id === 'web'
+                        ? 15
+                        : 0
+                      : node.id === 'hms'
+                      ? -20
+                      : node.id === 'web'
+                      ? 20
+                      : 0;
+
+                    const nodeOffsetY = isMobile
+                      ? node.id === 'seo' || node.id === 'cloud'
+                        ? -6
+                        : node.id === 'crm' || node.id === 'erp'
+                        ? 6
+                        : 0
+                      : node.id === 'seo' || node.id === 'cloud'
+                      ? 5
+                      : node.id === 'crm' || node.id === 'erp'
+                      ? -5
+                      : 0;
+
                     const x = Math.round(Math.cos(rad) * orbitRadiusX) + nodeOffsetX;
                     const y = Math.round(Math.sin(rad) * orbitRadiusY) + nodeOffsetY;
                     const isActive = currentActive === node.id;
@@ -439,17 +494,49 @@ export function HomeHero() {
                 {/* Central Brand Pedestal */}
                 <motion.div
                   whileHover={{ scale: 1.05 }}
-                  className="relative z-30 flex items-center justify-center px-1.5 py-1 sm:px-4 sm:py-3 rounded-xl sm:rounded-2xl bg-slate-900/95 backdrop-blur-xl shadow-[0_0_25px_rgba(56,189,248,0.35)] border border-cyan-400/40 ring-1 ring-cyan-400/20 cursor-default"
+                  className="relative z-30 flex items-center justify-center px-2 py-1 sm:px-4 sm:py-3 rounded-xl sm:rounded-2xl bg-slate-900/95 backdrop-blur-xl shadow-[0_0_25px_rgba(56,189,248,0.35)] border border-cyan-400/40 ring-1 ring-cyan-400/20 cursor-default"
                   style={{ transform: 'translateZ(35px)' }}
                 >
-                  <CompanyLogo width={isMobile ? 65 : 165} height={isMobile ? 18 : 46} theme="dark" imgClassName="scale-105" />
+                  <CompanyLogo width={isMobile ? 70 : isTablet ? 120 : 165} height={isMobile ? 20 : isTablet ? 34 : 46} theme="dark" imgClassName="scale-105" />
                 </motion.div>
 
                 {/* 6 High-Tech Capability Pills */}
                 {systemNodes.map((node, index) => {
                   const rad = (node.angle * Math.PI) / 180;
-                  const nodeOffsetX = isMobile ? 0 : node.id === 'hms' ? -20 : node.id === 'web' ? 20 : 0;
-                  const nodeOffsetY = isMobile ? 0 : node.id === 'seo' || node.id === 'cloud' ? 5 : node.id === 'crm' || node.id === 'erp' ? -5 : 0;
+                  const nodeOffsetX = isMobile
+                    ? node.id === 'seo'
+                      ? -14
+                      : node.id === 'cloud'
+                      ? 14
+                      : node.id === 'crm'
+                      ? -14
+                      : node.id === 'erp'
+                      ? 14
+                      : 0
+                    : isTablet
+                    ? node.id === 'hms'
+                      ? -15
+                      : node.id === 'web'
+                      ? 15
+                      : 0
+                    : node.id === 'hms'
+                    ? -20
+                    : node.id === 'web'
+                    ? 20
+                    : 0;
+
+                  const nodeOffsetY = isMobile
+                    ? node.id === 'seo' || node.id === 'cloud'
+                      ? -6
+                      : node.id === 'crm' || node.id === 'erp'
+                      ? 6
+                      : 0
+                    : node.id === 'seo' || node.id === 'cloud'
+                    ? 5
+                    : node.id === 'crm' || node.id === 'erp'
+                    ? -5
+                    : 0;
+
                   const x = Math.round(Math.cos(rad) * orbitRadiusX) + nodeOffsetX;
                   const y = Math.round(Math.sin(rad) * orbitRadiusY) + nodeOffsetY;
                   const Icon = node.icon;
@@ -470,33 +557,35 @@ export function HomeHero() {
                         onClick={() => setActiveNode(node.id)}
                         onMouseEnter={() => setHoveredNode(node.id)}
                         onMouseLeave={() => setHoveredNode(null)}
-                        whileHover={{ scale: 1.07 }}
-                        whileTap={{ scale: 0.96 }}
+                        whileHover={{ scale: 1.06 }}
+                        whileTap={{ scale: 0.95 }}
                         animate={{
                           scale: isActive ? 1.05 : 1,
-                          y: [0, index % 2 === 0 ? -2.5 : 2.5, 0],
+                          y: [0, index % 2 === 0 ? -2 : 2, 0],
                         }}
                         transition={{
                           scale: { type: 'spring', stiffness: 350, damping: 25 },
                           y: { duration: 4 + (index % 3) * 0.5, repeat: Infinity, ease: 'easeInOut' },
                         }}
-                        className={`relative flex items-center gap-1.5 sm:gap-3 rounded-xl sm:rounded-2xl px-2 py-1 sm:px-4 sm:py-2.5 text-left transition-all duration-300 cursor-pointer ${
+                        className={`relative flex items-center gap-1.5 sm:gap-3 rounded-xl sm:rounded-2xl px-2 py-1 sm:px-3.5 sm:py-2 text-left transition-all duration-300 cursor-pointer ${
                           isActive
-                            ? 'border-2 border-cyan-400 bg-slate-800/95 shadow-[0_0_25px_rgba(56,189,248,0.4)] ring-2 sm:ring-4 ring-cyan-400/20'
+                            ? 'border-2 border-cyan-400 bg-slate-800/95 shadow-[0_0_20px_rgba(56,189,248,0.45)] ring-2 sm:ring-4 ring-cyan-400/20'
                             : 'border border-slate-700/80 bg-slate-900/90 backdrop-blur-md shadow-md hover:border-cyan-400/60 hover:shadow-lg'
                         }`}
                       >
                         <div
-                          className={`flex h-6 w-6 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-lg sm:rounded-xl bg-gradient-to-br ${node.gradient} text-white font-bold shadow-xs`}
+                          className={`flex h-6 w-6 sm:h-8 sm:w-8 lg:h-9 lg:w-9 shrink-0 items-center justify-center rounded-lg sm:rounded-xl bg-gradient-to-br ${node.gradient} text-white font-bold shadow-xs`}
                         >
-                          <Icon className="h-3 w-3 sm:h-4.5 sm:w-4.5 text-white" />
+                          <Icon className="h-3.5 w-3.5 sm:h-4 sm:w-4 lg:h-4.5 lg:w-4.5 text-white" />
                         </div>
                         <div className="flex flex-col text-left">
-                          <span className="text-[10px] sm:text-sm font-bold text-white whitespace-nowrap">
-                            {node.label}
+                          <span className="text-[10px] sm:text-xs lg:text-sm font-bold text-white whitespace-nowrap">
+                            <span className="max-[370px]:hidden sm:hidden">{node.shortLabel}</span>
+                            <span className="hidden max-[370px]:inline">{node.tinyLabel}</span>
+                            <span className="hidden sm:inline">{node.label}</span>
                           </span>
                           {isActive && (
-                            <span className="text-[8.5px] font-mono font-semibold text-cyan-400 animate-fadeIn max-w-[110px] sm:max-w-[160px] leading-tight block">
+                            <span className="hidden lg:block text-[8.5px] font-mono font-semibold text-cyan-400 animate-fadeIn max-w-[160px] leading-tight">
                               {node.description}
                             </span>
                           )}
@@ -512,14 +601,14 @@ export function HomeHero() {
         </div>
       </div>
 
-      {/* BOTTOM TRUST & CAPABILITIES RIBBON (2x2 Grid on Mobile, Flex Row on Desktop) */}
+      {/* BOTTOM TRUST & CAPABILITIES RIBBON (Previous 2x2 Clean Grid on Mobile, Flex Row on Desktop) */}
       <div className="relative z-10 w-full border-t border-cyan-400/25 border-b border-white/10 bg-[#060A14]/95 backdrop-blur-2xl py-4 sm:py-[30px] shadow-[0_-10px_30px_rgba(0,194,255,0.06)]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 gap-3 sm:flex sm:items-center sm:justify-between sm:gap-6 lg:gap-10 text-[11px] sm:text-[13px] text-slate-200 font-bold">
+          <div className="grid grid-cols-2 gap-4 sm:flex sm:items-center sm:justify-between sm:gap-6 lg:gap-10 text-[11px] sm:text-[13px] text-slate-200 font-bold">
             {bottomTrustItems.map((item, idx) => (
-              <div key={idx} className="flex items-center gap-2 sm:gap-3 hover:text-cyan-400 transition-colors shrink-0 group">
-                <div className="h-7 w-7 sm:h-8 sm:w-8 rounded-lg sm:rounded-xl bg-cyan-400/10 border border-cyan-400/25 flex items-center justify-center text-cyan-400 group-hover:bg-cyan-400/25 group-hover:scale-105 transition-all shadow-[0_0_15px_rgba(56,189,248,0.15)] shrink-0">
-                  <item.icon className="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0" />
+              <div key={idx} className="flex items-center gap-2.5 sm:gap-3 hover:text-cyan-400 transition-colors shrink-0 group">
+                <div className="h-8 w-8 sm:h-8 sm:w-8 rounded-full bg-cyan-400/10 border border-cyan-400/25 flex items-center justify-center text-cyan-400 group-hover:bg-cyan-400/25 group-hover:scale-105 transition-all shadow-[0_0_15px_rgba(56,189,248,0.15)] shrink-0">
+                  <item.icon className="h-4 w-4 sm:h-4 sm:w-4 shrink-0" />
                 </div>
                 <span className="tracking-wider leading-tight">{item.label}</span>
               </div>

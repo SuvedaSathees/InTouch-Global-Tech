@@ -75,7 +75,7 @@ export function HomeStats() {
           </div>
         </div>
 
-        {/* 4 Connected Telemetry Cards (2x2 Grid on Mobile, 4 Columns on Desktop) */}
+        {/* 4 Connected Telemetry Cards (2x2 Square Grid on Mobile, 4 Columns on Desktop) */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 min-[380px]:gap-3.5 sm:gap-6 py-1">
           {stats.map((stat, idx) => {
             const Icon = stat.icon;
@@ -84,31 +84,33 @@ export function HomeStats() {
               <motion.div
                 key={stat.label}
                 whileHover={{ y: -5 }}
-                className="group relative w-full flex flex-col justify-between rounded-2xl sm:rounded-3xl border border-slate-200/90 bg-white p-3 sm:p-7 shadow-xs hover:border-blue-500 hover:shadow-xl hover:shadow-blue-600/10 transition-all duration-300 text-left overflow-hidden"
+                className="group relative w-full aspect-square sm:aspect-auto flex flex-col justify-between rounded-2xl sm:rounded-3xl border border-slate-200/90 bg-white p-3 min-[380px]:p-3.5 sm:p-7 shadow-xs hover:border-blue-500 hover:shadow-xl hover:shadow-blue-600/10 transition-all duration-300 text-left overflow-hidden"
               >
-                <div className="space-y-1.5 sm:space-y-2">
-                  {/* Top Badge Row */}
-                  <div className="flex items-center justify-between gap-1 mb-2 sm:mb-6">
-                    <div
-                      className={`flex h-7 w-7 sm:h-11 sm:w-11 items-center justify-center rounded-xl sm:rounded-2xl bg-gradient-to-br ${stat.gradient} text-white shadow-xs group-hover:scale-105 transition-transform shrink-0`}
-                    >
-                      <Icon className="h-3.5 w-3.5 sm:h-5 sm:w-5" />
-                    </div>
-
-                    <span className="hidden min-[380px]:inline-flex items-center gap-1 sm:gap-1.5 rounded-full bg-blue-50 border border-blue-200/80 px-1.5 py-0.5 sm:px-2.5 sm:py-0.5 text-[8px] sm:text-[10px] font-bold text-blue-700 uppercase tracking-wider truncate max-w-[90px] sm:max-w-none">
-                      <span className="h-1 sm:h-1.5 w-1 sm:w-1.5 rounded-full bg-cyan-500 animate-pulse shrink-0" />
-                      <span className="truncate">{stat.badge}</span>
-                    </span>
+                {/* Top Row: Icon & Status */}
+                <div className="flex items-center justify-between gap-1">
+                  <div
+                    className={`flex h-7 w-7 min-[380px]:h-8 min-[380px]:w-8 sm:h-11 sm:w-11 items-center justify-center rounded-xl sm:rounded-2xl bg-gradient-to-br ${stat.gradient} text-white shadow-xs group-hover:scale-105 transition-transform shrink-0`}
+                  >
+                    <Icon className="h-3.5 w-3.5 sm:h-5 sm:w-5" />
                   </div>
 
-                  {/* Main Value Display */}
-                  <div className="flex items-baseline gap-1">
-                    <span className="text-2xl sm:text-5xl font-black text-slate-950 tracking-tight group-hover:text-blue-600 transition-colors">
-                      {stat.value}
-                    </span>
-                  </div>
+                  <span className="inline-flex items-center gap-1 rounded-full bg-blue-50/90 border border-blue-200/70 px-1.5 py-0.5 sm:px-2.5 sm:py-0.5 text-[8px] sm:text-[10px] font-bold text-blue-700 uppercase tracking-wider">
+                    <span className="h-1.5 w-1.5 rounded-full bg-cyan-500 animate-pulse shrink-0" />
+                    <span className="hidden sm:inline">{stat.badge}</span>
+                    <span className="sm:hidden text-[7.5px] font-mono font-black text-blue-600">0{idx + 1}</span>
+                  </span>
+                </div>
 
-                  <h3 className="text-xs sm:text-base font-bold text-slate-950 group-hover:text-blue-600 transition-colors leading-snug sm:leading-normal line-clamp-2">
+                {/* Center: Main Value */}
+                <div className="my-auto py-0.5 sm:py-2">
+                  <span className="text-2xl min-[380px]:text-3xl sm:text-5xl font-black text-slate-950 font-mono tracking-tight group-hover:text-blue-600 transition-colors leading-none block">
+                    {stat.value}
+                  </span>
+                </div>
+
+                {/* Bottom: Label & Subtext */}
+                <div>
+                  <h3 className="text-[11px] min-[380px]:text-xs sm:text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-tight sm:leading-normal line-clamp-2">
                     {stat.label}
                   </h3>
 
@@ -117,9 +119,9 @@ export function HomeStats() {
                   </p>
                 </div>
 
-                {/* Bottom Divider Indicator */}
-                <div className="mt-2.5 sm:mt-6 pt-2 sm:pt-4 border-t border-slate-100 flex items-center justify-between text-[8.5px] sm:text-[10px] font-bold text-slate-400">
-                  <span className="truncate">METRIC 0{idx + 1}</span>
+                {/* Bottom Divider Indicator (Desktop only) */}
+                <div className="hidden sm:flex mt-6 pt-4 border-t border-slate-100 items-center justify-between text-[10px] font-bold text-slate-400">
+                  <span>METRIC 0{idx + 1}</span>
                   <span className="text-blue-600 uppercase font-semibold shrink-0">VERIFIED</span>
                 </div>
               </motion.div>

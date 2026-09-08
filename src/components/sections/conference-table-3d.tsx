@@ -49,7 +49,7 @@ const teamMembers: TeamMember3D[] = [
   {
     id: 1,
     name: 'Velumurugan',
-    role: 'CEO of Intouch',
+    role: 'CEO of Intouch Global Tech',
     category: 'Executive Leadership',
     description: 'Steers technological vision, enterprise strategy, and high-scale architecture blueprints for Intouch.',
     expertise: ['Enterprise Strategy', 'Executive Leadership', 'Digital Innovation'],
